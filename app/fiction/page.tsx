@@ -1,9 +1,9 @@
 import styles from './page.module.css';
 
-export default function Home() {
+export default function Fiction() {
 	return (
 		<main className={styles.main}>
-			<h1>HOME</h1>
+			<h1>FICTION</h1>
 		</main>
 	);
 }

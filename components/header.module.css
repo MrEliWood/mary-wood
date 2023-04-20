@@ -1,0 +1,13 @@
+.header {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: var(--medium);
+	padding: var(--large);
+}
+
+.site_title {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
