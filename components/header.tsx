@@ -13,15 +13,11 @@ export default function Home() {
 
 	return (
 		<header className={styles.header}>
-			<div className={styles.site_title}>
-				<Link href='/'>
-					<h1>Mary Elene Wood</h1>
-				</Link>
+			<Link href='/'>
+				<h1>Mary Elene Wood</h1>
+			</Link>
 
-				<h4>Writer, Teacher, Scholar</h4>
-			</div>
-
-			<Nav />
+			<h4>Writer, Teacher, Scholar</h4>
 		</header>
 	);
 }

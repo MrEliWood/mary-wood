@@ -1,6 +1,8 @@
 .nav {
 	display: flex;
-	gap: var(--medium);
+	flex-direction: column;
+	gap: var(--small);
+	text-align: end;
 }
 
 .dropdown {
@@ -14,14 +16,8 @@
 }
 
 .dropdown_content {
-	position: absolute;
 	display: flex;
 	flex-direction: column;
-	background: var(--light75);
-	backdrop-filter: blur(5px);
-	box-shadow: 0px 0px 30px var(--light75);
-	top: var(--medium);
-	left: calc(-1 * var(--medium));
 	max-height: 0px;
 	overflow: hidden;
 	transition: all 0.5s ease-in-out;
@@ -35,6 +31,5 @@
 .subnav {
 	display: flex;
 	flex-direction: column;
-	gap: var(--tiny);
-	padding: var(--small) var(--medium);
+	padding: var(--tiny);
 }

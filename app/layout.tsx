@@ -1,4 +1,5 @@
 import Header from '../components/header';
+import Sidebar from '../components/sidebar';
 
 import './global.css';
 
@@ -12,7 +13,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 		<html lang='en'>
 			<body>
 				<Header />
-				{children}
+				<main>
+					<Sidebar />
+					{children}
+				</main>
 			</body>
 		</html>
 	);

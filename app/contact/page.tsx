@@ -2,8 +2,8 @@ import styles from './page.module.css';
 
 export default function Blog() {
 	return (
-		<main className={styles.main}>
+		<section className={styles.page}>
 			<h1>CONTACT</h1>
-		</main>
+		</section>
 	);
 }
