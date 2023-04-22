@@ -10,10 +10,10 @@ export default function Nav() {
 
 	return (
 		<nav className={styles.nav}>
-			{pagelist.map((page) => {
+			{pagelist.map((page, i) => {
 				if (page.children.length < 1) {
 					return (
-						<Link href={page.path} className={pathname === page.path ? styles.active : styles.inactive}>
+						<Link key={i} href={page.path} className={pathname === page.path ? styles.active : styles.inactive}>
 							{page.name}
 						</Link>
 					);
@@ -32,15 +32,15 @@ export default function Nav() {
 
 					return (
 						<div className={styles.dropdown}>
-							<Link href={page.path} className={active ? styles.active : styles.inactive}>
+							<Link key={i} href={page.path} className={active ? styles.active : styles.inactive}>
 								{page.name}
 							</Link>
 
 							<div className={styles.dropdown_content}>
 								<div className={styles.subnav}>
-									{page.children.map((child) => {
+									{page.children.map((child, j) => {
 										return (
-											<Link href={child.path} className={pathname === child.path ? styles.active : styles.inactive}>
+											<Link key={i + '_' + j} href={child.path} className={pathname === child.path ? styles.active : styles.inactive}>
 												{child.name}
 											</Link>
 										);
