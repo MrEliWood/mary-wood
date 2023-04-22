@@ -1,0 +1,11 @@
+.page {
+	flex-direction: row;
+}
+
+.portrait {
+	width: 300px;
+	height: auto;
+	object-fit: contain;
+	float: right;
+	padding: 0 0 var(--medium) var(--medium);
+}
