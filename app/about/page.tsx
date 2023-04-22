@@ -13,8 +13,8 @@ export default function About() {
 				<Image src={portrait} alt='Portrait of Mary Wood.' className={styles.portrait} />
 				{Array(10)
 					.fill(placeholder)
-					.map((text) => (
-						<span>
+					.map((text, i) => (
+						<span key={i}>
 							{text}
 							<br />
 							<br />
