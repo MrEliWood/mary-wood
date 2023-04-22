@@ -8,28 +8,36 @@
 .dropdown {
 	position: relative;
 	display: flex;
-	flex-direction: column;
-}
-
-.dropdown_title:hover {
-	cursor: pointer;
+	justify-content: flex-end;
+	text-align: start;
 }
 
 .dropdown_content {
+	position: absolute;
+	left: 100%;
+	top: calc(-2 * var(--tiny));
 	display: flex;
 	flex-direction: column;
 	max-height: 0px;
 	overflow: hidden;
+	margin-left: var(--small);
 	transition: all 0.5s ease-in-out;
 }
 
 .dropdown_content:hover,
 .dropdown:hover .dropdown_content {
-	max-height: 200px;
+	max-height: 90px;
 }
 
 .subnav {
 	display: flex;
 	flex-direction: column;
-	padding: var(--tiny);
+	gap: var(--tiny);
+	border-left: 1px solid black;
+	padding: var(--tiny) var(--small) var(--small);
+	margin: var(--tiny) 0;
+}
+
+.active {
+	color: var(--accent50);
 }

@@ -1,28 +1,56 @@
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 import styles from './nav.module.css';
 
+import pagelist from './pagelist';
+
 export default function Nav() {
+	const pathname: string = usePathname();
+
 	return (
 		<nav className={styles.nav}>
-			<Link href='/'>Home</Link>
-			<Link href='/about'>About</Link>
+			{pagelist.map((page) => {
+				if (page.children.length < 1) {
+					return (
+						<Link href={page.path} className={pathname === page.path ? styles.active : styles.inactive}>
+							{page.name}
+						</Link>
+					);
+				} else {
+					// define boolean for tracking active children
+					let active: boolean = false;
 
-			<div className={styles.dropdown}>
-				<p className={styles.dropdown_title}>Books</p>
+					if (pathname === page.path) {
+						active = true;
+					} else {
+						// if not active, check for active children
+						for (const subpage of page.children) {
+							if (pathname === subpage.path) active = true;
+						}
+					}
 
-				<div className={styles.dropdown_content}>
-					<div className={styles.subnav}>
-						<Link href='/nonfiction'>Nonfiction</Link>
-						<Link href='/fiction'>Fiction</Link>
-						<Link href='/memoir'>Memoir</Link>
-					</div>
-				</div>
-			</div>
+					return (
+						<div className={styles.dropdown}>
+							<Link href={page.path} className={active ? styles.active : styles.inactive}>
+								{page.name}
+							</Link>
 
-			<Link href='/articles'>Articles</Link>
-			<Link href='/blog'>Blog</Link>
-			<Link href='/contact'>Contact</Link>
+							<div className={styles.dropdown_content}>
+								<div className={styles.subnav}>
+									{page.children.map((child) => {
+										return (
+											<Link href={child.path} className={pathname === child.path ? styles.active : styles.inactive}>
+												{child.name}
+											</Link>
+										);
+									})}
+								</div>
+							</div>
+						</div>
+					);
+				}
+			})}
 		</nav>
 	);
 }
