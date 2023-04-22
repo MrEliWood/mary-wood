@@ -31,8 +31,8 @@ export default function Nav() {
 					}
 
 					return (
-						<div className={styles.dropdown}>
-							<Link key={i} href={page.path} className={active ? styles.active : styles.inactive}>
+						<div key={i} className={styles.dropdown}>
+							<Link href={page.path} className={active ? styles.active : styles.inactive}>
 								{page.name}
 							</Link>
 
