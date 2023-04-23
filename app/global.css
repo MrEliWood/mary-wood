@@ -128,7 +128,7 @@ a:visited {
 }
 
 a:hover {
-	color: var(--accent75);
+	color: var(--accent50);
 }
 
 h1 {
