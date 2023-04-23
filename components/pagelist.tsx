@@ -6,48 +6,48 @@ type page = {
 
 const pagelist: page[] = [
 	{
-		name: 'home',
+		name: 'Home',
 		path: '/',
 		children: []
 	},
 	{
-		name: 'about',
+		name: 'About',
 		path: '/about',
 		children: []
 	},
 	{
-		name: 'books',
+		name: 'Books',
 		path: '/books',
 		children: [
 			{
-				name: 'nonfiction',
+				name: 'Nonfiction',
 				path: '/nonfiction',
 				children: []
 			},
 			{
-				name: 'fiction',
+				name: 'Fiction',
 				path: '/fiction',
 				children: []
 			},
 			{
-				name: 'memoir',
+				name: 'Memoir',
 				path: '/memoir',
 				children: []
 			}
 		]
 	},
 	{
-		name: 'articles',
+		name: 'Articles',
 		path: '/articles',
 		children: []
 	},
 	{
-		name: 'blog',
+		name: 'Blog',
 		path: '/blog',
 		children: []
 	},
 	{
-		name: 'contact',
+		name: 'Contact',
 		path: '/contact',
 		children: []
 	}
