@@ -1,0 +1,19 @@
+.category {
+	gap: var(--medium);
+}
+
+.book {
+	display: flex;
+}
+
+.cover {
+	min-width: 100px;
+	max-width: 100px;
+	height: auto;
+	object-fit: contain;
+	padding: 0 var(--medium) 0 0;
+}
+
+.details {
+	padding: var(--tiny) 0;
+}

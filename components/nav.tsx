@@ -3,7 +3,7 @@ import { usePathname } from 'next/navigation';
 
 import styles from './nav.module.css';
 
-import pagelist from './pagelist';
+import pagelist from './utils/pagelist';
 
 export default function Nav() {
 	const pathname: string = usePathname();
@@ -51,6 +51,18 @@ export default function Nav() {
 					);
 				}
 			})}
+
+			{/* TEMP FONT MENU */}
+			<div className={`${styles.dropdown} ${styles.fonts}`}>
+				<p>Fonts</p>
+
+				<div className={styles.dropdown_content}>
+					<div className={styles.subnav}>
+						<p className={`${styles.font} ${styles.baskerville}`}>baskerville</p>
+						<p className={`${styles.font} ${styles.montserrat}`}>montserrat</p>
+					</div>
+				</div>
+			</div>
 		</nav>
 	);
 }

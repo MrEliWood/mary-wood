@@ -41,3 +41,21 @@
 .active {
 	color: var(--accent50);
 }
+
+/* TEMP FONTS */
+.fonts p:hover {
+	cursor: pointer;
+	color: var(--accent50);
+}
+
+.font {
+	text-transform: capitalize;
+}
+
+.baskerville {
+	font-family: var(--font_baskerville);
+}
+
+.montserrat {
+	font-family: var(--font_montserrat);
+}

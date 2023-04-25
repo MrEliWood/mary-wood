@@ -1,0 +1,22 @@
+.book {
+	flex-direction: row;
+	align-items: flex-start;
+}
+
+.book:nth-child(even) {
+	flex-direction: row-reverse;
+}
+
+.cover {
+	min-width: 300px;
+	max-width: 300px;
+	height: auto;
+	object-fit: contain;
+	padding: 0 var(--medium) 0 0;
+}
+
+.details {
+	display: flex;
+	flex-direction: column;
+	gap: var(--small);
+}
