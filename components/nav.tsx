@@ -1,20 +1,33 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { useState } from 'react';
 
 import styles from './nav.module.css';
 
 import pagelist from './utils/pagelist';
 
 export default function Nav() {
+	const [activeFont, setActiveFont] = useState({ heading: 'cormorant', body: 'avenir' });
+
 	const pathname: string = usePathname();
 
-	const changeFont: (e: any) => void = (e) => {
-		document.documentElement.style.setProperty('--font-secondary', `var(--font-${e.target.innerHTML})`);
+	const fonts = ['cormorant', 'avenir', 'caslon', 'raleway'];
 
-		if (e.target.innerHTML === 'baskerville') {
-			document.documentElement.style.setProperty('--font-weight', '400');
+	const changeFont: (e: any) => void = (e) => {
+		// set font
+		if (e.target.dataset.type === 'heading') {
+			document.documentElement.style.setProperty('--font-secondary', `var(--font-${e.target.innerHTML})`);
+			setActiveFont({ heading: e.target.innerHTML, body: activeFont.body });
+
+			// set weight
+			if (e.target.innerHTML === 'caslon') {
+				document.documentElement.style.setProperty('--font-weight', '400');
+			} else {
+				document.documentElement.style.setProperty('--font-weight', '600');
+			}
 		} else {
-			document.documentElement.style.setProperty('--font-weight', '600');
+			document.documentElement.style.setProperty('--font-primary', `var(--font-${e.target.innerHTML})`);
+			setActiveFont({ heading: activeFont.heading, body: e.target.innerHTML });
 		}
 	};
 
@@ -70,21 +83,31 @@ export default function Nav() {
 
 				<div className={styles.dropdown_content}>
 					<div className={styles.subnav}>
-						<p className={`${styles.font} ${styles.baskerville}`} onClick={changeFont}>
-							baskerville
-						</p>
+						<p className={styles.font_heading}>Headings</p>
 
-						<p className={`${styles.font} ${styles.montserrat}`} onClick={changeFont}>
-							montserrat
-						</p>
+						<hr />
 
-						<p className={`${styles.font} ${styles.cormorant}`} onClick={changeFont}>
-							cormorant
-						</p>
+						{fonts.map((selection, i) => {
+							return (
+								<p key={i} className={`${styles.font} ${styles[selection]} ${activeFont.heading === selection ? styles.font_active : styles.font_inactive}`} data-type='heading' onClick={changeFont}>
+									{selection}
+								</p>
+							);
+						})}
 
-						<p className={`${styles.font} ${styles.poppins}`} onClick={changeFont}>
-							poppins
-						</p>
+						<br />
+
+						<p className={styles.font_heading}>Body</p>
+
+						<hr />
+
+						{fonts.map((selection, i) => {
+							return (
+								<p key={i} className={`${styles.font} ${styles[selection]} ${activeFont.body === selection ? styles.font_active : styles.font_inactive}`} data-type='body' onClick={changeFont}>
+									{selection}
+								</p>
+							);
+						})}
 					</div>
 				</div>
 			</div>
