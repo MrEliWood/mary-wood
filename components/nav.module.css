@@ -26,7 +26,8 @@
 
 .dropdown_content:hover,
 .dropdown:hover .dropdown_content {
-	max-height: 90px;
+	/* max-height: 90px; */
+	max-height: 300px;
 }
 
 .subnav {
@@ -43,6 +44,10 @@
 }
 
 /* TEMP FONTS */
+.fonts {
+	font-weight: medium;
+}
+
 .fonts p:hover {
 	cursor: pointer;
 	color: var(--accent50);
@@ -53,9 +58,17 @@
 }
 
 .baskerville {
-	font-family: var(--font_baskerville);
+	font-family: var(--font-baskerville);
 }
 
 .montserrat {
-	font-family: var(--font_montserrat);
+	font-family: var(--font-montserrat);
+}
+
+.cormorant {
+	font-family: var(--font-cormorant);
+}
+
+.poppins {
+	font-family: var(--font-poppins);
 }
