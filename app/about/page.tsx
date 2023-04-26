@@ -1,7 +1,7 @@
 import Image from 'next/image';
 
 import styles from './page.module.css';
-import portrait from '../../public/portrait.jpg';
+import portrait from '../../public/assets/images/portrait.jpg';
 
 export default function About() {
 	// temporary placeholder text
@@ -11,6 +11,7 @@ export default function About() {
 		<section className={styles.page}>
 			<p>
 				<Image src={portrait} alt='Portrait of Mary Wood.' className={styles.portrait} />
+
 				{Array(10)
 					.fill(placeholder)
 					.map((text, i) => (

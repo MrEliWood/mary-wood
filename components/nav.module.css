@@ -26,7 +26,8 @@
 
 .dropdown_content:hover,
 .dropdown:hover .dropdown_content {
-	max-height: 90px;
+	/* max-height: 90px; */
+	max-height: 500px;
 }
 
 .subnav {
@@ -40,4 +41,42 @@
 
 .active {
 	color: var(--accent50);
+}
+
+/* TEMP FONTS */
+.fonts {
+	font-weight: medium;
+}
+
+.fonts:hover {
+	cursor: pointer;
+}
+
+.font {
+	text-transform: capitalize;
+}
+
+.font:hover {
+	cursor: pointer;
+	color: var(--accent50);
+}
+
+.font_active {
+	color: var(--accent50);
+}
+
+.cormorant {
+	font-family: var(--font-cormorant);
+}
+
+.avenir {
+	font-family: var(--font-avenir);
+}
+
+.caslon {
+	font-family: var(--font-caslon);
+}
+
+.raleway {
+	font-family: var(--font-raleway);
 }

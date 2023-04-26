@@ -1,6 +1,9 @@
 import Link from 'next/link';
+import Image from 'next/image';
 
 import styles from './page.module.css';
+
+import booklist from '@/components/utils/booklist';
 
 export default function Nonfiction() {
 	// temporary placeholder text
@@ -8,29 +11,23 @@ export default function Nonfiction() {
 
 	return (
 		<section className={styles.page}>
-			<article>
-				<h2>Lorem Ipsum</h2>
-				<p>{placeholder}</p>
-				<Link href=''>Read More →</Link>
-			</article>
+			{booklist.map((book, i) => {
+				return (
+					<article key={i} className={styles.book}>
+						<Image src={book.image} alt='Portrait of Mary Wood.' width={300} height={300} className={styles.cover} />
 
-			<article>
-				<h2>Dolor Sit Amet</h2>
-				<p>{placeholder}</p>
-				<Link href=''>Read More →</Link>
-			</article>
+						<div className={styles.details}>
+							<div>
+								<h2>{book.title}</h2>
+								<h4>{book.caption}</h4>
+							</div>
 
-			<article>
-				<h2>Consectetur</h2>
-				<p>{placeholder}</p>
-				<Link href=''>Read More →</Link>
-			</article>
-
-			<article>
-				<h2>Adipisicing Elit</h2>
-				<p>{placeholder}</p>
-				<Link href=''>Read More →</Link>
-			</article>
+							<p>{book.description}</p>
+							<Link href={book.link}>Purchase →</Link>
+						</div>
+					</article>
+				);
+			})}
 		</section>
 	);
 }

@@ -1,6 +1,9 @@
 import Link from 'next/link';
+import Image from 'next/image';
 
 import styles from './page.module.css';
+
+import booklist from '@/components/utils/booklist';
 
 export default function Books() {
 	// temporary placeholder text
@@ -8,40 +11,85 @@ export default function Books() {
 
 	return (
 		<section className={styles.page}>
-			<article>
-				<Link href='/nonfiction'>
-					<h3>Nonfiction</h3>
-				</Link>
+			<article className={styles.category}>
+				<div>
+					<Link href='/nonfiction'>
+						<h3>Nonfiction</h3>
+					</Link>
 
-				<hr />
+					<hr />
+				</div>
 
-				<h2>Lorem Ipsum</h2>
-				<p>{placeholder}</p>
-				<Link href='/nonfiction'>Read More →</Link>
+				{booklist.map((book, i) => {
+					return (
+						book.category === 'nonfiction' && (
+							<Link key={i} href='/nonfiction'>
+								<div className={styles.book}>
+									<Image src={book.image} alt='Portrait of Mary Wood.' width={300} height={300} className={styles.cover} />
+
+									<div className={styles.details}>
+										<h2>{book.title}</h2>
+										<p>{book.caption.replace('\n', '')}</p>
+									</div>
+								</div>
+							</Link>
+						)
+					);
+				})}
 			</article>
 
-			<article>
-				<Link href='/fiction'>
-					<h3>Fiction</h3>
-				</Link>
+			<article className={styles.category}>
+				<div>
+					<Link href='/fiction'>
+						<h3>Fiction</h3>
+					</Link>
 
-				<hr />
+					<hr />
+				</div>
 
-				<h2>Dolor Sit Amet</h2>
-				<p>{placeholder}</p>
-				<Link href='/fiction'>Read More →</Link>
+				{booklist.map((book, i) => {
+					return (
+						book.category === 'fiction' && (
+							<Link key={i} href='/fiction'>
+								<div className={styles.book}>
+									<Image src={book.image} alt='Portrait of Mary Wood.' width={300} height={300} className={styles.cover} />
+
+									<div className={styles.details}>
+										<h2>{book.title}</h2>
+										<p>{book.caption.replace('\n', '')}</p>
+									</div>
+								</div>
+							</Link>
+						)
+					);
+				})}
 			</article>
 
-			<article>
-				<Link href='/memoir'>
-					<h3>Memoir</h3>
-				</Link>
+			<article className={styles.category}>
+				<div>
+					<Link href='/memoir'>
+						<h3>Memoir</h3>
+					</Link>
 
-				<hr />
+					<hr />
+				</div>
 
-				<h2>Consectetur</h2>
-				<p>{placeholder}</p>
-				<Link href='/memoir'>Read More →</Link>
+				{booklist.map((book, i) => {
+					return (
+						book.category === 'memoir' && (
+							<Link key={i} href='/memoir'>
+								<div className={styles.book}>
+									<Image src={book.image} alt='Portrait of Mary Wood.' width={300} height={300} className={styles.cover} />
+
+									<div className={styles.details}>
+										<h2>{book.title}</h2>
+										<p>{book.caption.replace('\n', '')}</p>
+									</div>
+								</div>
+							</Link>
+						)
+					);
+				})}
 			</article>
 		</section>
 	);
