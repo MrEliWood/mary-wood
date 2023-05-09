@@ -2,6 +2,14 @@
 	gap: var(--medium);
 }
 
+.heading {
+	text-transform: capitalize;
+}
+
+.category a {
+	width: fit-content;
+}
+
 .book {
 	display: flex;
 }

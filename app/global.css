@@ -48,9 +48,9 @@
 	--font-avenir: Avenir, Arial, Helvetica, sans-serif;
 
 	--font-primary: var(--font-avenir);
-	--font-secondary: var(--font-cormorant);
+	--font-secondary: var(--font-caslon);
 
-	--font-weight: 600;
+	--font-weight: 400;
 }
 
 * {
@@ -135,20 +135,22 @@ a:hover {
 }
 
 h1 {
-	font-size: 2.4em;
+	font-size: 2.2em;
 	font-weight: var(--font-weight);
 	font-family: var(--font-secondary);
 }
 
 h2 {
-	font-size: 1.8em;
+	font-size: 1.6em;
 	font-weight: var(--font-weight);
 	font-family: var(--font-secondary);
 }
 
 h3 {
-	font-size: 1.5em;
+	font-size: 1.3em;
 	font-weight: 400;
+	font-weight: var(--font-weight);
+	font-family: var(--font-secondary);
 }
 
 h4 {
