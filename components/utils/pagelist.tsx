@@ -16,17 +16,22 @@ const pagelist: page[] = [
 		children: []
 	},
 	{
-		name: 'Books',
-		path: '/books',
+		name: 'Writing',
+		path: '/writing',
 		children: [
 			{
-				name: 'Nonfiction',
-				path: '/nonfiction',
+				name: 'Scholarship',
+				path: '/scholarship',
 				children: []
 			},
 			{
 				name: 'Fiction',
 				path: '/fiction',
+				children: []
+			},
+			{
+				name: 'Essay',
+				path: '/essay',
 				children: []
 			},
 			{
@@ -39,6 +44,11 @@ const pagelist: page[] = [
 	{
 		name: 'Articles',
 		path: '/articles',
+		children: []
+	},
+	{
+		name: 'Bibliography',
+		path: '/bibliography',
 		children: []
 	},
 	{

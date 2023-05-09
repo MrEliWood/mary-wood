@@ -7,7 +7,7 @@ export default function Home() {
 	return (
 		<section className={styles.page}>
 			<article>
-				<h3>Notable Publications</h3>
+				<h4>Notable Publications</h4>
 
 				<hr />
 
@@ -23,7 +23,7 @@ export default function Home() {
 			</article>
 
 			<article>
-				<h3>Biography</h3>
+				<h4>Biography</h4>
 
 				<hr />
 

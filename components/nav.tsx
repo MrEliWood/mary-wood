@@ -7,29 +7,7 @@ import styles from './nav.module.css';
 import pagelist from './utils/pagelist';
 
 export default function Nav() {
-	const [activeFont, setActiveFont] = useState({ heading: 'cormorant', body: 'avenir' });
-
 	const pathname: string = usePathname();
-
-	const fonts = ['cormorant', 'avenir', 'caslon', 'raleway'];
-
-	const changeFont: (e: any) => void = (e) => {
-		// set font
-		if (e.target.dataset.type === 'heading') {
-			document.documentElement.style.setProperty('--font-secondary', `var(--font-${e.target.innerHTML})`);
-			setActiveFont({ heading: e.target.innerHTML, body: activeFont.body });
-
-			// set weight
-			if (e.target.innerHTML === 'caslon') {
-				document.documentElement.style.setProperty('--font-weight', '400');
-			} else {
-				document.documentElement.style.setProperty('--font-weight', '600');
-			}
-		} else {
-			document.documentElement.style.setProperty('--font-primary', `var(--font-${e.target.innerHTML})`);
-			setActiveFont({ heading: activeFont.heading, body: e.target.innerHTML });
-		}
-	};
 
 	return (
 		<nav className={styles.nav}>
@@ -74,43 +52,6 @@ export default function Nav() {
 					);
 				}
 			})}
-
-			{/* TEMP FONT MENU */}
-			<hr />
-
-			<div className={`${styles.dropdown} ${styles.fonts}`}>
-				<p>Fonts</p>
-
-				<div className={styles.dropdown_content}>
-					<div className={styles.subnav}>
-						<p className={styles.font_heading}>Headings</p>
-
-						<hr />
-
-						{fonts.map((selection, i) => {
-							return (
-								<p key={i} className={`${styles.font} ${styles[selection]} ${activeFont.heading === selection ? styles.font_active : styles.font_inactive}`} data-type='heading' onClick={changeFont}>
-									{selection}
-								</p>
-							);
-						})}
-
-						<br />
-
-						<p className={styles.font_heading}>Body</p>
-
-						<hr />
-
-						{fonts.map((selection, i) => {
-							return (
-								<p key={i} className={`${styles.font} ${styles[selection]} ${activeFont.body === selection ? styles.font_active : styles.font_inactive}`} data-type='body' onClick={changeFont}>
-									{selection}
-								</p>
-							);
-						})}
-					</div>
-				</div>
-			</div>
 		</nav>
 	);
 }
