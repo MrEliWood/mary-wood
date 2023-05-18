@@ -1,6 +1,6 @@
 'use client';
 
-import Nav from './nav';
+import { Nav } from '@/components';
 import styles from './sidebar.module.css';
 
 export default function Sidebar() {

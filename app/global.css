@@ -104,7 +104,11 @@ section {
 article {
 	display: flex;
 	flex-direction: column;
-	gap: var(--small);
+	gap: var(--tiny);
+}
+
+hr {
+	margin-bottom: var(--small);
 }
 
 input,
@@ -119,9 +123,27 @@ code {
 	font-family: inherit;
 }
 
+summary:hover {
+	cursor: pointer;
+}
+
 ol,
 ul {
-	list-style: none;
+	display: flex;
+	flex-direction: column;
+	gap: var(--tiny);
+	padding: var(--small) 0 0 var(--medium);
+}
+
+ol p,
+ul p {
+	margin-top: var(--small);
+	/* text-decoration: underline; */
+}
+
+ol p:first-of-type,
+ul p:first-of-type {
+	margin-top: 0;
 }
 
 a,

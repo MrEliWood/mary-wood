@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 import styles from './page.module.css';
 
-export default function Articles() {
+export default function Teaching() {
 	// temporary placeholder text
 	const placeholder = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus laboriosam perferendis fugit debitis, odit eaque ipsam sed quam magni eligendi aspernatur quos cumque fugiat consectetur, velit similique consequuntur aut enim.';
 
