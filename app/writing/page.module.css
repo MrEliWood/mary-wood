@@ -10,7 +10,7 @@
 	width: fit-content;
 }
 
-.book {
+.work {
 	display: flex;
 }
 
@@ -24,4 +24,10 @@
 
 .details {
 	padding: var(--tiny) 0;
+}
+
+.book_emoji {
+	display: flex;
+	font-size: 80px;
+	width: 100px;
 }

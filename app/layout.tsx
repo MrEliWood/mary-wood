@@ -1,5 +1,4 @@
-import Header from '../components/header';
-import Sidebar from '../components/sidebar';
+import { Header, Sidebar } from '@/components';
 
 import { Libre_Caslon_Text } from 'next/font/google';
 import './global.css';
