@@ -107,10 +107,6 @@ article {
 	gap: var(--tiny);
 }
 
-hr {
-	margin-bottom: var(--small);
-}
-
 input,
 select,
 option,
