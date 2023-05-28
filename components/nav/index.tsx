@@ -1,9 +1,10 @@
+'use client';
+
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 
-import styles from './nav.module.css';
-
+import styles from './style.module.css';
 import { pagelist } from '@/utils';
 
 export default function Nav() {

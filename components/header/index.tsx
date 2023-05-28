@@ -1,7 +1,7 @@
 'use client';
 import Link from 'next/link';
 
-import styles from './header.module.css';
+import styles from './style.module.css';
 
 export default function Header() {
 	return (

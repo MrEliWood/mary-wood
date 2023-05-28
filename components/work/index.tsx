@@ -1,10 +1,10 @@
 import Link from 'next/link';
 import Image from 'next/image';
 
-import styles from './workDetails.module.css';
+import styles from './style.module.css';
 import { worklist } from '@/utils';
 
-export default function BookDetails({ category }: { category: string }) {
+export default function Work({ category }: { category: string }) {
 	return (
 		<div className={styles.page}>
 			{worklist.map((work, i) => {

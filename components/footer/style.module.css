@@ -1,0 +1,20 @@
+.footer {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	background: var(--dark75);
+	box-shadow: inset 0px 20px 20px -20px var(--dark50);
+	color: var(--light75);
+	width: 100vw;
+	padding: var(--huge);
+}
+
+.footer a:hover {
+	color: var(--light);
+}
+
+.user_nav {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}

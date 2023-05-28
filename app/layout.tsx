@@ -1,4 +1,4 @@
-import { Header, Sidebar } from '@/components';
+import { Header, Sidebar, Footer } from '@/components';
 
 import { Libre_Caslon_Text } from 'next/font/google';
 import './global.css';
@@ -20,10 +20,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 		<html lang='en' className={`${caslon.variable}`}>
 			<body>
 				<Header />
+
 				<main>
 					<Sidebar />
 					{children}
 				</main>
+
+				<Footer />
 			</body>
 		</html>
 	);
