@@ -1,5 +1,5 @@
-import { BookDetails } from '@/components';
+import { Work } from '@/components';
 
 export default function Books() {
-	return <BookDetails category='fiction' />;
+	return <Work category='fiction' />;
 }

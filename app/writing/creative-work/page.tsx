@@ -1,5 +1,5 @@
-import Books from '@/components/workDetails';
+import { Work } from '@/components';
 
 export default function Creative() {
-	return <Books category='creative work' />;
+	return <Work category='creative work' />;
 }

@@ -1,4 +1,4 @@
-import { BookDetails } from '@/components';
+import { Work } from '@/components';
 
 export default function Scholarship() {
 	return (
@@ -6,13 +6,13 @@ export default function Scholarship() {
 			<article>
 				<h3>Books</h3>
 				<hr />
-				<BookDetails category='books' />
+				<Work category='books' />
 			</article>
 
 			<article>
 				<h3>Essays & Articles</h3>
 				<hr />
-				<BookDetails category='essays & articles' />
+				<Work category='essays & articles' />
 			</article>
 		</section>
 	);
