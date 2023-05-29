@@ -1,16 +1,18 @@
 'use client';
 
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { createToken } from '@/redux/features/token';
+import { hideLogin } from '@/redux/features/loginVisible';
+import { usePathname, useRouter } from 'next/navigation';
 
 import styles from './style.module.css';
 
-interface Props {
-	setLoginVisible: React.Dispatch<React.SetStateAction<boolean>>;
-}
-
-export default function Login(props: Props) {
-	const { setLoginVisible } = props;
+export default function Login() {
 	const [password, setPassword] = useState<string>('');
+	const dispatch = useDispatch();
+	const pathname = usePathname();
+	const router = useRouter();
 
 	const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
@@ -32,13 +34,17 @@ export default function Login(props: Props) {
 			}
 
 			localStorage.setItem('Mary_Wood_JWT', data.token);
+			dispatch(createToken(data.token));
+			dispatch(hideLogin());
+
+			if (pathname !== '/blog') router.push('/blog');
 		} catch (error) {
 			alert(error);
 		}
 	};
 
 	return (
-		<aside className={styles.login} onClick={() => setLoginVisible(false)}>
+		<aside className={styles.login} onClick={() => dispatch(hideLogin())}>
 			<div className={styles.modal} onClick={(e) => e.stopPropagation()}>
 				<div className={styles.login_banner}>
 					<h2>Hi, Mary!</h2>
@@ -49,7 +55,7 @@ export default function Login(props: Props) {
 					<input type='password' placeholder='password' autoFocus value={password} onChange={(e) => setPassword(e.target.value)} />
 
 					<div className='button_block'>
-						<input type='button' value='Cancel' onClick={() => setLoginVisible(false)} />
+						<input type='button' value='Cancel' onClick={() => dispatch(hideLogin())} />
 						<input type='submit' value='Login' />
 					</div>
 				</form>

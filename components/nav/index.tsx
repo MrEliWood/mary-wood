@@ -2,7 +2,6 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useState, useMemo } from 'react';
 
 import styles from './style.module.css';
 import { pagelist } from '@/utils';

@@ -91,7 +91,7 @@ main {
 	height: 100%;
 	width: 100%;
 	max-width: 1024px;
-	padding-bottom: var(--huge);
+	padding-bottom: var(--giant);
 	flex: 1;
 }
 
@@ -202,9 +202,10 @@ button {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	gap: 10px;
 	padding: var(--tiny) var(--small);
 	background: none;
-	border: none;
+	border: 1px solid var(--dark50);
 	border-radius: 5px;
 	color: inherit;
 }
@@ -212,6 +213,7 @@ button {
 button:hover {
 	cursor: pointer;
 	background: var(--gradient);
+	border: 1px solid var(--light);
 	color: var(--light);
 }
 
@@ -220,6 +222,14 @@ button:hover {
 	justify-content: center;
 	align-items: center;
 	gap: var(--tiny);
+}
+
+path {
+	fill: var(--dark);
+}
+
+button:hover path {
+	fill: var(--light);
 }
 
 h1 {

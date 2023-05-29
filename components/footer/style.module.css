@@ -9,6 +9,10 @@
 	padding: var(--huge);
 }
 
+.footer button {
+	border: none;
+}
+
 .footer a:hover {
 	color: var(--light);
 }

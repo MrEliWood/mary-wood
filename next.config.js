@@ -4,7 +4,7 @@ const nextConfig = {
 		appDir: true
 	},
 	env: {
-		BASE_URL: 'http://localhost:3001'
+		BASE_URL: 'https://mwb.herokuapp.com'
 	},
 	images: {
 		remotePatterns: [

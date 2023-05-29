@@ -1,11 +1,15 @@
-.blog_content {
-	display: flex;
-	flex-direction: column;
-	gap: var(--tiny);
+.page {
+	gap: var(--small);
 }
 
-.timestamp {
-	font-size: 14px;
-	font-weight: 300;
-	opacity: 0.5;
+.blogs {
+	display: flex;
+	flex-direction: column;
+	gap: var(--huge);
+}
+
+.create_post {
+	display: flex;
+	justify-content: flex-end;
+	width: 100%;
 }
