@@ -9,7 +9,8 @@
 	padding: var(--huge);
 }
 
-.footer button {
+.footer button,
+.footer button:hover {
 	border: none;
 }
 
@@ -21,4 +22,9 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
+}
+
+.text_link:hover {
+	cursor: pointer;
+	color: var(--light);
 }

@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { useSelector, useDispatch } from 'react-redux';
 import type { RootState } from '@/redux/store';
 import { createToken, destroyToken } from '@/redux/features/token';
-import { showLogin, hideLogin } from '@/redux/features/loginVisible';
+import { showLogin } from '@/redux/features/loginVisible';
 
 import styles from './style.module.css';
 import { Login } from '@/components';
@@ -22,12 +22,13 @@ export default function Footer() {
 	}, []);
 
 	const handleLoginClick = () => {
-		loginVisible ? dispatch(hideLogin()) : dispatch(showLogin());
+		dispatch(showLogin());
 	};
 
 	const handleLogoutClick = () => {
 		dispatch(destroyToken());
 		localStorage.removeItem('Mary_Wood_JWT');
+		localStorage.removeItem('Mary_Wood_FormData');
 	};
 
 	return (
@@ -44,7 +45,9 @@ export default function Footer() {
 					<button onClick={handleLogoutClick}>Logout</button>
 				</div>
 			) : (
-				<button onClick={handleLoginClick}>Login</button>
+				<p className={styles.text_link} onClick={handleLoginClick}>
+					Login
+				</p>
 			)}
 
 			{loginVisible && <Login />}

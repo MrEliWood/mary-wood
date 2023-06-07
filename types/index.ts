@@ -11,8 +11,10 @@ export interface Blog {
 	author_id: number;
 	caption: string;
 	createdAt: string;
+	deleted: boolean;
 	id: number;
 	images: Image[];
+	published: boolean;
 	text: string;
 	title: string;
 	updatedAt: string;

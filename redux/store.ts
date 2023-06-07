@@ -1,13 +1,15 @@
 'use client';
 
 import { configureStore } from '@reduxjs/toolkit';
-import tokenReducer from './features/token';
+import blogFormReducer from './features/blogFormVisible';
 import loginReducer from './features/loginVisible';
+import tokenReducer from './features/token';
 
 export const store = configureStore({
 	reducer: {
-		token: tokenReducer,
-		loginVisible: loginReducer
+		blogFormVisible: blogFormReducer,
+		loginVisible: loginReducer,
+		token: tokenReducer
 	}
 });
 

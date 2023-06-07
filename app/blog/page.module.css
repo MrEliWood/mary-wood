@@ -8,8 +8,39 @@
 	gap: var(--huge);
 }
 
-.create_post {
+.user_options {
+	position: relative;
 	display: flex;
-	justify-content: flex-end;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: flex-start;
+	transition: all ease-in-out 500ms;
+}
+
+.user_toolbar {
+	display: flex;
+	justify-content: space-between;
 	width: 100%;
+}
+
+.absolute_container {
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+
+.resize_container {
+	display: flex;
+	width: 100%;
+	overflow: hidden;
+	z-index: 1;
+	transition: all ease-in-out 500ms;
+}
+
+.visible {
+	max-height: 100%;
+}
+
+.hidden {
+	max-height: 0%;
 }

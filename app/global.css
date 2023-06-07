@@ -116,7 +116,8 @@ form {
 	width: 100%;
 }
 
-input {
+input,
+textarea {
 	border: 1px solid var(--dark25);
 	border-radius: 5px;
 	box-shadow: inset 0px 0px 2px var(--dark10);

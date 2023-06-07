@@ -1,0 +1,19 @@
+.button_cluster {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border: 1px solid var(--dark50);
+	border-radius: 5px;
+	overflow: hidden;
+}
+
+.button_cluster p {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: var(--gradient);
+	padding: var(--tiny) var(--small);
+	width: 100%;
+	height: 100%;
+}
