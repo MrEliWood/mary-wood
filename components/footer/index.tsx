@@ -18,7 +18,9 @@ export default function Footer() {
 
 	useEffect(() => {
 		const savedToken = localStorage.getItem('Mary_Wood_JWT');
-		if (savedToken) dispatch(createToken(savedToken));
+		if (!savedToken) return;
+
+		dispatch(createToken(savedToken));
 	}, []);
 
 	const handleLoginClick = () => {

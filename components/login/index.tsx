@@ -17,10 +17,12 @@ export default function Login() {
 	const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 
+		const id = process.env.USER_ID;
+
 		try {
 			const res = await fetch(`${process.env.BASE_URL}/api/user/login`, {
 				method: 'POST',
-				body: JSON.stringify({ password }),
+				body: JSON.stringify({ id, password }),
 				headers: {
 					'Content-Type': 'application/json'
 				}
