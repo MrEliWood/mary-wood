@@ -10,6 +10,7 @@ import { showLogin } from '@/redux/features/loginVisible';
 
 import styles from './style.module.css';
 import { Login } from '@/components';
+import { verifyToken } from '@/utils';
 
 export default function Footer() {
 	const token = useSelector((state: RootState) => state.token.value);
@@ -19,6 +20,9 @@ export default function Footer() {
 	useEffect(() => {
 		const savedToken = localStorage.getItem('Mary_Wood_JWT');
 		if (!savedToken) return;
+
+		const verified = verifyToken(savedToken);
+		if (!verified) return;
 
 		dispatch(createToken(savedToken));
 	}, []);

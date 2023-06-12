@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import type { RootState } from '@/redux/store';
 import { hideBlogForm } from '@/redux/features/blogFormVisible';
@@ -23,7 +23,7 @@ export default function CreatePostForm() {
 		body: ''
 	});
 
-	useMemo(() => {
+	useEffect(() => {
 		const storedFormData = localStorage.getItem('Mary_Wood_FormData');
 		if (storedFormData) setFormData(JSON.parse(storedFormData));
 	}, []);
