@@ -9,6 +9,7 @@
 	background: var(--dark75);
 	width: 100vw;
 	height: 100vh;
+	z-index: 10;
 }
 
 .login:hover {

@@ -4,23 +4,29 @@ import { useState, useEffect, useMemo } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import type { RootState } from '@/redux/store';
 import { hideBlogForm } from '@/redux/features/blogFormVisible';
+import { showLogin } from '@/redux/features/loginVisible';
+import Router from 'next/router';
 
 import styles from './style.module.css';
+import { verifyToken } from '@/utils';
 
 type formData = {
+	author_id: string | number | undefined;
 	title: string;
 	caption: string;
-	body: string;
+	text: string;
 };
 
 export default function CreatePostForm() {
+	const token = useSelector((state: RootState) => state.token.value);
 	const blogFormVisible = useSelector((state: RootState) => state.blogFormVisible.value);
 	const dispatch = useDispatch();
 
 	const [formData, setFormData] = useState<formData>({
+		author_id: process.env.USER_ID,
 		title: '',
 		caption: '',
-		body: ''
+		text: ''
 	});
 
 	useEffect(() => {
@@ -40,9 +46,10 @@ export default function CreatePostForm() {
 		const { name, value } = e.target;
 
 		const newData: formData = {
+			author_id: formData.author_id,
 			title: name === 'title' ? value : formData.title,
 			caption: name === 'caption' ? value : formData.caption,
-			body: name === 'body' ? value : formData.body
+			text: name === 'text' ? value : formData.text
 		};
 
 		localStorage.setItem('Mary_Wood_FormData', JSON.stringify(newData));
@@ -51,22 +58,73 @@ export default function CreatePostForm() {
 
 	const handleCancel = (e: React.MouseEvent<HTMLButtonElement>) => {
 		e.preventDefault();
-		console.log('clicked');
 		dispatch(hideBlogForm());
+	};
+
+	const handleSaveDraft = async (e: React.MouseEvent<HTMLButtonElement>) => {
+		e.preventDefault();
+
+		const validToken = token && verifyToken(token);
+		if (!validToken) return dispatch(showLogin());
+
+		try {
+			const res = await fetch(`${process.env.BASE_URL}/api/blog`, {
+				method: 'POST',
+				body: JSON.stringify(formData),
+				headers: {
+					'Content-Type': 'application/json',
+					Authorization: token
+				}
+			});
+
+			if (res.status === 200) return window.location.reload();
+			if (res.status === 500) return dispatch(showLogin());
+		} catch (error) {
+			alert(error);
+		}
+	};
+
+	const handlePublish = async (e: React.MouseEvent<HTMLButtonElement>) => {
+		e.preventDefault();
+
+		const validToken = token && verifyToken(token);
+		if (!validToken) return dispatch(showLogin());
+
+		try {
+			const res = await fetch(`${process.env.BASE_URL}/api/blog`, {
+				method: 'POST',
+				body: JSON.stringify({ ...formData, published: true }),
+				headers: {
+					'Content-Type': 'application/json',
+					Authorization: token
+				}
+			});
+
+			if (res.status === 200) return window.location.reload();
+			if (res.status === 500) return dispatch(showLogin());
+		} catch (error) {
+			alert(error);
+		}
 	};
 
 	return (
 		<form className={styles.form}>
 			<input id={styles.title} type='text' name='title' placeholder='Title' className={styles.title} value={formData.title} onChange={handleInputChange} />
 			<input type='text' name='caption' placeholder='Caption' className={styles.caption} value={formData.caption} onChange={handleInputChange} />
-			<textarea name='body' placeholder='Body' className={styles.body} value={formData.body} onChange={handleInputChange} />
+			<textarea name='text' placeholder='Text' className={styles.body} value={formData.text} onChange={handleInputChange} />
 
 			<div className={styles.button_block}>
-				<button className={styles.cancel_button} onClick={handleCancel}>
+				<button type='button' name='cancel' value='Cancel' className={styles.cancel_button} onClick={handleCancel}>
 					Cancel
 				</button>
-				<button>Save as Draft</button>
-				<button className={styles.publish_button}>Publish</button>
+
+				<button type='button' name='draft' onClick={handleSaveDraft}>
+					Save as Draft
+				</button>
+
+				<button type='button' name='publish' className={styles.publish_button} onClick={handlePublish}>
+					Publish
+				</button>
 			</div>
 		</form>
 	);
