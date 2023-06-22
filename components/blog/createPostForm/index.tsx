@@ -1,11 +1,10 @@
 'use client';
 
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import type { RootState } from '@/redux/store';
 import { hideBlogForm } from '@/redux/features/blogFormVisible';
 import { showLogin } from '@/redux/features/loginVisible';
-import Router from 'next/router';
 
 import styles from './style.module.css';
 import { verifyToken } from '@/utils';
@@ -29,18 +28,22 @@ export default function CreatePostForm() {
 		text: ''
 	});
 
-	useEffect(() => {
+	const recoverFormData = () => {
 		const storedFormData = localStorage.getItem('Mary_Wood_FormData');
 		if (storedFormData) setFormData(JSON.parse(storedFormData));
-	}, []);
+	};
 
-	useMemo(() => {
+	useEffect(recoverFormData, []);
+
+	const focusTitleField = () => {
 		const title = document.getElementById(styles.title);
 
 		setTimeout(() => {
 			title && blogFormVisible && title.focus();
 		}, 1000);
-	}, [blogFormVisible]);
+	};
+
+	useEffect(focusTitleField, [blogFormVisible]);
 
 	const handleInputChange = (e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>) => {
 		const { name, value } = e.target;
@@ -70,7 +73,7 @@ export default function CreatePostForm() {
 		try {
 			const res = await fetch(`${process.env.BASE_URL}/api/blog`, {
 				method: 'POST',
-				body: JSON.stringify(formData),
+				body: JSON.stringify({ ...formData }),
 				headers: {
 					'Content-Type': 'application/json',
 					Authorization: token
@@ -93,7 +96,7 @@ export default function CreatePostForm() {
 		try {
 			const res = await fetch(`${process.env.BASE_URL}/api/blog`, {
 				method: 'POST',
-				body: JSON.stringify({ ...formData, published: true }),
+				body: JSON.stringify({ ...formData, published: true, publishedAt: Date.now() }),
 				headers: {
 					'Content-Type': 'application/json',
 					Authorization: token

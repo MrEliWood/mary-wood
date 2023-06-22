@@ -1,5 +1,6 @@
 .page {
-	gap: var(--small);
+	gap: var(--large);
+	transition: all ease-in-out 500ms;
 }
 
 .blogs {
@@ -13,7 +14,7 @@
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
-	align-items: flex-start;
+	align-items: flex-end;
 	transition: all ease-in-out 500ms;
 }
 
@@ -39,8 +40,10 @@
 
 .visible {
 	max-height: 100%;
+	max-width: 100%;
 }
 
 .hidden {
 	max-height: 0%;
+	max-width: 0%;
 }

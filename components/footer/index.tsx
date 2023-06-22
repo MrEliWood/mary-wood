@@ -18,6 +18,8 @@ export default function Footer() {
 	const dispatch = useDispatch();
 
 	useEffect(() => {
+		dispatch(destroyToken());
+
 		const savedToken = localStorage.getItem('Mary_Wood_JWT');
 		if (!savedToken) return;
 

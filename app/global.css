@@ -209,6 +209,7 @@ button {
 	border: 1px solid var(--dark50);
 	border-radius: 5px;
 	color: inherit;
+	height: 32px;
 }
 
 button:hover {

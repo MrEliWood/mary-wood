@@ -18,4 +18,5 @@ export interface Blog {
 	text: string;
 	title: string;
 	updatedAt: string;
+	publishedAt: string;
 }

@@ -40,7 +40,15 @@
 	top: var(--small);
 	right: 0;
 	display: flex;
+	justify-content: center;
+	align-items: flex-end;
 	gap: var(--tiny);
+}
+
+.draft_tag {
+	margin-right: var(--small);
+	letter-spacing: 1px;
+	opacity: 0.5;
 }
 
 .delete_button path {
@@ -49,4 +57,21 @@
 
 .delete_button:hover {
 	background: var(--red);
+}
+
+.deleted::before {
+	content: '';
+	position: absolute;
+	top: calc(-1 * var(--small));
+	left: calc(-1 * var(--small));
+	background: var(--dark10);
+	border: 2px solid var(--dark10);
+	border-radius: 5px;
+	width: calc(100% + (var(--small) * 2));
+	height: calc(100% + (var(--small) * 2));
+	opacity: 0.66;
+}
+
+.deleted .post_section {
+	opacity: 0.66;
 }

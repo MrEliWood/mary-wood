@@ -8,24 +8,39 @@ import styles from './page.module.css';
 import { Blog } from '@/types';
 import { Post, BlogFilterButtons, CreatePostButton, CreatePostForm } from '@/components';
 
+type Blogs = {
+	published: Blog[];
+	drafts: Blog[];
+	deleted: Blog[];
+};
+
 export default function Blog() {
-	const token = useSelector((state: RootState) => state.token.value);
+	const blogFilter = useSelector((state: RootState) => state.blogFilter.value);
 	const blogFormVisible = useSelector((state: RootState) => state.blogFormVisible.value);
+	const token = useSelector((state: RootState) => state.token.value);
 
-	const [blogs, setBlogs] = useState<Blog[]>();
+	const [blogs, setBlogs] = useState<Blogs>();
 
-	useMemo(async () => {
+	const getBlogs = async () => {
 		const res: Response = await fetch(`${process.env.BASE_URL}/api/blog`);
 		const data: Blog[] = await res.json();
 
-		return setBlogs(data);
-	}, []);
+		const blogs: Blogs = {
+			published: data.filter((blog) => blog.published && !blog.deleted),
+			drafts: data.filter((blog) => !blog.published && !blog.deleted),
+			deleted: data.filter((blog) => blog.deleted)
+		};
+
+		return setBlogs(blogs);
+	};
+
+	useMemo(getBlogs, []);
 
 	return (
 		<section className={styles.page}>
 			{token && (
-				<div className={styles.user_options} style={blogFormVisible ? { height: '100%' } : { height: '5%' }}>
-					<div className={`${styles.resize_container} ${blogFormVisible ? styles.visible : styles.hidden}`}>
+				<div className={styles.user_options} style={blogFormVisible ? { height: '553px' } : { height: '32px' }}>
+					<div id={styles.resize_container} className={`${styles.resize_container} ${blogFormVisible ? styles.visible : styles.hidden}`}>
 						<CreatePostForm />
 					</div>
 
@@ -40,15 +55,29 @@ export default function Blog() {
 			)}
 
 			<div className={styles.blogs}>
-				{blogs ? (
-					blogs?.map((blog) => {
+				{blogs?.drafts &&
+					(blogFilter === 'all' || blogFilter === 'drafts') &&
+					blogs?.drafts.map((blog) => {
 						const key = Math.floor(Math.random() * 1000000);
 
 						return <Post key={key} data={blog} />;
-					})
-				) : (
-					<p>Sorry, there was an error loading the blog.</p>
-				)}
+					})}
+
+				{blogs?.published &&
+					(blogFilter === 'all' || blogFilter === 'published') &&
+					blogs?.published.map((blog) => {
+						const key = Math.floor(Math.random() * 1000000);
+
+						return <Post key={key} data={blog} />;
+					})}
+
+				{blogs?.deleted &&
+					(blogFilter === 'all' || blogFilter === 'deleted') &&
+					blogs?.deleted.map((blog) => {
+						const key = Math.floor(Math.random() * 1000000);
+
+						return <Post key={key} data={blog} />;
+					})}
 			</div>
 		</section>
 	);
