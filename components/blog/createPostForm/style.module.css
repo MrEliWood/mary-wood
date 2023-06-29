@@ -1,0 +1,37 @@
+.form {
+	gap: var(--small);
+	margin-bottom: var(--large);
+	min-width: 100%;
+}
+
+.button_block {
+	display: flex;
+	justify-content: flex-end;
+	gap: var(--tiny);
+	width: 100%;
+}
+
+.cancel_button:hover {
+	background: var(--red);
+}
+
+.form input,
+.form textarea {
+	outline: none;
+	width: 100%;
+}
+
+.title {
+	font-size: 1.6em;
+	font-weight: var(--font-weight);
+	font-family: var(--font-secondary);
+}
+
+.caption {
+	font-size: 1.2em;
+}
+
+.body {
+	resize: none;
+	min-height: 300px;
+}

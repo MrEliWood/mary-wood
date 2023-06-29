@@ -1,36 +1,86 @@
-import Link from 'next/link';
+'use client';
+
+import { useState, useMemo } from 'react';
+import { useSelector } from 'react-redux';
+import type { RootState } from '@/redux/store';
 
 import styles from './page.module.css';
+import { Blog } from '@/types';
+import { Buttons, Post, CreatePostForm } from '@/components';
+
+type Blogs = {
+	published: Blog[];
+	drafts: Blog[];
+	deleted: Blog[];
+};
 
 export default function Blog() {
-	// temporary placeholder text
-	const placeholder = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus laboriosam perferendis fugit debitis, odit eaque ipsam sed quam magni eligendi aspernatur quos cumque fugiat consectetur, velit similique consequuntur aut enim.';
+	const blogFilter = useSelector((state: RootState) => state.blogFilter.value);
+	const blogFormVisible = useSelector((state: RootState) => state.blogFormVisible.value);
+	const token = useSelector((state: RootState) => state.token.value);
+
+	const [blogs, setBlogs] = useState<Blogs>();
+
+	const getBlogs = async () => {
+		const res: Response = await fetch(`${process.env.BASE_URL}/api/blog`);
+		const data: Blog[] = await res.json();
+
+		const blogs: Blogs = {
+			published: data.filter((blog) => blog.published && !blog.deleted),
+			drafts: data.filter((blog) => !blog.published && !blog.deleted),
+			deleted: data.filter((blog) => blog.deleted)
+		};
+
+		return setBlogs(blogs);
+	};
+
+	useMemo(getBlogs, []);
 
 	return (
 		<section className={styles.page}>
-			<article>
-				<h2>Lorem Ipsum</h2>
-				<p>{placeholder}</p>
-				<Link href=''>Read More →</Link>
-			</article>
+			{token && (
+				<div className={styles.user_options} style={blogFormVisible ? { height: '553px' } : { height: '32px' }}>
+					<div id={styles.resize_container} className={`${styles.resize_container} ${blogFormVisible ? styles.visible : styles.hidden}`}>
+						<CreatePostForm />
+					</div>
 
-			<article>
-				<h2>Dolor Sit Amet</h2>
-				<p>{placeholder}</p>
-				<Link href=''>Read More →</Link>
-			</article>
+					<div className={styles.user_toolbar}>
+						<Buttons.BlogFilterButtons />
 
-			<article>
-				<h2>Consectetur</h2>
-				<p>{placeholder}</p>
-				<Link href=''>Read More →</Link>
-			</article>
+						<div className={styles.absolute_container}>
+							<Buttons.CreatePostButton />
+						</div>
+					</div>
+				</div>
+			)}
 
-			<article>
-				<h2>Adipisicing Elit</h2>
-				<p>{placeholder}</p>
-				<Link href=''>Read More →</Link>
-			</article>
+			<div className={styles.blogs}>
+				{token &&
+					blogs?.drafts &&
+					(blogFilter === 'all' || blogFilter === 'drafts') &&
+					blogs?.drafts.map((blog) => {
+						const key = Math.floor(Math.random() * 1000000);
+
+						return <Post key={key} data={blog} />;
+					})}
+
+				{blogs?.published &&
+					(blogFilter === 'all' || blogFilter === 'published') &&
+					blogs?.published.map((blog) => {
+						const key = Math.floor(Math.random() * 1000000);
+
+						return <Post key={key} data={blog} />;
+					})}
+
+				{token &&
+					blogs?.deleted &&
+					(blogFilter === 'all' || blogFilter === 'deleted') &&
+					blogs?.deleted.map((blog) => {
+						const key = Math.floor(Math.random() * 1000000);
+
+						return <Post key={key} data={blog} />;
+					})}
+			</div>
 		</section>
 	);
 }

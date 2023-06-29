@@ -1,12 +1,14 @@
+'use client';
+
+import { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useState } from 'react';
 
-import styles from './nav.module.css';
-
+import styles from './style.module.css';
 import { pagelist } from '@/utils';
 
 export default function Nav() {
+	const [linkActive, setLinkActive] = useState<boolean>(false);
 	const pathname: string = usePathname();
 
 	return (
@@ -35,8 +37,11 @@ export default function Nav() {
 						active = true;
 					} else {
 						// if not active, check for active children
-						for (const subpage of page.children) {
-							if (pathname === path + subpage.name) active = true;
+						for (const child of page.children) {
+							// extend pathname, replace spaces with dashes
+							const childpath = path + child.name.replace(' ', '-');
+
+							if (pathname === childpath) active = true;
 						}
 					}
 

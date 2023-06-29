@@ -1,0 +1,27 @@
+.text_arrow {
+	display: flex;
+	gap: var(--tiny);
+	width: fit-content;
+}
+
+.text_arrow:hover {
+	cursor: pointer;
+}
+
+.text_arrow:hover .text_arrow_arrow {
+	animation: crabwalk 1s ease-in-out infinite;
+}
+
+@keyframes crabwalk {
+	from {
+		transform: translateX(0px);
+	}
+
+	50% {
+		transform: translateX(3px);
+	}
+
+	to {
+		transform: translateX(0px);
+	}
+}

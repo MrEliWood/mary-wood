@@ -1,36 +1,58 @@
+import { useMemo } from 'react';
+import Image from 'next/image';
+
+import { Buttons, Work } from '@/components';
+import { bio, truncate } from '@/utils';
+import portrait from '@/public/assets/images/portrait.jpg';
+
 import styles from './page.module.css';
 
 export default function Home() {
-	// temporary placeholder text
-	const placeholder = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus laboriosam perferendis fugit debitis, odit eaque ipsam sed quam magni eligendi aspernatur quos cumque fugiat consectetur, velit similique consequuntur aut enim.';
+	const bioPreview = useMemo(() => truncate(bio, 318), []);
 
 	return (
 		<section className={styles.page}>
-			<article>
-				<h4>Notable Publications</h4>
+			<article className={styles.intro}>
+				<div className={styles.bio}>
+					<p>{bioPreview}</p>
 
-				<hr />
-
-				<div>
-					<h2>Lorem Ipsum</h2>
-					<p>{placeholder}</p>
+					<Buttons.TextArrow text='More about Mary' link='/about' />
 				</div>
 
-				<div>
-					<h2>Dolor Sit Amet</h2>
-					<p>{placeholder}</p>
-				</div>
+				<Image src={portrait} alt='Portrait of Mary Wood.' className={styles.portrait} />
 			</article>
 
 			<article>
-				<h4>Biography</h4>
-
-				<hr />
-
 				<div>
-					<h2>Writer, Teacher, Scholar</h2>
-					<p>{placeholder}</p>
+					<h3>Latest Publication</h3>
+					<hr />
 				</div>
+
+				<Work category='books' count={1} />
+
+				<Buttons.TextArrow link='/writing/scholarship' />
+			</article>
+
+			<article>
+				<div>
+					<h3>Recent Contribution</h3>
+					<hr />
+				</div>
+
+				<Work category='essays & articles' count={1} />
+
+				<Buttons.TextArrow link='/writing/scholarship/#essays_&_articles' />
+			</article>
+
+			<article>
+				<div>
+					<h3>Creative Spotlight</h3>
+					<hr />
+				</div>
+
+				<Work category='creative work' count={1} />
+
+				<Buttons.TextArrow link='/writing/scholarship/#essays_&_articles' />
 			</article>
 		</section>
 	);

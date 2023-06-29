@@ -39,10 +39,6 @@ const pagelist: page[] = [
 		children: []
 	},
 	{
-		name: 'bibliography',
-		children: []
-	},
-	{
 		name: 'blog',
 		children: []
 	},
