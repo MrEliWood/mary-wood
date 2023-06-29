@@ -1,19 +1,26 @@
+import { useMemo } from 'react';
 import Image from 'next/image';
 
-import { Work } from '@/components';
-import { bio } from '@/utils';
+import { Buttons, Work } from '@/components';
+import { bio, truncate } from '@/utils';
 import portrait from '@/public/assets/images/portrait.jpg';
 
 import styles from './page.module.css';
 
 export default function Home() {
+	const bioPreview = useMemo(() => truncate(bio, 318), []);
+
 	return (
 		<section className={styles.page}>
-			<p>
-				<Image src={portrait} alt='Portrait of Mary Wood.' className={styles.portrait} />
+			<article className={styles.intro}>
+				<div className={styles.bio}>
+					<p>{bioPreview}</p>
 
-				<p>{bio}</p>
-			</p>
+					<Buttons.TextArrow text='More about Mary' link='/about' />
+				</div>
+
+				<Image src={portrait} alt='Portrait of Mary Wood.' className={styles.portrait} />
+			</article>
 
 			<article>
 				<div>
@@ -22,6 +29,8 @@ export default function Home() {
 				</div>
 
 				<Work category='books' count={1} />
+
+				<Buttons.TextArrow link='/writing/scholarship' />
 			</article>
 
 			<article>
@@ -30,7 +39,9 @@ export default function Home() {
 					<hr />
 				</div>
 
-				<Work category='creative work' count={1} />
+				<Work category='essays & articles' count={1} />
+
+				<Buttons.TextArrow link='/writing/scholarship/#essays_&_articles' />
 			</article>
 
 			<article>
@@ -40,6 +51,8 @@ export default function Home() {
 				</div>
 
 				<Work category='creative work' count={1} />
+
+				<Buttons.TextArrow link='/writing/scholarship/#essays_&_articles' />
 			</article>
 		</section>
 	);

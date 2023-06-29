@@ -259,6 +259,11 @@ h4 {
 	font-weight: 400;
 }
 
+h5 {
+	font-size: 0.9em;
+	font-weight: 700;
+}
+
 @media screen and (max-width: 768px) {
 	* {
 		font-size: 90%;

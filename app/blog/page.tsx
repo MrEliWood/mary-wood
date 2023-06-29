@@ -6,7 +6,7 @@ import type { RootState } from '@/redux/store';
 
 import styles from './page.module.css';
 import { Blog } from '@/types';
-import { Post, BlogFilterButtons, CreatePostButton, CreatePostForm } from '@/components';
+import { Buttons, Post, CreatePostForm } from '@/components';
 
 type Blogs = {
 	published: Blog[];
@@ -45,17 +45,18 @@ export default function Blog() {
 					</div>
 
 					<div className={styles.user_toolbar}>
-						<BlogFilterButtons />
+						<Buttons.BlogFilterButtons />
 
 						<div className={styles.absolute_container}>
-							<CreatePostButton />
+							<Buttons.CreatePostButton />
 						</div>
 					</div>
 				</div>
 			)}
 
 			<div className={styles.blogs}>
-				{blogs?.drafts &&
+				{token &&
+					blogs?.drafts &&
 					(blogFilter === 'all' || blogFilter === 'drafts') &&
 					blogs?.drafts.map((blog) => {
 						const key = Math.floor(Math.random() * 1000000);
@@ -71,7 +72,8 @@ export default function Blog() {
 						return <Post key={key} data={blog} />;
 					})}
 
-				{blogs?.deleted &&
+				{token &&
+					blogs?.deleted &&
 					(blogFilter === 'all' || blogFilter === 'deleted') &&
 					blogs?.deleted.map((blog) => {
 						const key = Math.floor(Math.random() * 1000000);
