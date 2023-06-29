@@ -1,40 +1,29 @@
 'use client';
 
-import { useState, useMemo } from 'react';
-import { useSelector } from 'react-redux';
-import type { RootState } from '@/redux/store';
+import { useMemo } from 'react';
+
+import { Buttons, Post, CreatePostForm } from '@/components';
+import { API } from '@/utils';
+
+import { useSelector, useDispatch } from 'react-redux';
+import { setBlogs } from '@/redux/features/blogData';
 
 import styles from './page.module.css';
-import { Blog } from '@/types';
-import { Buttons, Post, CreatePostForm } from '@/components';
 
-type Blogs = {
-	published: Blog[];
-	drafts: Blog[];
-	deleted: Blog[];
-};
+import type { RootState } from '@/redux/store';
+import { Blog } from '@/types';
 
 export default function Blog() {
+	const blogData = useSelector((state: RootState) => state.blogData.value);
 	const blogFilter = useSelector((state: RootState) => state.blogFilter.value);
 	const blogFormVisible = useSelector((state: RootState) => state.blogFormVisible.value);
 	const token = useSelector((state: RootState) => state.token.value);
+	const dispatch = useDispatch();
 
-	const [blogs, setBlogs] = useState<Blogs>();
-
-	const getBlogs = async () => {
-		const res: Response = await fetch(`${process.env.BASE_URL}/api/blog`);
-		const data: Blog[] = await res.json();
-
-		const blogs: Blogs = {
-			published: data.filter((blog) => blog.published && !blog.deleted),
-			drafts: data.filter((blog) => !blog.published && !blog.deleted),
-			deleted: data.filter((blog) => blog.deleted)
-		};
-
-		return setBlogs(blogs);
-	};
-
-	useMemo(getBlogs, []);
+	useMemo(async () => {
+		const data = await API.getBlogs();
+		dispatch(setBlogs(data));
+	}, []);
 
 	return (
 		<section className={styles.page}>
@@ -45,10 +34,10 @@ export default function Blog() {
 					</div>
 
 					<div className={styles.user_toolbar}>
-						<Buttons.BlogFilterButtons />
+						<Buttons.BlogFilter />
 
 						<div className={styles.absolute_container}>
-							<Buttons.CreatePostButton />
+							<Buttons.BlogCreate />
 						</div>
 					</div>
 				</div>
@@ -56,26 +45,26 @@ export default function Blog() {
 
 			<div className={styles.blogs}>
 				{token &&
-					blogs?.drafts &&
+					blogData?.drafts &&
 					(blogFilter === 'all' || blogFilter === 'drafts') &&
-					blogs?.drafts.map((blog) => {
+					blogData?.drafts.map((blog) => {
 						const key = Math.floor(Math.random() * 1000000);
 
 						return <Post key={key} data={blog} />;
 					})}
 
-				{blogs?.published &&
+				{blogData?.published &&
 					(blogFilter === 'all' || blogFilter === 'published') &&
-					blogs?.published.map((blog) => {
+					blogData?.published.map((blog) => {
 						const key = Math.floor(Math.random() * 1000000);
 
 						return <Post key={key} data={blog} />;
 					})}
 
 				{token &&
-					blogs?.deleted &&
+					blogData?.deleted &&
 					(blogFilter === 'all' || blogFilter === 'deleted') &&
-					blogs?.deleted.map((blog) => {
+					blogData?.deleted.map((blog) => {
 						const key = Math.floor(Math.random() * 1000000);
 
 						return <Post key={key} data={blog} />;

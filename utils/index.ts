@@ -1,7 +1,8 @@
+import API from './API';
 import bio from './bio';
 import worklist from './worklist';
 import pagelist from './pagelist';
-import truncate from './truncate';
+import truncateString from './truncateString';
 import verifyToken from './verifyToken';
 
-export { bio, worklist, pagelist, truncate, verifyToken };
+export { API, bio, worklist, pagelist, truncateString, verifyToken };

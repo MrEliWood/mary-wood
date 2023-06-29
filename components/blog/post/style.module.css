@@ -51,14 +51,6 @@
 	opacity: 0.5;
 }
 
-.delete_button path {
-	fill: var(--red);
-}
-
-.delete_button:hover {
-	background: var(--red);
-}
-
 .deleted::before {
 	content: '';
 	position: absolute;

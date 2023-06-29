@@ -1,16 +1,21 @@
 'use client';
 
+// external
 import { useEffect } from 'react';
 import Link from 'next/link';
 
+// internal
+import { Login } from '@/components';
+import { verifyToken } from '@/utils';
+
+// state
 import { useSelector, useDispatch } from 'react-redux';
 import type { RootState } from '@/redux/store';
 import { createToken, destroyToken } from '@/redux/features/token';
 import { showLogin } from '@/redux/features/loginVisible';
 
+// styles
 import styles from './style.module.css';
-import { Login } from '@/components';
-import { verifyToken } from '@/utils';
 
 export default function Footer() {
 	const token = useSelector((state: RootState) => state.token.value);

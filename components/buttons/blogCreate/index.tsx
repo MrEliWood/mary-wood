@@ -3,7 +3,7 @@
 import { useDispatch } from 'react-redux';
 import { showBlogForm } from '@/redux/features/blogFormVisible';
 
-export default function CreatePostButton() {
+export default function BlogCreate() {
 	const dispatch = useDispatch();
 
 	const handleButtonClick = () => {

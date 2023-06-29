@@ -20,3 +20,9 @@ export interface Blog {
 	updatedAt: string;
 	publishedAt: string;
 }
+
+export interface Blogs {
+	published: Blog[];
+	drafts: Blog[];
+	deleted: Blog[];
+}

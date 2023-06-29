@@ -1,5 +1,6 @@
-import CreatePostButton from './createPost';
-import BlogFilterButtons from './blogFilter';
+import BlogCreate from './blogCreate';
+import BlogDelete from './blogDelete';
+import BlogFilter from './blogFilter';
 import TextArrow from './textArrow';
 
-export default { CreatePostButton, BlogFilterButtons, TextArrow };
+export default { BlogCreate, BlogDelete, BlogFilter, TextArrow };

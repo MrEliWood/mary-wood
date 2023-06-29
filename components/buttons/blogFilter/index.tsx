@@ -8,7 +8,7 @@ import { filterAll, filterDrafts, filterPublished, filterDeleted } from '@/redux
 
 import styles from './style.module.css';
 
-export default function BlogFilterButtons() {
+export default function BlogFilter() {
 	const blogFilter = useSelector((state: RootState) => state.blogFilter.value);
 	const dispatch = useDispatch();
 

@@ -10,7 +10,7 @@ export default function Header() {
 				<h1>Mary Elene Wood</h1>
 			</Link>
 
-			<h4>Writer, Teacher, Scholar</h4>
+			<p>Writer, Teacher, Scholar</p>
 		</header>
 	);
 }
