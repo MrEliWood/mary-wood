@@ -1,16 +1,48 @@
+import { useMemo } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 
 import styles from './style.module.css';
 import { worklist } from '@/utils';
 
-export default function Work({ category }: { category: string }) {
+interface Props {
+	// filter by category
+	//  - scholarship
+	//     - books
+	//     - essays & articles
+	//  - creative work
+	//     - creative work
+	category: string;
+
+	// declare number of items to return
+	count: number;
+}
+
+const defaultProps = {
+	category: 'all',
+	count: Infinity
+};
+
+export default function Work(props: Props) {
+	const { category, count } = useMemo(() => props, []);
+
+	let itemsReturned: number = 0;
+
 	return (
 		<div className={styles.page}>
-			{worklist.map((work, i) => {
+			{worklist.map((work) => {
+				const key1 = Math.floor(Math.random() * 1000000);
+
+				// seperate out conditional logic
+				const validCount = count && itemsReturned < count;
+				const validCategory = category === 'all' || work.category === category || work.sub === category;
+				const validConditions = validCount && validCategory;
+
+				validConditions && itemsReturned++;
+
 				return (
-					work.sub === category && (
-						<article key={i} className={styles.work}>
+					validConditions && (
+						<article key={key1} className={styles.work}>
 							{work.image ? (
 								<Link href={work.link}>
 									<Image src={work.image} alt={'Cover of ' + work.title} width={300} height={300} className={styles.cover} />
@@ -32,10 +64,12 @@ export default function Work({ category }: { category: string }) {
 										<summary>Table of Contents</summary>
 										<ol>
 											{work.table.map((row, i) => {
+												const key2 = Math.floor(Math.random() * 1000000);
+
 												if (row.split(' ')[0] === 'Part') {
 													return (
 														<>
-															<p key={i}>{row}</p>
+															<p key={key2}>{row}</p>
 															<hr />
 														</>
 													);
@@ -43,13 +77,13 @@ export default function Work({ category }: { category: string }) {
 
 												if (row.includes('Mary')) {
 													return (
-														<li key={i} className={styles.bold}>
+														<li key={key2} className={styles.bold}>
 															{row}
 														</li>
 													);
 												}
 
-												return <li key={i}>{row}</li>;
+												return <li key={key2}>{row}</li>;
 											})}
 										</ol>
 									</details>
@@ -62,3 +96,5 @@ export default function Work({ category }: { category: string }) {
 		</div>
 	);
 }
+
+Work.defaultProps = defaultProps;

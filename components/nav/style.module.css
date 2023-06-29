@@ -41,5 +41,5 @@
 }
 
 .active {
-	color: var(--accent50);
+	color: var(--accent50) !important;
 }

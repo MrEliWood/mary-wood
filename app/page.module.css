@@ -1,4 +1,8 @@
-.page {
-	display: flex;
-	flex-direction: column;
+.portrait {
+	width: 250px;
+	height: auto;
+	object-fit: contain;
+	float: right;
+	border-radius: 10% 0 10% 0;
+	margin: 0 0 var(--large) var(--large);
 }

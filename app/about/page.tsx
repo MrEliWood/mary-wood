@@ -1,9 +1,9 @@
 import Image from 'next/image';
 
-import styles from './page.module.css';
+import { bio } from '@/utils';
 import portrait from '@/public/assets/images/portrait.jpg';
 
-import { bio } from '@/utils';
+import styles from './page.module.css';
 
 export default function About() {
 	return (

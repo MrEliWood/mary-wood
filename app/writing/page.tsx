@@ -13,9 +13,11 @@ export default function Writing() {
 
 	return (
 		<section className={styles.page}>
-			{categories.map((category, i) => {
+			{categories.map((category) => {
+				const key1 = Math.floor(Math.random() * 1000000);
+
 				return (
-					<article key={i} className={styles.category}>
+					<article key={key1} className={styles.category}>
 						<div>
 							<Link href={'/writing/' + category}>
 								<h4 className={styles.heading}>{category}</h4>
@@ -24,10 +26,12 @@ export default function Writing() {
 							<hr />
 						</div>
 
-						{worklist.map((work, j) => {
+						{worklist.map((work) => {
+							const key2 = Math.floor(Math.random() * 1000000);
+
 							return (
 								work.category === category && (
-									<Link key={i * j} href={'/writing/' + category}>
+									<Link key={key2} href={'/writing/' + category}>
 										<div className={styles.work}>
 											{work.image ? <Image src={work.image} alt={'Cover of ' + work.title} width={300} height={300} className={styles.cover} /> : <div className={styles.book_emoji}>📓</div>}
 
