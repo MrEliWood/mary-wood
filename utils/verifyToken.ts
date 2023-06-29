@@ -1,7 +1,6 @@
 import jwt from 'jsonwebtoken';
-import { JWT_SECRET } from '../secrets';
 
-const secret = process.env.JWT_SECRET || JWT_SECRET;
+const secret = process.env.JWT_SECRET || 'not secret';
 
 const verifyToken = (token: string) => {
 	try {
@@ -10,7 +9,9 @@ const verifyToken = (token: string) => {
 
 		return Date.now() <= expirationDatetimeInSeconds;
 	} catch (error) {
-		return error;
+		console.error(error);
+
+		return false;
 	}
 };
 
