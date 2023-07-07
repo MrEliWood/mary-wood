@@ -1,4 +1,6 @@
-import { setBlogs } from '@/redux/features/blogData';
+'use client';
+
+import { useRouter } from 'next/navigation';
 
 import { Blog, Blogs } from '@/types';
 

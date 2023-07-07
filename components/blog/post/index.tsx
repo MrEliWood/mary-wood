@@ -30,12 +30,6 @@ export default function Post(props: Props) {
 	const date = dayjs(updatedAt).format('MMMM D, YYYY - h:mm a');
 
 	const deleteBlog = async () => {
-		if (!token) {
-			alert('Sorry, your session expired. Please sign in again.');
-			router.refresh();
-			return;
-		}
-
 		try {
 			const blogDeleted = await API.deleteBlog(props.data, token);
 

@@ -1,4 +1,5 @@
 'use client';
+
 import Link from 'next/link';
 
 import styles from './style.module.css';
@@ -6,8 +7,8 @@ import styles from './style.module.css';
 export default function Header() {
 	return (
 		<header className={styles.header}>
-			<Link href='/' className={styles.site_title}>
-				<h1>Mary Elene Wood</h1>
+			<Link href='/'>
+				<h2 className={styles.site_title}>Mary Elene Wood</h2>
 			</Link>
 
 			<p>Writer, Teacher, Scholar</p>

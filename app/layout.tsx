@@ -1,4 +1,4 @@
-import { Header, Sidebar, Footer } from '@/components';
+import { Header, Sidebar, Footer, Splash } from '@/components';
 import { Providers } from '@/redux/provider';
 
 import { Libre_Caslon_Text } from 'next/font/google';
@@ -22,6 +22,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 			<body>
 				<Providers>
 					<Header />
+
+					<Splash />
 
 					<main>
 						<Sidebar />
