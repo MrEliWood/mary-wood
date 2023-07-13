@@ -1,45 +1,102 @@
 .nav {
 	display: flex;
-	flex-direction: column;
-	gap: var(--small);
-	text-align: end;
-	text-transform: capitalize;
+	gap: var(--medium);
+	font-weight: 300;
+	line-height: 1.1;
+	height: fit-content;
+}
+
+.dropdown_container {
+	/* --dropdown-width: calc(261px + var(--medium) + var(--small)); */
+	--dropdown-width: 161px;
+	--dropdown-speed: 250ms;
+
+	position: relative;
+	display: flex;
+	height: fit-content;
 }
 
 .dropdown {
-	position: relative;
-	display: flex;
-	justify-content: flex-end;
-	text-align: start;
-}
-
-.dropdown_content {
 	position: absolute;
-	left: 100%;
-	top: calc(-1.5 * var(--tiny));
+	top: calc(100% + 2px);
+	left: calc(-1 * var(--small));
 	display: flex;
-	flex-direction: column;
-	max-height: 0px;
+	background: var(--gradient);
+	background-size: 100% var(--border-width);
+	background-position: 0 calc(var(--small) / 2 - 2px);
+	background-repeat: no-repeat;
 	overflow: hidden;
-	margin-left: var(--small);
-	transition: all 0.5s ease-in-out;
+	padding: calc(var(--small) / 2 - 2px) 0;
+	animation: slideout calc(var(--dropdown-speed) * 1.5) ease-in-out calc(var(--dropdown-speed) * 1.25) both;
 }
 
-.dropdown_content:hover,
-.dropdown:hover .dropdown_content {
-	/* max-height: 90px; */
-	max-height: 500px;
+.dropdown_container:hover {
+	cursor: pointer;
+}
+
+.dropdown_container:hover .dropdown {
+	animation: slidein var(--dropdown-speed) ease-in-out both;
 }
 
 .subnav {
 	display: flex;
-	flex-direction: column;
-	gap: var(--tiny);
-	border-left: 1px solid black;
-	padding: var(--tiny) var(--small) var(--small);
-	margin: var(--tiny) 0;
+	gap: var(--small);
+	overflow: hidden;
+	width: var(--dropdown-width);
+	padding: calc(var(--small) / 2 + 2px) var(--small);
+}
+
+.subnav a {
+	animation: dropup calc(var(--dropdown-speed) * 1.5) ease-in-out both;
+}
+
+.dropdown_container:hover .subnav a {
+	animation: dropdown var(--dropdown-speed) ease-in-out var(--dropdown-speed) both;
 }
 
 .active {
-	color: var(--accent50) !important;
+	background: var(--gradient);
+	background-clip: text;
+	-webkit-background-clip: text;
+	color: transparent;
+}
+
+@keyframes slidein {
+	from {
+		width: 0px;
+	}
+
+	to {
+		width: var(--dropdown-width);
+	}
+}
+
+@keyframes slideout {
+	from {
+		width: var(--dropdown-width);
+	}
+
+	to {
+		width: 0px;
+	}
+}
+
+@keyframes dropdown {
+	from {
+		transform: translateY(-200%);
+	}
+
+	to {
+		transform: translateY(0%);
+	}
+}
+
+@keyframes dropup {
+	from {
+		transform: translateY(0%);
+	}
+
+	to {
+		transform: translateY(-200%);
+	}
 }

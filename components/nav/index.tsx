@@ -1,74 +1,33 @@
 'use client';
 
-import { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 import styles from './style.module.css';
-import { pagelist } from '@/utils';
 
 export default function Nav() {
-	const [linkActive, setLinkActive] = useState<boolean>(false);
 	const pathname: string = usePathname();
 
 	return (
 		<nav className={styles.nav}>
-			{pagelist.map((page, i) => {
-				// start pathname
-				let path = '/';
+			<div className={styles.dropdown_container}>
+				<p className={pathname === '/writing' || pathname === '/teaching' ? styles.active : ''}>Work</p>
 
-				// extend pathname, except for home, replace spaces with dashes
-				if (page.name !== 'home') path += page.name.replace(' ', '-');
-
-				if (page.children.length < 1) {
-					return (
-						<Link key={i} href={path} className={pathname === path ? styles.active : styles.inactive}>
-							{page.name}
+				<div className={styles.dropdown}>
+					<div className={styles.subnav}>
+						<Link href='/writing' className={pathname === '/writing' ? styles.active : ''}>
+							Writing
 						</Link>
-					);
-				} else {
-					// extend pathname for children
-					path += '/';
+						<Link href='/teaching' className={pathname === '/teaching' ? styles.active : ''}>
+							Teaching
+						</Link>
+					</div>
+				</div>
+			</div>
 
-					// define boolean for tracking active children
-					let active: boolean = false;
-
-					if (pathname === path) {
-						active = true;
-					} else {
-						// if not active, check for active children
-						for (const child of page.children) {
-							// extend pathname, replace spaces with dashes
-							const childpath = path + child.name.replace(' ', '-');
-
-							if (pathname === childpath) active = true;
-						}
-					}
-
-					return (
-						<div key={i} className={styles.dropdown}>
-							<Link href={path} className={active ? styles.active : styles.inactive}>
-								{page.name}
-							</Link>
-
-							<div className={styles.dropdown_content}>
-								<div className={styles.subnav}>
-									{page.children.map((child, j) => {
-										// extend pathname, replace spaces with dashes
-										const childpath = path + child.name.replace(' ', '-');
-
-										return (
-											<Link key={i + '_' + j} href={childpath} className={pathname === childpath ? styles.active : styles.inactive}>
-												{child.name}
-											</Link>
-										);
-									})}
-								</div>
-							</div>
-						</div>
-					);
-				}
-			})}
+			<Link href='/blog'>Blog</Link>
+			<Link href='/about'>About</Link>
+			<Link href='/contact'>Contact</Link>
 		</nav>
 	);
 }

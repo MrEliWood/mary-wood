@@ -4,24 +4,22 @@ import Link from 'next/link';
 import styles from './style.module.css';
 
 interface Props {
-	text: string;
-	link: string;
+	text?: string;
+	href?: string;
 }
 
 const defaultProps = {
 	text: 'Read More',
-	link: ''
+	href: '/'
 };
 
-export default function TextArrow(props: Props) {
-	const { text, link } = useMemo(() => props, []);
-
+export default function TextArrow({ text = 'Read More', href = '/' }: Props) {
 	return (
-		<Link href={link} className={styles.text_arrow}>
-			<h5 className={styles.text_arrow_text}>{text}</h5>
-			<h5 className={styles.text_arrow_arrow}>→</h5>
+		<Link href={href} className={styles.text_arrow}>
+			<button>
+				<h5 className={styles.text_arrow_text}>{text}</h5>
+				<h5 className={styles.text_arrow_arrow}>→</h5>
+			</button>
 		</Link>
 	);
 }
-
-TextArrow.defaultProps = defaultProps;

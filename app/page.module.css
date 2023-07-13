@@ -1,24 +1,6 @@
-.intro {
-	flex-direction: row;
-	align-items: flex-start;
-	gap: 0px;
-}
-
-.bio {
+.page {
 	display: flex;
 	flex-direction: column;
-	gap: var(--small);
-}
-
-.portrait {
-	--size: 200px;
-
-	display: flex;
-	flex-basis: 1;
-	height: var(--size);
-	width: var(--size);
-	object-fit: contain;
-	float: right;
-	border-radius: 0% 10% 0% 10%;
-	margin: 0 0 0 var(--medium);
+	align-items: center;
+	gap: var(--huge);
 }

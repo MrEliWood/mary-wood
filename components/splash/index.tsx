@@ -17,12 +17,11 @@ export default function Splash() {
 
 			<section className={styles.right}>
 				<span className={styles.text_block}>
-					<h4 className={styles.caption}>Latest Publication</h4>
 					<h1 className={styles.title}>Life Writing and Schizophrenia</h1>
-					<h4 className={styles.subtitle}>Encounters at the Edge of Meaning</h4>
+					<h3 className={styles.subtitle}>Encounters at the Edge of Meaning</h3>
 				</span>
 
-				<h4>How do you write your life story when readers expect you not to make sense? How do you write a case history that makes sense when, face to face with schizophrenia, your ability to tell a diagnostic story begins to fall apart?</h4>
+				<p>How do you write your life story when readers expect you not to make sense? How do you write a case history that makes sense when, face to face with schizophrenia, your ability to tell a diagnostic story begins to fall apart?</p>
 
 				<Buttons.TextArrow />
 			</section>

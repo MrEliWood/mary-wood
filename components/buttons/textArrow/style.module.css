@@ -1,27 +1,36 @@
 .text_arrow {
 	display: flex;
-	gap: var(--tiny);
-	width: fit-content;
+	gap: 5px;
 }
 
 .text_arrow:hover {
 	cursor: pointer;
 }
 
+.text_arrow_arrow {
+	transition: color 1s ease-in-out;
+}
+
 .text_arrow:hover .text_arrow_arrow {
-	animation: crabwalk 1s ease-in-out infinite;
+	background: var(--gradient);
+	background-clip: text;
+	-webkit-background-clip: text;
+	animation: crabwalk 1s ease-in-out calc(var(--button-transition-speed) - 100ms) infinite;
 }
 
 @keyframes crabwalk {
 	from {
 		transform: translateX(0px);
+		color: var(--light);
 	}
 
 	50% {
 		transform: translateX(3px);
+		color: var(--light);
 	}
 
 	to {
 		transform: translateX(0px);
+		color: var(--light);
 	}
 }

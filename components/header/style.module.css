@@ -1,12 +1,80 @@
 .header {
-	position: absolute;
+	--animation-speed: 500ms;
+
+	position: fixed;
 	display: flex;
-	flex-direction: column;
-	align-items: center;
+	justify-content: space-between;
+	background: var(--light75);
+	backdrop-filter: blur(30px);
+	box-shadow: var(--shadow);
 	width: 100%;
-	padding: var(--huge);
+	padding: var(--medium);
+	z-index: 2;
+	transition: all var(--animation-speed) ease-in-out;
+}
+
+.header:hover {
+	background: var(--light90);
+}
+
+.splash_header {
+	background: none;
+	backdrop-filter: blur(0px);
+	box-shadow: none;
+	padding: var(--large);
+}
+
+.splash_header:hover {
+	background: none;
 }
 
 .site_title:hover {
 	color: var(--dark);
+}
+
+.site_caption {
+	overflow: hidden;
+	animation: fadein var(--animation-speed) ease-in-out both;
+}
+
+.hidden {
+	animation: fadeout var(--animation-speed) ease-in-out both;
+}
+
+.header:hover .hidden {
+	animation: fadein var(--animation-speed) ease-in-out both;
+}
+
+@keyframes fadeout {
+	from {
+		opacity: 1;
+		max-height: 30px;
+	}
+
+	50% {
+		opacity: 0;
+		max-height: 30px;
+	}
+
+	to {
+		opacity: 0;
+		max-height: 0px;
+	}
+}
+
+@keyframes fadein {
+	from {
+		opacity: 0;
+		max-height: 0px;
+	}
+
+	50% {
+		opacity: 0;
+		max-height: 30px;
+	}
+
+	to {
+		opacity: 1;
+		max-height: 30px;
+	}
 }

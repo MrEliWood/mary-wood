@@ -68,10 +68,9 @@ export default function Work(props: Props) {
 
 												if (row.split(' ')[0] === 'Part') {
 													return (
-														<>
-															<p key={key2}>{row}</p>
-															<hr />
-														</>
+														<p key={key2} className={styles.heading}>
+															{row}
+														</p>
 													);
 												}
 

@@ -1,29 +1,13 @@
-.header {
-	position: fixed;
-	top: 0;
-	left: 0;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	gap: var(--tiny);
-	width: 100%;
-	padding: var(--huge);
-}
-
-.site_title:hover {
-	color: var(--dark);
-}
-
 .main {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	grid-template-areas: 'left right';
 
-	gap: var(--large);
+	gap: var(--huge);
 	max-width: none;
 	min-height: 0;
 	height: 100vh;
-	padding: var(--giant);
+	padding: var(--huge) var(--giant);
 	margin-bottom: var(--giant);
 }
 
@@ -34,27 +18,28 @@
 	flex-direction: column;
 	justify-content: center;
 	align-items: flex-end;
-	margin-top: calc(248px - var(--huge));
+	margin-top: calc(178px - var(--huge));
 }
 
 .right {
 	grid-area: right;
 
+	position: relative;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	gap: var(--medium);
-	z-index: 1;
 }
 
 .book {
-	--size: 79vw;
+	--size: 84vw;
 
 	position: absolute;
-	transform: translateX(27vw);
+	transform: translateX(28vw);
 	object-fit: contain;
 	width: var(--size);
 	height: var(--size);
+	z-index: -1;
 }
 
 .text_block {
@@ -63,7 +48,12 @@
 	gap: var(--tiny);
 }
 
-.caption {
-	color: var(--dark25);
-	margin-bottom: var(--puny);
+@keyframes swing {
+	from {
+		transform: matrix3d(0.0001, 0, 0, 0.0000001, 0, 0.9, 0, 0, 0, 0, 1, 0, -370, 0, 0, 1);
+	}
+
+	to {
+		transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+	}
 }

@@ -35,6 +35,12 @@
 	width: 100%;
 }
 
+.heading {
+	border-bottom: var(--border);
+	padding-bottom: 5px;
+	margin-bottom: 1px;
+}
+
 .bold {
 	font-weight: 700 !important;
 }
