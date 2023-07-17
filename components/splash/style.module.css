@@ -1,4 +1,4 @@
-.main {
+.page {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	grid-template-areas: 'left right';
@@ -46,6 +46,13 @@
 	display: flex;
 	flex-direction: column;
 	gap: var(--tiny);
+}
+
+.text_block:hover {
+	background: revert;
+	background-clip: revert;
+	-webkit-background-clip: revert;
+	color: inherit;
 }
 
 @keyframes swing {

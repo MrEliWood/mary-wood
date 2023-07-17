@@ -11,14 +11,14 @@ export default function Nav() {
 	return (
 		<nav className={styles.nav}>
 			<div className={styles.dropdown_container}>
-				<p className={pathname === '/writing' || pathname === '/teaching' ? styles.active : ''}>Work</p>
+				<p className={pathname === '/work/writing' || pathname === '/work/teaching' ? styles.active : ''}>Work</p>
 
 				<div className={styles.dropdown}>
 					<div className={styles.subnav}>
-						<Link href='/writing' className={pathname === '/writing' ? styles.active : ''}>
+						<Link href='/work/writing' className={pathname === '/work/writing' ? styles.active : ''}>
 							Writing
 						</Link>
-						<Link href='/teaching' className={pathname === '/teaching' ? styles.active : ''}>
+						<Link href='/work/teaching' className={pathname === '/work/teaching' ? styles.active : ''}>
 							Teaching
 						</Link>
 					</div>

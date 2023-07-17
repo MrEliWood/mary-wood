@@ -48,6 +48,8 @@
 	--huge: 90px;
 	--giant: 150px;
 
+	--header-height: calc(52px + var(--large) + var(--large));
+
 	/* fonts */
 	--font-avenir: Avenir, Arial, Helvetica, sans-serif;
 
@@ -195,8 +197,6 @@ a,
 a:visited {
 	color: inherit;
 	text-decoration: none;
-	width: fit-content;
-	height: fit-content;
 }
 
 a:hover {
