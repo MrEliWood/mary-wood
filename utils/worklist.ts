@@ -1,3 +1,6 @@
+import lifeWritingCover from '@/public/assets/images/life-writing-and-schizophrenia.jpg';
+import writingOnWallCover from '@/public/assets/images/the-writing-on-the-wall.jpg';
+
 type work = {
 	category: string;
 	sub: string;
@@ -5,7 +8,7 @@ type work = {
 	caption: string;
 	description: string;
 	preview: string;
-	image: string;
+	image: any;
 	published: string;
 	link: string;
 	table: string[];
@@ -19,7 +22,7 @@ const worklist: work[] = [
 		caption: 'Encounters at the Edge of Meaning',
 		description: `How do you write your life story when readers expect you not to make sense? How do you write a case history that makes sense when, face to face with schizophrenia, your ability to tell a diagnostic story begins to fall apart? This book examines work in several genres of life writing–autobiography, memoir, case history, autobiographical fiction–focused either on what it means to live with schizophrenia or what it means to understand and ‘treat’ people who have received that diagnosis. Challenging the romanticized connection between literature and madness, Life Writing and Schizophrenia explores how writers who hear voices and experience delusions write their identities into narrative, despite popular and medical representations of schizophrenia as chaos, violence, and incoherence. The study juxtaposes these narratives to case histories by clinicians writing their encounters with those diagnosed with schizophrenia, encounters that call their own narrative authority and coherence into question.`,
 		preview: `How do you write your life story when readers expect you not to make sense? How do you write a case history that makes sense when, face to face with schizophrenia, your ability to tell a diagnostic story begins to fall apart?`,
-		image: '/assets/images/life-writing-and-schizophrenia.jpg',
+		image: lifeWritingCover,
 		published: 'January 1st, 2013',
 		link: 'https://brill.com/display/title/28350?language=en',
 		table: []
@@ -31,7 +34,7 @@ const worklist: work[] = [
 		caption: `Women's Autobiography and the Asylum`,
 		description: `"She's mad!" But who defines madness? This book uses the autobiographies of five institutionalized women—Elizabeth Packard, Lydia Smith, Clarissa Lathrop, Jane Hillyer, and Zelda Fitzgerald—to explore questions of madness and female identity in late nineteenth- and early twentieth-centery America.`,
 		preview: `"She's mad!" But who defines madness? This book uses the autobiographies of five institutionalized women—Elizabeth Packard, Lydia Smith, Clarissa Lathrop, Jane Hillyer, and Zelda Fitzgerald—to explore questions of madness and female identity in late nineteenth- and early twentieth-centery America.`,
-		image: '/assets/images/the-writing-on-the-wall.jpg',
+		image: writingOnWallCover,
 		published: 'December 1st, 1994',
 		link: 'https://www.amazon.com/Writing-Wall-WOMENS-AUTOBIOGRAPHY-ASYLUM/dp/0252063899',
 		table: []

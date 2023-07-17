@@ -14,14 +14,30 @@ export default function Writing() {
 
 	return (
 		<main className={styles.page}>
-			<nav className={styles.nav}>
-				<Link href='#scholarship' className={styles.nav_item}>
-					Scholarship
-				</Link>
-				<Link href='#creative-work' className={styles.nav_item}>
-					Creative Work
-				</Link>
-			</nav>
+			<section className={styles.category}>
+				<h1 className={styles.category_heading}>Scholarship</h1>
+
+				<h3 className={styles.category_sub_heading}>Books</h3>
+
+				{worklist.map((work, i) => {
+					const key1 = Math.floor(Math.random() * 1000000);
+
+					return (
+						work.category === 'books' && (
+							<Link key={key1} href={'/work/writing/' + i} className={styles.category_item}>
+								<div className={styles.category_item_image_container}>
+									<Image src={work.image} alt={'Cover of ' + work.title} className={styles.category_item_image} />
+								</div>
+
+								<div className={styles.category_item_details}>
+									<h3>{work.title}</h3>
+									<p>{work.caption.replace('\n', '')}</p>
+								</div>
+							</Link>
+						)
+					);
+				})}
+			</section>
 
 			{categories.map((category) => {
 				const key1 = Math.floor(Math.random() * 1000000);
