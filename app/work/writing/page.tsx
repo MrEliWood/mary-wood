@@ -1,8 +1,9 @@
 import Link from 'next/link';
 import Image from 'next/image';
 
-import styles from './page.module.css';
 import { worklist } from '@/utils';
+
+import styles from './page.module.css';
 
 export default function Writing() {
 	// get list of categories from the worklist
@@ -13,6 +14,15 @@ export default function Writing() {
 
 	return (
 		<main className={styles.page}>
+			<nav className={styles.nav}>
+				<Link href='#scholarship' className={styles.nav_item}>
+					Scholarship
+				</Link>
+				<Link href='#creative-work' className={styles.nav_item}>
+					Creative Work
+				</Link>
+			</nav>
+
 			{categories.map((category) => {
 				const key1 = Math.floor(Math.random() * 1000000);
 
