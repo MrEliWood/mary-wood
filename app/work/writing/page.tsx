@@ -12,29 +12,37 @@ export default function Writing() {
 	// filter out duplicate categories
 	const categories: string[] = allCategories.filter((category, i) => allCategories.indexOf(category) == i);
 
+	const cats = ['books', 'essays & articles'];
+
 	return (
 		<main className={styles.page}>
 			<section className={styles.category}>
 				<h1 className={styles.category_heading}>Scholarship</h1>
 
-				<h3 className={styles.category_sub_heading}>Books</h3>
-
-				{worklist.map((work, i) => {
-					const key1 = Math.floor(Math.random() * 1000000);
+				{cats.map((category) => {
+					const key = Math.floor(Math.random() * 1000000);
 
 					return (
-						work.category === 'books' && (
-							<Link key={key1} href={'/work/writing/' + i} className={styles.category_item}>
-								<div className={styles.category_item_image_container}>
-									<Image src={work.image} alt={'Cover of ' + work.title} className={styles.category_item_image} />
-								</div>
+						<div key={key} id={category.replaceAll(' ', '-')} className={styles.category_work}>
+							{worklist.map((work, i) => {
+								const key = Math.floor(Math.random() * 1000000);
 
-								<div className={styles.category_item_details}>
-									<h3>{work.title}</h3>
-									<p>{work.caption.replace('\n', '')}</p>
-								</div>
-							</Link>
-						)
+								return (
+									work.sub === category && (
+										<Link key={key} href={'/work/writing/' + i} className={styles.category_item}>
+											<div className={styles.category_item_image_container}>
+												<Image src={work.image} alt={'Cover of ' + work.title} className={styles.category_item_image} />
+											</div>
+
+											<div className={styles.category_item_details}>
+												<h3>{work.title}</h3>
+												<p>{work.caption.replace('\n', '')}</p>
+											</div>
+										</Link>
+									)
+								);
+							})}
+						</div>
 					);
 				})}
 			</section>
