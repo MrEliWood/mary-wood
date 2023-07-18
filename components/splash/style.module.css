@@ -1,4 +1,4 @@
-.page {
+.component {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	grid-template-areas: 'left right';
@@ -6,7 +6,7 @@
 	gap: var(--huge);
 	max-width: none;
 	min-height: 0;
-	height: 100vh;
+	height: calc(100vh - var(--header-height));
 	padding: var(--huge) var(--giant);
 	margin-bottom: var(--giant);
 }
@@ -18,7 +18,6 @@
 	flex-direction: column;
 	justify-content: center;
 	align-items: flex-end;
-	margin-top: calc(178px - var(--huge));
 }
 
 .right {
@@ -29,6 +28,7 @@
 	flex-direction: column;
 	justify-content: center;
 	gap: var(--medium);
+	margin-bottom: var(--header-height);
 }
 
 .book {

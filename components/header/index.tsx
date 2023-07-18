@@ -24,11 +24,11 @@ export default function Header() {
 	}, []);
 
 	return (
-		<header className={`${styles.header} ${scrollPosition < 60 && styles.splash_header}`}>
+		<header className={`${styles.header} ${scrollPosition > 60 && styles.scrolled_header}`}>
 			<Link href='/' className={styles.site_title}>
 				<h3>Mary Elene Wood</h3>
 
-				<p className={`${styles.site_caption} ${scrollPosition >= 60 && styles.hidden}`}>Writer, Teacher, Scholar</p>
+				<p className={`${styles.site_caption} ${scrollPosition > 60 && styles.hidden}`}>Writer, Teacher, Scholar</p>
 			</Link>
 
 			<Nav />

@@ -15,7 +15,7 @@ export default function Splash() {
 	const i: number = useMemo(() => 0, []);
 
 	return (
-		<section className={styles.page}>
+		<section className={styles.component}>
 			<Link href={worklist[i].link} className={styles.left}>
 				<Image src={book} alt='Life Writing & Schizophrenia' className={styles.book} />
 			</Link>

@@ -48,7 +48,7 @@
 	--huge: 90px;
 	--giant: 150px;
 
-	--header-height: calc(52px + var(--large) + var(--large));
+	--header-height: 112px;
 
 	/* fonts */
 	--font-avenir: Avenir, Arial, Helvetica, sans-serif;

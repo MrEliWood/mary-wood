@@ -5,28 +5,19 @@
 	top: 0;
 	display: flex;
 	justify-content: space-between;
-	background: var(--light75);
-	backdrop-filter: blur(30px);
-	box-shadow: var(--shadow);
 	width: 100%;
-	padding: var(--medium);
+	padding: var(--large) var(--large) 0 var(--large);
 	z-index: 2;
 	transition: all var(--animation-speed) ease-in-out;
+	animation: grow var(--animation-speed) ease-in-out both;
 }
 
-.header:hover {
+.scrolled_header {
+	animation: shrink var(--animation-speed) ease-in-out var(--animation-speed) both;
+}
+
+.scrolled_header:hover {
 	background: var(--light90);
-}
-
-.splash_header {
-	background: none;
-	backdrop-filter: blur(0px);
-	box-shadow: none;
-	padding: var(--large) var(--large) 0 var(--large);
-}
-
-.splash_header:hover {
-	background: none;
 }
 
 .site_title:hover {
@@ -35,7 +26,7 @@
 
 .site_caption {
 	overflow: hidden;
-	animation: fadein var(--animation-speed) ease-in-out both;
+	animation: fadein var(--animation-speed) ease-in-out var(--animation-speed) both;
 }
 
 .hidden {
@@ -43,7 +34,39 @@
 }
 
 .header:hover .hidden {
-	animation: fadein var(--animation-speed) ease-in-out both;
+	animation: fadein var(--animation-speed) ease-in-out var(--animation-speed) both;
+}
+
+@keyframes shrink {
+	from {
+		background: none;
+		backdrop-filter: none;
+		box-shadow: none;
+		padding: var(--large) var(--large) 0 var(--large);
+	}
+
+	to {
+		background: var(--light75);
+		backdrop-filter: blur(30px);
+		box-shadow: var(--shadow);
+		padding: var(--medium);
+	}
+}
+
+@keyframes grow {
+	from {
+		background: var(--light75);
+		backdrop-filter: blur(30px);
+		box-shadow: var(--shadow);
+		padding: var(--medium);
+	}
+
+	to {
+		background: none;
+		backdrop-filter: none;
+		box-shadow: none;
+		padding: var(--large) var(--large) 0 var(--large);
+	}
 }
 
 @keyframes fadeout {
