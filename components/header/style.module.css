@@ -1,9 +1,8 @@
 .header {
 	--animation-speed: 500ms;
 
-	position: fixed;
+	position: sticky;
 	top: 0;
-	left: 0;
 	display: flex;
 	justify-content: space-between;
 	background: var(--light75);
@@ -23,7 +22,7 @@
 	background: none;
 	backdrop-filter: blur(0px);
 	box-shadow: none;
-	padding: var(--large);
+	padding: var(--large) var(--large) 0 var(--large);
 }
 
 .splash_header:hover {

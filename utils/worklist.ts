@@ -80,7 +80,7 @@ const worklist: work[] = [
 	{
 		category: 'creative work',
 		sub: 'creative work',
-		title: '“Emissary From the Burning World,”',
+		title: '“Emissary From the Burning World”',
 		caption: 'Club Plum Journal (4: 2, April 2023)',
 		description: ``,
 		preview: ``,
@@ -92,7 +92,7 @@ const worklist: work[] = [
 	{
 		category: 'creative work',
 		sub: 'creative work',
-		title: '“Oracle, Puppetmaster, Tailor,”',
+		title: '“Oracle, Puppetmaster, Tailor”',
 		caption: 'Midway Journal (15: 2, April 15, 2021)',
 		description: ``,
 		preview: ``,
@@ -116,7 +116,7 @@ const worklist: work[] = [
 	{
 		category: 'creative work',
 		sub: 'creative work',
-		title: '“Tsunami,”',
+		title: '“Tsunami”',
 		caption: 'in The Missouri Review (23:3, 2000)',
 		description: ``,
 		preview: ``,
@@ -128,7 +128,7 @@ const worklist: work[] = [
 	{
 		category: 'creative work',
 		sub: 'creative work',
-		title: '"Maps of Beauty and Disease,"',
+		title: '"Maps of Beauty and Disease"',
 		caption: 'in British Journal of Medical Ethics (under the pseudonym Mary E. Ladd) (36:8, August 2010)',
 		description: ``,
 		preview: ``,
