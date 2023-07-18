@@ -1,3 +1,6 @@
+'use client';
+
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 
@@ -6,11 +9,26 @@ import { worklist } from '@/utils';
 import styles from './page.module.css';
 
 export default function Writing() {
+	const [scrollPosition, setScrollPosition] = useState<number>(0);
+
+	// const handleScroll = () => {
+	// 	const position = window.pageYOffset;
+	// 	setScrollPosition(position);
+	// };
+
+	// useEffect(() => {
+	// 	window.addEventListener('scroll', handleScroll);
+
+	// 	return () => {
+	// 		window.removeEventListener('scroll', handleScroll);
+	// 	};
+	// }, []);
+
 	// get list of categories from the worklist
-	const allCategories: string[] = worklist.map((work) => work.category);
+	const categoriesWithDuplicates: string[] = worklist.map((work) => work.category);
 
 	// filter out duplicate categories
-	const categories: string[] = allCategories.filter((category, i) => allCategories.indexOf(category) == i);
+	const categories: string[] = categoriesWithDuplicates.filter((category, i) => categoriesWithDuplicates.indexOf(category) == i);
 
 	const cats = ['books', 'essays & articles'];
 
@@ -29,7 +47,7 @@ export default function Writing() {
 
 								return (
 									work.sub === category && (
-										<Link key={key} href={'/work/writing/' + i} className={styles.category_item}>
+										<div key={key} className={styles.category_item}>
 											<div className={styles.category_item_image_container}>
 												<Image src={work.image} alt={'Cover of ' + work.title} className={styles.category_item_image} />
 											</div>
@@ -38,7 +56,7 @@ export default function Writing() {
 												<h3>{work.title}</h3>
 												<p>{work.caption.replace('\n', '')}</p>
 											</div>
-										</Link>
+										</div>
 									)
 								);
 							})}
@@ -47,34 +65,36 @@ export default function Writing() {
 				})}
 			</section>
 
-			{categories.map((category) => {
-				const key1 = Math.floor(Math.random() * 1000000);
+			<section className={styles.category}>
+				<h1 className={styles.category_heading}>Creative Work</h1>
 
-				return (
-					<section key={key1} className={styles.category}>
-						<h4 className={styles.heading}>{category}</h4>
+				{cats.map((category) => {
+					const key = Math.floor(Math.random() * 1000000);
 
-						{worklist.map((work, i) => {
-							const key2 = Math.floor(Math.random() * 1000000);
+					return (
+						<div key={key} id={category.replaceAll(' ', '-')} className={styles.category_work}>
+							{worklist.map((work, i) => {
+								const key = Math.floor(Math.random() * 1000000);
 
-							return (
-								work.category === category && (
-									<Link key={key2} href={'/work/writing/' + i}>
-										<div className={styles.work}>
-											{work.image ? <Image src={work.image} alt={'Cover of ' + work.title} width={300} height={300} className={styles.cover} /> : <div className={styles.book_emoji}>📓</div>}
+								return (
+									work.sub === 'creative work' && (
+										<div key={key} className={styles.category_item}>
+											<div className={styles.category_item_image_container}>
+												<Image src={work.image} alt={'Cover of ' + work.title} className={styles.category_item_image} />
+											</div>
 
-											<div className={styles.details}>
-												<h2>{work.title}</h2>
+											<div className={styles.category_item_details}>
+												<h3>{work.title}</h3>
 												<p>{work.caption.replace('\n', '')}</p>
 											</div>
 										</div>
-									</Link>
-								)
-							);
-						})}
-					</section>
-				);
-			})}
+									)
+								);
+							})}
+						</div>
+					);
+				})}
+			</section>
 		</main>
 	);
 }

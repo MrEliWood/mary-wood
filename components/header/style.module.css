@@ -2,6 +2,8 @@
 	--animation-speed: 500ms;
 
 	position: fixed;
+	top: 0;
+	left: 0;
 	display: flex;
 	justify-content: space-between;
 	background: var(--light75);
