@@ -1,0 +1,46 @@
+.page {
+	display: flex;
+	flex-direction: column;
+	gap: var(--huge);
+	flex-grow: 1;
+}
+
+.work {
+	flex-direction: row;
+	align-items: flex-start;
+	gap: var(--medium);
+}
+
+.work:nth-child(even) {
+	flex-direction: row-reverse;
+}
+
+.cover {
+	min-width: 300px;
+	max-width: 300px;
+	height: auto;
+	object-fit: contain;
+}
+
+.book_emoji {
+	display: flex;
+	font-size: 80px;
+	width: 100px;
+}
+
+.details {
+	display: flex;
+	flex-direction: column;
+	gap: var(--small);
+	width: 100%;
+}
+
+.heading {
+	border-bottom: var(--border);
+	padding-bottom: 5px;
+	margin-bottom: 1px;
+}
+
+.bold {
+	font-weight: 700 !important;
+}
