@@ -4,11 +4,11 @@ import { createSlice } from '@reduxjs/toolkit';
 
 import type { Blogs } from '@/types';
 
-export interface tokenState {
+export interface blogDataState {
 	value: Blogs;
 }
 
-const initialState: tokenState = {
+const initialState: blogDataState = {
 	value: { published: [], drafts: [], deleted: [] }
 };
 

@@ -49,6 +49,7 @@
 	--giant: 150px;
 
 	--header-height: 112px;
+	--footer-height: 204px;
 
 	/* fonts */
 	--font-avenir: Avenir, Arial, Helvetica, sans-serif;
@@ -99,6 +100,17 @@ html {
 	background-position: bottom;
 }
 
+html::after {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	backdrop-filter: blur(10px);
+	z-index: -1;
+}
+
 body {
 	display: flex;
 	flex-direction: column;
@@ -109,8 +121,8 @@ body {
 	font-weight: var(--font-weight-secondary);
 	line-height: var(--line-height-secondary);
 	background: radial-gradient(ellipse at center, var(--overlay) 50%, var(--light50)), linear-gradient(transparent, 50vh, var(--overlay));
-	backdrop-filter: blur(10px);
 	white-space: pre-line;
+	padding-top: var(--header-height);
 }
 
 form {
@@ -191,6 +203,30 @@ ul p {
 ol p:first-of-type,
 ul p:first-of-type {
 	margin-top: 0;
+}
+
+table {
+	display: flex;
+	flex-direction: column;
+}
+
+th {
+	text-align: start;
+	margin: var(--medium) 0 0 0;
+}
+
+th:first-of-type {
+	margin-top: 0;
+}
+
+td {
+	position: relative;
+}
+
+td::before {
+	content: '-';
+	padding: 0 var(--tiny);
+	margin: 0 var(--tiny);
 }
 
 a,

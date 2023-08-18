@@ -1,4 +1,4 @@
-import { Header, Footer, Splash } from '@/components';
+import { Header, Footer } from '@/components';
 import { Providers } from '@/redux/provider';
 
 import { Libre_Caslon_Text } from 'next/font/google';

@@ -29,6 +29,7 @@
 	justify-content: center;
 	gap: var(--medium);
 	margin-bottom: var(--header-height);
+	z-index: 1;
 }
 
 .book {
@@ -39,7 +40,6 @@
 	object-fit: contain;
 	width: var(--size);
 	height: var(--size);
-	z-index: -1;
 }
 
 .text_block {

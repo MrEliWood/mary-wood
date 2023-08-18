@@ -6,6 +6,7 @@ import styles from './style.module.css';
 interface Props {
 	text?: string;
 	href?: string;
+	target?: string;
 }
 
 const defaultProps = {
@@ -13,9 +14,9 @@ const defaultProps = {
 	href: '/'
 };
 
-export default function TextArrow({ text = 'Read More', href = '/' }: Props) {
+export default function TextArrow({ text = 'Read More', href = '/', target = '_self' }: Props) {
 	return (
-		<Link href={href} className={styles.text_arrow}>
+		<Link href={href} target={target} className={styles.text_arrow}>
 			<button>
 				<h5 className={styles.text_arrow_text}>{text}</h5>
 				<h5 className={styles.text_arrow_arrow}>→</h5>
