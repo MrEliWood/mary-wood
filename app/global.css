@@ -302,13 +302,13 @@ button:hover::after {
 	gap: var(--tiny);
 }
 
-path {
+/* path {
 	fill: var(--dark);
 }
 
 button:hover path {
 	fill: var(--light);
-}
+} */
 
 h1 {
 	font-size: 2.4em;
