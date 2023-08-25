@@ -1,6 +1,5 @@
 'use client';
 
-import { useMemo } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 
@@ -13,13 +12,13 @@ interface Props {
 }
 
 export default function Preview(props: Props) {
-	const work = useMemo(() => worklist[props.index], []);
+	const work = worklist[props.index];
 
 	return (
-		<div className={styles.component}>
+		<Link href={`/work/writing/${work.title.toLowerCase().replaceAll(' ', '-')}`} className={styles.component}>
 			{work.image ? (
 				<div className={styles.image_container}>
-					<Image src={work.image} alt={'Cover of ' + work.title} className={styles.image} />
+					<Image src={work.image} alt={'Cover of ' + work.title} width={100} height={100} className={styles.image} />
 				</div>
 			) : (
 				<i className={`fi fi-ss-book-bookmark ${styles.book_icon}`}></i>
@@ -29,6 +28,6 @@ export default function Preview(props: Props) {
 				<h3>{work.title}</h3>
 				<p>{work.caption.replace('\n', '')}</p>
 			</div>
-		</div>
+		</Link>
 	);
 }

@@ -3,6 +3,7 @@
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
+	align-items: center;
 	min-height: calc(100vh - var(--header-height));
 	overflow: clip;
 	overflow-clip-margin: var(--header-height);
@@ -29,8 +30,10 @@
 }
 
 .cover {
+	position: sticky;
+	top: calc(var(--large) + var(--header-height));
 	object-fit: contain;
-	width: 20vw;
+	width: 25vw;
 	height: auto;
 	box-shadow: var(--shadow);
 }
@@ -51,7 +54,7 @@
 }
 
 .table {
-	margin-top: var(--medium);
+	width: 100%;
 }
 
 .table_bold {
@@ -60,39 +63,4 @@
 	background: var(--gradient);
 	background-clip: text;
 	-webkit-background-clip: text;
-}
-
-.nav {
-	display: grid;
-	grid-template-columns: max-content auto max-content;
-	width: 100vw;
-	padding: var(--medium);
-}
-
-.nav_item {
-	display: flex;
-	gap: var(--tiny);
-	width: fit-content;
-}
-
-.nav_item:hover {
-	cursor: pointer;
-	background: none;
-	background-clip: none;
-	-webkit-background-clip: none;
-	color: inherit;
-}
-
-.nav_item_prev {
-	grid-column: 1;
-}
-
-.nav_item_next {
-	justify-content: flex-end;
-	grid-column: 3;
-}
-
-.chevron {
-	width: 24px;
-	height: 24px;
 }

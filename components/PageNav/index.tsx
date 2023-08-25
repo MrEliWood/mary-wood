@@ -6,8 +6,8 @@ import styles from './style.module.css';
 import { Work } from '@/types';
 
 interface NavItem {
-	text: string;
-	link: string;
+	text: string | null;
+	link: string | null;
 }
 
 interface Props {
@@ -25,7 +25,7 @@ export default function PageNav({ prev, next }: Props) {
 
 	return (
 		<nav className={styles.nav}>
-			{prev && (
+			{prev.text && prev.link && (
 				<Link href={prev.link} className={`${styles.nav_item} ${styles.nav_item_prev}`}>
 					<svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' strokeWidth={1.5} stroke='currentColor' className={styles.chevron}>
 						<path strokeLinecap='round' strokeLinejoin='round' d='M15.75 19.5L8.25 12l7.5-7.5' />
@@ -35,7 +35,7 @@ export default function PageNav({ prev, next }: Props) {
 				</Link>
 			)}
 
-			{next && (
+			{next.text && next.link && (
 				<Link href={next.link} className={`${styles.nav_item} ${styles.nav_item_next}`}>
 					<p>{next.text}</p>
 

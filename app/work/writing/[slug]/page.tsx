@@ -1,3 +1,5 @@
+'use client';
+
 import Image from 'next/image';
 import { redirect } from 'next/navigation';
 
@@ -11,23 +13,21 @@ interface Props {
 
 export default function DynamicWriting(props: Props) {
 	const { slug } = props.params;
-	console.log(props);
 
 	const found = worklist.find(({ title }) => title.toLowerCase().replaceAll(' ', '-') === slug);
-	// if (!found) redirect('/');
-	if (!found) return <p>TEMP</p>;
+	if (!found) redirect('/');
 
 	const { category, sub, title, caption, description, preview, image, published, link, table } = found;
 	const index = worklist.indexOf(found);
 
-	const buildLink = (title: string) => `/work/writing/${title.toLowerCase().replaceAll(' ', '-')}`;
+	const buildLink = (title: string) => `/work/writing/${title.toLowerCase().replaceAll(' ', '-')}` || null;
 
-	const prev = worklist[index - 1];
-	const prevText = prev.title;
+	const prev = worklist[index - 1] || { title: '' };
+	const prevText = prev.title || null;
 	const prevLink = buildLink(prev.title);
 
-	const next = worklist[index + 1];
-	const nextText = next.title;
+	const next = worklist[index + 1] || { title: '' };
+	const nextText = next.title || null;
 	const nextLink = buildLink(next.title);
 
 	const prevNav = { text: prevText, link: prevLink };
@@ -55,8 +55,6 @@ export default function DynamicWriting(props: Props) {
 					<p className={styles.date}>Published {published}</p>
 
 					<p>{description}</p>
-
-					<Buttons.TextArrow text='Where to Buy' href={link} target='_blank' />
 
 					{table && (
 						<table className={styles.table}>
@@ -95,6 +93,8 @@ export default function DynamicWriting(props: Props) {
 							})}
 						</table>
 					)}
+
+					<Buttons.TextArrow text='Where to Buy' href={link} target='_blank' />
 				</div>
 			</section>
 

@@ -1,0 +1,34 @@
+.nav {
+	display: grid;
+	grid-template-columns: max-content auto max-content;
+	width: 100vw;
+	padding: var(--medium);
+}
+
+.nav_item {
+	display: flex;
+	gap: var(--tiny);
+	width: fit-content;
+}
+
+.nav_item:hover {
+	cursor: pointer;
+	background: none;
+	background-clip: none;
+	-webkit-background-clip: none;
+	color: inherit;
+}
+
+.nav_item_prev {
+	grid-column: 1;
+}
+
+.nav_item_next {
+	justify-content: flex-end;
+	grid-column: 3;
+}
+
+.chevron {
+	width: 24px;
+	height: 24px;
+}
