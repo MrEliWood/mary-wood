@@ -1,6 +1,5 @@
 'use client';
 
-import { useMemo } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 
@@ -11,24 +10,25 @@ import book from '@/public/assets/images/life-writing-mockup.png';
 import styles from './style.module.css';
 
 export default function Splash() {
-	// worklist index
-	const i: number = useMemo(() => 0, []);
+	const { title, caption, preview, link } = worklist[0];
+
+	const readMoreLink = `/work/writing/${title.toLowerCase().replaceAll(' ', '-')}`;
 
 	return (
 		<section className={styles.component}>
-			<Link href={worklist[i].link} className={styles.left}>
+			<Link href={link} className={styles.left}>
 				<Image src={book} alt='Life Writing & Schizophrenia' className={styles.book} />
 			</Link>
 
 			<aside className={styles.right}>
-				<Link href={worklist[i].link} className={styles.text_block}>
-					<h1 className={styles.title}>{worklist[i].title}</h1>
-					<h3 className={styles.subtitle}>{worklist[i].caption}</h3>
+				<Link href={link} className={styles.text_block}>
+					<h1 className={styles.title}>{title}</h1>
+					<h3 className={styles.subtitle}>{caption}</h3>
 				</Link>
 
-				<p>{worklist[i].preview}</p>
+				<p>{preview}</p>
 
-				<Buttons.TextArrow href={'/work/writing/' + i} />
+				<Buttons.TextArrow href={readMoreLink} />
 			</aside>
 		</section>
 	);

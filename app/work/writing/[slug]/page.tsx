@@ -1,17 +1,37 @@
-import Link from 'next/link';
 import Image from 'next/image';
+import { redirect } from 'next/navigation';
 
 import styles from './page.module.css';
-import { Buttons } from '@/components';
+import { Buttons, PageNav } from '@/components';
 import { worklist } from '@/utils';
 
 interface Props {
-	params: { index: string };
+	params: { slug: string };
 }
 
 export default function DynamicWriting(props: Props) {
-	const index = Number(props.params.index);
-	const { category, sub, title, caption, description, preview, image, published, link, table } = worklist[index];
+	const { slug } = props.params;
+	console.log(props);
+
+	const found = worklist.find(({ title }) => title.toLowerCase().replaceAll(' ', '-') === slug);
+	// if (!found) redirect('/');
+	if (!found) return <p>TEMP</p>;
+
+	const { category, sub, title, caption, description, preview, image, published, link, table } = found;
+	const index = worklist.indexOf(found);
+
+	const buildLink = (title: string) => `/work/writing/${title.toLowerCase().replaceAll(' ', '-')}`;
+
+	const prev = worklist[index - 1];
+	const prevText = prev.title;
+	const prevLink = buildLink(prev.title);
+
+	const next = worklist[index + 1];
+	const nextText = next.title;
+	const nextLink = buildLink(next.title);
+
+	const prevNav = { text: prevText, link: prevLink };
+	const nextNav = { text: nextText, link: nextLink };
 
 	return (
 		<div className={styles.page}>
@@ -78,27 +98,7 @@ export default function DynamicWriting(props: Props) {
 				</div>
 			</section>
 
-			<section className={styles.nav}>
-				{worklist[index - 1] && (
-					<Link href={'/work/writing/' + (index - 1)} className={`${styles.nav_item} ${styles.nav_item_prev}`}>
-						<svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' strokeWidth={1.5} stroke='currentColor' className={styles.chevron}>
-							<path strokeLinecap='round' strokeLinejoin='round' d='M15.75 19.5L8.25 12l7.5-7.5' />
-						</svg>
-
-						<p>{worklist[index - 1].title}</p>
-					</Link>
-				)}
-
-				{worklist[index + 1] && (
-					<Link href={'/work/writing/' + (index + 1)} className={`${styles.nav_item} ${styles.nav_item_next}`}>
-						<p>{worklist[index + 1].title}</p>
-
-						<svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' strokeWidth={1.5} stroke='currentColor' className={styles.chevron}>
-							<path strokeLinecap='round' strokeLinejoin='round' d='M8.25 4.5l7.5 7.5-7.5 7.5' />
-						</svg>
-					</Link>
-				)}
-			</section>
+			<PageNav prev={prevNav} next={nextNav} />
 		</div>
 	);
 }

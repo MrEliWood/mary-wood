@@ -8,7 +8,7 @@ type Work = {
 	image: any;
 	published: string;
 	link: string;
-	table: string[];
+	table: { type: string; text: string }[] | null;
 };
 
 const workData: Work[] = [
@@ -22,7 +22,7 @@ const workData: Work[] = [
 		image: '/assets/images/life-writing-and-schizophrenia.jpg',
 		published: 'January 1st, 2013',
 		link: 'https://brill.com/display/title/28350?language=en',
-		table: []
+		table: null
 	},
 	{
 		category: 'scholarship',
@@ -34,7 +34,7 @@ const workData: Work[] = [
 		image: '/assets/images/the-writing-on-the-wall.jpg',
 		published: 'December 1st, 1994',
 		link: 'https://www.amazon.com/Writing-Wall-WOMENS-AUTOBIOGRAPHY-ASYLUM/dp/0252063899',
-		table: []
+		table: null
 	},
 	{
 		category: 'scholarship',
@@ -46,7 +46,25 @@ const workData: Work[] = [
 		image: '/assets/images/madness-and-literature.jpg',
 		published: 'October 3rd, 2022',
 		link: 'https://www.exeterpress.co.uk/products/madness-and-literature',
-		table: [`Part I: Literary History and Socio-Political Perspectives`, `Layla and Majnun in Historical and Contemporary Conceptions of Madness in Islamic Psychology Alan Weber`, `The Anti-Psychiatry Ethos in Samuel Beckett’s Murphy Shoshana Benjamin`, `Apartheid’s Garden: Dismantling Madness in J.M. Coetzee’s Life & Times of Michael K Sebastian C. Galbo`, `Sniffs and Dribblers: Poppy Shakespeare and the Identities of Madness Clare Allan`, `Part II: Literary Theory and Experiencing Mental Illness`, `Reading Shattering Minds and Extended Selves in Virginia Woolf’s Mrs Dalloway Anna Ovaska`, `Spill the Words: Speechlessness and Creativity in the Writing of Janet Frame Mary Elene Wood`, `Pronominal Shifts and the Confusion of Self with Not-Self Alice Hervé`, `Rethinking Clinical and Critical Perspectives on Psychosis in Kathy Acker’s Writing Charley Baker`, `Countering the DSM in Poetry about Bipolar Disorder Lasse Raaby Gammelgaard`, `Seeing Feeling: Dissociation and Post-Traumatic Memory in the Graphic Novel Perfect Hair Penni Russon`, `Part III: Literary Instrumentality and Clinical Psychopathology`, `Writing Therapy, Writing Data: Therapeutic Writing as a Methodological and Ethical Approach in Researching Digital Sexual Assault Signe Uldbjerg`, `A Question of Context: Sites for Cultural Negotiation in Narratives of Manic Depression Megan Milota`, `Conscripting Dante: History, Anachronism, and the Uses of Literary Precedents in the ‘New’ Diagnosis of Hoarding Disorder David Orr`, `Opening Up the Discourse of Male Eating Disorders: Personal Experience in German and English Narratives Heike Bartel`]
+		table: [
+			{ type: 'head', text: `Part I: Literary History and Socio-Political Perspectives` },
+			{ type: 'line', text: `Layla and Majnun in Historical and Contemporary Conceptions of Madness in Islamic Psychology Alan Weber` },
+			{ type: 'line', text: `The Anti-Psychiatry Ethos in Samuel Beckett’s Murphy Shoshana Benjamin` },
+			{ type: 'line', text: `Apartheid’s Garden: Dismantling Madness in J.M. Coetzee’s Life & Times of Michael K Sebastian C. Galbo` },
+			{ type: 'line', text: `Sniffs and Dribblers: Poppy Shakespeare and the Identities of Madness Clare Allan` },
+			{ type: 'head', text: `Part II: Literary Theory and Experiencing Mental Illness` },
+			{ type: 'line', text: `Reading Shattering Minds and Extended Selves in Virginia Woolf’s Mrs Dalloway Anna Ovaska` },
+			{ type: 'bold', text: `Spill the Words: Speechlessness and Creativity in the Writing of Janet Frame Mary Elene Wood` },
+			{ type: 'line', text: `Pronominal Shifts and the Confusion of Self with Not-Self Alice Hervé` },
+			{ type: 'line', text: `Rethinking Clinical and Critical Perspectives on Psychosis in Kathy Acker’s Writing Charley Baker` },
+			{ type: 'line', text: `Countering the DSM in Poetry about Bipolar Disorder Lasse Raaby Gammelgaard` },
+			{ type: 'line', text: `Seeing Feeling: Dissociation and Post-Traumatic Memory in the Graphic Novel Perfect Hair Penni Russon` },
+			{ type: 'head', text: `Part III: Literary Instrumentality and Clinical Psychopathology` },
+			{ type: 'line', text: `Writing Therapy, Writing Data: Therapeutic Writing as a Methodological and Ethical Approach in Researching Digital Sexual Assault Signe Uldbjerg` },
+			{ type: 'line', text: `A Question of Context: Sites for Cultural Negotiation in Narratives of Manic Depression Megan Milota` },
+			{ type: 'line', text: `Conscripting Dante: History, Anachronism, and the Uses of Literary Precedents in the ‘New’ Diagnosis of Hoarding Disorder David Orr` },
+			{ type: 'line', text: `Opening Up the Discourse of Male Eating Disorders: Personal Experience in German and English Narratives Heike Bartel` }
+		]
 	},
 	{
 		category: 'scholarship',
@@ -58,7 +76,19 @@ const workData: Work[] = [
 		image: '/assets/images/affective-materialities.jpg',
 		published: 'April 2nd, 2019',
 		link: 'https://upf.com/book.asp?id=9780813056289',
-		table: [`Into the Ether: An Invitation to Bodily Reorientations 1 Molly Volanth Hall and Kara Watts`, `Flesh over Granite: Walt Whitman’s Embodied Presence in William Carlos Williams’s “History” 33 Karen Guendel`, `E. M. Forster among the Ruins 55 Stuart Christie`, `“‘I’m not sick,’ I said. ‘I’m wounded’”: Disrupting Wounded Masculinity through the Lyrical Spaces of War 79 Cheryl Hindrichs`, `Frustrated Energies in Modernism’s Female Arrangements 103 Judith Paltin`, `“Things were in people, people were in things”: Language, Ecology, and the Body in H.D. 123 Kim Sigouin`, `Cold Crystal: The Ecology of Affect in Herbert Read’s The Green Child 147 William Kupinse`, `“I wanna be your puppy”: Djuna Barnes’s Nightwood and the Queer Cute Body 172 Anna Christine`, `The Brain and the Living World in Janet Frame’s Faces in the Water 192 Mary Elene Wood`, `“Becoming Animal, Becoming Other”: Modernism, Millennial Jurisprudence, and the Limits of Materialist Subjectivity 213 Kathryn Van Wert`, `Black Girls and Lady Police: Blank Affect and the Ecology of the Gym 236 Robin Hackett`]
+		table: [
+			{ type: 'line', text: `Into the Ether: An Invitation to Bodily Reorientations 1 Molly Volanth Hall and Kara Watts` },
+			{ type: 'line', text: `Flesh over Granite: Walt Whitman’s Embodied Presence in William Carlos Williams’s “History” 33 Karen Guendel` },
+			{ type: 'line', text: `E. M. Forster among the Ruins 55 Stuart Christie` },
+			{ type: 'line', text: `“‘I’m not sick,’ I said. ‘I’m wounded’”: Disrupting Wounded Masculinity through the Lyrical Spaces of War 79 Cheryl Hindrichs` },
+			{ type: 'line', text: `Frustrated Energies in Modernism’s Female Arrangements 103 Judith Paltin` },
+			{ type: 'line', text: `“Things were in people, people were in things”: Language, Ecology, and the Body in H.D. 123 Kim Sigouin` },
+			{ type: 'line', text: `Cold Crystal: The Ecology of Affect in Herbert Read’s The Green Child 147 William Kupinse` },
+			{ type: 'line', text: `“I wanna be your puppy”: Djuna Barnes’s Nightwood and the Queer Cute Body 172 Anna Christine` },
+			{ type: 'bold', text: `The Brain and the Living World in Janet Frame’s Faces in the Water 192 Mary Elene Wood` },
+			{ type: 'line', text: `“Becoming Animal, Becoming Other”: Modernism, Millennial Jurisprudence, and the Limits of Materialist Subjectivity 213 Kathryn Van Wert` },
+			{ type: 'line', text: `Black Girls and Lady Police: Blank Affect and the Ecology of the Gym 236 Robin Hackett` }
+		]
 	},
 	{
 		category: 'creative work',

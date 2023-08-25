@@ -1,17 +1,6 @@
-type work = {
-	category: string;
-	sub: string;
-	title: string;
-	caption: string;
-	description: string;
-	preview: string;
-	image: any;
-	published: string;
-	link: string;
-	table: { type: string; text: string }[] | null;
-};
+import { Work } from '../types';
 
-const worklist: work[] = [
+const worklist: Work[] = [
 	{
 		category: 'scholarship',
 		sub: 'books',

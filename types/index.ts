@@ -6,6 +6,19 @@ export interface Image {
 	updatedAt: string;
 }
 
+export type Work = {
+	category: string;
+	sub: string;
+	title: string;
+	caption: string;
+	description: string;
+	preview: string;
+	image: any;
+	published: string;
+	link: string;
+	table: { type: string; text: string }[] | null;
+};
+
 export interface Blog {
 	author: object;
 	author_id: number;

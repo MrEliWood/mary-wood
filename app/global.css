@@ -50,6 +50,7 @@
 
 	--header-height: 112px;
 	--footer-height: 204px;
+	--max-width: 1920px;
 
 	/* fonts */
 	--font-avenir: Avenir, Arial, Helvetica, sans-serif;

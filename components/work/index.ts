@@ -1,3 +1,3 @@
-import Preview from './preview';
+import Preview from './Preview';
 
 export default { Preview };
