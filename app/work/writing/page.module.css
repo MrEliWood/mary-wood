@@ -4,13 +4,16 @@
 	align-items: center;
 	gap: var(--large);
 	width: 100%;
-	padding: 0 var(--giant) var(--giant);
+	padding: var(--huge);
 }
 
 .category {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	gap: var(--large);
+	width: 100%;
+	min-height: calc(100vh - var(--header-height) - var(--large));
 }
 
 .category_heading {
@@ -22,9 +25,16 @@
 }
 
 .category_work {
-	display: grid;
-	grid-template-columns: repeat(4, 1fr);
-	gap: var(--huge);
+	display: flex;
+	justify-content: center;
+	gap: var(--large);
+	flex-wrap: wrap;
 	width: 100%;
-	margin: var(--large) 0;
+}
+
+.work_container {
+	display: flex;
+	height: 50vh;
+	width: auto;
+	max-height: 100%;
 }

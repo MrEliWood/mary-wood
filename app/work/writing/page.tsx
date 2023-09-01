@@ -5,25 +5,31 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 import { Work } from '@/components';
-import { worklist } from '@/utils';
+import { workCategories, worklist } from '@/utils';
 
 import styles from './page.module.css';
-
-const categories = [
-	{ name: 'scholarship', subCategories: ['books', 'essays & articles'] },
-	{ name: 'creative work', subCategories: null }
-];
 
 export default function Writing() {
 	return (
 		<main className={styles.page}>
-			{categories.map((category) => {
+			{workCategories.map(({ name }) => {
 				const key = Math.floor(Math.random() * 1000000);
-				const { name, subCategories } = category;
 
 				return (
-					<section className={styles.category}>
+					<section key={key} className={styles.category}>
 						<h1 className={styles.category_heading}>{name}</h1>
+
+						<div className={styles.category_work}>
+							{worklist.map((work, i) => {
+								return (
+									work.category === name && (
+										<div className={styles.work_container}>
+											<Work.Preview key={key} index={i} />
+										</div>
+									)
+								);
+							})}
+						</div>
 					</section>
 				);
 			})}
