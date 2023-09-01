@@ -47,7 +47,7 @@ export default function DynamicWriting(props: Props) {
 				)}
 
 				<div className={styles.content}>
-					<div className={styles.content_row}>
+					<div className={styles.heading}>
 						<h1>{title}</h1>
 						<h3>{caption.replace('\n ', '')}</h3>
 					</div>
@@ -94,7 +94,9 @@ export default function DynamicWriting(props: Props) {
 						</table>
 					)}
 
-					<Buttons.TextArrow text='Where to Buy' href={link} target='_blank' />
+					<div className={styles.button_block}>
+						<Buttons.TextArrow text='Where to Buy' href={link} target='_blank' />
+					</div>
 				</div>
 			</section>
 

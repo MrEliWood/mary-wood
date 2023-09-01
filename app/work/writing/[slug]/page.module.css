@@ -11,11 +11,11 @@
 
 .work {
 	display: flex;
-	gap: var(--large);
+	gap: var(--huge);
 	width: 100%;
 	height: 100%;
 	max-width: var(--max-width);
-	padding: var(--large);
+	padding: var(--huge) var(--giant);
 }
 
 .background {
@@ -44,13 +44,14 @@
 	gap: var(--medium);
 }
 
-.content_row {
+.heading {
 	display: flex;
 	flex-direction: column;
+	gap: var(--tiny);
 }
 
 .date {
-	font-weight: 700;
+	line-height: 0.8;
 }
 
 .table {
@@ -63,4 +64,17 @@
 	background: var(--gradient);
 	background-clip: text;
 	-webkit-background-clip: text;
+}
+
+.table_bold::before {
+	content: '✦';
+	padding: 0 1.5px;
+	margin: 0 var(--tiny);
+}
+
+.button_block {
+	display: flex;
+	border-top: var(--border);
+	padding-top: var(--medium);
+	z-index: 1;
 }

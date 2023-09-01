@@ -21,6 +21,13 @@
 	background: var(--light90);
 }
 
+.site_title {
+	display: flex;
+	flex-direction: column;
+	gap: var(--tiny);
+	line-height: 1;
+}
+
 .site_title:hover {
 	color: var(--dark);
 }

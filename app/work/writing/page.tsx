@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 
@@ -9,32 +9,12 @@ import { worklist } from '@/utils';
 
 import styles from './page.module.css';
 
+const categories = [
+	{ name: 'scholarship', subCategories: ['books', 'essays & articles'] },
+	{ name: 'creative work', subCategories: null }
+];
+
 export default function Writing() {
-	const [scrollPosition, setScrollPosition] = useState<number>(0);
-
-	const handleScroll = () => {
-		const position = window.pageYOffset;
-		setScrollPosition(position);
-	};
-
-	useEffect(() => {
-		window.addEventListener('scroll', handleScroll);
-
-		return () => {
-			window.removeEventListener('scroll', handleScroll);
-		};
-	}, []);
-
-	const categories = useMemo(
-		() => [
-			{ name: 'scholarship', subCategories: ['books', 'essays & articles'] },
-			{ name: 'creative work', subCategories: null }
-		],
-		[]
-	);
-
-	const work = useMemo(() => worklist, []);
-
 	return (
 		<main className={styles.page}>
 			{categories.map((category) => {
@@ -42,35 +22,52 @@ export default function Writing() {
 				const { name, subCategories } = category;
 
 				return (
-					<section key={key} className={styles.category}>
+					<section className={styles.category}>
 						<h1 className={styles.category_heading}>{name}</h1>
-
-						{!subCategories ? (
-							<div className={styles.category_work}>
-								{worklist.map((work, i) => {
-									const key = Math.floor(Math.random() * 1000000);
-
-									return work.sub === name && <Work.Preview key={key} index={i} />;
-								})}
-							</div>
-						) : (
-							subCategories.map((sub) => {
-								const key = Math.floor(Math.random() * 1000000);
-
-								return (
-									<div key={key} id={sub.replaceAll(' ', '-')} className={styles.category_work}>
-										{worklist.map((work, i) => {
-											const key = Math.floor(Math.random() * 1000000);
-
-											return work.sub === sub && <Work.Preview key={key} index={i} />;
-										})}
-									</div>
-								);
-							})
-						)}
 					</section>
 				);
 			})}
 		</main>
 	);
 }
+
+// export default function Writing() {
+// 	return (
+// 		<main className={styles.page}>
+// 			{categories.map((category) => {
+// 				const key = Math.floor(Math.random() * 1000000);
+// 				const { name, subCategories } = category;
+
+// 				return (
+// 					<section key={key} className={styles.category}>
+// 						<h1 className={styles.category_heading}>{name}</h1>
+
+// 						{!subCategories ? (
+// 							<div className={styles.category_work}>
+// 								{worklist.map((work, i) => {
+// 									const key = Math.floor(Math.random() * 1000000);
+
+// 									return work.sub === name && <Work.Preview key={key} index={i} />;
+// 								})}
+// 							</div>
+// 						) : (
+// 							subCategories.map((sub) => {
+// 								const key = Math.floor(Math.random() * 1000000);
+
+// 								return (
+// 									<div key={key} id={sub.replaceAll(' ', '-')} className={styles.category_work}>
+// 										{worklist.map((work, i) => {
+// 											const key = Math.floor(Math.random() * 1000000);
+
+// 											return work.sub === sub && <Work.Preview key={key} index={i} />;
+// 										})}
+// 									</div>
+// 								);
+// 							})
+// 						)}
+// 					</section>
+// 				);
+// 			})}
+// 		</main>
+// 	);
+// }

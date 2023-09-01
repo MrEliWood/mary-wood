@@ -23,7 +23,7 @@
 
 .category_work {
 	display: grid;
-	grid-template-columns: 1fr 1fr;
+	grid-template-columns: repeat(4, 1fr);
 	gap: var(--huge);
 	width: 100%;
 	margin: var(--large) 0;
