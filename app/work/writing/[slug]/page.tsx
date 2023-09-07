@@ -12,13 +12,11 @@ interface Props {
 }
 
 export default function DynamicWriting(props: Props) {
-	const { slug } = props.params;
+	const foundWork = worklist.find(({ title }) => title.toLowerCase().replaceAll(' ', '-') === props.params.slug);
+	if (!foundWork) redirect('/');
 
-	const found = worklist.find(({ title }) => title.toLowerCase().replaceAll(' ', '-') === slug);
-	if (!found) redirect('/');
-
-	const { category, sub, title, caption, description, preview, image, published, link, table } = found;
-	const index = worklist.indexOf(found);
+	const { category, sub, title, caption, description, preview, image, published, link, table } = foundWork;
+	const index = worklist.indexOf(foundWork);
 
 	const buildLink = (title: string) => `/work/writing/${title.toLowerCase().replaceAll(' ', '-')}` || null;
 

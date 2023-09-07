@@ -2,18 +2,17 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	gap: var(--large);
+	gap: var(--huge);
 	width: 100%;
-	padding: var(--huge);
+	padding: 0 var(--large);
 }
 
 .category {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	gap: var(--large);
+	gap: var(--medium);
 	width: 100%;
-	min-height: calc(100vh - var(--header-height) - var(--large));
 }
 
 .category_heading {
@@ -27,7 +26,7 @@
 .category_work {
 	display: flex;
 	justify-content: center;
-	gap: var(--large);
+	gap: var(--medium);
 	flex-wrap: wrap;
 	width: 100%;
 }

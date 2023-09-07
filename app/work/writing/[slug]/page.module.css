@@ -4,6 +4,7 @@
 	flex-direction: column;
 	justify-content: space-between;
 	align-items: center;
+	gap: var(--large);
 	min-height: calc(100vh - var(--header-height));
 	overflow: clip;
 	overflow-clip-margin: var(--header-height);
@@ -15,7 +16,7 @@
 	width: 100%;
 	height: 100%;
 	max-width: var(--max-width);
-	padding: var(--huge) var(--giant);
+	padding: 0 var(--giant);
 }
 
 .background {
@@ -31,7 +32,7 @@
 
 .cover {
 	position: sticky;
-	top: calc(var(--large) + var(--header-height));
+	top: var(--header-height);
 	object-fit: contain;
 	width: 25vw;
 	height: auto;

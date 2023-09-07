@@ -16,7 +16,14 @@ export default function Preview(props: Props) {
 
 	return (
 		<Link href={`/work/writing/${work.title.toLowerCase().replaceAll(' ', '-')}`} className={styles.component}>
-			{work.image ? <Image src={work.image} alt={'Cover of ' + work.title} width={100} height={100} className={styles.image} /> : <h1>{work.title}</h1>}
+			{work.image ? (
+				<Image src={work.image} alt={'Cover of ' + work.title} width={100} height={100} className={styles.image} />
+			) : (
+				<>
+					<Image src='/assets/images/blank-book.png' alt={'Cover of ' + work.title} width={100} height={100} className={styles.blank_image} />
+					<h3 className={styles.title}>{work.title}</h3>
+				</>
+			)}
 
 			{/* <div className={styles.details}>
 				<h3>{work.title}</h3>

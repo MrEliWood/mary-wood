@@ -1,37 +1,24 @@
 .component {
+	position: relative;
 	display: flex;
 	flex-direction: column;
+	justify-content: center;
 	align-items: center;
 	gap: var(--medium);
+	box-shadow: var(--shadow);
 	height: 100%;
 }
 
-.image_container {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	height: 1%;
-	flex-grow: 1;
-	box-shadow: var(--shadow);
-}
-
-.image {
+.image,
+.blank_image {
 	width: auto;
 	height: 100%;
 }
 
-.details {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
+.title {
+	position: absolute;
 	text-align: center;
-}
-
-.book_icon,
-.book_icon::before {
-	--size: 40vh;
-
-	width: var(--size);
-	height: var(--size);
-	font-size: var(--size);
+	line-height: 1.5;
+	width: 100%;
+	padding: var(--medium);
 }

@@ -16,12 +16,12 @@ export default function Splash() {
 
 	return (
 		<section className={styles.component}>
-			<Link href={link} className={styles.left}>
+			<Link href={readMoreLink} className={styles.left}>
 				<Image src={book} alt='Life Writing & Schizophrenia' className={styles.book} />
 			</Link>
 
 			<aside className={styles.right}>
-				<Link href={link} className={styles.text_block}>
+				<Link href={readMoreLink} className={styles.text_block}>
 					<h1 className={styles.title}>{title}</h1>
 					<h3 className={styles.subtitle}>{caption}</h3>
 				</Link>
