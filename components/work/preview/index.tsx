@@ -11,23 +11,24 @@ interface Props {
 	index: number;
 }
 
-export default function Preview(props: Props) {
-	const work = worklist[props.index];
+export default function Preview({ index }: Props) {
+	const { title, image } = worklist[index];
 
 	return (
-		<Link href={`/work/writing/${work.title.toLowerCase().replaceAll(' ', '-')}`} className={styles.component}>
-			{work.image ? (
-				<Image src={work.image} alt={'Cover of ' + work.title} width={100} height={100} className={styles.image} />
+		<Link href={`/work/writing/${title.toLowerCase().replaceAll(' ', '-')}`} className={styles.component}>
+			{image ? (
+				<Image src={image} alt={'Cover of ' + title} width={2500} height={2500} className={styles.image} />
 			) : (
 				<>
-					<Image src='/assets/images/blank-book.png' alt={'Cover of ' + work.title} width={100} height={100} className={styles.blank_image} />
-					<h3 className={styles.title}>{work.title}</h3>
+					{index === worklist.length - 1 ? <Image src='/assets/images/blank-spine-shadow.png' alt={'Cover of ' + title} width={2500} height={2500} className={styles.blank_image_shadow} /> : <Image src='/assets/images/blank-spine.png' alt={'Cover of ' + title} width={2500} height={2500} className={styles.blank_image} />}
+					<h3 className={`${styles.title} ${styles.title_cover}`}>{title}</h3>
+					<h3 className={`${styles.title} ${styles.title_spine}`}>{title}</h3>
 				</>
 			)}
 
 			{/* <div className={styles.details}>
-				<h3>{work.title}</h3>
-				<p>{work.caption.replace('\n', '')}</p>
+				<h3>{title}</h3>
+				<p>{caption.replace('\n', '')}</p>
 			</div> */}
 		</Link>
 	);

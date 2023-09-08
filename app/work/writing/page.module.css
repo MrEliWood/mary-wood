@@ -4,7 +4,7 @@
 	align-items: center;
 	gap: var(--huge);
 	width: 100%;
-	padding: 0 var(--large);
+	padding: 0 var(--large) var(--huge);
 }
 
 .category {

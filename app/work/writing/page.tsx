@@ -33,6 +33,12 @@ export default function Writing() {
 					</section>
 				);
 			})}
+
+			{/* <section className={styles.category}>
+				<h1 className={styles.category_heading}>Creative Work</h1>
+
+				<div className={styles.category_work}></div>
+			</section> */}
 		</main>
 	);
 }

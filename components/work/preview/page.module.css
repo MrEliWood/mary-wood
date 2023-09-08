@@ -2,23 +2,46 @@
 	position: relative;
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
-	align-items: center;
+	/* align-items: center; */
 	gap: var(--medium);
-	box-shadow: var(--shadow);
+	/* box-shadow: var(--shadow); */
 	height: 100%;
 }
 
 .image,
-.blank_image {
+.blank_image,
+.blank_image_shadow {
 	width: auto;
 	height: 100%;
 }
 
 .title {
+	--border-width: 1px;
+	--border-color: var(--light);
+
 	position: absolute;
-	text-align: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	line-height: 1.5;
-	width: 100%;
-	padding: var(--medium);
+	text-shadow: var(--border-width) 0px 0px var(--border-color), var(--border-width) var(--border-width) 0px var(--border-color), 0px var(--border-width) 0px var(--border-color), calc(-1 * var(--border-width)) var(--border-width) 0px var(--border-color), calc(-1 * var(--border-width)) 0px 0px var(--border-color), calc(-1 * var(--border-width)) calc(-1 * var(--border-width)) 0px var(--border-color), 0px calc(-1 * var(--border-width)) 0px var(--border-color), var(--border-width) -1px 0px var(--border-color), 0px 0px 4px var(--border-color);
+	opacity: 0.9;
+}
+
+.title_cover {
+	top: 0%;
+	width: 66.5%;
+	height: 21%;
+	padding: 0 var(--medium);
+	transform: matrix3d(1, 0.204, 0, -0.00005, 0.0001, 1, 0, 0.00002, 0, 0, 1, 0, 0, 0, 0, 1);
+	/* border: 1px solid red; */
+}
+
+.title_spine {
+	top: 58%;
+	width: 66.5%;
+	height: 21%;
+	padding: 0 var(--medium);
+	transform: matrix3d(1, 0.204, 0, -0.00005, 0.0001, 1, 0, 0.00002, 0, 0, 1, 0, 0, 0, 0, 1);
+	/* border: 1px solid red; */
 }

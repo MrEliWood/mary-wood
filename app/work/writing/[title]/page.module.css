@@ -4,7 +4,7 @@
 	flex-direction: column;
 	justify-content: space-between;
 	align-items: center;
-	gap: var(--large);
+	gap: var(--medium);
 	min-height: calc(100vh - var(--header-height));
 	overflow: clip;
 	overflow-clip-margin: var(--header-height);
@@ -12,7 +12,7 @@
 
 .work {
 	display: flex;
-	gap: var(--huge);
+	gap: var(--large);
 	width: 100%;
 	height: 100%;
 	max-width: var(--max-width);
@@ -34,8 +34,8 @@
 	position: sticky;
 	top: var(--header-height);
 	object-fit: contain;
-	width: 25vw;
-	height: auto;
+	height: calc(100vh - var(--header-height) - 84px - var(--medium));
+	width: auto;
 	box-shadow: var(--shadow);
 }
 

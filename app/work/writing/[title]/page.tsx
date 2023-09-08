@@ -8,11 +8,11 @@ import { Buttons, PageNav } from '@/components';
 import { worklist } from '@/utils';
 
 interface Props {
-	params: { slug: string };
+	params: { title: string };
 }
 
-export default function DynamicWriting(props: Props) {
-	const foundWork = worklist.find(({ title }) => title.toLowerCase().replaceAll(' ', '-') === props.params.slug);
+export default function DynamicWriting({ params }: Props) {
+	const foundWork = worklist.find(({ title }) => title.toLowerCase().replaceAll(' ', '-') === params.title);
 	if (!foundWork) redirect('/');
 
 	const { category, sub, title, caption, description, preview, image, published, link, table } = foundWork;
@@ -37,10 +37,7 @@ export default function DynamicWriting(props: Props) {
 				{image && (
 					<>
 						<Image src={image} alt='Life Writing & Schizophrenia' width={100} height={100} className={styles.background} />
-
-						<div className={styles.art}>
-							<Image src={image} alt='Life Writing & Schizophrenia' width={100} height={100} className={styles.cover} />
-						</div>
+						<Image src={image} alt='Life Writing & Schizophrenia' width={100} height={100} className={styles.cover} />
 					</>
 				)}
 

@@ -97,8 +97,8 @@ html {
 	background-color: var(--accent10);
 	background: url('../public/assets/images/header-background-b.jpg');
 	background-attachment: cover;
-	background-size: 100%;
-	background-position: bottom;
+	background-size: 100vw 100vh;
+	background-position: top;
 }
 
 html::after {
@@ -121,7 +121,7 @@ body {
 	font-family: var(--font-secondary);
 	font-weight: var(--font-weight-secondary);
 	line-height: var(--line-height-secondary);
-	background: radial-gradient(ellipse at center, var(--overlay) 50%, var(--light50)), linear-gradient(transparent, 50vh, var(--overlay));
+	background: radial-gradient(ellipse at center, var(--overlay) 50%, var(--light50)), linear-gradient(var(--light50), 50vh, var(--overlay), 90vh, var(--light));
 	white-space: pre-line;
 	padding-top: var(--header-height);
 }

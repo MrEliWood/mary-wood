@@ -7,7 +7,7 @@
 	max-width: none;
 	min-height: 0;
 	height: calc(100vh - var(--header-height));
-	padding: var(--huge) var(--giant);
+	padding: 0 var(--giant) var(--huge);
 	margin-bottom: var(--giant);
 }
 
