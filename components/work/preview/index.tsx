@@ -21,7 +21,7 @@ export default function Preview({ index }: Props) {
 			) : (
 				<>
 					{index === worklist.length - 1 ? <Image src='/assets/images/blank-spine-shadow.png' alt={'Cover of ' + title} width={2500} height={2500} className={styles.blank_image_shadow} /> : <Image src='/assets/images/blank-spine.png' alt={'Cover of ' + title} width={2500} height={2500} className={styles.blank_image} />}
-					<h3 className={`${styles.title} ${styles.title_cover}`}>{title}</h3>
+					<h2 className={`${styles.title} ${styles.title_cover}`}>{title}</h2>
 					<h3 className={`${styles.title} ${styles.title_spine}`}>{title}</h3>
 				</>
 			)}

@@ -1,6 +1,8 @@
+import { buildNavLink } from '@/utils';
+
 import { Work } from '../types';
 
-const worklist: Work[] = [
+const data: Work[] = [
 	{
 		category: 'scholarship',
 		sub: 'books',
@@ -152,5 +154,10 @@ const worklist: Work[] = [
 		table: []
 	}
 ];
+
+const worklist = data.map((work) => ({
+	...work,
+	navLink: buildNavLink('/work/writing', work.title)
+}));
 
 export default worklist;

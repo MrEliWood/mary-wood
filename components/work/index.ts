@@ -1,3 +1,6 @@
-import Preview from './Preview';
+import Preview from './preview';
+import Stack from './stack';
 
-export default { Preview };
+const Work = { Preview, Stack };
+
+export default Work;

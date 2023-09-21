@@ -1,27 +1,11 @@
 .component {
-	position: relative;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	/* align-items: center; */
-	gap: var(--medium);
-	/* box-shadow: var(--shadow); */
-	height: 100%;
 }
 
 .component:hover {
 	color: inherit;
 }
 
-.image {
-	width: auto;
-	height: 100%;
-}
-
-.blank_image,
-.blank_image_shadow {
-	width: auto;
-	height: 50vh;
+.work {
 }
 
 .title {

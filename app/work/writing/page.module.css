@@ -36,4 +36,35 @@
 	height: 50vh;
 	width: auto;
 	max-height: 100%;
+	border: 1px solid red;
+}
+
+.blank_image {
+	justify-content: center;
+	align-items: center;
+	height: 10vh;
+}
+
+.blank_image:nth-child(1) {
+	z-index: 6;
+}
+
+.blank_image:nth-child(2) {
+	z-index: 5;
+}
+
+.blank_image:nth-child(3) {
+	z-index: 4;
+}
+
+.blank_image:nth-child(4) {
+	z-index: 3;
+}
+
+.blank_image:nth-child(5) {
+	z-index: 2;
+}
+
+.blank_image:nth-child(6) {
+	z-index: 1;
 }

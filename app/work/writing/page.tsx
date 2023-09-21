@@ -21,9 +21,11 @@ export default function Writing() {
 
 						<div className={styles.category_work}>
 							{worklist.map((work, i) => {
+								const key = Math.floor(Math.random() * 1000000);
+
 								return (
 									work.category === name && (
-										<div className={styles.work_container}>
+										<div key={key} className={`${styles.work_container} ${!work.image ? styles.blank_image : ''}`}>
 											<Work.Preview key={key} index={i} />
 										</div>
 									)
