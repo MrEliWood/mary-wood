@@ -12,7 +12,7 @@ import styles from './page.module.css';
 export default function Writing() {
 	return (
 		<main className={styles.page}>
-			{workCategories.map(({ name }) => {
+			{/* {workCategories.map(({ name }) => {
 				const key = Math.floor(Math.random() * 1000000);
 
 				return (
@@ -34,13 +34,15 @@ export default function Writing() {
 						</div>
 					</section>
 				);
-			})}
+			})} */}
 
-			{/* <section className={styles.category}>
+			<section className={styles.category}>
 				<h1 className={styles.category_heading}>Creative Work</h1>
 
-				<div className={styles.category_work}></div>
-			</section> */}
+				<div className={styles.category_work}>
+					<Work.Stack category='creative work' />
+				</div>
+			</section>
 		</main>
 	);
 }

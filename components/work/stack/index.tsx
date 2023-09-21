@@ -23,11 +23,31 @@ export default function Stack({ category }: Props) {
 
 				if (work.category === category) {
 					return (
-						<Link key={key} href={work.navLink} className={styles.work}>
-							<Image src='/assets/images/blank-spine.png' alt={'Cover of ' + work.title} width={2500} height={2500} className={styles.blank_image} style={inlineStyles} />
-							<h2 className={`${styles.title} ${styles.title_cover}`}>{work.title}</h2>
-							<h3 className={`${styles.title} ${styles.title_spine}`}>{work.title}</h3>
-						</Link>
+						<div key={key} className={styles.work_container} style={inlineStyles}>
+							<Link href={work.navLink} className={styles.work}>
+								<svg viewBox='0 0 2414 843' width={2414} height={843} xmlns='http://www.w3.org/2000/svg' className={styles.svg}>
+									<image xlinkHref='/assets/images/blank-spine.png' width={2414} height={843} className={styles.book_image} />
+
+									<g className={`${styles.title} ${styles.title_cover}`}>
+										<foreignObject x='-16%' y='100%' fontSize='24' width='23%' height='100%'>
+											<div className={styles.title_cover_text}>
+												<h1>{work.title}</h1>
+												<h4>{work.caption}</h4>
+											</div>
+										</foreignObject>
+									</g>
+
+									<g className={`${styles.title} ${styles.title_spine}`}>
+										<foreignObject x='1%' y='44%' fontSize='24' width='66%' height='100%'>
+											<div className={styles.title_spine_text}>
+												<h2>{work.title}</h2>
+												<h4>{work.caption}</h4>
+											</div>
+										</foreignObject>
+									</g>
+								</svg>
+							</Link>
+						</div>
 					);
 				}
 			})}
