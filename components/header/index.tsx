@@ -7,10 +7,9 @@ import { Nav } from '@/components';
 
 import styles from './style.module.css';
 
-const id = 'header_' + Math.floor(Math.random() * 1000000);
-
 export default function Header() {
 	const [scrollPosition, setScrollPosition] = useState<number>(0);
+	const id = 'site_header';
 
 	const handleScroll = () => {
 		const position = window.scrollY;
@@ -20,7 +19,6 @@ export default function Header() {
 	const setHeightVariable = () => {
 		const htmlElement = document.querySelector('html');
 		const headerHeight = document.getElementById(id)?.offsetHeight || 165;
-		console.log(headerHeight);
 
 		htmlElement?.style.setProperty('--header-height', `${headerHeight}px`);
 	};

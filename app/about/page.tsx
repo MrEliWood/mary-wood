@@ -7,12 +7,12 @@ import styles from './page.module.css';
 
 export default function About() {
 	return (
-		<section className={styles.page}>
+		<main className={styles.page}>
 			<p>
 				<Image src={portrait} alt='Portrait of Mary Wood.' className={styles.portrait} />
 
-				<p>{bio}</p>
+				{bio}
 			</p>
-		</section>
+		</main>
 	);
 }

@@ -1,5 +1,6 @@
 .page {
-	flex-direction: row;
+	display: flex;
+	padding: 0 var(--giant);
 }
 
 .portrait {
@@ -7,6 +8,6 @@
 	height: auto;
 	object-fit: contain;
 	float: right;
-	border-radius: 0% 0 10% 0;
+	border-radius: 100%;
 	margin: 0 0 var(--large) var(--large);
 }
