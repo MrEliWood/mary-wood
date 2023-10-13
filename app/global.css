@@ -28,8 +28,8 @@
 
 	/* --gradient-start: dodgerblue;
 	--gradient-end: mediumorchid; */
-	--gradient-start: hsl(240, 50%, 50%);
-	--gradient-end: hsl(280, 50%, 50%);
+	--gradient-start: hsl(245, 50%, 50%);
+	--gradient-end: hsl(275, 50%, 50%);
 	--gradient: linear-gradient(30deg, var(--gradient-start), var(--gradient-end));
 
 	/* alerts */
@@ -59,9 +59,13 @@
 	--font-secondary: var(--font-avenir);
 	--font-tertiary: var(--font-avenir);
 
+	--font-size-primary: 16px;
+	--font-size-secondary: 18px;
+	--font-size-tertiary: 14px;
+
 	--font-weight-primary: 400;
 	--font-weight-secondary: 400;
-	--font-weight-tertiary: 500;
+	--font-weight-tertiary: 600;
 
 	--line-height-primary: 1;
 	--line-height-secondary: 1.5;
@@ -69,6 +73,10 @@
 
 	/* shadows */
 	--shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
+
+	--text-shadow-width: 1px;
+	--text-shadow-color: var(--light);
+	--text-shadow: var(--text-shadow-width) 0px 0px var(--text-shadow-color), var(--text-shadow-width) var(--text-shadow-width) 0px var(--text-shadow-color), 0px var(--text-shadow-width) 0px var(--text-shadow-color), calc(-1 * var(--text-shadow-width)) var(--text-shadow-width) 0px var(--text-shadow-color), calc(-1 * var(--text-shadow-width)) 0px 0px var(--text-shadow-color), calc(-1 * var(--text-shadow-width)) calc(-1 * var(--text-shadow-width)) 0px var(--text-shadow-color), 0px calc(-1 * var(--text-shadow-width)) 0px var(--text-shadow-color), var(--text-shadow-width) -1px 0px var(--text-shadow-color), 0px 0px 4px var(--text-shadow-color);
 
 	/* borders */
 	--border-width: 1px;
@@ -119,14 +127,13 @@ body {
 	align-items: center;
 	min-height: 100vh;
 	max-width: 100vw;
+	font-size: 18px;
 	font-family: var(--font-secondary);
 	font-weight: var(--font-weight-secondary);
 	line-height: var(--line-height-secondary);
 	background: radial-gradient(ellipse at center, var(--overlay) 50%, var(--light50)), linear-gradient(var(--light50), 50vh, var(--overlay), 90vh, var(--light));
 	white-space: pre-line;
 	padding-top: var(--header-height);
-
-	border: 2px solid red;
 }
 
 form {
@@ -237,6 +244,8 @@ a,
 a:visited {
 	color: inherit;
 	text-decoration: none;
+	width: fit-content;
+	height: fit-content;
 }
 
 a:hover {
@@ -247,14 +256,18 @@ a:hover {
 }
 
 button {
+	--page-angle: 135deg;
+	--page-start: 0%;
+	--page-end: 100%;
+	--page-size: 225%;
+
 	position: relative;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	gap: 10px;
-	background: linear-gradient(60deg, var(--light) 50%, var(--gradient-start) 50%, var(--gradient-end));
-	background-position: 100%;
-	background-size: 215%;
+	background: linear-gradient(var(--page-angle), var(--light) 50%, var(--gradient-start) 50%, var(--gradient-end));
+	background-position: var(--page-start);
+	background-size: var(--page-size);
 	background-clip: text;
 	-webkit-background-clip: text;
 	border: none;
@@ -266,11 +279,11 @@ button {
 }
 
 button::before {
-	--button-border: calc(100% + (var(--border-width) * 2));
+	--button-border: calc(100% + (var(--border-width) * 3));
 
 	content: '';
 	position: absolute;
-	background: var(--gradient);
+	background: linear-gradient(var(--page-angle), var(--gradient-start) 50%, var(--gradient-end));
 	border-radius: calc(var(--border-radius) + 1px);
 	width: var(--button-border);
 	height: var(--button-border);
@@ -280,9 +293,9 @@ button::before {
 button::after {
 	content: '';
 	position: absolute;
-	background: linear-gradient(60deg, transparent 50%, var(--light) 50%);
-	background-position: 100%;
-	background-size: 215%;
+	background: linear-gradient(var(--page-angle), transparent 50%, var(--light) 50%);
+	background-position: var(--page-start);
+	background-size: var(--page-size);
 	border-radius: var(--border-radius);
 	width: 100%;
 	height: 100%;
@@ -292,11 +305,11 @@ button::after {
 
 button:hover {
 	cursor: pointer;
-	background-position: 0%;
+	background-position: var(--page-end);
 }
 
 button:hover::after {
-	background-position: 0%;
+	background-position: var(--page-end);
 }
 
 .button_block {
@@ -305,14 +318,6 @@ button:hover::after {
 	align-items: center;
 	gap: var(--tiny);
 }
-
-/* path {
-	fill: var(--dark);
-}
-
-button:hover path {
-	fill: var(--light);
-} */
 
 h1 {
 	font-size: 2.4em;
@@ -343,7 +348,7 @@ h4 {
 }
 
 h5 {
-	font-size: 0.9em;
+	font-size: var(--font-size-tertiary);
 	font-family: var(--font-tertiary);
 	font-weight: var(--font-weight-tertiary);
 	line-height: var(--line-height-tertiary);

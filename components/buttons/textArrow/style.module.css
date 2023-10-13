@@ -1,22 +1,17 @@
 .text_arrow {
 	display: flex;
-	gap: 5px;
-	width: fit-content;
-	z-index: 1;
-}
-
-.text_arrow:hover {
-	cursor: pointer;
+	gap: 3px;
 }
 
 .text_arrow_arrow {
-	transition: color 1s ease-in-out;
+	fill: var(--light);
+	width: 16px;
+	height: 16px;
+	transition: fill var(--button-transition-speed) ease-in-out;
 }
 
 .text_arrow:hover .text_arrow_arrow {
-	background: var(--gradient);
-	background-clip: text;
-	-webkit-background-clip: text;
+	fill: var(--gradient-end);
 	animation: crabwalk 1s ease-in-out calc(var(--button-transition-speed) - 100ms) infinite;
 }
 

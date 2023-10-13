@@ -57,12 +57,9 @@
 }
 
 .title {
-	--border-width: 1px;
-	--border-color: var(--light);
-
 	font-family: var(--font-primary);
 	text-align: center;
-	text-shadow: var(--border-width) 0px 0px var(--border-color), var(--border-width) var(--border-width) 0px var(--border-color), 0px var(--border-width) 0px var(--border-color), calc(-1 * var(--border-width)) var(--border-width) 0px var(--border-color), calc(-1 * var(--border-width)) 0px 0px var(--border-color), calc(-1 * var(--border-width)) calc(-1 * var(--border-width)) 0px var(--border-color), 0px calc(-1 * var(--border-width)) 0px var(--border-color), var(--border-width) -1px 0px var(--border-color), 0px 0px 4px var(--border-color);
+	text-shadow: var(--text-shadow);
 	transform: matrix3d(var(--scale-x), var(--skew-y), 0, var(--perspective-x), var(--skew-x), var(--scale-y), 0, var(--perspective-y), 0, 0, 1, 0, var(--translate-x), var(--translate-y), 0, var(--translate-z));
 	opacity: 0.9;
 	z-index: 100;

@@ -33,6 +33,7 @@
 }
 
 .site_caption {
+	font-weight: var(--font-weight-secondary);
 	overflow: hidden;
 	animation: fadein var(--animation-speed) ease-in-out var(--animation-speed) both;
 }
