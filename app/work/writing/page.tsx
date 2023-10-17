@@ -37,7 +37,7 @@ export default function Writing() {
 			})} */}
 
 			<section className={styles.category}>
-				<h1 className={styles.category_heading}>Scholarship</h1>
+				<h2 className={styles.category_heading}>Scholarship</h2>
 
 				{worklist.map((work, i) => {
 					const key = Math.floor(Math.random() * 1000000);

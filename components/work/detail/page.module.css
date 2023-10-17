@@ -2,10 +2,12 @@
 	position: relative;
 	display: flex;
 	gap: var(--large);
+
 	width: 100%;
 	height: 100%;
 	max-width: var(--max-width);
-	padding: 0 var(--giant);
+
+	padding: var(--large);
 }
 
 .background {
@@ -21,7 +23,7 @@
 
 .cover {
 	position: sticky;
-	top: var(--header-height);
+	top: calc(var(--large) + var(--header-height));
 	object-fit: contain;
 	height: calc(100vh - var(--header-height) - 84px - var(--medium));
 	width: auto;
