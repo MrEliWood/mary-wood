@@ -45,10 +45,9 @@
 	height: var(--size);
 }
 
-.text_block {
+.headline {
 	display: flex;
 	flex-direction: column;
-	gap: var(--tiny);
 }
 
 .text_block:hover {

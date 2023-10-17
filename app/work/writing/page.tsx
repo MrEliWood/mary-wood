@@ -5,7 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 import { Work } from '@/components';
-import { workCategories, worklist } from '@/utils';
+import { worklist } from '@/utils';
 
 import styles from './page.module.css';
 
@@ -37,11 +37,13 @@ export default function Writing() {
 			})} */}
 
 			<section className={styles.category}>
-				<h1 className={styles.category_heading}>Creative Work</h1>
+				<h1 className={styles.category_heading}>Scholarship</h1>
 
-				<div className={styles.category_work}>
-					<Work.Stack category='creative work' />
-				</div>
+				{worklist.map((work, i) => {
+					const key = Math.floor(Math.random() * 1000000);
+
+					return work.category === 'scholarship' && <Work.Detail key={key} index={i} />;
+				})}
 			</section>
 		</main>
 	);

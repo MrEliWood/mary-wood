@@ -67,10 +67,6 @@
 	--font-weight-secondary: 400;
 	--font-weight-tertiary: 600;
 
-	--line-height-primary: 1;
-	--line-height-secondary: 1.5;
-	--line-height-tertiary: 0.8;
-
 	/* shadows */
 	--shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
 
@@ -130,7 +126,7 @@ body {
 	font-size: 18px;
 	font-family: var(--font-secondary);
 	font-weight: var(--font-weight-secondary);
-	line-height: var(--line-height-secondary);
+	line-height: 1.25;
 	background: radial-gradient(ellipse at center, var(--overlay) 50%, var(--light50)), linear-gradient(var(--light50), 50vh, var(--overlay), 90vh, var(--light));
 	white-space: pre-line;
 	padding-top: var(--header-height);
@@ -256,18 +252,18 @@ a:hover {
 }
 
 button {
-	--page-angle: 135deg;
-	--page-start: 0%;
-	--page-end: 100%;
-	--page-size: 225%;
+	--background-angle: 135deg;
+	--background-start: 0%;
+	--background-end: 100%;
+	--background-size: 225%;
 
 	position: relative;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	background: linear-gradient(var(--page-angle), var(--light) 50%, var(--gradient-start) 50%, var(--gradient-end));
-	background-position: var(--page-start);
-	background-size: var(--page-size);
+	background: linear-gradient(var(--background-angle), var(--light) 50%, var(--gradient-start) 50%, var(--gradient-end));
+	background-position: var(--background-start);
+	background-size: var(--background-size);
 	background-clip: text;
 	-webkit-background-clip: text;
 	border: none;
@@ -283,7 +279,7 @@ button::before {
 
 	content: '';
 	position: absolute;
-	background: linear-gradient(var(--page-angle), var(--gradient-start) 50%, var(--gradient-end));
+	background: linear-gradient(var(--background-angle), var(--gradient-start) 50%, var(--gradient-end));
 	border-radius: calc(var(--border-radius) + 1px);
 	width: var(--button-border);
 	height: var(--button-border);
@@ -293,9 +289,9 @@ button::before {
 button::after {
 	content: '';
 	position: absolute;
-	background: linear-gradient(var(--page-angle), transparent 50%, var(--light) 50%);
-	background-position: var(--page-start);
-	background-size: var(--page-size);
+	background: linear-gradient(var(--background-angle), transparent 50%, var(--light) 50%);
+	background-position: var(--background-start);
+	background-size: var(--background-size);
 	border-radius: var(--border-radius);
 	width: 100%;
 	height: 100%;
@@ -305,11 +301,11 @@ button::after {
 
 button:hover {
 	cursor: pointer;
-	background-position: var(--page-end);
+	background-position: var(--background-end);
 }
 
 button:hover::after {
-	background-position: var(--page-end);
+	background-position: var(--background-end);
 }
 
 .button_block {
@@ -323,35 +319,30 @@ h1 {
 	font-size: 2.4em;
 	font-family: var(--font-primary);
 	font-weight: var(--font-weight-primary);
-	line-height: var(--line-height-primary);
 }
 
 h2 {
 	font-size: 1.8em;
 	font-family: var(--font-primary);
 	font-weight: var(--font-weight-primary);
-	line-height: var(--line-height-primary);
 }
 
 h3 {
 	font-size: 1.5em;
 	font-family: var(--font-primary);
 	font-weight: var(--font-weight-primary);
-	line-height: var(--line-height-primary);
 }
 
 h4 {
 	font-size: 1.2em;
 	font-family: var(--font-secondary);
 	font-weight: var(--font-weight-secondary);
-	line-height: var(--line-height-secondary);
 }
 
 h5 {
 	font-size: var(--font-size-tertiary);
 	font-family: var(--font-tertiary);
 	font-weight: var(--font-weight-tertiary);
-	line-height: var(--line-height-tertiary);
 }
 
 i,

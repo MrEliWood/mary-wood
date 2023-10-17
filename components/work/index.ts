@@ -1,6 +1,7 @@
+import Detail from './detail';
 import Preview from './preview';
 import Stack from './stack';
 
-const Work = { Preview, Stack };
+const Work = { Detail, Preview, Stack };
 
 export default Work;

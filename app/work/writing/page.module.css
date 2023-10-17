@@ -4,14 +4,14 @@
 	align-items: center;
 	gap: var(--huge);
 	width: 100%;
-	padding: 0 var(--large) var(--huge);
+	padding: var(--large) 0 var(--huge);
 }
 
 .category {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	gap: var(--medium);
+	gap: var(--huge);
 	width: 100%;
 }
 
@@ -36,7 +36,6 @@
 	height: 50vh;
 	width: auto;
 	max-height: 100%;
-	border: 1px solid red;
 }
 
 .blank_image {

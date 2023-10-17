@@ -16,10 +16,10 @@ export default function Nav() {
 				<div className={styles.dropdown}>
 					<div className={styles.subnav}>
 						<Link href='/work/writing' className={pathname === '/work/writing' ? styles.active : ''}>
-							Writing
+							<h5>Writing</h5>
 						</Link>
 						<Link href='/work/teaching' className={pathname === '/work/teaching' ? styles.active : ''}>
-							Teaching
+							<h5>Teaching</h5>
 						</Link>
 					</div>
 				</div>

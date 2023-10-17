@@ -21,7 +21,7 @@ export default function Splash() {
 			</Link>
 
 			<aside className={styles.right}>
-				<Link href={readMoreLink} className={styles.text_block}>
+				<Link href={readMoreLink} className={styles.headline}>
 					<h1 className={styles.title}>{title}</h1>
 					<h3 className={styles.subtitle}>{caption}</h3>
 				</Link>
