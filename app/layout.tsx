@@ -1,7 +1,7 @@
 import { Header, Footer } from '@/components';
 import { Providers } from '@/redux/provider';
 
-import { Libre_Caslon_Text, Mulish, Roboto_Serif } from 'next/font/google';
+import { Crimson_Text, Libre_Caslon_Text } from 'next/font/google';
 import './global.css';
 
 const caslon = Libre_Caslon_Text({
@@ -10,14 +10,10 @@ const caslon = Libre_Caslon_Text({
 	variable: '--font-caslon'
 });
 
-const roboto_serif = Roboto_Serif({
+const crimson = Crimson_Text({
+	weight: ['400', '700', '600'],
 	subsets: ['latin'],
-	variable: '--font-roboto-serif'
-});
-
-const mulish = Mulish({
-	subsets: ['latin'],
-	variable: '--font-mulish'
+	variable: '--font-crimson'
 });
 
 export const metadata = {
@@ -27,7 +23,7 @@ export const metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
 	return (
-		<html lang='en' className={`${caslon.variable} ${mulish.variable} ${roboto_serif.variable}`}>
+		<html lang='en' className={`${crimson.variable} ${caslon.variable}`}>
 			<body>
 				<Providers>
 					<Header />

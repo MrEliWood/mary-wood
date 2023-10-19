@@ -39,10 +39,13 @@
 .heading {
 	display: flex;
 	flex-direction: column;
+
+	line-height: 1.125;
 }
 
 .date {
-	line-height: 0.8;
+	font-weight: var(--font-weight-secondary);
+	margin-bottom: var(--tiny);
 }
 
 .table {
@@ -65,7 +68,7 @@
 
 .button_block {
 	display: flex;
-	border-top: var(--border);
-	padding-top: var(--medium);
+	/* border-top: var(--border);
+	padding-top: var(--medium); */
 	z-index: 1;
 }

@@ -55,17 +55,17 @@
 	/* fonts */
 	--font-avenir: Avenir, Arial, Helvetica, sans-serif;
 
-	--font-primary: var(--font-roboto-serif);
-	--font-secondary: var(--font-mulish);
-	--font-tertiary: var(--font-mulish);
+	--font-primary: var(--font-crimson);
+	--font-secondary: var(--font-avenir);
+	--font-tertiary: var(--font-avenir);
 
-	--font-size-primary: 16px;
+	--font-size-primary: 22px;
 	--font-size-secondary: 18px;
 	--font-size-tertiary: 14px;
 
-	--font-weight-primary: 500;
+	--font-weight-primary: 400;
 	--font-weight-secondary: 400;
-	--font-weight-tertiary: 700;
+	--font-weight-tertiary: 500;
 
 	/* shadows */
 	--shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
@@ -126,7 +126,7 @@ body {
 	font-size: 18px;
 	font-family: var(--font-secondary);
 	font-weight: var(--font-weight-secondary);
-	line-height: 1.25;
+	/* line-height: 1; */
 	background: radial-gradient(ellipse at center, var(--overlay) 50%, var(--light50)), linear-gradient(var(--light50), 50vh, var(--overlay), 90vh, var(--light));
 	white-space: pre-line;
 	padding-top: var(--header-height);
@@ -316,25 +316,25 @@ button:hover::after {
 }
 
 h1 {
-	font-size: 1.8em;
+	font-size: calc(1.8 * var(--font-size-primary));
 	font-family: var(--font-primary);
 	font-weight: var(--font-weight-primary);
 }
 
 h2 {
-	font-size: 1.5em;
+	font-size: calc(1.5 * var(--font-size-primary));
 	font-family: var(--font-primary);
 	font-weight: var(--font-weight-primary);
 }
 
 h3 {
-	font-size: 1.2em;
+	font-size: calc(1.2 * var(--font-size-primary));
 	font-family: var(--font-primary);
 	font-weight: var(--font-weight-primary);
 }
 
 h4 {
-	font-size: 1.1em;
+	font-size: calc(1.1 * var(--font-size-secondary));
 	font-family: var(--font-secondary);
 	font-weight: var(--font-weight-secondary);
 }

@@ -34,10 +34,12 @@ export default function Header() {
 
 	return (
 		<header id={id} className={`${styles.header} ${scrollPosition > 60 && styles.scrolled_header}`}>
-			<Link href='/' className={styles.site_title}>
-				<h3>Mary Elene Wood</h3>
+			<Link href='/' className={styles.logo}>
+				<h3 className={styles.site_title}>Mary Elene Wood</h3>
 
-				<h5 className={`${styles.site_caption} ${scrollPosition > 60 && styles.hidden}`}>Writer, Teacher, Scholar</h5>
+				<div className={`${styles.site_caption_container} ${scrollPosition > 60 && styles.hidden}`}>
+					<h5 className={styles.site_caption}>Writer, Teacher, Scholar</h5>
+				</div>
 			</Link>
 
 			<Nav />

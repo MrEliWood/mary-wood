@@ -21,19 +21,23 @@
 	background: var(--light90);
 }
 
-.site_title {
+.logo {
 	display: flex;
 	flex-direction: column;
-	gap: var(--tiny);
-	line-height: 1;
 }
 
-.site_title:hover {
+.logo:hover {
 	color: var(--dark);
+}
+
+.site_title {
+	line-height: 0.8;
 }
 
 .site_caption {
 	font-weight: var(--font-weight-secondary);
+	line-height: 1;
+	padding-top: var(--tiny);
 	overflow: hidden;
 	animation: fadein var(--animation-speed) ease-in-out var(--animation-speed) both;
 }

@@ -25,11 +25,11 @@ export default function DynamicWriting({ index }: Props) {
 
 			<div className={styles.content}>
 				<div className={styles.heading}>
+					<h5 className={styles.date}>Published {published}</h5>
+
 					<h1>{title}</h1>
 					<h3>{caption.replace('\n ', '')}</h3>
 				</div>
-
-				<p className={styles.date}>Published {published}</p>
 
 				<p>{description}</p>
 
