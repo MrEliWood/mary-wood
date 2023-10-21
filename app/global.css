@@ -67,6 +67,10 @@
 	--font-weight-secondary: 400;
 	--font-weight-tertiary: 500;
 
+	--line-height-primary: 1;
+	--line-height-secondary: normal;
+	--line-height-tertiary: 1;
+
 	/* shadows */
 	--shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
 
@@ -126,7 +130,7 @@ body {
 	font-size: 18px;
 	font-family: var(--font-secondary);
 	font-weight: var(--font-weight-secondary);
-	/* line-height: 1; */
+	line-height: var(--line-height-secondary);
 	background: radial-gradient(ellipse at center, var(--overlay) 50%, var(--light50)), linear-gradient(var(--light50), 50vh, var(--overlay), 90vh, var(--light));
 	white-space: pre-line;
 	padding-top: var(--header-height);
@@ -271,11 +275,13 @@ button {
 	border-radius: var(--border-radius);
 	height: 32px;
 	padding: var(--tiny) var(--small);
+	margin: var(--border-width);
 	transition: background-position var(--button-transition-speed) ease-in-out;
 }
 
 button::before {
-	--button-border: calc(100% + (var(--border-width) * 3));
+	--button-border: calc(100% + (var(--border-width) * 2));
+	/* --button-border: 100%; */
 
 	content: '';
 	position: absolute;
@@ -319,30 +325,35 @@ h1 {
 	font-size: calc(1.8 * var(--font-size-primary));
 	font-family: var(--font-primary);
 	font-weight: var(--font-weight-primary);
+	line-height: var(--line-height-primary);
 }
 
 h2 {
 	font-size: calc(1.5 * var(--font-size-primary));
 	font-family: var(--font-primary);
 	font-weight: var(--font-weight-primary);
+	line-height: var(--line-height-primary);
 }
 
 h3 {
 	font-size: calc(1.2 * var(--font-size-primary));
 	font-family: var(--font-primary);
 	font-weight: var(--font-weight-primary);
+	line-height: var(--line-height-primary);
 }
 
 h4 {
 	font-size: calc(1.1 * var(--font-size-secondary));
 	font-family: var(--font-secondary);
 	font-weight: var(--font-weight-secondary);
+	line-height: var(--line-height-secondary);
 }
 
 h5 {
 	font-size: var(--font-size-tertiary);
 	font-family: var(--font-tertiary);
 	font-weight: var(--font-weight-tertiary);
+	line-height: var(--line-height-tertiary);
 }
 
 i,

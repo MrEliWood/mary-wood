@@ -23,7 +23,7 @@
 
 .cover {
 	position: sticky;
-	top: calc(var(--large) + var(--header-height));
+	top: var(--header-height);
 	object-fit: contain;
 	height: calc(100vh - var(--header-height) - 84px - var(--medium));
 	width: auto;
@@ -34,13 +34,14 @@
 	display: flex;
 	flex-direction: column;
 	gap: var(--medium);
+
+	padding: var(--medium) 0;
 }
 
 .heading {
 	display: flex;
 	flex-direction: column;
-
-	line-height: 1.125;
+	gap: var(--puny);
 }
 
 .date {

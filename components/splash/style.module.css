@@ -50,7 +50,7 @@
 	flex-direction: column;
 }
 
-.text_block:hover {
+.headline:hover {
 	background: revert;
 	background-clip: revert;
 	-webkit-background-clip: revert;

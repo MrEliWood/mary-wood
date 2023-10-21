@@ -30,14 +30,9 @@
 	color: var(--dark);
 }
 
-.site_title {
-	line-height: 0.8;
-}
-
 .site_caption {
 	font-weight: var(--font-weight-secondary);
-	line-height: 1;
-	padding-top: var(--tiny);
+	padding-top: var(--puny);
 	overflow: hidden;
 	animation: fadein var(--animation-speed) ease-in-out var(--animation-speed) both;
 }
