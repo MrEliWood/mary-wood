@@ -37,9 +37,9 @@ export default function Header() {
 			<Link href='/' className={styles.logo}>
 				<h3 className={styles.site_title}>Mary Elene Wood</h3>
 
-				<div className={`${styles.site_caption_container} ${scrollPosition > 60 && styles.hidden}`}>
+				{/* <div className={`${styles.site_caption_container} ${scrollPosition > 60 && styles.hidden}`}>
 					<h5 className={styles.site_caption}>Writer, Teacher, Scholar</h5>
-				</div>
+				</div> */}
 			</Link>
 
 			<Nav />

@@ -10,11 +10,22 @@
 	padding: var(--large);
 	z-index: 2;
 	transition: all var(--animation-speed) ease-in-out;
-	animation: grow var(--animation-speed) ease-in-out both;
+	/* animation: grow var(--animation-speed) ease-in-out both; */
+}
+
+.header a,
+.header a:hover {
+	opacity: 1;
 }
 
 .scrolled_header {
-	animation: shrink var(--animation-speed) ease-in-out var(--animation-speed) both;
+	background: var(--light75);
+	backdrop-filter: blur(30px);
+	box-shadow: var(--shadow);
+
+	padding: var(--medium) var(--large);
+
+	/* animation: shrink var(--animation-speed) ease-in-out var(--animation-speed) both; */
 }
 
 .scrolled_header:hover {
@@ -37,13 +48,13 @@
 	animation: fadein var(--animation-speed) ease-in-out var(--animation-speed) both;
 }
 
-.hidden {
+/* .hidden {
 	animation: fadeout var(--animation-speed) ease-in-out both;
 }
 
 .header:hover .hidden {
 	animation: fadein var(--animation-speed) ease-in-out var(--animation-speed) both;
-}
+} */
 
 @keyframes shrink {
 	from {
