@@ -1,7 +1,7 @@
 import Image from 'next/image';
 
 import { bio } from '@/utils';
-import portrait from '@/public/assets/images/portrait.png';
+import portrait from '@/public/assets/images/portrait.jpg';
 import book from '@/public/assets/images/blank-page.png';
 
 import styles from './page.module.css';

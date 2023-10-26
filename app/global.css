@@ -67,6 +67,8 @@
 	--line-height-secondary: normal;
 	--line-height-tertiary: 1;
 
+	--font-opacity: 0.85;
+
 	/* shadows */
 	--shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
 
@@ -326,6 +328,7 @@ h1 {
 	font-family: var(--font-primary);
 	font-weight: var(--font-weight-primary);
 	line-height: var(--line-height-primary);
+	opacity: var(--font-opacity);
 }
 
 h2 {
@@ -333,6 +336,7 @@ h2 {
 	font-family: var(--font-primary);
 	font-weight: var(--font-weight-primary);
 	line-height: var(--line-height-primary);
+	opacity: var(--font-opacity);
 }
 
 h3 {
@@ -340,6 +344,7 @@ h3 {
 	font-family: var(--font-primary);
 	font-weight: var(--font-weight-primary);
 	line-height: var(--line-height-primary);
+	opacity: var(--font-opacity);
 }
 
 h4 {
@@ -347,6 +352,7 @@ h4 {
 	font-family: var(--font-secondary);
 	font-weight: var(--font-weight-secondary);
 	line-height: var(--line-height-secondary);
+	opacity: var(--font-opacity);
 }
 
 h5 {
@@ -354,6 +360,11 @@ h5 {
 	font-family: var(--font-tertiary);
 	font-weight: var(--font-weight-tertiary);
 	line-height: var(--line-height-tertiary);
+	opacity: var(--font-opacity);
+}
+
+p {
+	opacity: var(--font-opacity);
 }
 
 i,

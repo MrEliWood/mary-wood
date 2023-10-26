@@ -2,7 +2,7 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	gap: var(--giant);
+	gap: calc(var(--giant) - var(--large));
 
 	padding: calc(var(--giant) - var(--header-height)) var(--giant);
 }
@@ -13,8 +13,58 @@
 	gap: var(--large);
 }
 
-.about {
+.intro section {
+	width: 100%;
+}
+
+/* .intro_caption {
+	max-width: 675px;
+} */
+
+.profile {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: var(--large);
+}
+
+.portrait {
+	width: 100%;
+	height: auto;
+}
+
+.profile_detail {
 	display: flex;
 	flex-direction: column;
-	gap: var(--large);
+}
+
+.profile_detail_tagline {
+	display: flex;
+	gap: var(--small);
+
+	font-weight: 700;
+}
+
+.profile_detail_tagline p {
+	opacity: 1;
+}
+
+.pillars {
+	display: flex;
+	flex-direction: column;
+	gap: calc(var(--giant) - var(--large));
+}
+
+.ethos {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+}
+
+.ethos h2 {
+	font-weight: 700;
+}
+
+.ethos aside {
+	display: flex;
+	flex-direction: column;
+	gap: var(--medium);
 }
