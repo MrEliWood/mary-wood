@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import dayjs from 'dayjs';
 
-import { Buttons } from '@/components';
+import { Button } from '@/components';
 import { API } from '@/utils';
 
 import { useSelector, useDispatch } from 'react-redux';
@@ -108,7 +108,7 @@ export default function Post(props: Props) {
 						</svg>
 					</button>
 
-					<Buttons.BlogDelete onClick={deleteBlog} />
+					<Button.BlogDelete onClick={deleteBlog} />
 				</div>
 			)}
 		</article>

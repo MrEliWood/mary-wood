@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { redirect } from 'next/navigation';
 
 import styles from './page.module.css';
-import { Buttons, PageNav } from '@/components';
+import { Button, PageNav } from '@/components';
 import { worklist } from '@/utils';
 
 interface Props {
@@ -72,7 +72,7 @@ export default function DynamicWriting({ index }: Props) {
 				)}
 
 				<div className={styles.button_block}>
-					<Buttons.TextArrow text='Where to Buy' href={link} target='_blank' />
+					<Button.TextArrow text='Where to Buy' href={link} target='_blank' />
 				</div>
 			</div>
 		</div>

@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 
-import { Buttons } from '@/components';
+import { Button } from '@/components';
 import { worklist } from '@/utils';
 import book from '@/public/assets/images/life-writing-mockup.png';
 
@@ -28,7 +28,7 @@ export default function Splash() {
 
 				<p>{preview}</p>
 
-				<Buttons.TextArrow href={readMoreLink} />
+				<Button.TextArrow href={readMoreLink} />
 			</aside>
 		</section>
 	);

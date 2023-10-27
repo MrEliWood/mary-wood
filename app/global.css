@@ -271,23 +271,21 @@ button {
 	justify-content: center;
 	align-items: center;
 	background: linear-gradient(var(--background-angle), var(--light) 50%, var(--gradient-start) 50%, var(--gradient-end));
-	background: var(--gradient);
 	background-position: var(--background-start);
 	background-size: var(--background-size);
 	background-clip: text;
 	-webkit-background-clip: text;
 	border: none;
 	color: transparent;
+	font-size: 1.1rem;
 	border-radius: var(--border-radius);
-	height: 32px;
-	padding: var(--tiny) var(--small);
+	padding: calc(var(--tiny) * 2) calc(var(--tiny) * 5);
 	margin: var(--border-width);
 	transition: background-position var(--button-transition-speed) ease-in-out;
 }
 
 button::before {
 	--button-border: calc(100% + (var(--border-width) * 2));
-	/* --button-border: 100%; */
 
 	content: '';
 	position: absolute;
