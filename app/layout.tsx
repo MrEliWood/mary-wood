@@ -11,7 +11,7 @@ const caslon = Libre_Caslon_Text({
 });
 
 const crimson = Crimson_Text({
-	weight: ['400', '700', '600'],
+	weight: ['400', '600', '700'],
 	subsets: ['latin'],
 	variable: '--font-crimson'
 });

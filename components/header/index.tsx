@@ -35,11 +35,13 @@ export default function Header() {
 	return (
 		<header id={id} className={`${styles.header} ${scrollPosition > 60 && styles.scrolled_header}`}>
 			<Link href='/' className={styles.logo}>
-				<h3 className={styles.site_title}>Mary Elene Wood</h3>
+				<h2 className={styles.site_title}>Mary Elene Wood</h2>
 
-				{/* <div className={`${styles.site_caption_container} ${scrollPosition > 60 && styles.hidden}`}>
-					<h5 className={styles.site_caption}>Writer, Teacher, Scholar</h5>
-				</div> */}
+				<div className={`${styles.site_caption_container} ${scrollPosition > 60 ? styles.hidden : styles.visible}`}>
+					<h5 className={styles.site_caption}>Writer.</h5>
+					<h5 className={styles.site_caption}>Teacher.</h5>
+					<h5 className={styles.site_caption}>Scholar.</h5>
+				</div>
 			</Link>
 
 			<Nav />

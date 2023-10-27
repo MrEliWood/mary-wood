@@ -2,7 +2,7 @@
 
 import { useMemo } from 'react';
 
-import { Buttons, Post, CreatePostForm } from '@/components';
+import { Button, Post, CreatePostForm } from '@/components';
 import { API } from '@/utils';
 
 import { useSelector, useDispatch } from 'react-redux';
@@ -34,10 +34,10 @@ export default function Blog() {
 					</div>
 
 					<div className={styles.user_toolbar}>
-						<Buttons.BlogFilter />
+						<Button.BlogFilter />
 
 						<div className={styles.absolute_container}>
-							<Buttons.BlogCreate />
+							<Button.BlogCreate />
 						</div>
 					</div>
 				</div>

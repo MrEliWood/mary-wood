@@ -10,11 +10,13 @@
 	padding: var(--large);
 	z-index: 2;
 	transition: all var(--animation-speed) ease-in-out;
-	/* animation: grow var(--animation-speed) ease-in-out both; */
+	animation: grow var(--animation-speed) ease-in-out both;
 }
 
 .header a,
+.header a:visited,
 .header a:hover {
+	border: none;
 	opacity: 1;
 }
 
@@ -25,7 +27,7 @@
 
 	padding: var(--medium) var(--large);
 
-	/* animation: shrink var(--animation-speed) ease-in-out var(--animation-speed) both; */
+	animation: shrink var(--animation-speed) ease-in-out var(--animation-speed) both;
 }
 
 .scrolled_header:hover {
@@ -41,34 +43,37 @@
 	color: var(--dark);
 }
 
+.site_caption_container {
+	display: flex;
+	gap: calc(var(--tiny) * 2);
+}
+
 .site_caption {
-	font-weight: var(--font-weight-secondary);
 	padding-top: var(--puny);
 	overflow: hidden;
 	animation: fadein var(--animation-speed) ease-in-out var(--animation-speed) both;
 }
 
-/* .hidden {
+.hidden {
 	animation: fadeout var(--animation-speed) ease-in-out both;
 }
 
+.visible,
 .header:hover .hidden {
 	animation: fadein var(--animation-speed) ease-in-out var(--animation-speed) both;
-} */
+}
 
 @keyframes shrink {
 	from {
 		background: none;
 		backdrop-filter: none;
 		box-shadow: none;
-		padding: var(--large) var(--large) 0 var(--large);
 	}
 
 	to {
 		background: var(--light75);
 		backdrop-filter: blur(30px);
 		box-shadow: var(--shadow);
-		padding: var(--medium);
 	}
 }
 
@@ -77,14 +82,12 @@
 		background: var(--light75);
 		backdrop-filter: blur(30px);
 		box-shadow: var(--shadow);
-		padding: var(--medium);
 	}
 
 	to {
 		background: none;
 		backdrop-filter: none;
 		box-shadow: none;
-		padding: var(--large);
 	}
 }
 

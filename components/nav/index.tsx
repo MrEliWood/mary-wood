@@ -10,7 +10,7 @@ export default function Nav() {
 
 	return (
 		<nav className={styles.nav}>
-			<div className={styles.dropdown_container}>
+			{/* <div className={styles.dropdown_container}>
 				<h5 className={pathname === '/work/writing' || pathname === '/work/teaching' ? styles.active : ''}>Work</h5>
 
 				<div className={styles.dropdown}>
@@ -23,19 +23,13 @@ export default function Nav() {
 						</Link>
 					</div>
 				</div>
-			</div>
+			</div> */}
 
-			<Link href='/blog'>
-				<h5>Blog</h5>
-			</Link>
+			<Link href='/writing'>Writing</Link>
 
-			<Link href='/about'>
-				<h5>About</h5>
-			</Link>
+			<Link href='/teaching'>Teaching</Link>
 
-			<Link href='/contact'>
-				<h5>Contact</h5>
-			</Link>
+			<Link href='/contact'>Contact</Link>
 		</nav>
 	);
 }

@@ -1,15 +1,15 @@
+'use client';
+
+import { useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { Button, Splash, Pillar } from '@/components';
-import { bio, truncateString } from '@/utils';
+import { Pillar } from '@/components';
 import portrait from '@/public/assets/images/portrait.jpg';
 
 import styles from './page.module.css';
 
 export default function Home() {
-	const bioPreview = truncateString(bio, 318);
-
 	const uoLink = (
 		<Link href='https://cas.uoregon.edu/directory/english/all/mewood' target='_blank' className={styles.logo}>
 			University of Oregon
@@ -24,7 +24,7 @@ export default function Home() {
 				<h3 className={styles.intro_caption}>Currently a Professor of Disability Studies and English at the {uoLink}.</h3>
 			</section>
 
-			<section className={styles.portrait}>
+			<section id={styles.portrait} className={styles.portrait}>
 				<Image src={portrait} alt='Portrait of Mary Wood.' className={styles.portrait_image} />
 
 				<aside className={styles.portrait_detail}>

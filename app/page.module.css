@@ -1,20 +1,27 @@
 .page {
+	--gap: var(--huge);
+	--vertical-padding: var(--large);
+	--gutter-width: 30vh;
+	--intro-height: 50vh;
+	--portrait-position: calc(var(--header-height) + var(--intro-height) + var(--gap) + var(--vertical-padding));
+
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	gap: calc(var(--giant) - var(--large));
+	gap: var(--gap);
 
-	padding: calc(var(--giant) - var(--header-height)) var(--giant);
+	padding: var(--vertical-padding) var(--gutter-width) var(--gutter-width);
 }
 
 .intro {
 	display: flex;
 	flex-direction: column;
+	justify-content: center;
 	gap: var(--large);
-}
 
-.intro section {
-	width: 100%;
+	height: var(--intro-height);
+
+	padding-bottom: var(--large);
 }
 
 .intro_caption {
@@ -33,43 +40,24 @@
 }
 
 .portrait_detail {
+	position: sticky;
+	top: var(--portrait-position);
+
 	display: flex;
 	flex-direction: column;
 
 	width: 240px;
+	height: fit-content;
+
+	padding: var(--large) 0;
 }
 
-.portrait_detail_tagline {
-	display: flex;
-	gap: var(--small);
-
-	font-weight: 700;
-}
-
-.portrait_detail_tagline p {
-	opacity: 1;
+.break {
+	padding: var(--huge) 0;
 }
 
 .pillars {
 	display: flex;
 	flex-direction: column;
-	gap: calc(var(--giant) - var(--large));
-}
-
-.ethos {
-	display: grid;
-	grid-template-columns: 1fr 1fr;
-}
-
-.ethos h2 {
-	border-bottom: var(--border);
-
-	width: fit-content;
-	height: fit-content;
-}
-
-.ethos aside {
-	display: flex;
-	flex-direction: column;
-	gap: var(--medium);
+	gap: calc(var(--large) * 3);
 }
