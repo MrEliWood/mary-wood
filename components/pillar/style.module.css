@@ -1,0 +1,19 @@
+.component {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+}
+
+.title,
+.title:hover {
+	opacity: 1;
+}
+
+.component aside {
+	display: flex;
+	flex-direction: column;
+	gap: var(--medium);
+}
+
+.disabled {
+	pointer-events: none;
+}

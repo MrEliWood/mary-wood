@@ -17,34 +17,36 @@
 	width: 100%;
 }
 
-/* .intro_caption {
-	max-width: 675px;
-} */
-
-.profile {
-	display: grid;
-	grid-template-columns: 1fr 1fr;
-	gap: var(--large);
+.intro_caption {
+	font-style: italic;
 }
 
 .portrait {
+	display: grid;
+	grid-template-columns: auto max-content;
+	gap: var(--large);
+}
+
+.portrait_image {
 	width: 100%;
 	height: auto;
 }
 
-.profile_detail {
+.portrait_detail {
 	display: flex;
 	flex-direction: column;
+
+	width: 240px;
 }
 
-.profile_detail_tagline {
+.portrait_detail_tagline {
 	display: flex;
 	gap: var(--small);
 
 	font-weight: 700;
 }
 
-.profile_detail_tagline p {
+.portrait_detail_tagline p {
 	opacity: 1;
 }
 
@@ -60,7 +62,10 @@
 }
 
 .ethos h2 {
-	font-weight: 700;
+	border-bottom: var(--border);
+
+	width: fit-content;
+	height: fit-content;
 }
 
 .ethos aside {
