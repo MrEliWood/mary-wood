@@ -5,6 +5,8 @@ import { usePathname } from 'next/navigation';
 
 import styles from './style.module.css';
 
+const navLinks = ['writing', 'teaching', 'contact'];
+
 export default function Nav() {
 	const pathname: string = usePathname();
 
@@ -25,11 +27,20 @@ export default function Nav() {
 				</div>
 			</div> */}
 
-			<Link href='/writing'>Writing</Link>
+			{navLinks.map((link) => {
+				const key = Math.floor(Math.random() * 1000000);
 
-			<Link href='/teaching'>Teaching</Link>
+				const href = '/' + link;
+				const active = pathname === href;
 
-			<Link href='/contact'>Contact</Link>
+				return (
+					<div key={key} className={styles.nav_link_container}>
+						<Link href={href} className={`${styles.nav_link} ${active && styles.active}`}>
+							{link}
+						</Link>
+					</div>
+				);
+			})}
 		</nav>
 	);
 }

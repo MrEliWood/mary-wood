@@ -48,8 +48,11 @@
 	--huge: 96px;
 	--giant: 240px;
 
-	--header-height: 165px;
-	--footer-height: 204px;
+	--header-height: 152px;
+	--header-caption-height: 18px;
+	--scrolled-header-height: calc(var(--header-height) - var(--header-caption-height) - var(--large));
+
+	--footer-height: 223px;
 	--max-width: 1920px;
 
 	/* fonts */
