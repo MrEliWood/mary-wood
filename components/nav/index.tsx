@@ -12,21 +12,6 @@ export default function Nav() {
 
 	return (
 		<nav className={styles.nav}>
-			{/* <div className={styles.dropdown_container}>
-				<h5 className={pathname === '/work/writing' || pathname === '/work/teaching' ? styles.active : ''}>Work</h5>
-
-				<div className={styles.dropdown}>
-					<div className={styles.subnav}>
-						<Link href='/work/writing' className={pathname === '/work/writing' ? styles.active : ''}>
-							<h5>Writing</h5>
-						</Link>
-						<Link href='/work/teaching' className={pathname === '/work/teaching' ? styles.active : ''}>
-							<h5>Teaching</h5>
-						</Link>
-					</div>
-				</div>
-			</div> */}
-
 			{navLinks.map((link) => {
 				const key = Math.floor(Math.random() * 1000000);
 
@@ -34,11 +19,9 @@ export default function Nav() {
 				const active = pathname === href;
 
 				return (
-					<div key={key} className={styles.nav_link_container}>
-						<Link href={href} className={`${styles.nav_link} ${active && styles.active}`}>
-							{link}
-						</Link>
-					</div>
+					<Link key={key} href={href} className={`${styles.nav_link} ${active && styles.active}`}>
+						{link}
+					</Link>
 				);
 			})}
 		</nav>

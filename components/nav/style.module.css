@@ -4,37 +4,26 @@
 	height: fit-content;
 }
 
-.nav_link_container {
-	position: relative;
-}
-
 .nav_link {
 	text-transform: capitalize;
 }
 
 .nav_link::after {
-	content: '';
-
-	position: absolute;
-	bottom: 0;
-	right: 0;
-
-	background: var(--border-color);
+	background-size: 100% 100%, 0% 100%;
 
 	width: 0%;
-	height: var(--border-width);
-
-	transition: all 150ms ease-in-out;
 }
 
 .nav .active::after {
-	width: 100%;
+	background-size: 0% 100%, 100% 100%;
 }
 
 .nav_link:hover::after {
 	left: 0;
 
 	width: 100%;
+
+	animation: none;
 }
 
 /* .dropdown_container {

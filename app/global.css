@@ -26,8 +26,6 @@
 	--accent25: rgba(149, 64, 191, 0.25);
 	--accent10: rgba(149, 64, 191, 0.1);
 
-	/* --gradient-start: dodgerblue;
-	--gradient-end: mediumorchid; */
 	--gradient-start: hsl(245, 50%, 50%);
 	--gradient-end: hsl(275, 50%, 50%);
 	--gradient: linear-gradient(30deg, var(--gradient-start), var(--gradient-end));
@@ -249,26 +247,49 @@ td::before {
 
 a,
 a:visited {
+	position: relative;
+
 	color: inherit;
 	text-decoration: none;
 
 	width: fit-content;
 	height: fit-content;
 
-	border-bottom: var(--border);
-
 	padding: 0;
 
 	opacity: 0.5;
 }
 
-a:hover {
-	/* background: var(--gradient);
-	background-clip: text;
-	-webkit-background-clip: text;
-	color: transparent; */
+/* a:hover {
+	opacity: 0.66;
+} */
 
-	opacity: 0.75;
+a::after {
+	content: '';
+
+	position: absolute;
+	bottom: 0;
+	right: 0;
+
+	background: linear-gradient(var(--border-color), var(--border-color)), linear-gradient(var(--border-color), var(--border-color));
+	background-position: left, right;
+	background-repeat: no-repeat;
+	background-size: 0% 100%, 100% 100%;
+
+	width: 100%;
+	height: var(--border-width);
+
+	transition: all 150ms ease-in-out;
+}
+
+a:hover::after {
+	--step-1: 0%;
+	--step-2: 5%;
+	--step-mid: 25%;
+	--step-4: 90%;
+	--step-5: 95%;
+
+	animation: a_hover 600ms linear;
 }
 
 button {
@@ -406,5 +427,35 @@ i::before {
 
 	h3 {
 		font-size: 1.2em;
+	}
+}
+
+@keyframes a_hover {
+	from {
+		background-size: 0% 100%, 100% 100%;
+	}
+
+	5% {
+		background-size: var(--step-1) 100%, var(--step-5) 100%;
+	}
+
+	10% {
+		background-size: var(--step-2) 100%, var(--step-4) 100%;
+	}
+
+	50% {
+		background-size: var(--step-mid) 100%, var(--step-mid) 100%;
+	}
+
+	90% {
+		background-size: var(--step-4) 100%, var(--step-2) 100%;
+	}
+
+	95% {
+		background-size: var(--step-5) 100%, var(--step-1) 100%;
+	}
+
+	to {
+		background-size: 100% 100%, 0% 100%;
 	}
 }
