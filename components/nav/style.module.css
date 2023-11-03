@@ -8,115 +8,26 @@
 	text-transform: capitalize;
 }
 
-.nav_link::after {
-	background-size: 100% 100%, 0% 100%;
-
+.nav_link:not(.active)::before,
+.nav_link:not(.active)::after {
+	--a-decor-transition-speed: var(--a-transition-speed);
 	width: 0%;
 }
 
-.nav .active::after {
-	background-size: 0% 100%, 100% 100%;
+.nav_link:not(.active):hover::before {
+	width: 0%;
 }
 
-.nav_link:hover::after {
+.nav_link:not(.active):hover::after {
 	left: 0;
 
 	width: 100%;
-
-	animation: none;
 }
 
-/* .dropdown_container {
-	--dropdown-width: calc(261px + var(--medium) + var(--small));
-	--dropdown-width: 161px;
-	--dropdown-speed: 250ms;
-
-	position: relative;
-	display: flex;
-	height: fit-content;
+.active:hover::before {
+	width: 0%;
 }
 
-.dropdown {
-	position: absolute;
-	top: calc(100% + 2px);
-	left: calc(-1 * var(--small));
-	display: flex;
-	background: var(--gradient);
-	background-size: 100% var(--border-width);
-	background-position: 0 calc(var(--small) / 2 - 2px);
-	background-repeat: no-repeat;
-	overflow: hidden;
-	padding: calc(var(--small) / 2 - 2px) 0;
-	animation: slideout calc(var(--dropdown-speed) * 1.5) ease-in-out calc(var(--dropdown-speed) * 1.25) both;
+.active:hover::after {
+	width: 100%;
 }
-
-.dropdown_container:hover {
-	cursor: pointer;
-}
-
-.dropdown_container:hover .dropdown {
-	animation: slidein var(--dropdown-speed) ease-in-out both;
-}
-
-.subnav {
-	display: flex;
-	gap: var(--small);
-	overflow: hidden;
-	width: var(--dropdown-width);
-	padding: calc(var(--small) / 2 + 2px) var(--small);
-}
-
-.subnav a {
-	animation: dropup calc(var(--dropdown-speed) * 1.5) ease-in-out both;
-}
-
-.dropdown_container:hover .subnav a {
-	animation: dropdown var(--dropdown-speed) ease-in-out var(--dropdown-speed) both;
-}
-
-.active {
-	background: var(--gradient);
-	background-clip: text;
-	-webkit-background-clip: text;
-	color: transparent;
-}
-
-@keyframes slidein {
-	from {
-		width: 0px;
-	}
-
-	to {
-		width: var(--dropdown-width);
-	}
-}
-
-@keyframes slideout {
-	from {
-		width: var(--dropdown-width);
-	}
-
-	to {
-		width: 0px;
-	}
-}
-
-@keyframes dropdown {
-	from {
-		transform: translateY(-200%);
-	}
-
-	to {
-		transform: translateY(0%);
-	}
-}
-
-@keyframes dropup {
-	from {
-		transform: translateY(0%);
-	}
-
-	to {
-		transform: translateY(-200%);
-	}
-} */

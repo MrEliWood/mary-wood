@@ -1,17 +1,17 @@
 'use client';
 
-import { useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
 import { Pillar } from '@/components';
-import portrait from '@/public/assets/images/portrait.jpg';
+import { links } from '@/utils';
+import portrait from '@/public/assets/images/portrait-square.jpg';
 
 import styles from './page.module.css';
 
 export default function Home() {
 	const uoLink = (
-		<Link href='https://cas.uoregon.edu/directory/english/all/mewood' target='_blank' className={styles.logo}>
+		<Link href={links.uo} target='_blank'>
 			University of Oregon
 		</Link>
 	);

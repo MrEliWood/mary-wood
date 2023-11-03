@@ -43,6 +43,11 @@
 	color: var(--dark);
 }
 
+.logo::before,
+.logo::after {
+	display: none;
+}
+
 .site_caption_container {
 	display: flex;
 	gap: calc(var(--tiny) * 2);
