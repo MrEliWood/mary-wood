@@ -11,6 +11,8 @@
 .nav_link:not(.active)::before,
 .nav_link:not(.active)::after {
 	--a-decor-transition-speed: var(--a-transition-speed);
+	left: auto;
+	right: 0;
 	width: 0%;
 }
 
