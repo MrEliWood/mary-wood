@@ -42,7 +42,7 @@ export default function Writing() {
 										<aside className={styles.table_container}>
 											<h2 className={styles.table_title}>Table of Contents</h2>
 
-											{/* <hr /> */}
+											<hr />
 
 											<ul className={styles.table}>
 												{table.map(({ type, text }, i) => {
