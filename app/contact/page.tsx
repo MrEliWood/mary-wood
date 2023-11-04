@@ -27,8 +27,8 @@ export default function Blog() {
 					</div>
 
 					<div className={styles.contact_details}>
-						<Link href={links.uo} target='_blank' className={styles.contact_info_test}>
-							<h3>University of Oregon</h3>
+						<Link href={links.uo} target='_blank' className={styles.contact_info}>
+							<h3>uoregon.edu</h3>
 						</Link>
 					</div>
 				</aside>

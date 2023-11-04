@@ -37,12 +37,12 @@ export default function Home() {
 			</section>
 
 			<section className={styles.pillars}>
-				<Pillar title='Writer' href='/writing' button='More about Writing'>
+				<Pillar title='Writer' href='/writing' button='Writing'>
 					<p>Mary has published short fiction and memoir in The Missouri Review, The Capra Review, Club Plum Journal, and Midway Journal.</p>
 					<p>She's also published personal essays in British Journal of Medical Ethics (under pseudonym Mary E. Ladd--her grandmother's name), and as a chapter in her otherwise academic book Life Writing and Schizophrenia: Encounters at the Edge of Meaning (Brill, 2013).</p>
 				</Pillar>
 
-				<Pillar title='Teacher' href='/teaching' button='More about Teaching'>
+				<Pillar title='Teacher' href='/teaching' button='Teaching'>
 					<p>Mary teaches American literature, autobiography, and health humanities at the {uoLink}.</p>
 				</Pillar>
 

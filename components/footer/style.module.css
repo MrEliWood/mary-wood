@@ -1,36 +1,62 @@
 .footer {
+	--background-color: hsl(0, 0%, 10%);
+
+	--gradient-start: hsl(245, 100%, 66%);
+	--gradient-end: hsl(275, 100%, 66%);
+	--gradient: linear-gradient(30deg, var(--gradient-start), var(--gradient-end));
+
 	position: relative;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	gap: var(--huge);
 
-	background: var(--dark90);
+	background: var(--background-color);
 	box-shadow: inset 0px 20px 20px -20px var(--dark50);
 
 	color: var(--font-light);
 
 	width: 100vw;
 
-	padding: var(--huge) var(--large);
-	margin-top: var(--huge);
+	padding: var(--huge);
+	margin-top: var(--giant);
 }
 
-.footer button,
+.footer button {
+	background-color: var(--light50);
+	background-image: none;
+	transition: all var(--button-transition-speed) ease-in-out;
+}
+
 .footer button:hover {
-	border: none;
+	background-color: var(--light);
+}
+
+.footer button::after {
+	background-image: linear-gradient(var(--background-angle), var(--background-color) 50%, transparent 50%);
+}
+
+.footer button::before {
+	filter: grayscale(100%);
+	transition: all var(--button-transition-speed) ease-in-out;
+}
+
+.footer button:hover::before {
+	filter: grayscale(0%);
 }
 
 .footer a {
 	color: var(--link-light) !important;
+	opacity: 0.99;
 }
 
 .footer a:hover {
 	color: var(--font-light) !important;
+	opacity: 0.99;
 }
 
 .footer a:after {
-	background: var(--font-light) !important;
+	background-image: var(--font-light) !important;
 }
 
 .footer a::before,
@@ -80,10 +106,7 @@
 }
 
 .column hr {
-	border: none;
 	border-bottom: var(--border-width) var(--border-style) var(--light50);
-
-	width: var(--medium);
 }
 
 .column_content {

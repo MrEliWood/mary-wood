@@ -138,7 +138,9 @@ export default function Footer() {
 										<button onClick={handleLogoutClick}>Logout</button>
 									</>
 								) : (
-									<Button.TextArrow href='/login'>Login</Button.TextArrow>
+									<Link href='/login' className={`hidden_link ${styles.button_container}`}>
+										<button>Login</button>
+									</Link>
 								)}
 							</div>
 

@@ -38,13 +38,15 @@
 	--overlay: rgba(255, 255, 255, 0.98);
 
 	/* sizes */
-	--puny: 2px;
-	--tiny: 4px;
-	--small: 12px;
-	--medium: 24px;
-	--large: 48px;
-	--huge: 96px;
-	--giant: 240px;
+	--base-size: 12px;
+
+	--puny: calc(var(--base-size) / 6);
+	--tiny: calc(var(--base-size) / 3);
+	--small: var(--base-size);
+	--medium: calc(var(--base-size) * 2);
+	--large: calc(var(--base-size) * 4);
+	--huge: calc(var(--base-size) * 8);
+	--giant: calc(var(--base-size) * 16);
 
 	--header-height: 152px;
 	--header-caption-height: 18px;
@@ -66,9 +68,9 @@
 	--font-large: 32px;
 	--font-x-large: 48px;
 
-	--font-weight-primary: 400;
-	--font-weight-secondary: 400;
-	--font-weight-tertiary: 400;
+	--font-weight-regular: 400;
+	--font-weight-bold: 600;
+	--font-weight-bolder: 700;
 
 	--line-height-primary: 1.2;
 	--line-height-secondary: 1.5;
@@ -90,10 +92,10 @@
 	/* borders */
 	--border-width: 1px;
 	--border-style: solid;
-	--border-color: var(--dark);
+	--border-color: var(--dark50);
 	--border-radius: var(--tiny);
 
-	--border: var(--border-width) var(--border-style) var(--border-color);
+	--border: calc(var(--border-width) / 10) var(--border-style) var(--border-color);
 
 	/* icons */
 	--icon-size: 20px;
@@ -106,6 +108,7 @@
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
+	font-weight: var(--font-weight-regular);
 }
 
 html {
@@ -121,7 +124,6 @@ body {
 
 	font-size: var(--font-small);
 	font-family: var(--font-secondary);
-	font-weight: var(--font-weight-secondary);
 	line-height: var(--line-height-secondary);
 	white-space: pre-line;
 	color: var(--font-dark);
@@ -205,28 +207,11 @@ ul {
 	padding: 0 var(--medium);
 }
 
-table {
-	display: flex;
-	flex-direction: column;
-}
+hr {
+	border: none;
+	border-bottom: var(--border-width) var(--border-style) var(--dark50);
 
-th {
-	text-align: start;
-	margin: var(--medium) 0 0 0;
-}
-
-th:first-of-type {
-	margin-top: 0;
-}
-
-td {
-	position: relative;
-}
-
-td::before {
-	content: '-';
-	padding: 0 var(--tiny);
-	margin: 0 var(--tiny);
+	width: var(--medium);
 }
 
 a,
@@ -250,16 +235,14 @@ a:hover {
 	color: var(--font-dark);
 }
 
-a::before,
-a::after {
+a:not(.hidden_link)::before,
+a:not(.hidden_link)::after {
 	--a-decor-transition-speed: calc(var(--a-transition-speed) * 2);
 
 	content: '';
 
 	position: absolute;
 	bottom: 0;
-
-	/* background: var(--dark); */
 
 	height: var(--border-width);
 }
@@ -295,32 +278,38 @@ button {
 	--background-angle: 135deg;
 	--background-start: 0%;
 	--background-end: 100%;
-	--background-size: 225%;
+	--background-size: 250%;
 
 	position: relative;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	background: linear-gradient(var(--background-angle), var(--light) 50%, var(--gradient-start) 50%, var(--gradient-end));
+
+	background-image: linear-gradient(var(--background-angle), var(--gradient-start), var(--gradient-end) 50%, var(--light) 50%);
 	background-position: var(--background-start);
 	background-size: var(--background-size);
 	background-clip: text;
 	-webkit-background-clip: text;
+
 	border: none;
-	color: transparent;
-	font-size: 1.1rem;
 	border-radius: var(--border-radius);
+
+	color: transparent;
+	font-size: var(--font-x-small);
+	font-weight: var(--font-weight-bold);
+
 	padding: calc(var(--tiny) * 2) calc(var(--tiny) * 5);
 	margin: var(--border-width);
+
 	transition: background-position var(--button-transition-speed) ease-in-out;
 }
 
 button::before {
-	--button-border: calc(100% + (var(--border-width) * 2));
+	--button-border: calc(100% + (var(--border-width) * 3));
 
 	content: '';
 	position: absolute;
-	background: linear-gradient(var(--background-angle), var(--gradient-start) 50%, var(--gradient-end));
+	background-image: linear-gradient(var(--background-angle), var(--gradient-start) 50%, var(--gradient-end));
 	border-radius: calc(var(--border-radius) + 1px);
 	width: var(--button-border);
 	height: var(--button-border);
@@ -330,7 +319,7 @@ button::before {
 button::after {
 	content: '';
 	position: absolute;
-	background: linear-gradient(var(--background-angle), transparent 50%, var(--light) 50%);
+	background-image: linear-gradient(var(--background-angle), var(--light) 50%, transparent 50%);
 	background-position: var(--background-start);
 	background-size: var(--background-size);
 	border-radius: var(--border-radius);
@@ -359,35 +348,33 @@ button:hover::after {
 h1 {
 	font-size: var(--font-x-large);
 	font-family: var(--font-primary);
-	font-weight: var(--font-weight-primary);
+
 	line-height: var(--line-height-primary);
 }
 
 h2 {
 	font-size: var(--font-large);
 	font-family: var(--font-primary);
-	font-weight: var(--font-weight-primary);
+
 	line-height: var(--line-height-primary);
 }
 
 h3 {
 	font-size: var(--font-medium);
 	font-family: var(--font-primary);
-	font-weight: var(--font-weight-primary);
+
 	line-height: var(--line-height-primary);
 }
 
 h4 {
 	font-size: var(--font-small);
 	font-family: var(--font-primary);
-	font-weight: var(--font-weight-tertiary);
 	line-height: var(--line-height-tertiary);
 }
 
 h5 {
 	font-size: var(--font-x-small);
 	font-family: var(--font-tertiary);
-	font-weight: var(--font-weight-tertiary);
 	line-height: var(--line-height-tertiary);
 }
 

@@ -54,6 +54,8 @@
 
 .contact_info::before,
 .contact_info::after {
+	left: auto;
+	right: 0;
 	width: 0%;
 }
 

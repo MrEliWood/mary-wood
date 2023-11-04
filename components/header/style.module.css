@@ -16,8 +16,7 @@
 .header a,
 .header a:visited,
 .header a:hover {
-	border: none;
-	opacity: 1;
+	color: var(--font-dark);
 }
 
 .scrolled_header {
@@ -32,6 +31,10 @@
 
 .scrolled_header:hover {
 	background: var(--light90);
+}
+
+.scrolled_header nav {
+	padding-top: var(--puny);
 }
 
 .logo {
@@ -63,8 +66,7 @@
 	animation: fadeout var(--animation-speed) ease-in-out both;
 }
 
-.visible,
-.header:hover .hidden {
+.visible {
 	animation: fadein var(--animation-speed) ease-in-out var(--animation-speed) both;
 }
 

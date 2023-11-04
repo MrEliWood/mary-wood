@@ -1,7 +1,6 @@
 .link,
 .link:hover {
 	opacity: 0.99;
-	border: none;
 }
 
 .link::before,
@@ -15,14 +14,14 @@
 }
 
 .text_arrow_arrow {
-	fill: var(--light);
+	fill: var(--gradient-end);
 	width: 16px;
 	height: 16px;
 	transition: fill var(--button-transition-speed) ease-in-out;
 }
 
 .text_arrow:hover .text_arrow_arrow {
-	fill: var(--gradient-end);
+	fill: var(--font-light);
 	animation: crabwalk 1s ease-in-out calc(var(--button-transition-speed) - 100ms) infinite;
 }
 
