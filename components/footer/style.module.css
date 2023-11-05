@@ -11,7 +11,13 @@
 	align-items: center;
 	gap: var(--huge);
 
-	background: var(--background-color);
+	background-color: var(--background-color);
+	background-image: linear-gradient(var(--background-color), var(--dark90) 50%), url('/assets/images/header-background-b.jpg');
+	background-position: top;
+	background-size: 100vw 100vh;
+	background-repeat: no-repeat;
+
+	/* background: var(--background-color); */
 	box-shadow: inset 0px 20px 20px -20px var(--dark50);
 
 	color: var(--font-light);
@@ -30,10 +36,6 @@
 
 .footer button:hover {
 	background-color: var(--light);
-}
-
-.footer button::after {
-	background-image: linear-gradient(var(--background-angle), var(--background-color) 50%, transparent 50%);
 }
 
 .footer button::before {

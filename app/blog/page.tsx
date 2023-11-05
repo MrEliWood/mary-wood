@@ -26,7 +26,7 @@ export default function Blog() {
 	}, []);
 
 	return (
-		<section className={styles.page}>
+		<main className={styles.page}>
 			{token && (
 				<div className={styles.user_options} style={blogFormVisible ? { height: '553px' } : { height: '32px' }}>
 					<div id={styles.resize_container} className={`${styles.resize_container} ${blogFormVisible ? styles.visible : styles.hidden}`}>
@@ -70,6 +70,6 @@ export default function Blog() {
 						return <Post key={key} data={blog} />;
 					})}
 			</div>
-		</section>
+		</main>
 	);
 }
