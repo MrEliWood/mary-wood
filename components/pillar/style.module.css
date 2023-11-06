@@ -3,16 +3,8 @@
 	grid-template-columns: 1fr 1fr;
 }
 
-.title::after {
-	display: none;
-}
-
-.component aside {
+.content {
 	display: flex;
 	flex-direction: column;
 	gap: var(--medium);
-}
-
-.disabled {
-	pointer-events: none;
 }

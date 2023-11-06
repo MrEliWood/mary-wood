@@ -1,5 +1,5 @@
 .footer {
-	--background-color: hsl(0, 0%, 10%);
+	--background-color: 0, 0%, 10%;
 
 	--gradient-start: hsl(245, 100%, 66%);
 	--gradient-end: hsl(275, 100%, 66%);
@@ -11,13 +11,13 @@
 	align-items: center;
 	gap: var(--huge);
 
-	background-color: var(--background-color);
-	background-image: linear-gradient(var(--background-color), var(--dark90) 50%), url('/assets/images/header-background-b.jpg');
+	background-color: hsl(var(--background-color));
+	background-image: linear-gradient(hsl(var(--background-color)), calc(var(--header-height) * 2), hsla(var(--background-color), 0.9) 100%), url('/assets/images/background-home.png');
 	background-position: top;
-	background-size: 100vw 100vh;
+	background-size: 100vw auto;
 	background-repeat: no-repeat;
 
-	/* background: var(--background-color); */
+	background: hsl(var(--background-color));
 	box-shadow: inset 0px 20px 20px -20px var(--dark50);
 
 	color: var(--font-light);
@@ -25,7 +25,6 @@
 	width: 100vw;
 
 	padding: var(--huge);
-	margin-top: var(--giant);
 }
 
 .footer button {
@@ -58,7 +57,7 @@
 }
 
 .footer a:after {
-	background-image: var(--font-light) !important;
+	background: var(--font-light) !important;
 }
 
 .footer a::before,

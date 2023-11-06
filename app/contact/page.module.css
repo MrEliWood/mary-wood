@@ -1,16 +1,9 @@
-.page {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	gap: var(--large);
-}
-
 .contact {
 	position: relative;
 
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
-	gap: calc(var(--large) * 3);
+	gap: var(--giant);
 }
 
 .contact::after {
@@ -49,7 +42,7 @@
 }
 
 .contact_info {
-	opacity: 1;
+	color: var(--font-dark);
 }
 
 .contact_info::before,

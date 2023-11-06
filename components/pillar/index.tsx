@@ -17,7 +17,7 @@ export default function Pillar(props: PropsWithChildren<Props>) {
 		<div className={styles.component}>
 			<h2>{title}.</h2>
 
-			<aside>
+			<aside className={styles.content}>
 				{children}
 
 				{href && button && <Button.TextArrow href={href}>{button}</Button.TextArrow>}

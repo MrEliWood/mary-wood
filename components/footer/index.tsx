@@ -87,6 +87,35 @@ export default function Footer() {
 				</section>
 
 				<section className={styles.column}>
+					<h3 className={styles.column_title}>External Sources</h3>
+
+					<hr />
+
+					<div className={styles.column_content}>
+						<ul className={styles.column_content_section}>
+							{worklist.map((work) => {
+								const { link } = work;
+								if (!link) return;
+
+								const key = Math.floor(Math.random() * 1000000);
+
+								const linkArray = link.split('/');
+								const linkText = linkArray[2];
+								const href = 'http://' + linkText;
+
+								return (
+									<li key={key}>
+										<Link href={href} target='_blank'>
+											{linkText}
+										</Link>
+									</li>
+								);
+							})}
+						</ul>
+					</div>
+				</section>
+
+				<section className={styles.column}>
 					<h3 className={styles.column_title}>Contact</h3>
 
 					<hr />
@@ -146,35 +175,6 @@ export default function Footer() {
 
 							{loginVisible && <Login />}
 						</div>
-					</div>
-				</section>
-
-				<section className={styles.column}>
-					<h3 className={styles.column_title}>External Sources</h3>
-
-					<hr />
-
-					<div className={styles.column_content}>
-						<ul className={styles.column_content_section}>
-							{worklist.map((work) => {
-								const { link } = work;
-								if (!link) return;
-
-								const key = Math.floor(Math.random() * 1000000);
-
-								const linkArray = link.split('/');
-								const linkText = linkArray[2];
-								const href = 'http://' + linkText;
-
-								return (
-									<li key={key}>
-										<Link href={href} target='_blank'>
-											{linkText}
-										</Link>
-									</li>
-								);
-							})}
-						</ul>
 					</div>
 				</section>
 			</div>

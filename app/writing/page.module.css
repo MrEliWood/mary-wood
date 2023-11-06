@@ -3,8 +3,15 @@
 	flex-direction: column;
 	align-items: center;
 	gap: var(--huge);
+
+	background-image: linear-gradient(var(--light50), var(--light) calc(var(--header-height) * 2)), url('/assets/images/book.jpg');
+	background-position: 0% -10%;
+	background-size: 100vw auto;
+	background-repeat: no-repeat;
+
 	width: 100%;
-	padding: calc(var(--header-height) + var(--medium)) var(--huge) 0;
+
+	padding-top: calc(var(--header-height) + var(--medium));
 }
 
 .category {
