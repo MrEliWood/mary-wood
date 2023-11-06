@@ -4,10 +4,11 @@
 	align-items: center;
 	gap: var(--huge);
 
-	background-image: linear-gradient(var(--light50), var(--light) calc(var(--header-height) * 2)), url('/assets/images/book.jpg');
-	background-position: 0% -10%;
-	background-size: 100vw auto;
+	background-image: linear-gradient(var(--light2_3), var(--light) calc(var(--header-height) * 2)), url('/assets/images/book.jpg');
+	background-position-y: bottom;
+	background-size: cover;
 	background-repeat: no-repeat;
+	background-attachment: fixed;
 
 	width: 100%;
 

@@ -4,7 +4,9 @@
 	--light: white;
 	--light90: rgba(255, 255, 255, 0.9);
 	--light75: rgba(255, 255, 255, 0.75);
+	--light2_3: rgba(255, 255, 255, calc(2 / 3));
 	--light50: rgba(255, 255, 255, 0.5);
+	--light1_3: rgba(255, 255, 255, calc(1 / 3));
 	--light25: rgba(255, 255, 255, 0.25);
 	--light10: rgba(255, 255, 255, 0.1);
 
@@ -26,8 +28,8 @@
 	--accent25: rgba(149, 64, 191, 0.25);
 	--accent10: rgba(149, 64, 191, 0.1);
 
-	--gradient-start: hsl(245, 100%, 66%);
-	--gradient-end: hsl(275, 100%, 66%);
+	--gradient-start: hsl(245, 50%, 50%);
+	--gradient-end: hsl(275, 50%, 50%);
 	--gradient: linear-gradient(30deg, var(--gradient-start), var(--gradient-end));
 
 	/* alerts */
@@ -124,8 +126,8 @@ body {
 
 	background-color: var(--light);
 	background-image: url('/assets/images/background-home.png');
-	background-position: top;
-	background-size: 100vw auto;
+	background-position-y: top;
+	background-size: cover;
 	background-repeat: no-repeat;
 
 	font-size: var(--font-small);
@@ -146,9 +148,11 @@ main {
 	gap: var(--huge);
 	flex-grow: 1;
 
-	background-image: linear-gradient(var(--light50), var(--light) calc(var(--header-height) * 2));
-	backdrop-filter: blur(20px);
-	-webkit-backdrop-filter: blur(20px);
+	/* background-image: linear-gradient(var(--light2_3), var(--light) calc(var(--header-height) * 3)); */
+	/* backdrop-filter: blur(12px);
+	-webkit-backdrop-filter: blur(20px); */
+
+	/* background-image: url('/assets/images/background-home.png'); */
 
 	width: 100%;
 	height: 100%;
@@ -235,7 +239,7 @@ hr {
 
 a,
 a:visited {
-	--a-transition-speed: 150ms;
+	--a-transition-speed: 120ms;
 
 	position: relative;
 

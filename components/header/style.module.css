@@ -4,13 +4,23 @@
 	position: fixed;
 	top: 0;
 	left: 0;
+
 	display: flex;
 	justify-content: space-between;
+
+	/* background-image: linear-gradient(var(--light2_3), var(--light) calc(var(--header-height) * 2)), url('/assets/images/background-home.png'); */
+	background-image: url('/assets/images/background-home.png');
+	background-position-y: top;
+	background-size: cover;
+	background-repeat: no-repeat;
+
+	backdrop-filter: brightness(500%);
+
 	width: 100%;
 	padding: var(--large);
 	z-index: 2;
 	transition: all var(--animation-speed) ease-in-out;
-	animation: grow var(--animation-speed) ease-in-out both;
+	/* animation: grow var(--animation-speed) ease-in-out both; */
 }
 
 .header a,
@@ -20,13 +30,14 @@
 }
 
 .scrolled_header {
-	background: var(--light75);
-	backdrop-filter: blur(30px);
+	/* background: var(--light75); */
+
+	backdrop-filter: blur(24px);
 	box-shadow: var(--shadow);
 
 	padding: var(--medium) var(--large);
 
-	animation: shrink var(--animation-speed) ease-in-out var(--animation-speed) both;
+	/* animation: shrink var(--animation-speed) ease-in-out var(--animation-speed) both; */
 }
 
 .scrolled_header:hover {
