@@ -17,9 +17,11 @@ export default function Writing() {
 					const { category, sub, title, caption, description, preview, image, published, link, table } = work;
 					const key = Math.floor(Math.random() * 1000000);
 
+					const id = 'writing_work_' + i;
+
 					return (
-						work.category === 'scholarship' && (
-							<article className={styles.work}>
+						category === 'scholarship' && (
+							<article id={id} className={styles.work}>
 								{image && <Image src={image} alt='Life Writing & Schizophrenia' width={100} height={100} className={styles.cover} />}
 
 								<div className={styles.content}>

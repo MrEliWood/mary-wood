@@ -1,5 +1,8 @@
 .header {
 	--animation-speed: 500ms;
+	--header-background: var(--light75);
+
+	/* life writng color: hsla(40, 10%, 75%, 0.75) */
 
 	position: fixed;
 	top: 0;
@@ -8,22 +11,10 @@
 	display: flex;
 	justify-content: space-between;
 
-	/* background-image: linear-gradient(var(--light2_3), var(--light) calc(var(--header-height) * 2)), url('/assets/images/background-home.png'); */
-	/* background-image: url('/assets/images/background-home.png'); */
-	background-image: linear-gradient(transparent, var(--light) calc(var(--header-height) * 2)), url('/assets/images/background-book.png');
-
-	/* background-position-y: top; */
-	background-size: 100vw auto;
-	background-repeat: no-repeat;
-
-	backdrop-filter: brightness(500%);
-	box-shadow: none;
-
 	width: 100%;
 	padding: var(--large);
 	z-index: 2;
 	transition: all var(--animation-speed) ease-in-out;
-	/* animation: grow var(--animation-speed) ease-in-out both; */
 }
 
 .header a,
@@ -33,16 +24,12 @@
 }
 
 .scrolled_header {
-	/* background: var(--light75); */
+	background: var(--header-background);
 
-	background-image: linear-gradient(transparent, var(--light) calc(var(--header-height) * 2)), url('/assets/images/background-book.png');
-
-	backdrop-filter: blur(24px) brightness(500%);
+	backdrop-filter: blur(12px);
 	box-shadow: var(--shadow);
 
 	padding: var(--medium) var(--large);
-
-	/* animation: shrink var(--animation-speed) ease-in-out var(--animation-speed) both; */
 }
 
 .scrolled_header:hover {
@@ -84,34 +71,6 @@
 
 .visible {
 	animation: fadein var(--animation-speed) ease-in-out var(--animation-speed) both;
-}
-
-@keyframes shrink {
-	from {
-		background: none;
-		backdrop-filter: none;
-		box-shadow: none;
-	}
-
-	to {
-		background: var(--light75);
-		backdrop-filter: blur(30px);
-		box-shadow: var(--shadow);
-	}
-}
-
-@keyframes grow {
-	from {
-		background: var(--light75);
-		backdrop-filter: blur(30px);
-		box-shadow: var(--shadow);
-	}
-
-	to {
-		background: none;
-		backdrop-filter: none;
-		box-shadow: none;
-	}
 }
 
 @keyframes fadeout {
