@@ -1,8 +1,9 @@
 'use client';
 
 import Image from 'next/image';
+import Link from 'next/link';
 
-import { Button } from '@/components';
+import { Button, Work } from '@/components';
 import { worklist } from '@/utils';
 
 import styles from './page.module.css';
@@ -22,7 +23,11 @@ export default function Writing() {
 					return (
 						category === 'scholarship' && (
 							<article id={id} className={styles.work}>
-								{image && <Image src={image} alt='Life Writing & Schizophrenia' width={100} height={100} className={styles.cover} />}
+								{image && (
+									<Link href={link} className={`${styles.cover_container} hidden_link`}>
+										<Image src={image} alt='Life Writing & Schizophrenia' width={100} height={100} className={styles.cover} />
+									</Link>
+								)}
 
 								<div className={styles.content}>
 									<div className={styles.heading}>
@@ -65,18 +70,14 @@ export default function Writing() {
 											</ul>
 										</aside>
 									)}
-
-									<div className={styles.button_block}>
-										<Button.TextArrow href={link} target='_blank'>
-											Where to Buy
-										</Button.TextArrow>
-									</div>
 								</div>
 							</article>
 						)
 					);
 				})}
 			</section>
+
+			<Work.Menu />
 		</main>
 	);
 }
