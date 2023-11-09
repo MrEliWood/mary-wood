@@ -5,26 +5,26 @@ import { redirect } from 'next/navigation';
 
 import styles from './page.module.css';
 import { Buttons, PageNav } from '@/components';
-import { worklist } from '@/utils';
+import { workData } from '@/utils';
 
 interface Props {
 	params: { title: string };
 }
 
 export default function DynamicWriting({ params }: Props) {
-	const foundWork = worklist.find(({ title }) => title.toLowerCase().replaceAll(' ', '-') === params.title);
+	const foundWork = workData.find(({ title }) => title.toLowerCase().replaceAll(' ', '-') === params.title);
 	if (!foundWork) redirect('/');
 
 	const { category, sub, title, caption, description, preview, image, published, link, table } = foundWork;
-	const index = worklist.indexOf(foundWork);
+	const index = workData.indexOf(foundWork);
 
 	const buildLink = (title: string) => `/work/writing/${title.toLowerCase().replaceAll(' ', '-')}` || null;
 
-	const prev = worklist[index - 1] || { title: '' };
+	const prev = workData[index - 1] || { title: '' };
 	const prevText = prev.title || null;
 	const prevLink = buildLink(prev.title);
 
-	const next = worklist[index + 1] || { title: '' };
+	const next = workData[index + 1] || { title: '' };
 	const nextText = next.title || null;
 	const nextLink = buildLink(next.title);
 

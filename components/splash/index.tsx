@@ -4,13 +4,13 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 import { Button } from '@/components';
-import { worklist } from '@/utils';
+import { workData } from '@/utils';
 import book from '@/public/assets/images/life-writing-mockup.png';
 
 import styles from './style.module.css';
 
 export default function Splash() {
-	const { title, caption, preview, link } = worklist[0];
+	const { title, caption, preview, link } = workData[0];
 
 	const readMoreLink = `/work/writing/${title.toLowerCase().replaceAll(' ', '-')}`;
 

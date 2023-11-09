@@ -1,0 +1,14 @@
+.text {
+	cursor: pointer;
+
+	background: none;
+
+	font-size: var(--font-x-small);
+	color: var(--link-dark);
+
+	border: none;
+}
+
+.text:hover {
+	color: var(--font-dark);
+}

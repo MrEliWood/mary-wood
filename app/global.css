@@ -238,7 +238,8 @@ hr {
 }
 
 a,
-a:visited {
+a:visited,
+.button_text {
 	--a-transition-speed: 120ms;
 
 	position: relative;
@@ -256,12 +257,15 @@ a:visited {
 	transition: all var(--a-transition-speed) ease-in-out;
 }
 
-a:hover {
+a:hover,
+.button_text:hover {
 	color: var(--font-dark);
 }
 
 a:not(.hidden_link)::before,
-a:not(.hidden_link)::after {
+a:not(.hidden_link)::after,
+.button_text::before,
+.button_text::after {
 	--a-decor-transition-speed: calc(var(--a-transition-speed) * 2);
 
 	content: '';
@@ -270,7 +274,8 @@ a:not(.hidden_link)::after {
 	bottom: 0;
 }
 
-a::before {
+a::before,
+.button_text::before {
 	right: 0;
 
 	border-bottom: var(--border-width) solid var(--font-dark);
@@ -279,7 +284,8 @@ a::before {
 	transition: all var(--a-decor-transition-speed) ease-in-out;
 }
 
-a::after {
+a::after,
+.button_text::after {
 	left: 0;
 
 	border-bottom: var(--border-width) solid var(--link-dark);
@@ -288,92 +294,19 @@ a::after {
 	transition: all calc(var(--a-decor-transition-speed) * 1.5) ease-in;
 }
 
-a:hover::before {
+a:hover::before,
+.button_text:hover::before {
 	left: 0;
 	width: 100%;
 	transition: all calc(var(--a-decor-transition-speed) * 1.5) ease-in;
 }
 
-a:hover::after {
+a:hover::after,
+.button_text:hover::after {
 	left: auto;
 	right: 0;
 	width: 0%;
 	transition: all var(--a-decor-transition-speed) ease-in-out;
-}
-
-button {
-	--background-angle: 135deg;
-	--background-start: 0%;
-	--background-end: 100%;
-	--background-size: 250%;
-
-	position: relative;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-
-	background-image: linear-gradient(var(--background-angle), var(--gradient-start), var(--gradient-end) 50%, var(--light) 50%);
-	background-position: var(--background-start);
-	background-size: var(--background-size);
-	background-clip: text;
-	-webkit-background-clip: text;
-
-	border: none;
-	border-radius: var(--border-radius);
-
-	color: transparent;
-	font-size: var(--font-x-small);
-	font-weight: var(--font-weight-bold);
-
-	padding: calc(var(--tiny) * 2) calc(var(--tiny) * 5);
-	margin: var(--border-width);
-
-	transition: background-position var(--button-transition-speed) ease-in-out;
-}
-
-button::before {
-	content: '';
-
-	position: absolute;
-	z-index: -1;
-
-	background-image: linear-gradient(var(--background-angle), var(--gradient-start) 50%, var(--gradient-end));
-	border-radius: calc(var(--border-radius) + 1px);
-
-	mask-clip: content-box, border-box;
-	mask-image: linear-gradient(transparent, transparent), linear-gradient(white, white);
-	mask-composite: intersect;
-
-	padding: calc(var(--border-width) * 1.5);
-
-	width: 100%;
-	height: 100%;
-}
-
-button::after {
-	content: '';
-
-	position: absolute;
-	z-index: -1;
-
-	background-image: linear-gradient(var(--background-angle), transparent 50%, var(--gradient-start) 50%, var(--gradient-end));
-	background-position: var(--background-start);
-	background-size: var(--background-size);
-	border-radius: var(--border-radius);
-
-	width: 100%;
-	height: 100%;
-
-	transition: background-position var(--button-transition-speed) ease-in-out;
-}
-
-button:hover {
-	cursor: pointer;
-	background-position: var(--background-end);
-}
-
-button:hover::after {
-	background-position: var(--background-end);
 }
 
 .button_block {

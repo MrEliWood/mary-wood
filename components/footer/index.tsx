@@ -6,7 +6,7 @@ import Link from 'next/link';
 
 // internal
 import { Button, Login } from '@/components';
-import { links, verifyToken, worklist } from '@/utils';
+import { links, verifyToken, workData } from '@/utils';
 
 // state
 import { useSelector, useDispatch } from 'react-redux';
@@ -93,7 +93,7 @@ export default function Footer() {
 
 					<div className={styles.column_content}>
 						<ul className={styles.column_content_section}>
-							{worklist.map((work) => {
+							{workData.map((work) => {
 								const { link } = work;
 								if (!link) return;
 

@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 
-import { worklist } from '@/utils';
+import { workData } from '@/utils';
 
 import styles from './page.module.css';
 
@@ -14,11 +14,11 @@ interface Props {
 export default function Stack({ category }: Props) {
 	return (
 		<div className={styles.component}>
-			{worklist.map((work, i) => {
+			{workData.map((work, i) => {
 				const key = Math.floor(Math.random() * 1000000);
 
 				const inlineStyles = {
-					zIndex: worklist.length - i
+					zIndex: workData.length - i
 				};
 
 				if (work.category === category) {

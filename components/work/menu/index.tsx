@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 
-import { worklist } from '@/utils';
+import { workData } from '@/utils';
 
 import styles from './style.module.css';
 
@@ -10,7 +10,7 @@ export default function Menu() {
 	return (
 		<aside className={styles.component}>
 			<ul className={styles.menu}>
-				{worklist.map((work) => {
+				{workData.map((work) => {
 					const key = Math.floor(Math.random() * 1000000);
 
 					const id = work.title.toLowerCase().replaceAll(' ', '-');

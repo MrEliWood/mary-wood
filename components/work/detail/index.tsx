@@ -1,80 +1,84 @@
 'use client';
 
+import { useState } from 'react';
 import Image from 'next/image';
-import { redirect } from 'next/navigation';
+import Link from 'next/link';
+
+import { Button } from '@/components';
 
 import styles from './page.module.css';
-import { Button, PageNav } from '@/components';
-import { worklist } from '@/utils';
+
+import { Work } from '@/types';
+import { truncate } from 'fs';
 
 interface Props {
-	index: number;
+	data: Work;
 }
 
-export default function DynamicWriting({ index }: Props) {
-	const { category, sub, title, caption, description, preview, image, published, link, table } = worklist[index];
+export default function Detail(props: Props) {
+	const { id, title, caption, description, preview, image, published, link, table } = props.data;
+	const [descVisible, setDescVisible] = useState(false);
 
 	return (
-		<div className={styles.component}>
+		<article id={id} className={styles.work}>
 			{image && (
-				<>
-					{/* <Image src={image} alt='Life Writing & Schizophrenia' width={100} height={100} className={styles.background} /> */}
+				<Link href={link} className={`${styles.cover_container} hidden_link`}>
 					<Image src={image} alt='Life Writing & Schizophrenia' width={100} height={100} className={styles.cover} />
-				</>
+				</Link>
 			)}
 
 			<div className={styles.content}>
 				<div className={styles.heading}>
 					<h5 className={styles.date}>Published {published}</h5>
 
-					<h1>{title}</h1>
-					<h3>{caption.replace('\n ', '')}</h3>
+					<div className={styles.title}>
+						<h1>{title}</h1>
+						<h2>{caption.replace('\n ', '')}</h2>
+					</div>
 				</div>
 
-				<p>{description}</p>
+				<hr />
+
+				<p className={styles.description}>
+					{descVisible ? (
+						<>
+							{description} <Button.Text onClick={() => setDescVisible(!descVisible)}>Show Less</Button.Text>
+						</>
+					) : (
+						<>
+							{preview}... <Button.Text onClick={() => setDescVisible(!descVisible)}>Read More</Button.Text>
+						</>
+					)}
+				</p>
 
 				{table && (
-					<table className={styles.table}>
-						{table.map(({ type, text }, i) => {
-							const key = Math.floor(Math.random() * 1000000);
+					<aside className={styles.table_container}>
+						<h2 className={styles.table_title}>Table of Contents</h2>
 
-							if (type === 'head') {
-								return (
-									<th key={key} className={styles.table_head}>
+						<hr />
+
+						<ul className={styles.table}>
+							{table.map(({ type, text }, i) => {
+								const key = Math.floor(Math.random() * 1000000);
+
+								return type === 'head' ? (
+									<h5 key={key} className={styles.table_head}>
 										{text}
-									</th>
-								);
-							}
-
-							if (i === 0) {
-								return (
-									<th key={key} className={styles.table_head}>
-										Table of Contents
-									</th>
-								);
-							}
-
-							if (type === 'bold') {
-								return (
-									<td key={key} className={styles.table_bold}>
+									</h5>
+								) : type === 'bold' ? (
+									<li key={key} className={styles.table_bold}>
 										{text}
-									</td>
+									</li>
+								) : (
+									<li key={key} className={styles.table_line}>
+										{text}
+									</li>
 								);
-							}
-
-							return (
-								<td key={key} className={styles.table_line}>
-									{text}
-								</td>
-							);
-						})}
-					</table>
+							})}
+						</ul>
+					</aside>
 				)}
-
-				<div className={styles.button_block}>
-					<Button.TextArrow text='Where to Buy' href={link} target='_blank' />
-				</div>
 			</div>
-		</div>
+		</article>
 	);
 }

@@ -1,17 +1,8 @@
-type Work = {
-	category: string;
-	sub: string;
-	title: string;
-	caption: string;
-	description: string;
-	preview: string;
-	image: any;
-	published: string;
-	link: string;
-	table: { type: string; text: string }[] | null;
-};
+import { buildNavLink } from '@/utils';
 
-const workData: Work[] = [
+import { Work } from '../types';
+
+const data: Work[] = [
 	{
 		category: 'scholarship',
 		sub: 'books',
@@ -33,7 +24,7 @@ const workData: Work[] = [
 		preview: `"She's mad!" But who defines madness? This book uses the autobiographies of five institutionalized women—Elizabeth Packard, Lydia Smith, Clarissa Lathrop, Jane Hillyer, and Zelda Fitzgerald—to explore questions of madness and female identity in late nineteenth- and early twentieth-centery America.`,
 		image: '/assets/images/the-writing-on-the-wall.jpg',
 		published: 'December 1st, 1994',
-		link: 'https://www.amazon.com/Writing-Wall-WOMENS-AUTOBIOGRAPHY-ASYLUM/dp/0252063899',
+		link: 'https://amazon.com/Writing-Wall-WOMENS-AUTOBIOGRAPHY-ASYLUM/dp/0252063899',
 		table: null
 	},
 	{
@@ -45,7 +36,7 @@ const workData: Work[] = [
 		preview: `Mental illness has been a favourite topic for authors throughout the history of literature, while psychologists and psychiatrists such as Sigmund Freud and Karl Jaspers have in turn been interested in and influenced by literature. Pioneers within philosophy, psychiatry and literature share the endeavour to explore and explain the human mind and behaviour, including what a society deems as being outside perceived normality. \n\n Using a theoretical approach that is eclectic and transdisciplinary, this volume engages with literature’s multifarious ways of probing minds and bodies in a state of mental ill health. The cases and the theory are in dialogue with a clinical approach, addressing issues and diagnoses such as trauma, psychosis, bipolar disorder, eating disorders, self-harm, hoarding disorder, PTSD and Digital Sexual Assault. \n\n The chapters in Part I address literary representations of madness with a historical awareness, outlining the socio-political potentials of madness literature. Part II investigates how representations of mental illness in literature can offer unique insights into the subjective experience of alternative states of mind. Part III reflects on how literary cases can be applied to help inform mental health education, how they can be used therapeutically and how they are giving credence to new diagnoses. Throughout the book, the contributors consider how the language and discourses of literature—both stylistically and theoretically—can teach us something new about what it means to be mentally unwell.`,
 		image: '/assets/images/madness-and-literature.jpg',
 		published: 'October 3rd, 2022',
-		link: 'https://www.exeterpress.co.uk/products/madness-and-literature',
+		link: 'https://exeterpress.co.uk/products/madness-and-literature',
 		table: [
 			{ type: 'head', text: `Part I: Literary History and Socio-Political Perspectives` },
 			{ type: 'line', text: `Layla and Majnun in Historical and Contemporary Conceptions of Madness in Islamic Psychology Alan Weber` },
@@ -163,5 +154,11 @@ const workData: Work[] = [
 		table: []
 	}
 ];
+
+const workData = data.map((work) => ({
+	...work,
+	id: work.title.toLowerCase().replaceAll(' ', '-'),
+	navLink: buildNavLink('/work/writing', work.title)
+}));
 
 export default workData;

@@ -5,7 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 import { Work } from '@/components';
-import { worklist } from '@/utils';
+import { workData } from '@/utils';
 
 import styles from './page.module.css';
 
@@ -20,7 +20,7 @@ export default function Writing() {
 						<h1 className={styles.category_heading}>{name}</h1>
 
 						<div className={styles.category_work}>
-							{worklist.map((work, i) => {
+							{workData.map((work, i) => {
 								const key = Math.floor(Math.random() * 1000000);
 
 								return (
@@ -39,7 +39,7 @@ export default function Writing() {
 			<section className={styles.category}>
 				<h2 className={styles.category_heading}>Scholarship</h2>
 
-				{worklist.map((work, i) => {
+				{workData.map((work, i) => {
 					const key = Math.floor(Math.random() * 1000000);
 
 					return work.category === 'scholarship' && <Work.Detail key={key} index={i} />;
@@ -62,7 +62,7 @@ export default function Writing() {
 
 // 						{!subCategories ? (
 // 							<div className={styles.category_work}>
-// 								{worklist.map((work, i) => {
+// 								{workData.map((work, i) => {
 // 									const key = Math.floor(Math.random() * 1000000);
 
 // 									return work.sub === name && <Work.Preview key={key} index={i} />;
@@ -74,7 +74,7 @@ export default function Writing() {
 
 // 								return (
 // 									<div key={key} id={sub.replaceAll(' ', '-')} className={styles.category_work}>
-// 										{worklist.map((work, i) => {
+// 										{workData.map((work, i) => {
 // 											const key = Math.floor(Math.random() * 1000000);
 
 // 											return work.sub === sub && <Work.Preview key={key} index={i} />;
