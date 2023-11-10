@@ -13,13 +13,38 @@
 	top: calc(var(--header-height) + var(--medium));
 
 	display: flex;
-	justify-content: flex-end;
-	gap: var(--small);
+	flex-direction: column;
+	align-items: flex-end;
+	gap: var(--large);
 
 	font-size: var(--font-x-small);
 	text-align: end;
 	line-height: var(--line-height-tertiary);
+}
+
+.category {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+	gap: var(--small);
+
 	list-style-type: none;
 
 	padding: 0;
+}
+
+.category_name {
+	font-weight: var(--font-weight-bold);
+}
+
+.menu_item {
+	cursor: pointer;
+}
+
+.menu_item::after {
+	display: none;
+}
+
+.active {
+	color: var(--font-dark);
 }

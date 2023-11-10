@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect, Dispatch, SetStateAction } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -9,15 +9,38 @@ import { Button } from '@/components';
 import styles from './page.module.css';
 
 import { Work } from '@/types';
-import { truncate } from 'fs';
 
-interface Props {
+type Props = {
 	data: Work;
-}
+	setVisibleWork: Dispatch<SetStateAction<string>>;
+};
 
 export default function Detail(props: Props) {
-	const { id, title, caption, description, preview, image, published, link, table } = props.data;
+	const { data, setVisibleWork } = props;
 	const [descVisible, setDescVisible] = useState(false);
+
+	const { id, title, caption, description, preview, image, published, link, table } = data;
+
+	const handleScroll = () => {
+		const htmlElement = document.getElementById(id);
+		if (!htmlElement) return;
+
+		const position = htmlElement.getBoundingClientRect().top;
+		if (!position) return;
+
+		const viewRange = window.innerHeight / 2;
+		const isWithinRange = 0 < position && position < viewRange;
+
+		if (isWithinRange) setVisibleWork(id);
+	};
+
+	useEffect(() => {
+		window.addEventListener('scroll', handleScroll);
+
+		return () => {
+			window.removeEventListener('scroll', handleScroll);
+		};
+	}, []);
 
 	return (
 		<article id={id} className={styles.work}>

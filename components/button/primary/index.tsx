@@ -1,5 +1,7 @@
 import { PropsWithChildren } from 'react';
 
+import Text from '../text';
+
 import styles from './style.module.css';
 
 interface Props {
@@ -7,7 +9,7 @@ interface Props {
 	onClick: () => void;
 }
 
-export default function Default(props: PropsWithChildren<Props>) {
+export default function Primary(props: PropsWithChildren<Props>) {
 	const { className, onClick, children } = props;
 
 	return (

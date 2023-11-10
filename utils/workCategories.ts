@@ -20,7 +20,7 @@ workData.forEach(({ category, sub }) => {
 	}
 
 	const subObject = {
-		id: sub && sub.replaceAll(' ', '-'),
+		id: sub && sub.toLowerCase().replaceAll(' ', '-'),
 		name: sub
 	};
 
