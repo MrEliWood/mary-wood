@@ -17,6 +17,7 @@ type Props = {
 
 export default function Detail(props: Props) {
 	const { data, setVisibleWork } = props;
+	const [inView, setInView] = useState(false);
 	const [descVisible, setDescVisible] = useState(false);
 
 	const { id, title, caption, description, preview, image, published, link, table } = data;
@@ -63,15 +64,7 @@ export default function Detail(props: Props) {
 				<hr />
 
 				<p className={styles.description}>
-					{descVisible ? (
-						<>
-							{description} <Button.Text onClick={() => setDescVisible(!descVisible)}>Show Less</Button.Text>
-						</>
-					) : (
-						<>
-							{preview}... <Button.Text onClick={() => setDescVisible(!descVisible)}>Read More</Button.Text>
-						</>
-					)}
+					{descVisible ? description : preview} <Button.Text onClick={() => setDescVisible(!descVisible)}>{descVisible ? 'Show Less' : 'Read More'}</Button.Text>
 				</p>
 
 				{table && (

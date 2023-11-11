@@ -33,8 +33,6 @@ export default function Menu(props: Props) {
 		const paddingTop = getElementPosition(component_id) || 0;
 		const scrollTo = position - paddingTop;
 
-		console.log(position, paddingTop);
-
 		window.scrollTo(0, scrollTo);
 	};
 
@@ -55,7 +53,7 @@ export default function Menu(props: Props) {
 
 								return (
 									work.category === category.name && (
-										<li key={key} id={work.id} className={`button_text ${styles.menu_item} ${active && styles.active}`} onClick={() => handleClick(work.id)}>
+										<li key={key} id={work.id} className={`button_text ${styles.menu_item} ${active ? styles.active : ''}`} onClick={() => handleClick(work.id)}>
 											{work.title}
 										</li>
 									)
