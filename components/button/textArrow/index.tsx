@@ -5,7 +5,7 @@ import { Button } from '@/components';
 import styles from './style.module.css';
 
 interface Props {
-	onClick: () => void;
+	onClick?: () => void;
 }
 
 export default function TextArrow(props: PropsWithChildren<Props>) {

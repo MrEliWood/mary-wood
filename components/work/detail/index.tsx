@@ -63,11 +63,9 @@ export default function Detail(props: Props) {
 
 				<hr />
 
-				<p className={styles.description}>
-					{descVisible ? description : preview} <Button.Text onClick={() => setDescVisible(!descVisible)}>{descVisible ? 'Show Less' : 'Read More'}</Button.Text>
-				</p>
+				<p className={styles.description}>{preview && !descVisible ? preview : description}</p>
 
-				{table && (
+				{table && descVisible && (
 					<aside className={styles.table_container}>
 						<h2 className={styles.table_title}>Table of Contents</h2>
 
@@ -94,6 +92,8 @@ export default function Detail(props: Props) {
 						</ul>
 					</aside>
 				)}
+
+				{preview && <Button.Text onClick={() => setDescVisible(!descVisible)}>{descVisible ? 'Show Less' : 'Read More'}</Button.Text>}
 			</div>
 		</article>
 	);

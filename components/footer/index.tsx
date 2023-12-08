@@ -168,7 +168,7 @@ export default function Footer() {
 									</>
 								) : (
 									<Link href='/login' className={`hidden_link ${styles.button_container}`}>
-										<button>Login</button>
+										<Button.Primary>Login</Button.Primary>
 									</Link>
 								)}
 							</div>

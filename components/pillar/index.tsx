@@ -20,7 +20,7 @@ export default function Pillar(props: PropsWithChildren<Props>) {
 			<aside className={styles.content}>
 				{children}
 
-				{href && button && <Button.TextArrow href={href}>{button}</Button.TextArrow>}
+				{href && button && <Button.TextArrow>{button}</Button.TextArrow>}
 			</aside>
 		</div>
 	);

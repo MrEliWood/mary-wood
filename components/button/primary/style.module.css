@@ -22,6 +22,8 @@
 	font-size: var(--font-x-small);
 	font-weight: var(--font-weight-bold);
 
+	width: fit-content;
+
 	padding: calc(var(--tiny) * 2) calc(var(--tiny) * 5);
 	margin: var(--border-width);
 
