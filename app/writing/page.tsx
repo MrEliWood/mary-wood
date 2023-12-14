@@ -12,13 +12,23 @@ export default function Writing() {
 
 	return (
 		<main className={styles.page}>
-			<section className={styles.category}>
-				{workData.map((work) => {
-					const key = Math.floor(Math.random() * 1000000);
+			<div className={styles.work}>
+				<section className={`${styles.category} ${styles.scholarship}`}>
+					{workData.map((work) => {
+						const key = Math.floor(Math.random() * 1000000);
 
-					return <Work.Detail key={key} data={work} setVisibleWork={setVisibleWork} />;
-				})}
-			</section>
+						return work.category === 'Scholarship' && <Work.Detail key={key} data={work} setVisibleWork={setVisibleWork} />;
+					})}
+				</section>
+
+				<section className={`${styles.category} ${styles.creative}`}>
+					{workData.map((work) => {
+						const key = Math.floor(Math.random() * 1000000);
+
+						return work.category === 'Creative Work' && <Work.Detail key={key} data={work} setVisibleWork={setVisibleWork} />;
+					})}
+				</section>
+			</div>
 
 			<Work.Menu visibleWork={visibleWork} setVisibleWork={setVisibleWork} />
 		</main>

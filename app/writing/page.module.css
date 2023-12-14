@@ -26,3 +26,7 @@
 
 	width: 100%;
 }
+
+.creative {
+	gap: var(--large);
+}

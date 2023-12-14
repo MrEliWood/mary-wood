@@ -41,24 +41,17 @@ export default function Detail(props: Props) {
 
 	return category === 'Creative Work' ? (
 		<article id={id} className={`${styles.work} ${styles.creative}`}>
-			{/* <Image src='/assets/images/blank-book.png' alt='Life Writing & Schizophrenia' width={100} height={100} className={styles.cover} /> */}
+			{/* <Image src='/assets/images/blank-spine.png' alt='Life Writing & Schizophrenia' width={100} height={100} className={styles.spine} /> */}
 
-			<div className={styles.content}>
-				<div className={styles.heading}>
-					<h5 className={styles.date}>Published {published}</h5>
-
-					<div className={styles.title}>
-						<h1>{title}</h1>
-						<h2>{caption.replace('\n ', '')}</h2>
-					</div>
-				</div>
+			<div className={styles.creative_content}>
+				<h2 className={styles.creative_title}>{title}</h2>
 
 				{link ? (
-					<Link href={link} target='_blank'>
-						{link.split('/')[2]}
+					<Link href={link} target='_blank' className={styles.creative_caption_link}>
+						<h4>{caption.replace('\n ', '')}</h4>
 					</Link>
 				) : (
-					''
+					<h4 className={styles.creative_caption}>{caption.replace('\n ', '')}</h4>
 				)}
 			</div>
 		</article>

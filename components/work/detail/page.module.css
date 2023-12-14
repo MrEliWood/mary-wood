@@ -89,7 +89,6 @@
 .table_bold {
 	position: relative;
 
-	font-size: var(--font-small);
 	font-weight: var(--font-weight-bold);
 	color: transparent;
 	background: var(--gradient);
@@ -128,47 +127,79 @@
 }
 
 .creative {
-	/* border-top: var(--border);
-	border-left: var(--border); */
-
-	/* background: linear-gradient(30deg, hsla(245, 100%, 50%, 10%), hsla(275, 100%, 50%, 10%));
-	background-size: 25vw;
-	background-repeat: no-repeat;
-	border-radius: var(--border-radius);
-	box-shadow: var(--shadow); */
-
-	background: linear-gradient(rgba(0, 0, 0, 0.1), transparent 10%, 90%, transparent, rgba(0, 0, 0, 0.1) 100%), linear-gradient(90deg, rgba(0, 0, 0, 0.1), transparent 0.5%, 99%, transparent, rgba(0, 0, 0, 0.1) 100%);
-
-	text-shadow: var(--text-shadow);
-
-	padding: var(--medium) var(--large) var(--large) var(--large);
-}
-
-/* .creative .content {
 	display: flex;
-	flex-direction: column;
-	justify-content: center;
 	align-items: center;
 
-	width: fit-content;
-} */
+	/* prettier-ignore */
+	background: linear-gradient(hsla(245, 50%, 98%, 95%), transparent 15%, 85%, transparent, hsla(275, 50%, 10%, 12%) 100%),
+    linear-gradient(90deg, hsla(245, 50%, 10%, 4%), transparent 0.4%, 99.2%, transparent, hsla(275, 50%, 10%, 8%) 100%),
+    linear-gradient(210deg, hsla(245, 50%, 75%, 25%), hsla(275, 50%, 75%, 25%)),
+    url('/assets/images/blank-spine.png');
 
-/* .creative .content::before {
-	content: '';
-	position: absolute;
-	top: 50%;
-	transform: translateY(-50%);
-	left: 0;
+	/* prettier-ignore */
+	background-size: 100%,
+    100%,
+    100%,
+    105%;
 
-	background: linear-gradient(90deg, transparent, var(--light) 25vw);
-	background-repeat: no-repeat;
-	border-radius: var(--border-radius);
-
-	width: 150%;
-	height: 150%;
+	background-position: center;
 }
 
-.creative .content * {
-	text-shadow: var(--shadow);
-	z-index: 1;
-} */
+.creative::before {
+	content: '';
+	position: absolute;
+	top: 100%;
+
+	background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.25));
+	box-shadow: 5px 0px 10px black;
+
+	width: 100%;
+	height: 1px;
+}
+
+.creative:nth-of-type(1) {
+	transform: translateX(-1%);
+}
+
+.creative:nth-of-type(2) {
+	transform: translateX(1%);
+}
+
+.creative:nth-of-type(3) {
+	transform: translateX(-1.5%);
+}
+
+.creative:nth-of-type(4) {
+	transform: translateX(1%);
+}
+
+.creative:nth-of-type(5) {
+	transform: translateX(-1%);
+}
+
+.creative:nth-of-type(6) {
+	transform: translateX(0%);
+}
+
+.creative_content {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: var(--small);
+
+	width: 100%;
+	height: 100%;
+
+	padding: var(--medium) var(--large);
+	margin: var(--small) var(--medium);
+}
+
+.creative_caption,
+.creative_caption_link {
+	color: var(--link-dark);
+	text-align: end;
+}
+
+.creative_caption_link::after {
+	display: none;
+}

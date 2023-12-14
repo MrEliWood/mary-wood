@@ -88,7 +88,7 @@
 	--shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
 
 	--text-shadow-width: 1px;
-	--text-shadow-color: var(--light);
+	--text-shadow-color: var(--light10);
 	--text-shadow: var(--text-shadow-width) 0px 0px var(--text-shadow-color), var(--text-shadow-width) var(--text-shadow-width) 0px var(--text-shadow-color), 0px var(--text-shadow-width) 0px var(--text-shadow-color), calc(-1 * var(--text-shadow-width)) var(--text-shadow-width) 0px var(--text-shadow-color), calc(-1 * var(--text-shadow-width)) 0px 0px var(--text-shadow-color), calc(-1 * var(--text-shadow-width)) calc(-1 * var(--text-shadow-width)) 0px var(--text-shadow-color), 0px calc(-1 * var(--text-shadow-width)) 0px var(--text-shadow-color), var(--text-shadow-width) -1px 0px var(--text-shadow-color), 0px 0px 4px var(--text-shadow-color);
 
 	/* borders */
