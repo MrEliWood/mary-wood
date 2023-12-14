@@ -126,3 +126,49 @@
 	content: '-';
 	color: var(--font-dark);
 }
+
+.creative {
+	/* border-top: var(--border);
+	border-left: var(--border); */
+
+	/* background: linear-gradient(30deg, hsla(245, 100%, 50%, 10%), hsla(275, 100%, 50%, 10%));
+	background-size: 25vw;
+	background-repeat: no-repeat;
+	border-radius: var(--border-radius);
+	box-shadow: var(--shadow); */
+
+	background: linear-gradient(rgba(0, 0, 0, 0.1), transparent 10%, 90%, transparent, rgba(0, 0, 0, 0.1) 100%), linear-gradient(90deg, rgba(0, 0, 0, 0.1), transparent 0.5%, 99%, transparent, rgba(0, 0, 0, 0.1) 100%);
+
+	text-shadow: var(--text-shadow);
+
+	padding: var(--medium) var(--large) var(--large) var(--large);
+}
+
+/* .creative .content {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+
+	width: fit-content;
+} */
+
+/* .creative .content::before {
+	content: '';
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	left: 0;
+
+	background: linear-gradient(90deg, transparent, var(--light) 25vw);
+	background-repeat: no-repeat;
+	border-radius: var(--border-radius);
+
+	width: 150%;
+	height: 150%;
+}
+
+.creative .content * {
+	text-shadow: var(--shadow);
+	z-index: 1;
+} */

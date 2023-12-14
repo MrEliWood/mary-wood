@@ -16,7 +16,7 @@ export default function Writing() {
 				{workData.map((work) => {
 					const key = Math.floor(Math.random() * 1000000);
 
-					return work.category === 'Scholarship' && <Work.Detail key={key} data={work} setVisibleWork={setVisibleWork} />;
+					return <Work.Detail key={key} data={work} setVisibleWork={setVisibleWork} />;
 				})}
 			</section>
 

@@ -13,155 +13,16 @@
 	padding-top: calc(var(--header-height) + var(--medium));
 }
 
+.work {
+	display: flex;
+	flex-direction: column;
+	gap: var(--huge);
+}
+
 .category {
 	display: flex;
 	flex-direction: column;
-	align-items: center;
 	gap: var(--huge);
 
 	width: 100%;
-}
-
-.category_heading {
-	position: sticky;
-	top: 0;
-
-	display: flex;
-	justify-content: center;
-	align-items: center;
-
-	text-transform: capitalize;
-
-	height: var(--scrolled-header-height);
-
-	transition: top 300ms ease-in-out;
-	z-index: 10;
-}
-
-.work {
-	position: relative;
-	display: flex;
-	gap: var(--large);
-
-	width: 100%;
-	height: 100%;
-	max-width: var(--max-width);
-}
-
-.cover_container {
-	position: sticky;
-	top: calc(var(--header-height) + var(--medium));
-
-	display: flex;
-}
-
-.cover {
-	object-fit: contain;
-	height: calc(100vh - var(--header-height) - var(--giant));
-	width: auto;
-	box-shadow: var(--shadow);
-}
-
-.content {
-	display: flex;
-	flex-direction: column;
-	gap: var(--medium);
-
-	/* padding: var(--medium) 0; */
-}
-
-.heading {
-	display: flex;
-	flex-direction: column;
-	gap: var(--small);
-}
-
-.title {
-	display: flex;
-	flex-direction: column;
-}
-
-.table_container {
-	display: flex;
-	flex-direction: column;
-	gap: var(--medium);
-
-	margin-top: var(--medium);
-}
-
-.table_title {
-	line-height: var(--line-height-tertiary);
-}
-
-.table {
-	display: flex;
-	flex-direction: column;
-
-	/* border-left: var(--border); */
-
-	font-size: var(--font-x-small);
-
-	list-style-type: none;
-	/* padding: var(--small) var(--large);
-	margin-left: var(--medium); */
-}
-
-.table * {
-	line-height: var(--line-height-secondary);
-}
-
-.table_head {
-	font-weight: var(--font-weight-bolder);
-	transform: translateX(calc(var(--medium) * -1));
-	margin-top: var(--medium);
-}
-
-.table_head:first-of-type {
-	margin: 0;
-}
-
-.table_bold {
-	position: relative;
-
-	font-size: var(--font-small);
-	font-weight: var(--font-weight-bold);
-	color: transparent;
-	background: var(--gradient);
-	background-clip: text;
-	-webkit-background-clip: text;
-}
-
-.table_line {
-	position: relative;
-}
-
-.table_bold::before,
-.table_line::before {
-	content: '✦';
-
-	position: absolute;
-	top: 0;
-	right: 100%;
-
-	display: flex;
-	justify-content: center;
-	align-items: center;
-
-	color: var(--gradient-start);
-
-	width: var(--medium);
-}
-
-.table_bold::before {
-	transform: scale(0.5);
-}
-
-.table_line::before {
-	content: '-';
-	color: var(--font-dark);
-}
-
-.button_block {
-	display: flex;
-	margin-top: var(--medium);
 }

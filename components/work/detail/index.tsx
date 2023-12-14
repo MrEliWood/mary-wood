@@ -1,10 +1,8 @@
 'use client';
 
-import { useState, useEffect, Dispatch, SetStateAction } from 'react';
+import { useEffect, Dispatch, SetStateAction } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-
-import { Button } from '@/components';
 
 import styles from './page.module.css';
 
@@ -17,10 +15,8 @@ type Props = {
 
 export default function Detail(props: Props) {
 	const { data, setVisibleWork } = props;
-	const [inView, setInView] = useState(false);
-	const [descVisible, setDescVisible] = useState(false);
 
-	const { id, title, caption, description, preview, image, published, link, table } = data;
+	const { category, id, title, caption, description, image, published, link, table } = data;
 
 	const handleScroll = () => {
 		const htmlElement = document.getElementById(id);
@@ -43,8 +39,31 @@ export default function Detail(props: Props) {
 		};
 	}, []);
 
-	return (
-		<article id={id} className={styles.work}>
+	return category === 'Creative Work' ? (
+		<article id={id} className={`${styles.work} ${styles.creative}`}>
+			{/* <Image src='/assets/images/blank-book.png' alt='Life Writing & Schizophrenia' width={100} height={100} className={styles.cover} /> */}
+
+			<div className={styles.content}>
+				<div className={styles.heading}>
+					<h5 className={styles.date}>Published {published}</h5>
+
+					<div className={styles.title}>
+						<h1>{title}</h1>
+						<h2>{caption.replace('\n ', '')}</h2>
+					</div>
+				</div>
+
+				{link ? (
+					<Link href={link} target='_blank'>
+						{link.split('/')[2]}
+					</Link>
+				) : (
+					''
+				)}
+			</div>
+		</article>
+	) : (
+		<article id={id} className={`${styles.work} ${styles.scholarship}`}>
 			{image && (
 				<Link href={link} className={`${styles.cover_container} hidden_link`}>
 					<Image src={image} alt='Life Writing & Schizophrenia' width={100} height={100} className={styles.cover} />
@@ -63,9 +82,9 @@ export default function Detail(props: Props) {
 
 				<hr />
 
-				<p className={styles.description}>{preview && !descVisible ? preview : description}</p>
+				<p className={styles.description}>{description}</p>
 
-				{table && descVisible && (
+				{table && (
 					<aside className={styles.table_container}>
 						<h2 className={styles.table_title}>Table of Contents</h2>
 
@@ -92,8 +111,6 @@ export default function Detail(props: Props) {
 						</ul>
 					</aside>
 				)}
-
-				{preview && <Button.Text onClick={() => setDescVisible(!descVisible)}>{descVisible ? 'Show Less' : 'Read More'}</Button.Text>}
 			</div>
 		</article>
 	);

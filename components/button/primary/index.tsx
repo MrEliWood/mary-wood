@@ -1,15 +1,17 @@
-import { PropsWithChildren } from 'react';
-
 import styles from './style.module.css';
 
 interface Props {
 	className?: string;
 	onClick?: () => void;
+	children: React.ReactNode;
 }
 
-export default function Primary(props: PropsWithChildren<Props>) {
-	const { className, onClick, children } = props;
-
+export default function Primary({
+	// prettier-ignore
+	className = '',
+	onClick,
+	children
+}: Props) {
 	return (
 		<button className={`${className} ${styles.button}`} onClick={onClick}>
 			{children}
