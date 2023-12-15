@@ -31,6 +31,7 @@
 	--gradient-start: hsl(245, 50%, 50%);
 	--gradient-end: hsl(275, 50%, 50%);
 	--gradient: linear-gradient(30deg, var(--gradient-start), var(--gradient-end));
+	--gradient-background: linear-gradient(30deg, hsla(245, 50%, 80%, 0.5), hsla(275, 50%, 80%, 0.5));
 
 	/* alerts */
 	--red: rgb(220, 0, 0);

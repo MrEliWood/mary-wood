@@ -10,7 +10,7 @@
 
 .cover_container {
 	position: sticky;
-	top: calc(var(--header-height) + var(--medium));
+	top: var(--padding-top);
 
 	display: flex;
 }
@@ -192,6 +192,8 @@
 
 	padding: var(--medium) var(--large);
 	margin: var(--small) var(--medium);
+
+	opacity: 0.9;
 }
 
 .creative_caption,
