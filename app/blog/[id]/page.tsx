@@ -14,8 +14,6 @@ type Props = {
 
 export default async function BlogPage({ params }: Props) {
 	const blogData: BlogType = await API.getOneBlog(params.id);
-	const prevBlog: BlogType = await API.getOneBlog(params.id - 1);
-	const nextBlog: BlogType = await API.getOneBlog(params.id + 1);
 
 	const { caption, createdAt, id, images, text, title, updatedAt, publishedAt } = blogData;
 	const date = dayjs(publishedAt).format('MMMM D, YYYY');
