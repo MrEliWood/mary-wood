@@ -1,4 +1,7 @@
-import styles from './page.module.css';
+import { Theme, ThemePanel } from '@radix-ui/themes';
+
+import '@radix-ui/themes/styles.css';
+import styles from './layout.module.css';
 
 type Props = {
 	children: React.ReactNode;
@@ -6,10 +9,9 @@ type Props = {
 
 export default function Admin({ children }: Props) {
 	return (
-		<div className={styles.layout}>
-			<nav className={styles.tabs}></nav>
-
+		<Theme>
 			{children}
-		</div>
+			<ThemePanel />
+		</Theme>
 	);
 }
