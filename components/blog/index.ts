@@ -1,4 +1,6 @@
 import CreatePostForm from './createPostForm';
-import Post from './post';
+import Preview from './preview';
 
-export { CreatePostForm, Post };
+const Blog = { CreatePostForm, Preview };
+
+export default Blog;

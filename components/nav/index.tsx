@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation';
 
 import styles from './style.module.css';
 
-const navLinks = ['writing', 'teaching', 'contact'];
+const navLinks = ['writing', 'teaching', 'blog', 'contact'];
 
 export default function Nav() {
 	const pathname: string = usePathname();

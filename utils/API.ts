@@ -1,14 +1,12 @@
 'use client';
 
-import { useRouter } from 'next/navigation';
-
-import { Blog, Blogs } from '@/types';
+import { BlogType, Blogs } from '@/types';
 
 const API = {
-	getBlogs: async () => {
+	getAllBlogs: async () => {
 		try {
 			const res: Response = await fetch(`${process.env.BASE_URL}/api/blog`);
-			const data: Blog[] = await res.json();
+			const data: BlogType[] = await res.json();
 
 			const blogs: Blogs = {
 				published: data.filter((blog) => blog.published && !blog.deleted),
@@ -24,26 +22,38 @@ const API = {
 		}
 	},
 
-	deleteBlog: async (blog: Blog, token: string) => {
+	getOneBlog: async (id: number) => {
 		try {
-			const options = {
-				method: 'PUT',
-				headers: {
-					'Content-Type': 'application/json',
-					Authorization: token
-				},
-				body: JSON.stringify({ ...blog, deleted: true })
-			};
+			const res: Response = await fetch(`${process.env.BASE_URL}/api/blog/${id}`);
 
-			const res: Response = await fetch(`${process.env.BASE_URL}/api/blog/${blog.id}`, options);
-
-			if (res.ok) return true;
+			return res.json();
 		} catch (error) {
 			console.error(error);
-		}
 
-		return false;
+			throw new Error('Failed to fetch data');
+		}
 	}
+
+	// deleteBlog: async (blog: BlogType, token: string | null) => {
+	// 	try {
+	// 		const options = {
+	// 			method: 'PUT',
+	// 			headers: {
+	// 				'Content-Type': 'application/json',
+	// 				Authorization: token
+	// 			},
+	// 			body: JSON.stringify({ ...blog, deleted: true })
+	// 		};
+
+	// 		const res: Response = await fetch(`${process.env.BASE_URL}/api/blog/${blog.id}`, options);
+
+	// 		if (res.ok) return true;
+	// 	} catch (error) {
+	// 		console.error(error);
+	// 	}
+
+	// 	return false;
+	// }
 };
 
 export default API;

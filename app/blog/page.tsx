@@ -2,7 +2,7 @@
 
 import { useMemo } from 'react';
 
-import { Button, Post, CreatePostForm } from '@/components';
+import { Button, Blog } from '@/components';
 import { API } from '@/utils';
 
 import { useSelector, useDispatch } from 'react-redux';
@@ -11,9 +11,9 @@ import { setBlogs } from '@/redux/features/blogData';
 import styles from './page.module.css';
 
 import type { RootState } from '@/redux/store';
-import { Blog } from '@/types';
+import { BlogType } from '@/types';
 
-export default function Blog() {
+export default function BlogPage() {
 	const blogData = useSelector((state: RootState) => state.blogData.value);
 	const blogFilter = useSelector((state: RootState) => state.blogFilter.value);
 	const blogFormVisible = useSelector((state: RootState) => state.blogFormVisible.value);
@@ -21,7 +21,7 @@ export default function Blog() {
 	const dispatch = useDispatch();
 
 	useMemo(async () => {
-		const data = await API.getBlogs();
+		const data = await API.getAllBlogs();
 		dispatch(setBlogs(data));
 	}, []);
 
@@ -30,7 +30,7 @@ export default function Blog() {
 			{token && (
 				<div className={styles.user_options} style={blogFormVisible ? { height: '553px' } : { height: '32px' }}>
 					<div id={styles.resize_container} className={`${styles.resize_container} ${blogFormVisible ? styles.visible : styles.hidden}`}>
-						<CreatePostForm />
+						<Blog.CreatePostForm />
 					</div>
 
 					<div className={styles.user_toolbar}>
@@ -50,7 +50,7 @@ export default function Blog() {
 					blogData?.drafts.map((blog) => {
 						const key = Math.floor(Math.random() * 1000000);
 
-						return <Post key={key} data={blog} />;
+						return <Blog.Preview key={key} data={blog} />;
 					})}
 
 				{blogData?.published &&
@@ -58,7 +58,7 @@ export default function Blog() {
 					blogData?.published.map((blog) => {
 						const key = Math.floor(Math.random() * 1000000);
 
-						return <Post key={key} data={blog} />;
+						return <Blog.Preview key={key} data={blog} />;
 					})}
 
 				{token &&
@@ -67,7 +67,7 @@ export default function Blog() {
 					blogData?.deleted.map((blog) => {
 						const key = Math.floor(Math.random() * 1000000);
 
-						return <Post key={key} data={blog} />;
+						return <Blog.Preview key={key} data={blog} />;
 					})}
 			</div>
 		</main>

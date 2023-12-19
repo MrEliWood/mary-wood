@@ -2,7 +2,9 @@
 	position: relative;
 	display: flex;
 	flex-direction: column;
-	gap: var(--small);
+	gap: var(--medium);
+
+	width: 100%;
 }
 
 .post_section {

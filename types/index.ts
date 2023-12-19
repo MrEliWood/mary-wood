@@ -21,7 +21,7 @@ export type Work = {
 	navLink: string;
 };
 
-export interface Blog {
+export interface BlogType {
 	author: object;
 	author_id: number;
 	caption: string;
@@ -37,7 +37,7 @@ export interface Blog {
 }
 
 export interface Blogs {
-	published: Blog[];
-	drafts: Blog[];
-	deleted: Blog[];
+	published: BlogType[];
+	drafts: BlogType[];
+	deleted: BlogType[];
 }
