@@ -6,17 +6,9 @@
 }
 
 .main {
+	background-color: white;
+	border-top: 1px solid lightgray;
+
 	width: 100%;
 	height: 100%;
-}
-
-.index {
-	width: 25vw;
-	height: 100%;
-
-	outline: solid blue;
-}
-
-.editor {
-	outline: solid red;
 }

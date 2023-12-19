@@ -1,14 +1,20 @@
-import { Box, Flex, Grid, Container } from '@radix-ui/themes';
+import { Box, Flex, Grid, Container, Tabs } from '@radix-ui/themes';
+
+import { Sidebar } from './_sections';
+import { API } from '@/utils';
 
 import styles from './page.module.css';
 
-export default function Dashboard() {
+export default async function Dashboard() {
+	const blogData = await API.getAllBlogs();
+
 	return (
 		<Flex className={styles.page}>
-			<Grid columns='2' className={styles.main}>
-				<Flex className={styles.index}></Flex>
+			<Flex className={styles.main}>
+				<Sidebar blogData={blogData} />
+
 				<Flex className={styles.editor}></Flex>
-			</Grid>
+			</Flex>
 		</Flex>
 	);
 }
