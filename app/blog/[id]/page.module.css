@@ -1,49 +1,56 @@
 .page {
-	gap: var(--large);
-	transition: all ease-in-out 500ms;
-}
-
-.blogs {
-	display: flex;
-	flex-direction: column;
-	gap: var(--huge);
-}
-
-.user_options {
-	position: relative;
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
-	align-items: flex-end;
-	transition: all ease-in-out 500ms;
+	align-items: center;
+	gap: var(--tiny);
+
+	padding: var(--header-height);
 }
 
-.user_toolbar {
+.headline {
 	display: flex;
-	justify-content: space-between;
-	width: 100%;
+	flex-direction: column;
+	align-items: center;
+	gap: var(--small);
+
+	text-align: center;
 }
 
-.absolute_container {
-	position: absolute;
-	top: 0;
-	right: 0;
+.date {
+	opacity: 0.5;
 }
 
-.resize_container {
+.gallery {
 	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	gap: var(--small);
+
 	width: 100%;
-	overflow: hidden;
-	z-index: 1;
-	transition: all ease-in-out 500ms;
+
+	margin: var(--medium) 0;
 }
 
-.visible {
-	max-height: 100%;
-	max-width: 100%;
+.image_container {
+	display: flex;
+	flex: 1;
+
+	max-height: 50vh;
 }
 
-.hidden {
-	max-height: 0%;
-	max-width: 0%;
+.image {
+	width: 100%;
+	height: auto;
+
+	object-fit: cover;
+}
+
+.content {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: var(--medium);
+
+	max-width: 1080px;
 }

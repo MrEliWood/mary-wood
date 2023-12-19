@@ -1,5 +1,3 @@
-'use client';
-
 import { BlogType, Blogs } from '@/types';
 
 const API = {
