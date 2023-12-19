@@ -46,7 +46,7 @@ export default function Login() {
 	};
 
 	return (
-		<aside className={styles.login} onClick={() => dispatch(hideLogin())}>
+		<div className={styles.login} onClick={() => dispatch(hideLogin())}>
 			<div className={styles.modal} onClick={(e) => e.stopPropagation()}>
 				<div className={styles.login_banner}>
 					<h2>Hi, Mary!</h2>
@@ -62,6 +62,6 @@ export default function Login() {
 					</div>
 				</form>
 			</div>
-		</aside>
+		</div>
 	);
 }
