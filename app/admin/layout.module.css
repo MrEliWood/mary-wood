@@ -7,3 +7,7 @@
 .layout * {
 	transition: all 0ms ease-in-out;
 }
+
+.layout button:hover {
+	cursor: pointer;
+}
