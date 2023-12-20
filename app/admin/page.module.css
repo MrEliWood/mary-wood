@@ -2,12 +2,14 @@
 	width: 100vw;
 	height: 100vh;
 
-	padding-top: var(--header-height);
+	padding-top: var(--scrolled-header-height);
 }
 
 .main {
-	background-color: white;
-	border-top: 1px solid lightgray;
+	--lightgray: hsl(225, 11%, 93%);
+	background-color: var(--light75);
+	backdrop-filter: blur(12px);
+	border-top: 1px solid var(--lightgray);
 
 	width: 100%;
 	height: 100%;

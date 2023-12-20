@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { usePathname, useRouter } from 'next/navigation';
 
 import { Nav } from '@/components';
 
@@ -13,6 +14,7 @@ const captionId = 'site_header_caption_container';
 
 export default function Header() {
 	const [scrollPosition, setScrollPosition] = useState<number>(0);
+	const pathname = usePathname();
 
 	const setHeightVariable = () => {
 		const htmlElement = document.querySelector('html');
@@ -42,12 +44,16 @@ export default function Header() {
 		};
 	}, []);
 
+	const isAdmin = pathname.includes('admin');
+	const isScrolled = scrollPosition > scrollThreshold;
+	const collapseHeader = isAdmin || isScrolled;
+
 	return (
-		<header id={headerId} className={`${styles.header} ${scrollPosition > scrollThreshold && styles.scrolled_header}`}>
+		<header id={headerId} className={`${styles.header} ${collapseHeader ? styles.scrolled_header : ''}`}>
 			<Link href='/' className={styles.logo}>
 				<h2 className={styles.site_title}>Mary Elene Wood</h2>
 
-				<div id={captionId} className={`${styles.site_caption_container} ${scrollPosition > scrollThreshold ? styles.hidden : styles.visible}`}>
+				<div id={captionId} className={`${styles.site_caption_container} ${collapseHeader ? styles.hidden : styles.visible}`}>
 					<h5 className={styles.site_caption}>Writer.</h5>
 					<h5 className={styles.site_caption}>Teacher.</h5>
 					<h5 className={styles.site_caption}>Scholar.</h5>

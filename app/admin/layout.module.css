@@ -1,0 +1,9 @@
+.layout {
+	--gray: hsl(225, 11%, 90%);
+	--lightgray: hsl(225, 11%, 93%);
+	--lightergray: hsl(225, 11%, 96%);
+}
+
+.layout * {
+	transition: all 0ms ease-in-out;
+}

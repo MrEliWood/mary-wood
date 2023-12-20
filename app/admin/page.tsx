@@ -1,6 +1,6 @@
 import { Box, Flex, Grid, Container, Tabs } from '@radix-ui/themes';
 
-import { Sidebar } from './_sections';
+import { Editor, Sidebar } from './_sections';
 import { API } from '@/utils';
 
 import styles from './page.module.css';
@@ -13,7 +13,7 @@ export default async function Dashboard() {
 			<Flex className={styles.main}>
 				<Sidebar blogData={blogData} />
 
-				<Flex className={styles.editor}></Flex>
+				<Editor blogData={blogData} />
 			</Flex>
 		</Flex>
 	);

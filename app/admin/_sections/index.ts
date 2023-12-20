@@ -1,3 +1,4 @@
+import Editor from './editor';
 import Sidebar from './sidebar';
 
-export { Sidebar };
+export { Editor, Sidebar };

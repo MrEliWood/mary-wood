@@ -1,10 +1,7 @@
-// import { Theme, ThemePanel } from '@radix-ui/themes';
-
 import { Header, Footer } from '@/components';
 import { Providers } from '@/redux/provider';
 
 import { Crimson_Text, Libre_Caslon_Text } from 'next/font/google';
-// import '@radix-ui/themes/styles.css';
 import './global.css';
 
 const caslon = Libre_Caslon_Text({
