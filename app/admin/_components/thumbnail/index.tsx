@@ -33,7 +33,7 @@ export default function Thumbnail({ blogData }: Props) {
 			<div className={styles.row}>
 				<Text weight='bold'>{title}</Text>
 
-				<Text size='2' color='gray' className={styles.date}>
+				<Text size='2' color='gray' weight='light' className={styles.date}>
 					{month}
 					<span>/</span>
 					{day}
