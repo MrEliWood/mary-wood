@@ -1,0 +1,26 @@
+.header {
+	position: absolute;
+	top: 0;
+	left: 0;
+
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-end;
+
+	width: 100vw;
+	height: 72px;
+}
+
+.title {
+	text-align: center;
+	letter-spacing: -1px;
+
+	width: 25vw;
+}
+
+.nav {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	padding: 0 24px;
+}

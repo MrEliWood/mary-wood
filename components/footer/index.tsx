@@ -3,6 +3,7 @@
 // external
 import { useEffect } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 // internal
 import { Button, Login } from '@/components';
@@ -21,6 +22,7 @@ export default function Footer() {
 	const token = useSelector((state: RootState) => state.token.value);
 	const loginVisible = useSelector((state: RootState) => state.loginVisible.value);
 	const dispatch = useDispatch();
+	const pathname = usePathname();
 
 	useEffect(() => {
 		dispatch(destroyToken());
@@ -44,8 +46,11 @@ export default function Footer() {
 		localStorage.removeItem('Mary_Wood_FormData');
 	};
 
+	const isAdmin = pathname.includes('admin');
+	const conditionalClass = isAdmin ? styles.hidden_footer : '';
+
 	return (
-		<footer className={styles.footer}>
+		<footer className={`${styles.footer} ${conditionalClass}`}>
 			<div className={styles.footer_logo}>
 				<h1 className={styles.footer_title}>Mary Elene Wood</h1>
 

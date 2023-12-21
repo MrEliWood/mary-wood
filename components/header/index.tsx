@@ -1,11 +1,14 @@
 'use client';
 
+// external
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { usePathname, useRouter } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 
+// internal
 import { Nav } from '@/components';
 
+// styles
 import styles from './style.module.css';
 
 const scrollThreshold = 60;
@@ -46,14 +49,15 @@ export default function Header() {
 
 	const isAdmin = pathname.includes('admin');
 	const isScrolled = scrollPosition > scrollThreshold;
-	const collapseHeader = isAdmin || isScrolled;
+
+	const conditionalClass = isAdmin ? styles.hidden_header : isScrolled ? styles.scrolled_header : '';
 
 	return (
-		<header id={headerId} className={`${styles.header} ${collapseHeader ? styles.scrolled_header : ''}`}>
+		<header id={headerId} className={`${styles.header} ${conditionalClass}`}>
 			<Link href='/' className={styles.logo}>
 				<h2 className={styles.site_title}>Mary Elene Wood</h2>
 
-				<div id={captionId} className={`${styles.site_caption_container} ${collapseHeader ? styles.hidden : styles.visible}`}>
+				<div id={captionId} className={`${styles.site_caption_container} ${isScrolled ? styles.hidden : styles.visible}`}>
 					<h5 className={styles.site_caption}>Writer.</h5>
 					<h5 className={styles.site_caption}>Teacher.</h5>
 					<h5 className={styles.site_caption}>Scholar.</h5>

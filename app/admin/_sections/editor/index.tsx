@@ -31,9 +31,13 @@ export default function Editor({ blogData }: Props) {
 						Save as Draft
 					</Button>
 
-					<a href='#' className='hidden_link'>
+					<Button variant='ghost' highContrast className={styles.ghost_button}>
 						Preview
-					</a>
+					</Button>
+
+					{/* <a href='#' className='hidden_link'>
+						Preview
+					</a> */}
 				</div>
 
 				<Button variant='soft' highContrast>

@@ -1,0 +1,15 @@
+@import '@radix-ui/colors/gray.css';
+@import '@radix-ui/colors/red.css';
+@import '@radix-ui/colors/blue.css';
+@import '@radix-ui/colors/green.css';
+
+.admin_layout {
+}
+
+.admin_layout * {
+	transition: all 0ms ease-in-out;
+}
+
+.admin_layout * button:hover {
+	cursor: pointer;
+}

@@ -1,7 +1,12 @@
+// external
 import { Theme, ThemePanel } from '@radix-ui/themes';
 
+// internal
+import { Header } from './_sections';
+
+// styles
 import '@radix-ui/themes/styles.css';
-import styles from './layout.module.css';
+import './global.css';
 
 type Props = {
 	children: React.ReactNode;
@@ -10,7 +15,8 @@ type Props = {
 export default function Admin({ children }: Props) {
 	return (
 		<Theme>
-			<div className={styles.layout}>{children}</div>
+			<Header />
+			<div className='admin_layout'>{children}</div>
 			{/* <ThemePanel /> */}
 		</Theme>
 	);
