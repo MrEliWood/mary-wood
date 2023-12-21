@@ -7,6 +7,7 @@ import styles from './page.module.css';
 
 export default async function Dashboard() {
 	const blogData = await API.getAllBlogs();
+	const { drafts, published, deleted } = blogData;
 
 	return (
 		<Flex className={styles.page}>

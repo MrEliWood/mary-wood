@@ -3,6 +3,10 @@
 import { Button, TextArea, TextField, Text, Heading } from '@radix-ui/themes';
 import { PlusIcon, TrashIcon } from '@radix-ui/react-icons';
 
+import { useSelector, useDispatch } from 'react-redux';
+import type { RootState } from '@/redux/store';
+import { setActiveBlog } from '@/redux/features/activeBlog';
+
 import styles from './style.module.css';
 
 import type { Blogs } from '@/types';
@@ -12,6 +16,9 @@ type Props = {
 };
 
 export default function Editor({ blogData }: Props) {
+	const activeBlog = useSelector((state: RootState) => state.activeBlog.value);
+	const dispatch = useDispatch();
+
 	return (
 		<section className={styles.section}>
 			<div className={styles.toolbar}>
@@ -37,17 +44,17 @@ export default function Editor({ blogData }: Props) {
 			<div className={styles.editor}>
 				<div className={styles.input_container}>
 					<Heading size='3'>Title</Heading>
-					<TextField.Input size='3' placeholder='My New Post' />
+					<TextField.Input size='3' placeholder='My New Post' value={activeBlog.title} />
 				</div>
 
 				<div className={styles.input_container}>
 					<Heading size='3'>Caption</Heading>
-					<TextField.Input size='3' placeholder='Lorem ipsum dolor sit amet...' />
+					<TextField.Input size='3' placeholder='Lorem ipsum dolor sit amet...' value={activeBlog.caption} />
 				</div>
 
 				<div className={styles.input_container}>
 					<Heading size='3'>Text</Heading>
-					<TextArea size='3' placeholder='Cras porta, dui ut vestibulum tincidunt, tortor elit sollicitudin magna, et sollicitudin mi urna venenatis urna...' />
+					<TextArea size='3' placeholder='Cras porta, dui ut vestibulum tincidunt, tortor elit sollicitudin magna, et sollicitudin mi urna venenatis urna...' value={activeBlog.text} />
 				</div>
 
 				<div className={styles.input_container}>

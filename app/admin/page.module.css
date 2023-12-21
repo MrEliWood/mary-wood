@@ -6,8 +6,7 @@
 }
 
 .main {
-	--lightgray: hsl(225, 11%, 93%);
-	background-color: var(--light75);
+	background-color: var(--lightergray);
 	backdrop-filter: blur(12px);
 	border-top: 1px solid var(--lightgray);
 

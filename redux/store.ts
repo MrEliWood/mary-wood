@@ -1,6 +1,8 @@
 'use client';
 
 import { configureStore } from '@reduxjs/toolkit';
+
+import activeBlogReducer from './features/activeBlog';
 import backgroundReducer from './features/background';
 import blogDataReducer from './features/blogData';
 import blogFilterReducer from './features/blogFilter';
@@ -10,6 +12,7 @@ import tokenReducer from './features/token';
 
 export const store = configureStore({
 	reducer: {
+		activeBlog: activeBlogReducer,
 		background: backgroundReducer,
 		blogData: blogDataReducer,
 		blogFilter: blogFilterReducer,

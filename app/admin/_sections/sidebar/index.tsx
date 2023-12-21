@@ -1,8 +1,14 @@
 'use client';
 
+import { useEffect, Dispatch, SetStateAction } from 'react';
 import { Text, Box, Flex, Grid, Container, Tabs, ScrollArea, Separator } from '@radix-ui/themes';
 
 import { Thumbnail } from '../../_components';
+import { getKey } from '@/utils';
+
+import { useSelector, useDispatch } from 'react-redux';
+import type { RootState } from '@/redux/store';
+import { setActiveBlog } from '@/redux/features/activeBlog';
 
 import styles from './style.module.css';
 
@@ -13,9 +19,15 @@ type Props = {
 };
 
 export default function Sidebar({ blogData }: Props) {
-	const { published, drafts, deleted } = blogData;
+	const { drafts, published, deleted } = blogData;
+	const activeBlog = useSelector((state: RootState) => state.activeBlog.value);
+	const dispatch = useDispatch();
 
-	const allBlogs = [...published, ...drafts, ...deleted];
+	const allBlogs = [...drafts, ...published, ...deleted];
+
+	useEffect(() => {
+		dispatch(setActiveBlog(drafts[0] || published[0] || deleted[0]));
+	}, []);
 
 	return (
 		<Tabs.Root defaultValue='all'>
@@ -35,25 +47,25 @@ export default function Sidebar({ blogData }: Props) {
 				<div className={styles.content}>
 					<Tabs.Content value='all'>
 						{allBlogs.map((blog) => {
-							return <Thumbnail blogData={blog} />;
+							return <Thumbnail key={getKey()} blogData={blog} />;
 						})}
 					</Tabs.Content>
 
 					<Tabs.Content value='published'>
 						{published.map((blog) => {
-							return <Thumbnail blogData={blog} />;
+							return <Thumbnail key={getKey()} blogData={blog} />;
 						})}
 					</Tabs.Content>
 
 					<Tabs.Content value='drafts'>
 						{drafts.map((blog) => {
-							return <Thumbnail blogData={blog} />;
+							return <Thumbnail key={getKey()} blogData={blog} />;
 						})}
 					</Tabs.Content>
 
 					<Tabs.Content value='deleted'>
 						{deleted.map((blog) => {
-							return <Thumbnail blogData={blog} />;
+							return <Thumbnail key={getKey()} blogData={blog} />;
 						})}
 					</Tabs.Content>
 				</div>

@@ -34,6 +34,8 @@
 
 	width: calc(100% - 48px);
 	height: 1.5px;
+
+	z-index: 1;
 }
 
 .thumbnail:last-child::after {
@@ -52,6 +54,24 @@
 }
 
 .date span {
-	color: hsl(0, 0%, 75%);
 	margin: 0 1px;
+	opacity: 0.5;
+}
+
+.active {
+	color: black;
+	background-color: var(--accent-8);
+
+	box-shadow: var(--shadow);
+
+	z-index: 10;
+}
+
+.active:hover {
+	background-color: var(--accent-8);
+}
+
+.active::before,
+.active::after {
+	display: none;
 }

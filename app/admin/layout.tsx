@@ -11,7 +11,7 @@ export default function Admin({ children }: Props) {
 	return (
 		<Theme>
 			<div className={styles.layout}>{children}</div>
-			{/* <ThemePanel /> */}
+			<ThemePanel />
 		</Theme>
 	);
 }
