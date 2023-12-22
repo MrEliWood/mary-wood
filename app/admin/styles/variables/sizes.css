@@ -1,0 +1,42 @@
+:root {
+	/* general */
+	--base: 12px;
+
+	--x1: var(--base);
+	--x2: calc(var(--base) * 2);
+	--x3: calc(var(--base) * 3);
+	--x4: calc(var(--base) * 4);
+	--x5: calc(var(--base) * 5);
+	--x6: calc(var(--base) * 6);
+	--x7: calc(var(--base) * 7);
+	--x8: calc(var(--base) * 8);
+	--x9: calc(var(--base) * 9);
+	--x10: calc(var(--base) * 10);
+
+	--x1h: calc(var(--base) * 1.5);
+	--x2h: calc(var(--base) * 2.5);
+	--x3h: calc(var(--base) * 3.5);
+	--x4h: calc(var(--base) * 4.5);
+	--x5h: calc(var(--base) * 5.5);
+	--x6h: calc(var(--base) * 6.5);
+	--x7h: calc(var(--base) * 7.5);
+	--x8h: calc(var(--base) * 8.5);
+	--x9h: calc(var(--base) * 9.5);
+
+	--d2: calc(var(--base) / 2);
+	--d3: calc(var(--base) / 3);
+	--d4: calc(var(--base) / 4);
+	--d5: calc(var(--base) / 5);
+	--d6: calc(var(--base) / 6);
+	--d7: calc(var(--base) / 7);
+	--d8: calc(var(--base) / 8);
+	--d9: calc(var(--base) / 9);
+	--d10: calc(var(--base) / 10);
+
+	/* fonts */
+	--f1: 12px;
+	--f2: 14px;
+	--f3: 16px;
+	--f4: 18px;
+	--f5: 24px;
+}

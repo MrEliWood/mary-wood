@@ -1,0 +1,119 @@
+@import '@radix-ui/colors/gray.css';
+
+@import '@radix-ui/colors/green.css';
+@import '@radix-ui/colors/yellow.css';
+@import '@radix-ui/colors/red.css';
+
+@import '@radix-ui/colors/iris.css';
+@import '@radix-ui/colors/indigo.css';
+@import '@radix-ui/colors/blue.css';
+
+:root {
+	/* accent */
+	--accent-1: var(--indigo-1);
+	--accent-2: var(--indigo-2);
+	--accent-3: var(--indigo-3);
+	--accent-4: var(--indigo-4);
+	--accent-5: var(--indigo-5);
+	--accent-6: var(--indigo-6);
+	--accent-7: var(--indigo-7);
+	--accent-8: var(--indigo-8);
+	--accent-9: var(--indigo-9);
+	--accent-10: var(--indigo-10);
+	--accent-11: var(--indigo-11);
+	--accent-12: var(--indigo-12);
+
+	--accent-a1: var(--indigo-a1);
+	--accent-a2: var(--indigo-a2);
+	--accent-a3: var(--indigo-a3);
+	--accent-a4: var(--indigo-a4);
+	--accent-a5: var(--indigo-a5);
+	--accent-a6: var(--indigo-a6);
+	--accent-a7: var(--indigo-a7);
+	--accent-a8: var(--indigo-a8);
+	--accent-a9: var(--indigo-a9);
+	--accent-a10: var(--indigo-a10);
+	--accent-a11: var(--indigo-a11);
+	--accent-a12: var(--indigo-a12);
+
+	/* green */
+	--success-1: var(--green-1);
+	--success-2: var(--green-2);
+	--success-3: var(--green-3);
+	--success-4: var(--green-4);
+	--success-5: var(--green-5);
+	--success-6: var(--green-6);
+	--success-7: var(--green-7);
+	--success-8: var(--green-8);
+	--success-9: var(--green-9);
+	--success-10: var(--green-10);
+	--success-11: var(--green-11);
+	--success-12: var(--green-12);
+
+	--success-a1: var(--green-a1);
+	--success-a2: var(--green-a2);
+	--success-a3: var(--green-a3);
+	--success-a4: var(--green-a4);
+	--success-a5: var(--green-a5);
+	--success-a6: var(--green-a6);
+	--success-a7: var(--green-a7);
+	--success-a8: var(--green-a8);
+	--success-a9: var(--green-a9);
+	--success-a10: var(--green-a10);
+	--success-a11: var(--green-a11);
+	--success-a12: var(--green-a12);
+
+	/* yellow */
+	--warning-1: var(--yellow-1);
+	--warning-2: var(--yellow-2);
+	--warning-3: var(--yellow-3);
+	--warning-4: var(--yellow-4);
+	--warning-5: var(--yellow-5);
+	--warning-6: var(--yellow-6);
+	--warning-7: var(--yellow-7);
+	--warning-8: var(--yellow-8);
+	--warning-9: var(--yellow-9);
+	--warning-10: var(--yellow-10);
+	--warning-11: var(--yellow-11);
+	--warning-12: var(--yellow-12);
+
+	--warning-a1: var(--yellow-a1);
+	--warning-a2: var(--yellow-a2);
+	--warning-a3: var(--yellow-a3);
+	--warning-a4: var(--yellow-a4);
+	--warning-a5: var(--yellow-a5);
+	--warning-a6: var(--yellow-a6);
+	--warning-a7: var(--yellow-a7);
+	--warning-a8: var(--yellow-a8);
+	--warning-a9: var(--yellow-a9);
+	--warning-a10: var(--yellow-a10);
+	--warning-a11: var(--yellow-a11);
+	--warning-a12: var(--yellow-a12);
+
+	/* red */
+	--danger-1: var(--red-1);
+	--danger-2: var(--red-2);
+	--danger-3: var(--red-3);
+	--danger-4: var(--red-4);
+	--danger-5: var(--red-5);
+	--danger-6: var(--red-6);
+	--danger-7: var(--red-7);
+	--danger-8: var(--red-8);
+	--danger-9: var(--red-9);
+	--danger-10: var(--red-10);
+	--danger-11: var(--red-11);
+	--danger-12: var(--red-12);
+
+	--danger-a1: var(--red-a1);
+	--danger-a2: var(--red-a2);
+	--danger-a3: var(--red-a3);
+	--danger-a4: var(--red-a4);
+	--danger-a5: var(--red-a5);
+	--danger-a6: var(--red-a6);
+	--danger-a7: var(--red-a7);
+	--danger-a8: var(--red-a8);
+	--danger-a9: var(--red-a9);
+	--danger-a10: var(--red-a10);
+	--danger-a11: var(--red-a11);
+	--danger-a12: var(--red-a12);
+}

@@ -2,18 +2,18 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	gap: var(--standard);
+	gap: var(--x1);
 
 	font-size: var(--f2);
 	font-weight: 500;
 
-	border-radius: var(--d3);
+	border-radius: calc(var(--radius) / 2);
 	border: none;
 
 	width: fit-content;
 	height: 32px;
 
-	padding: 0 var(--standard);
+	padding: 0 var(--x1);
 
 	transition: all 0ms ease-in-out;
 	cursor: pointer;

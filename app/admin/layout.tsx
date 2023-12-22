@@ -6,7 +6,7 @@ import { Header } from './_sections';
 
 // styles
 import '@radix-ui/themes/styles.css';
-import './global.css';
+import './styles/global.css';
 
 type Props = {
 	children: React.ReactNode;
