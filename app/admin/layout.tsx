@@ -15,7 +15,7 @@ type Props = {
 export default function Admin({ children }: Props) {
 	return (
 		<Theme>
-			<Header />
+			{/* <Header /> */}
 			<div className='admin_layout'>{children}</div>
 			{/* <ThemePanel /> */}
 		</Theme>

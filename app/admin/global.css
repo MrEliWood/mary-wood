@@ -1,12 +1,56 @@
 @import '@radix-ui/colors/gray.css';
+@import '@radix-ui/colors/mauve.css';
 @import '@radix-ui/colors/red.css';
+@import '@radix-ui/colors/iris.css';
+@import '@radix-ui/colors/indigo.css';
 @import '@radix-ui/colors/blue.css';
+@import '@radix-ui/colors/cyan.css';
 @import '@radix-ui/colors/green.css';
 
-.admin_layout {
+:root {
+	--base: 12px;
+
+	--standard: var(--base);
+
+	--x2: calc(var(--base) * 2);
+	--x3: calc(var(--base) * 3);
+	--x4: calc(var(--base) * 4);
+	--x5: calc(var(--base) * 5);
+	--x6: calc(var(--base) * 6);
+	--x7: calc(var(--base) * 7);
+	--x8: calc(var(--base) * 8);
+	--x9: calc(var(--base) * 9);
+	--x10: calc(var(--base) * 10);
+
+	--d2: calc(var(--base) / 2);
+	--d3: calc(var(--base) / 3);
+	--d4: calc(var(--base) / 4);
+	--d5: calc(var(--base) / 5);
+	--d6: calc(var(--base) / 6);
+	--d7: calc(var(--base) / 7);
+	--d8: calc(var(--base) / 8);
+	--d9: calc(var(--base) / 9);
+	--d10: calc(var(--base) / 10);
+
+	--f-standard: 16px;
+
+	--f1: 12px;
+	--f2: 14px;
+	--f3: 16px;
+	--f4: 24px;
+	--f5: 48px;
 }
 
 .admin_layout * {
+	--header-height: 12vh;
+
+	--shadow-s: 0px 0px var(--standard) var(--gray-a4);
+	--shadow-m: 0px 0px var(--x2) var(--gray-a5);
+
+	--outline: 0.5px solid var(--gray-a5);
+	--border: 1px solid var(--gray-a7);
+	--radius: var(--standard);
+
 	transition: all 0ms ease-in-out;
 }
 

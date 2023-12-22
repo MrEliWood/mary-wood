@@ -1,8 +1,10 @@
 .page {
-	background-color: var(--white-a9);
+	background-color: var(--gray-2);
 
 	width: 100vw;
 	height: 100vh;
+
+	overflow: hidden;
 }
 
 .main {

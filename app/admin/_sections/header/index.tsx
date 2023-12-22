@@ -15,10 +15,10 @@ export default function Header() {
 
 			<nav className={styles.nav}>
 				<Link href='/admin/cpw' className='hidden_link'>
-					<Button>Change Password</Button>
+					<Button style='ghost'>Change Password</Button>
 				</Link>
 
-				<Button>Logout</Button>
+				<Button style='secondary'>Logout</Button>
 			</nav>
 		</header>
 	);

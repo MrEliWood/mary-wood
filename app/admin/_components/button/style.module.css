@@ -1,78 +1,89 @@
-.thumbnail {
-	position: relative;
-
+.button {
 	display: flex;
-	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: var(--standard);
 
-	border-radius: 8px;
+	font-size: var(--f2);
+	font-weight: 500;
 
-	width: 100%;
+	border-radius: var(--d3);
+	border: none;
 
-	padding: 24px;
-	margin: -1.5px 0;
-}
+	width: fit-content;
+	height: 32px;
 
-.thumbnail:hover {
+	padding: 0 var(--standard);
+
+	transition: all 0ms ease-in-out;
 	cursor: pointer;
-	background-color: var(--gray-a2);
 }
 
-.thumbnail * {
-	overflow: hidden;
-	white-space: nowrap;
-	text-overflow: ellipsis;
+.primary {
+	color: var(--indigo-12);
+	background-color: var(--indigo-a3);
 }
 
-.thumbnail::after {
-	content: '';
-	position: absolute;
-	bottom: 0;
-	left: 50%;
-	transform: translateX(-50%);
+.primary:hover {
+	background-color: var(--indigo-a4);
+}
 
+.primary:active {
+	background-color: var(--indigo-a5);
+}
+
+.secondary {
+	color: var(--gray-11);
+	background-color: var(--gray-a3);
+}
+
+.secondary:hover {
+	color: var(--gray-12);
 	background-color: var(--gray-a4);
-
-	width: calc(100% - 48px);
-	height: 1.5px;
-
-	z-index: 1;
 }
 
-.thumbnail:last-child::after {
-	display: none;
+.secondary:active {
+	color: var(--gray-12);
+	background-color: var(--gray-a5);
 }
 
-.row {
-	display: flex;
-	justify-content: space-between;
-	gap: 12px;
+.ghost {
+	color: var(--gray-11);
+	background-color: transparent;
 }
 
-.date {
-	min-width: fit-content;
-	letter-spacing: 0.01em;
+.ghost:hover {
+	color: var(--gray-12);
+	background-color: var(--gray-a3);
 }
 
-.date span {
-	margin: 0 1px;
-	opacity: 0.5;
+.ghost:active {
+	color: var(--gray-12);
+	background-color: var(--gray-a4);
 }
 
-.active {
-	--background-color: rgb(185, 199, 246);
-
-	color: black;
-	background-color: var(--background-color);
-
-	box-shadow: var(--shadow);
-
-	z-index: 10;
+.success {
+	color: var(--green-12);
+	background-color: var(--green-a3);
 }
 
-.active:hover {
-	background-color: var(--background-color);
+.success:hover {
+	background-color: var(--green-a4);
 }
 
-.active::after {
-	display: none;
+.success:active {
+	background-color: var(--green-a5);
+}
+
+.danger {
+	color: var(--red-12);
+	background-color: var(--red-a3);
+}
+
+.danger:hover {
+	background-color: var(--red-a4);
+}
+
+.danger:active {
+	background-color: var(--red-a5);
 }
