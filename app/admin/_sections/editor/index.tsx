@@ -9,10 +9,10 @@ import { setActiveBlog } from '@/redux/features/activeBlog';
 
 import styles from './style.module.css';
 
-import type { Blogs } from '@/types';
+import type { BlogData } from '@/types';
 
 type Props = {
-	blogData: Blogs;
+	blogData: BlogData;
 };
 
 export default function Editor({ blogData }: Props) {

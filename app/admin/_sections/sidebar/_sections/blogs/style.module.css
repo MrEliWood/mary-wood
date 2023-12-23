@@ -2,20 +2,22 @@
 	position: relative;
 	display: flex;
 	flex-direction: column;
-	gap: var(--x2);
+	gap: var(--x1);
 
 	height: 100%;
 
-	padding: var(--x4);
-	margin-top: var(--x2);
+	padding: var(--x3) var(--x4) var(--x4);
 
 	overflow-y: scroll;
+
+	/* hide scroll bars */
 	-ms-overflow-style: none; /* IE and Edge */
 	scrollbar-width: none; /* Firefox */
 }
 
+/* hide scroll bars */
 .blogs::-webkit-scrollbar {
-	display: none;
+	display: none; /* Safari and Chrome */
 }
 
 .blog {
@@ -27,7 +29,7 @@
 	background-color: white;
 	border-radius: var(--radius);
 
-	box-shadow: var(--shadow-m);
+	box-shadow: var(--shadow-s);
 
 	width: 100%;
 
@@ -39,8 +41,7 @@
 
 .blog:not(.active):hover {
 	cursor: pointer;
-	/* background-color: var(--gray-1); */
-	box-shadow: var(--shadow-l);
+	box-shadow: var(--shadow-m);
 	transform: scale(1.01);
 }
 
@@ -51,8 +52,8 @@
 }
 
 .row {
-	display: flex;
-	justify-content: space-between;
+	display: grid;
+	grid-template-columns: auto max-content;
 	gap: 12px;
 }
 
@@ -61,18 +62,34 @@
 	font-weight: 700;
 }
 
-.date {
+.badge * {
 	color: var(--gray-11);
 	font-size: var(--f2);
 	font-weight: 400;
 	letter-spacing: 0.01em;
 
-	min-width: fit-content;
+	/* min-width: fit-content; */
+
+	margin-top: 2px;
 }
 
 .date span {
 	margin: 0 1px;
 	opacity: 0.5;
+}
+
+.draft_badge,
+.deleted_badge {
+	border: 1px solid var(--gray-11);
+	border-radius: var(--radius-s);
+
+	padding: 0 var(--d2);
+	margin-top: 3px;
+}
+
+.deleted_badge {
+	color: var(--red-11);
+	border: 1px solid var(--red-11);
 }
 
 .caption {
@@ -94,6 +111,7 @@
 }
 
 .active:hover {
+	cursor: default;
 	background-color: var(--background-color);
 }
 

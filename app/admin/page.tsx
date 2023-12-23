@@ -3,7 +3,7 @@ import { Box, Flex, Grid, Container, Tabs } from '@radix-ui/themes';
 import { Editor, Sidebar } from './_sections';
 import { API } from '@/utils';
 
-import styles from './page.module.css';
+import styles from './_styles/page.module.css';
 
 export default async function Dashboard() {
 	const blogData = await API.getAllBlogs();

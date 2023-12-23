@@ -7,7 +7,7 @@ import { Pillar } from '@/components';
 import { links } from '@/utils';
 import portrait from '@/public/assets/images/portrait-square.jpg';
 
-import styles from './page.module.css';
+import styles from './_styles/page.module.css';
 
 export default function Home() {
 	const uoLink = (

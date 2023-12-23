@@ -2,7 +2,7 @@ import { Header, Footer } from '@/components';
 import { Providers } from '@/redux/provider';
 
 import { Crimson_Text, Libre_Caslon_Text } from 'next/font/google';
-import './global.css';
+import './_styles/global.css';
 
 const caslon = Libre_Caslon_Text({
 	weight: ['400', '700'],

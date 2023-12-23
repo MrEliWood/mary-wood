@@ -1,6 +1,5 @@
 'use client';
 
-import { Text } from '@radix-ui/themes';
 import dayjs from 'dayjs';
 
 import { useSelector, useDispatch } from 'react-redux';
@@ -20,6 +19,7 @@ type BlogProps = {
 type BlogsProps = {
 	activeTab: string;
 	blogData: FilteredBlogs;
+	id: string;
 };
 
 type BlogFilter = {
@@ -30,7 +30,7 @@ type BlogFilter = {
 };
 
 function Blog({ blogData }: BlogProps) {
-	const { id, title, caption, text, publishedAt } = blogData;
+	const { id, title, caption, text, published, deleted, publishedAt } = blogData;
 	const activeBlog = useSelector((state: RootState) => state.activeBlog.value);
 	const dispatch = useDispatch();
 
@@ -47,13 +47,21 @@ function Blog({ blogData }: BlogProps) {
 			<div className={styles.row}>
 				<p className={styles.title}>{title}</p>
 
-				<p className={styles.date}>
-					{month}
-					<span>/</span>
-					{day}
-					<span>/</span>
-					{year}
-				</p>
+				<div className={styles.badge}>
+					{deleted ? (
+						<p className={styles.deleted_badge}>Deleted</p>
+					) : published ? (
+						<p className={styles.date}>
+							{month}
+							<span>/</span>
+							{day}
+							<span>/</span>
+							{year}
+						</p>
+					) : (
+						<p className={styles.draft_badge}>Draft</p>
+					)}
+				</div>
 			</div>
 
 			<p className={styles.caption}>{caption}</p>
@@ -63,7 +71,7 @@ function Blog({ blogData }: BlogProps) {
 	);
 }
 
-export default function Blogs({ activeTab, blogData }: BlogsProps) {
+export default function Blogs({ id, activeTab, blogData }: BlogsProps) {
 	const { drafts, published, deleted } = blogData;
 
 	const filter: BlogFilter = {
@@ -72,7 +80,7 @@ export default function Blogs({ activeTab, blogData }: BlogsProps) {
 	};
 
 	return (
-		<div className={styles.blogs}>
+		<div id={id} className={styles.blogs}>
 			{filter[activeTab as keyof BlogFilter].map((blog) => {
 				return <Blog key={getKey()} blogData={blog} />;
 			})}
