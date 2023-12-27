@@ -1,4 +1,4 @@
-export interface Image {
+export interface ImageType {
 	blog_id: number;
 	createdAt: string;
 	id: number;
@@ -28,7 +28,7 @@ export interface BlogData {
 	createdAt: string;
 	deleted: boolean;
 	id: number;
-	images: Image[];
+	images: ImageType[];
 	published: boolean;
 	text: string;
 	title: string;

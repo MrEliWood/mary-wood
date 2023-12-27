@@ -2,7 +2,7 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	gap: var(--x1);
+	gap: var(--d2);
 
 	font-size: var(--f2);
 	font-weight: 500;
@@ -17,6 +17,10 @@
 
 	transition: all 0ms ease-in-out;
 	cursor: pointer;
+}
+
+.button svg {
+	margin-left: -4px;
 }
 
 .primary {

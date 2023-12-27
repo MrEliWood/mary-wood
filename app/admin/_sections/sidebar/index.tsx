@@ -41,6 +41,7 @@ export default function Sidebar({ blogData }: Props) {
 
 		const position = blogsElement?.children[0].getBoundingClientRect().top || 0;
 		setStartPosition(position);
+		setScrollPosition(position);
 
 		blogsElement?.addEventListener('scroll', handleScroll);
 
@@ -50,8 +51,6 @@ export default function Sidebar({ blogData }: Props) {
 	}, []);
 
 	const isScrolled = scrollPosition < startPosition;
-
-	console.log(startPosition, scrollPosition);
 
 	return (
 		<section className={styles.sidebar}>

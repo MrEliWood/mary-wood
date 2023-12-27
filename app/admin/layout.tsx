@@ -1,5 +1,5 @@
 // external
-import { Theme, ThemePanel } from '@radix-ui/themes';
+import { Crimson_Text } from 'next/font/google';
 
 // internal
 import { Header } from './_sections';
@@ -8,16 +8,16 @@ import { Header } from './_sections';
 import '@radix-ui/themes/styles.css';
 import './_styles/global.css';
 
+const crimson = Crimson_Text({
+	weight: ['400', '600', '700'],
+	subsets: ['latin'],
+	variable: '--font-crimson'
+});
+
 type Props = {
 	children: React.ReactNode;
 };
 
 export default function Admin({ children }: Props) {
-	return (
-		<Theme>
-			{/* <Header /> */}
-			<div className='admin_layout'>{children}</div>
-			{/* <ThemePanel /> */}
-		</Theme>
-	);
+	return <div className='admin_layout'>{children}</div>;
 }
