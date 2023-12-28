@@ -36,30 +36,26 @@ export default function Editor({ blogData }: Props) {
 	return (
 		<section className={styles.section}>
 			<div className={styles.toolbar}>
-				<div className={styles.button_block}>
-					<Button style='success'>Publish</Button>
-
-					<Button>Save as Draft</Button>
-
-					<Button style='ghost'>Preview</Button>
-				</div>
-
 				<Button>
 					<PlusIcon width='16' height='16' /> New Blog Post
 				</Button>
+
+				<div className={styles.button_block}>
+					{/* <Button style='ghost'>Preview</Button> */}
+
+					<Button style='ghost'>Save as Draft</Button>
+
+					<Button style='success'>Publish</Button>
+				</div>
 			</div>
 
 			<div className={styles.editor}>
-				<input type='text' placeholder='My New Post' name='title' value={activeBlog.title} onChange={handleInputChange} className={styles.title} autoFocus />
-
-				{/* <input type='file' /> */}
+				<textarea placeholder='New Blog Title' name='title' value={activeBlog.title} onChange={handleInputChange} className={styles.title} autoFocus />
 
 				<div className={styles.image_container}>
 					{activeBlog.images.map(({ src }: ImageType) => {
 						return <Image src={src} alt='blog image' width={100} height={100} className={styles.image} />;
 					})}
-
-					{/* <input type='file' /> */}
 
 					<button className={styles.add_image_button}>
 						<PlusIcon width='32' height='32' />
@@ -67,11 +63,13 @@ export default function Editor({ blogData }: Props) {
 					</button>
 				</div>
 
-				<input type='text' placeholder='Lorem ipsum dolor sit amet.' name='caption' value={activeBlog.caption} onChange={handleInputChange} className={styles.caption} />
+				<textarea placeholder='Optional caption for your new blog.' name='caption' value={activeBlog.caption} onChange={handleInputChange} className={styles.caption} />
 
 				<hr />
 
-				<textarea placeholder='Lorem ipsum dolor sit amet...' name='text' value={activeBlog.text} onChange={handleInputChange} className={styles.text} />
+				<div className={styles.text_container}>
+					<textarea placeholder='Body text...' name='text' value={activeBlog.text} onChange={handleInputChange} className={styles.text} />
+				</div>
 			</div>
 
 			<div className={styles.delete_button}>

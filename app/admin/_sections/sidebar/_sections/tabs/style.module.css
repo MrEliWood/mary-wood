@@ -5,7 +5,8 @@
 	justify-content: center;
 	align-items: center;
 
-	height: var(--x4);
+	min-height: var(--x4);
+	max-height: var(--x4);
 
 	margin-bottom: calc(-1 * var(--x2));
 }
@@ -18,7 +19,7 @@
 	justify-content: center;
 	align-items: center;
 
-	background: white;
+	background: var(--gray-1);
 	border-radius: var(--radius);
 	box-shadow: var(--shadow-m);
 
