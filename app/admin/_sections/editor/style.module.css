@@ -48,7 +48,7 @@
 	box-shadow: none;
 	border-radius: var(--radius);
 
-	background: var(--gray-1);
+	/* background: var(--gray-1); */
 	/* outline: solid red; */
 
 	width: 100%;

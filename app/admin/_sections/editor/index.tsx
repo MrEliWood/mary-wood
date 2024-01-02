@@ -8,7 +8,7 @@ import { Button } from '../../_components';
 
 import { useSelector, useDispatch } from 'react-redux';
 import type { RootState } from '@/redux/store';
-import { setActiveBlog } from '@/redux/features/activeBlog';
+import { setActiveBlog, newActiveBlog } from '@/redux/features/activeBlog';
 
 import styles from './style.module.css';
 
@@ -33,16 +33,18 @@ export default function Editor({ blogData }: Props) {
 		);
 	};
 
+	const createNewBlog = () => {
+		dispatch(newActiveBlog());
+	};
+
 	return (
 		<section className={styles.section}>
 			<div className={styles.toolbar}>
-				<Button>
+				<Button onClick={createNewBlog}>
 					<PlusIcon width='16' height='16' /> New Blog Post
 				</Button>
 
 				<div className={styles.button_block}>
-					{/* <Button style='ghost'>Preview</Button> */}
-
 					<Button style='ghost'>Save as Draft</Button>
 
 					<Button style='success'>Publish</Button>

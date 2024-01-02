@@ -2,10 +2,10 @@
 
 import { createSlice } from '@reduxjs/toolkit';
 
-import type { BlogType } from '@/types';
+import type { BlogData } from '@/types';
 
 export interface activeBlogState {
-	value: BlogType;
+	value: BlogData;
 }
 
 const initialState: activeBlogState = {
@@ -31,10 +31,13 @@ export const activeBlogSlice = createSlice({
 	reducers: {
 		setActiveBlog: (state, action) => {
 			state.value = action.payload;
+		},
+		newActiveBlog: (state) => {
+			state.value = initialState.value;
 		}
 	}
 });
 
-export const { setActiveBlog } = activeBlogSlice.actions;
+export const { setActiveBlog, newActiveBlog } = activeBlogSlice.actions;
 
 export default activeBlogSlice.reducer;
