@@ -7,10 +7,13 @@
 	font-size: var(--f2);
 	font-weight: 500;
 
+	white-space: nowrap;
+
 	border: none;
 	border-radius: calc(var(--radius) / 2);
 
 	width: fit-content;
+	min-width: fit-content;
 	height: 32px;
 
 	padding: 0 var(--x1);

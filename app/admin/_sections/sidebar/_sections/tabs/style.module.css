@@ -8,6 +8,8 @@
 	min-height: var(--x4);
 	max-height: var(--x4);
 
+	padding-left: var(--x2);
+	margin-top: var(--x4);
 	margin-bottom: calc(-1 * var(--x2));
 }
 
@@ -23,23 +25,24 @@
 	border-radius: var(--radius);
 	box-shadow: var(--shadow-m);
 
-	width: calc(100% - var(--x8));
+	width: calc(100% - var(--x6));
 	height: 100%;
 
-	transition: all 300ms ease-in-out;
+	transition: all 500ms ease-in-out;
 
 	z-index: 10;
 }
 
 .scrolled {
 	box-shadow: var(--shadow-l);
-	width: calc(100% - var(--x7));
+	width: calc(100% - var(--x5));
 }
 
 .tabs_list {
 	display: flex;
-	justify-content: space-between;
+	justify-content: center;
 	align-items: center;
+	gap: var(--x2);
 
 	width: 100%;
 	height: 100%;
@@ -47,6 +50,12 @@
 	padding: 0 var(--x2);
 
 	overflow: hidden;
+
+	transition: all 300ms ease-in-out;
+}
+
+.scrolled .tabs_list {
+	padding: 0 var(--x2h);
 }
 
 .tabs hr {
@@ -64,7 +73,7 @@
 }
 
 .active:hover {
-	cursor: default;
+	/* cursor: default; */
 	background-color: transparent;
 }
 
@@ -78,4 +87,12 @@
 
 	width: calc(100% + var(--d2));
 	height: var(--d2);
+
+	transition: all 200ms ease-in-out;
+}
+
+.active:hover::after {
+	/* bottom: -8px; */
+
+	width: calc(100% + var(--x1));
 }

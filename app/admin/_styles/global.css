@@ -1,5 +1,10 @@
 @import './variables/index.css';
 
+body {
+	background-color: var(--gray-3) !important;
+	background-image: none !important;
+}
+
 .admin_layout {
 	/* --header-height: 12vh; */
 	--header-height: var(--x4);

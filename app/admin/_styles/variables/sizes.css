@@ -33,6 +33,16 @@
 	--d9: calc(var(--base) / 9);
 	--d10: calc(var(--base) / 10);
 
+	--d1h: calc(var(--base) / 1.5);
+	--d2h: calc(var(--base) / 2.5);
+	--d3h: calc(var(--base) / 3.5);
+	--d4h: calc(var(--base) / 4.5);
+	--d5h: calc(var(--base) / 5.5);
+	--d6h: calc(var(--base) / 6.5);
+	--d7h: calc(var(--base) / 7.5);
+	--d8h: calc(var(--base) / 8.5);
+	--d9h: calc(var(--base) / 9.5);
+
 	/* fonts */
 	--f1: 12px;
 	--f2: 14px;
