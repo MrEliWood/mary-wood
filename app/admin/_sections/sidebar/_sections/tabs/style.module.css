@@ -5,10 +5,11 @@
 	justify-content: center;
 	align-items: center;
 
+	width: 100%;
+	max-width: 100%;
 	min-height: var(--x4);
 	max-height: var(--x4);
 
-	padding-left: var(--x2);
 	margin-top: var(--x4);
 	margin-bottom: calc(-1 * var(--x2));
 }
@@ -16,9 +17,10 @@
 .tabs {
 	position: absolute;
 	bottom: 0;
+	left: var(--x4);
 
 	display: flex;
-	justify-content: center;
+	justify-content: space-between;
 	align-items: center;
 
 	background: var(--gray-1);
@@ -27,6 +29,8 @@
 
 	width: calc(100% - var(--x6));
 	height: 100%;
+
+	overflow: hidden;
 
 	transition: all var(--transition-speed) ease-in-out;
 
@@ -37,35 +41,95 @@
 	box-shadow: var(--shadow-l);
 }
 
+.tabs hr {
+	border: var(--outline);
+	width: 0px;
+	height: var(--x1h);
+}
+
+/************************************************
+hide/show buttons
+************************************************/
+
+.hide_button_container {
+	position: relative;
+
+	display: flex;
+	align-items: center;
+
+	width: var(--x2);
+
+	margin-left: calc(var(--x2) - 16px);
+}
+
+.hide_button_container hr {
+	position: absolute;
+	left: calc(100% + (var(--x2) - 16px));
+}
+
+.hide_button {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	width: var(--x2);
+
+	padding-left: 0;
+	padding-right: 0;
+}
+
+.hide_button svg {
+	margin-left: var(--d9);
+}
+
+.hide_button_text {
+	position: absolute;
+	left: calc(100% + var(--x1h));
+
+	transform: translateY(calc(-1 * var(--x4)));
+
+	width: 100%;
+	white-space: nowrap;
+
+	transition: all var(--transition-speed-d2) ease-in-out;
+}
+
+.hide_button:hover ~ .hide_button_text {
+	transform: translateY(0px);
+	transition: all var(--transition-speed) ease-in-out;
+}
+
+.hide_button_container:hover ~ .tabs_list {
+	transform: translateY(200%);
+}
+
+/************************************************
+************************************************/
+
 .scrolled {
 	box-shadow: var(--shadow-l);
 	width: calc(100% - var(--x5));
 }
 
 .tabs_list {
+	position: absolute;
+	right: calc(var(--x2) - 16px);
+
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	gap: var(--x2);
 
-	width: 100%;
+	width: calc(100% - var(--x4) - 8px);
 	height: 100%;
-
-	padding: 0 var(--x2);
 
 	overflow: hidden;
 
 	transition: all var(--transition-speed-d2) ease-in-out;
-}
-
-.scrolled .tabs_list {
-	padding: 0 var(--x2h);
-}
-
-.tabs hr {
-	border: var(--outline);
-	width: 0px;
-	height: var(--x1h);
 }
 
 .tab {
@@ -75,7 +139,7 @@
 .tab::after {
 	content: '';
 	position: absolute;
-	bottom: -9px;
+	bottom: -1px;
 
 	background-color: var(--accent-8);
 	border-radius: var(--radius) var(--radius) 0 0;
@@ -88,6 +152,7 @@
 
 .active {
 	color: var(--gray-12);
+	height: 100%;
 }
 
 .active:hover {
@@ -102,4 +167,6 @@
 
 .active:hover::after {
 	width: calc(100% + var(--x1));
+
+	transition-delay: 0ms;
 }

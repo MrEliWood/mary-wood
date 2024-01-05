@@ -24,6 +24,7 @@ type Props = {
 const blogsId = 'admin_section_blogs';
 
 export default function Sidebar({ blogData }: Props) {
+	const [isHidden, setIsHidden] = useState(false);
 	const [startPosition, setStartPosition] = useState(0);
 	const [scrollPosition, setScrollPosition] = useState(0);
 	const [activeTab, setActiveTab] = useState('all');
@@ -59,9 +60,9 @@ export default function Sidebar({ blogData }: Props) {
 	const isScrolled = scrollPosition < startPosition;
 
 	return (
-		<div className={styles.sidebar_container}>
+		<div className={`${styles.sidebar_container} ${isHidden ? styles.isHidden : ''}`}>
 			<section className={styles.sidebar}>
-				<Tabs activeTab={activeTab} setActiveTab={setActiveTab} isScrolled={isScrolled} />
+				<Tabs activeTab={activeTab} setActiveTab={setActiveTab} isHidden={isHidden} setIsHidden={setIsHidden} isScrolled={isScrolled} />
 				<Blogs id={blogsId} activeTab={activeTab} blogData={blogData} />
 			</section>
 		</div>
