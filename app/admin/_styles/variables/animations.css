@@ -1,0 +1,11 @@
+:root {
+	--transition-speed: 500ms;
+
+	--transition-speed-x2: calc(var(--transition-speed) * 2);
+	--transition-speed-x3: calc(var(--transition-speed) * 3);
+	--transition-speed-x4: calc(var(--transition-speed) * 4);
+
+	--transition-speed-d2: calc(var(--transition-speed) / 2);
+	--transition-speed-d3: calc(var(--transition-speed) / 3);
+	--transition-speed-d4: calc(var(--transition-speed) / 4);
+}

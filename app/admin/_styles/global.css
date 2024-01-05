@@ -18,10 +18,6 @@ body {
 
 	--outline: 0.5px solid var(--gray-a8);
 	--border: 1px solid var(--gray-a7);
-
-	--radius-s: var(--d2);
-	--radius: var(--x1);
-	--radius-l: var(--x2);
 }
 
 .admin_layout * {

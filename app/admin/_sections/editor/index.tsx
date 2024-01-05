@@ -89,7 +89,7 @@ export default function Editor() {
 	return (
 		<section id={sectionId} className={styles.section}>
 			<div id={editorId} className={styles.editor}>
-				<textarea id={titleId} placeholder='New Blog Title' name='title' value={activeBlog.title} onChange={handleInputChange} className={styles.title} autoFocus />
+				<textarea id={titleId} placeholder='New Blog Title' name='title' value={activeBlog.title} onChange={handleInputChange} className={styles.title} />
 
 				<textarea id={captionId} placeholder='Caption for your new blog (optional).' name='caption' value={activeBlog.caption} onChange={handleInputChange} className={styles.caption} />
 

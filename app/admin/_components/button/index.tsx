@@ -7,15 +7,16 @@ import styles from './style.module.css';
 
 type Props = {
 	href?: string;
-	style?: 'primary' | 'secondary' | 'ghost' | 'success' | 'danger';
+	style?: 'solid' | 'ghost';
+	type?: 'primary' | 'secondary' | 'success' | 'danger';
 	className?: string;
 	onClick?: () => void;
 	children?: React.ReactNode;
 };
 
-export default function Button({ style = 'primary', className = '', onClick, children }: Props) {
+export default function Button({ style = 'solid', type = 'primary', className = '', onClick, children }: Props) {
 	return (
-		<button className={`${styles.button} ${styles[style]} ${className}`} onClick={onClick}>
+		<button className={`${styles.button} ${styles[style]} ${styles[type]} ${className}`} onClick={onClick}>
 			{children}
 		</button>
 	);

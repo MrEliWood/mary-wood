@@ -22,7 +22,7 @@ type TabsProps = {
 
 function Tab({ isActive, onClick, children }: TabProps) {
 	return (
-		<Button style='ghost' className={`${styles.tab} ${isActive ? styles.active : ''}`} onClick={onClick}>
+		<Button style='ghost' type='secondary' className={`${styles.tab} ${isActive ? styles.active : ''}`} onClick={onClick}>
 			{children}
 		</Button>
 	);

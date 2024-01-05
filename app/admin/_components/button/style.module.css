@@ -2,7 +2,7 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	gap: var(--d2);
+	gap: var(--d3);
 
 	font-size: var(--f2);
 	font-weight: 500;
@@ -26,71 +26,116 @@
 	margin-left: -4px;
 }
 
-.primary {
-	color: var(--indigo-12);
-	background-color: var(--indigo-a3);
+.solid {
+	--primary-color: var(--accent-1);
+	--primary-background: var(--accent-a11);
+
+	--success-color: var(--success-1);
+	--success-background: var(--success-a11);
+
+	--danger-color: var(--danger-1);
+	--danger-background: var(--danger-a11);
+
+	--shadow: var(--shadow-s);
+	--opacity: 1;
 }
 
-.primary:hover {
-	background-color: var(--indigo-a4);
+.solid:hover {
+	--shadow: var(--shadow-s);
+	--opacity: 0.9;
 }
 
-.primary:active {
-	background-color: var(--indigo-a5);
+.solid:active {
+	--shadow: var(--shadow-s);
+	--opacity: 1;
 }
 
-.secondary {
-	color: var(--gray-11);
-	background-color: var(--gray-a3);
+.solid:where(.secondary) {
+	--secondary-color: var(--gray-12);
+	--secondary-background: var(--gray-a5);
+
+	--opacity: 0.75;
 }
 
-.secondary:hover {
-	color: var(--gray-12);
-	background-color: var(--gray-a4);
+.solid:where(.secondary):hover {
+	--opacity: 1;
 }
 
-.secondary:active {
-	color: var(--gray-12);
-	background-color: var(--gray-a5);
+.solid:where(.secondary):active {
+	--secondary-background: var(--gray-a6);
 }
 
 .ghost {
-	color: var(--gray-11);
-	background-color: transparent;
+	--primary-color: var(--accent-a12);
+	--primary-background: transparent;
+
+	--success-color: var(--success-a12);
+	--success-background: transparent;
+
+	--danger-color: var(--danger-a12);
+	--danger-background: transparent;
+
+	--shadow: none;
+	--opacity: 0.75;
 }
 
 .ghost:hover {
-	color: var(--gray-12);
-	background-color: var(--gray-a3);
+	--primary-background: var(--accent-a3);
+	--secondary-background: var(--gray-a3);
+	--success-background: var(--success-a3);
+	--danger-background: var(--danger-a3);
+
+	--opacity: 1;
 }
 
 .ghost:active {
-	color: var(--gray-12);
-	background-color: var(--gray-a4);
+	--primary-background: var(--accent-a4);
+	--secondary-background: var(--gray-a4);
+	--success-background: var(--success-a4);
+	--danger-background: var(--danger-a4);
+
+	--opacity: 1;
+}
+
+.ghost:where(.secondary) {
+	--secondary-color: var(--gray-a11);
+	--secondary-background: transparent;
+
+	--opacity: 1;
+}
+
+.ghost:where(.secondary):hover {
+	--secondary-color: var(--gray-a12);
+}
+
+.ghost:where(.secondary):active {
+	--secondary-color: var(--gray-a12);
+}
+
+.primary {
+	color: var(--primary-color);
+	background-color: var(--primary-background);
+	box-shadow: var(--shadow);
+	opacity: var(--opacity);
+}
+
+.secondary {
+	color: var(--secondary-color);
+	background-color: var(--secondary-background);
+	box-shadow: var(--shadow);
+	opacity: var(--opacity);
 }
 
 .success {
-	color: var(--green-12);
-	background-color: var(--green-a3);
-}
-
-.success:hover {
-	background-color: var(--green-a4);
-}
-
-.success:active {
-	background-color: var(--green-a5);
+	color: var(--success-color);
+	background-color: var(--success-background);
+	box-shadow: var(--shadow);
+	opacity: var(--opacity);
 }
 
 .danger {
-	color: var(--red-12);
-	background-color: var(--red-a3);
-}
-
-.danger:hover {
-	background-color: var(--red-a4);
-}
-
-.danger:active {
-	background-color: var(--red-a5);
+	color: var(--danger-color);
+	background-color: var(--danger-background);
+	box-shadow: var(--shadow);
+	opacity: var(--opacity);
 }

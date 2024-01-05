@@ -54,4 +54,9 @@
 	--f8: 40px;
 	--f9: 48px;
 	--f10: 72px;
+
+	/* borders */
+	--radius-s: var(--d2);
+	--radius: var(--x1);
+	--radius-l: var(--x2);
 }
