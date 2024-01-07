@@ -60,7 +60,7 @@ export default function Sidebar({ blogData }: Props) {
 	const isScrolled = scrollPosition < startPosition;
 
 	return (
-		<div className={`${styles.sidebar_container} ${isHidden ? styles.isHidden : ''}`}>
+		<div className={`${styles.sidebar_container} ${isHidden ? styles.hidden : ''}`}>
 			<section className={styles.sidebar}>
 				<Tabs activeTab={activeTab} setActiveTab={setActiveTab} isHidden={isHidden} setIsHidden={setIsHidden} isScrolled={isScrolled} />
 				<Blogs id={blogsId} activeTab={activeTab} blogData={blogData} />

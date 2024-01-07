@@ -65,11 +65,11 @@ export default function Tabs({ activeTab, setActiveTab, isHidden, setIsHidden, i
 					</Tab>
 				</div>
 
-				{/* <div className={styles.show_button_container}>
-					<Button style='ghost' type='secondary' className={styles.show_button}>
+				<div className={styles.show_button_container}>
+					<Button style='ghost' type='secondary' className={styles.show_button} onClick={() => setIsHidden(false)}>
 						<ChevronRightIcon width='24' height='24' className={styles.chevron} />
 					</Button>
-				</div> */}
+				</div>
 			</div>
 		</div>
 	);

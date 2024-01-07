@@ -27,7 +27,7 @@
 	border-radius: var(--radius);
 	box-shadow: var(--shadow-m);
 
-	width: calc(100% - var(--x6));
+	width: calc(100% - var(--x7));
 	height: 100%;
 
 	overflow: hidden;
@@ -47,8 +47,83 @@
 	height: var(--x1h);
 }
 
+.scrolled {
+	left: var(--x3h);
+	box-shadow: var(--shadow-l);
+	width: calc(100% - var(--x6));
+}
+
+.hidden {
+	left: var(--x7);
+	transition: all var(--transition-speed-d2) ease-in-out;
+}
+
+.hidden:hover {
+	transform: translateX(var(--d3));
+}
+
+.hidden .tabs_list {
+	transform: translateY(200%);
+}
+
+.tabs_list {
+	position: absolute;
+	right: calc(var(--x2) - 16px);
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: var(--x2);
+
+	width: calc(100% - var(--x4) - 8px);
+	height: 100%;
+
+	overflow: hidden;
+
+	transition: all var(--transition-speed-d2) ease-in-out var(--transition-speed-d2);
+}
+
+.tab {
+	position: relative;
+}
+
+.tab::after {
+	content: '';
+	position: absolute;
+	bottom: -1px;
+
+	background-color: var(--accent-8);
+	border-radius: var(--radius) var(--radius) 0 0;
+
+	width: calc(100% + var(--d2));
+	height: 0px;
+
+	transition: all var(--transition-speed-d4) ease-in-out;
+}
+
+.active {
+	color: var(--gray-12);
+	height: 100%;
+}
+
+.active:hover {
+	background-color: transparent;
+}
+
+.active::after {
+	height: var(--d2);
+
+	transition-delay: var(--transition-speed-d4);
+}
+
+.active:hover::after {
+	width: calc(100% + var(--x1));
+
+	transition-delay: 0ms;
+}
+
 /************************************************
-hide/show buttons
+hide button
 ************************************************/
 
 .hide_button_container {
@@ -98,6 +173,10 @@ hide/show buttons
 	transition: all var(--transition-speed-d2) ease-in-out;
 }
 
+.hidden .hide_button_text {
+	transform: translateY(0px);
+}
+
 .hide_button:hover ~ .hide_button_text {
 	transform: translateY(0px);
 	transition: all var(--transition-speed) ease-in-out;
@@ -105,68 +184,46 @@ hide/show buttons
 
 .hide_button_container:hover ~ .tabs_list {
 	transform: translateY(200%);
+	transition-delay: 0ms;
 }
 
 /************************************************
+show button
 ************************************************/
 
-.scrolled {
-	box-shadow: var(--shadow-l);
-	width: calc(100% - var(--x5));
-}
-
-.tabs_list {
-	position: absolute;
-	right: calc(var(--x2) - 16px);
+.show_button_container {
+	position: relative;
+	transform: translateX(100%);
 
 	display: flex;
-	justify-content: center;
 	align-items: center;
-	gap: var(--x2);
 
-	width: calc(100% - var(--x4) - 8px);
-	height: 100%;
+	width: var(--x2);
 
-	overflow: hidden;
+	margin-right: calc(var(--x2) - 16px);
 
 	transition: all var(--transition-speed-d2) ease-in-out;
 }
 
-.tab {
-	position: relative;
+.hidden .show_button_container {
+	transform: translateX(0%);
 }
 
-.tab::after {
-	content: '';
+.show_button {
 	position: absolute;
-	bottom: -1px;
+	top: 50%;
+	transform: translateY(-50%);
 
-	background-color: var(--accent-8);
-	border-radius: var(--radius) var(--radius) 0 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 
-	width: calc(100% + var(--d2));
-	height: 0px;
+	width: var(--x2);
 
-	transition: all var(--transition-speed-d4) ease-in-out;
+	padding-left: 0;
+	padding-right: 0;
 }
 
-.active {
-	color: var(--gray-12);
-	height: 100%;
-}
-
-.active:hover {
-	background-color: transparent;
-}
-
-.active::after {
-	height: var(--d2);
-
-	transition-delay: var(--transition-speed-d4);
-}
-
-.active:hover::after {
-	width: calc(100% + var(--x1));
-
-	transition-delay: 0ms;
+.show_button svg {
+	margin-left: calc(-1 * var(--d9));
 }

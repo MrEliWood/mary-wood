@@ -8,7 +8,7 @@
 	width: 100%;
 	height: 100%;
 
-	padding: var(--x6) var(--x4) var(--x6) var(--x2);
+	padding: var(--x6) var(--x4) var(--x6) var(--x1);
 
 	overflow-y: scroll;
 }
