@@ -19,13 +19,14 @@
 .menu_accordian {
 	display: flex;
 	justify-content: flex-end;
-	align-items: center;
 
 	background: var(--gray-1);
 	box-shadow: var(--shadow-m);
 	border-radius: var(--radius);
 
 	width: var(--x4);
+	height: 100%;
+	max-height: var(--x4);
 
 	overflow: hidden;
 
@@ -42,48 +43,56 @@
 
 .open {
 	width: 100%;
+	max-height: 250px;
 }
 
 .menu {
 	display: flex;
-	justify-content: flex-end;
-	align-items: center;
-	gap: var(--x1);
+	flex-direction: column;
+	align-items: flex-end;
+	gap: var(--d1h);
 
-	min-width: fit-content;
-	max-width: fit-content;
+	width: 100%;
+	height: 100%;
+	min-height: fit-content;
 
-	padding: 0 0 0 var(--d1h);
+	padding: var(--d1h);
 }
 
 .menu hr {
 	border: var(--outline);
 
-	width: 0px;
-	height: var(--x1h);
+	width: var(--x1h);
+
+	margin-right: calc(16px - var(--x1h) / 2);
 }
 
 .menu_button_container {
 	display: flex;
+	flex-direction: column;
 	justify-content: center;
-	align-items: center;
+	align-items: flex-end;
+	gap: var(--x1);
 
-	width: var(--x4);
-	height: var(--x4);
-
-	margin-left: calc(-1 * var(--d2));
+	width: 100%;
+	height: 100%;
 }
 
-.menu_button {
+.menu button:not(.menu_icon) {
+	justify-content: flex-end;
+
+	width: 100%;
+	min-width: fit-content;
+}
+
+.menu_icon {
 	aspect-ratio: 1;
-
-	padding: 0;
 }
 
-.menu_button_icon {
+.menu_icon_icon {
 	position: absolute;
 
-	margin-left: 0 !important;
+	margin-right: 0 !important;
 
 	animation: hide-icon var(--transition-speed-d2) ease-in-out both;
 }

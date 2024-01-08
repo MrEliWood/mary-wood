@@ -1,7 +1,9 @@
 .blogs {
 	position: relative;
+
 	display: flex;
 	flex-direction: column;
+	align-items: center;
 	gap: var(--x1);
 
 	height: 100%;
@@ -36,13 +38,14 @@
 	padding: var(--x2);
 	margin: -1.5px 0;
 
-	transition: all 200ms ease-in-out;
+	transition: all var(--transition-speed) ease-in-out;
 }
 
 .blog:not(.active):hover {
 	cursor: pointer;
 	box-shadow: var(--shadow-m);
-	transform: scale(1.01);
+	transform: scale(1.02);
+	transition-duration: var(--transition-speed-d2);
 }
 
 .blog * {

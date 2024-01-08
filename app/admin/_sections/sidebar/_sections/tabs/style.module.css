@@ -62,10 +62,6 @@
 	transform: translateX(var(--d3));
 }
 
-.hidden .tabs_list {
-	transform: translateY(200%);
-}
-
 .tabs_list {
 	position: absolute;
 	right: calc(var(--x2) - 16px);
@@ -80,7 +76,11 @@
 
 	overflow: hidden;
 
-	transition: all var(--transition-speed-d2) ease-in-out var(--transition-speed-d2);
+	transition: all var(--transition-speed) ease-in-out;
+}
+
+.hidden .tabs_list {
+	transform: translateX(-100%);
 }
 
 .tab {
@@ -135,11 +135,18 @@ hide button
 	width: var(--x2);
 
 	margin-left: calc(var(--x2) - 16px);
+
+	transition: all var(--transition-speed-d2) ease-in-out var(--transition-speed);
 }
 
 .hide_button_container hr {
 	position: absolute;
 	left: calc(100% + (var(--x2) - 16px));
+	transition: transform var(--transition-speed-d2) ease-in-out var(--transition-speed);
+}
+
+.hidden .hide_button_container hr {
+	transform: translateX(calc(-1 * var(--x4)));
 }
 
 .hide_button {
@@ -155,6 +162,12 @@ hide button
 
 	padding-left: 0;
 	padding-right: 0;
+
+	transition: transform var(--transition-speed) ease-in-out var(--transition-speed);
+}
+
+.hidden .hide_button {
+	transform: translate(-100%, -50%);
 }
 
 .hide_button svg {
@@ -184,7 +197,7 @@ hide button
 
 .hide_button_container:hover ~ .tabs_list {
 	transform: translateY(200%);
-	transition-delay: 0ms;
+	transition-duration: var(--transition-speed-d2);
 }
 
 /************************************************
@@ -193,7 +206,7 @@ show button
 
 .show_button_container {
 	position: relative;
-	transform: translateX(100%);
+	transform: translateX(150%);
 
 	display: flex;
 	align-items: center;
