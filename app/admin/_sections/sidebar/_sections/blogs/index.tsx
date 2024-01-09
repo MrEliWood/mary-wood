@@ -18,7 +18,6 @@ type BlogProps = {
 
 type BlogsProps = {
 	activeTab: string;
-	blogData: FilteredBlogs;
 	id: string;
 };
 
@@ -71,11 +70,12 @@ function Blog({ blogData }: BlogProps) {
 	);
 }
 
-export default function Blogs({ id, activeTab, blogData }: BlogsProps) {
-	const { drafts, published, deleted } = blogData;
+export default function Blogs({ id, activeTab }: BlogsProps) {
+	const allBlogs = useSelector((state: RootState) => state.allBlogs.value);
+	const { drafts, published, deleted } = allBlogs;
 
 	const filter: BlogFilter = {
-		...blogData,
+		...allBlogs,
 		all: [...drafts, ...published, ...deleted]
 	};
 

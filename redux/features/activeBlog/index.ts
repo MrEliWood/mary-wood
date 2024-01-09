@@ -38,6 +38,8 @@ export const activeBlogSlice = createSlice({
 	}
 });
 
-export const { setActiveBlog, newActiveBlog } = activeBlogSlice.actions;
+const activeBlog = activeBlogSlice.reducer;
 
-export default activeBlogSlice.reducer;
+const { setActiveBlog, newActiveBlog } = activeBlogSlice.actions;
+
+export { activeBlog, setActiveBlog, newActiveBlog };

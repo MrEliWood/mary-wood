@@ -10,8 +10,8 @@ import { Button } from '../../../../_components';
 
 // state
 import { useSelector, useDispatch } from 'react-redux';
-import type { RootState } from '@/redux/store';
-import { newActiveBlog } from '@/redux/features/activeBlog';
+import type { RootState } from '@/redux';
+import { newActiveBlog, setAllBlogs } from '@/redux';
 
 // style
 import styles from './style.module.css';
@@ -28,8 +28,13 @@ export default function Menu({ isScrolled, titleId }: Props) {
 	const activeBlog = useSelector((state: RootState) => state.activeBlog.value);
 	const dispatch = useDispatch();
 
-	const saveBlogDraft = () => {
-		activeBlog.id ? API.updateBlog(activeBlog) : API.createBlog(activeBlog);
+	const saveBlogDraft = async () => {
+		const updatedBlog = activeBlog.id ? await API.updateBlog(activeBlog) : await API.createBlog(activeBlog);
+		const allBlogs = await API.getAllBlogs();
+
+		dispatch(setAllBlogs(allBlogs));
+
+		console.log(updatedBlog);
 	};
 
 	const createNewBlog = () => {

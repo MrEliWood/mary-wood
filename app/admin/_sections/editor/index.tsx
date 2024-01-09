@@ -3,16 +3,17 @@
 // external
 import { useState, useEffect, SyntheticEvent } from 'react';
 import Image from 'next/image';
-import { PlusIcon, TrashIcon } from '@radix-ui/react-icons';
+import { PlusIcon } from '@radix-ui/react-icons';
 
 // internal
+import { getKey } from '@/utils';
 import { Button } from '../../_components';
 import { Menu } from './_sections';
 
 // state
 import { useSelector, useDispatch } from 'react-redux';
 import type { RootState } from '@/redux/store';
-import { setActiveBlog, newActiveBlog } from '@/redux/features/activeBlog';
+import { setActiveBlog, newActiveBlog } from '@/redux';
 
 // style
 import styles from './style.module.css';
@@ -95,7 +96,7 @@ export default function Editor() {
 
 				<div className={styles.image_container}>
 					{activeBlog.images.map(({ src }: ImageType) => {
-						return <Image src={src} alt='blog image' width={120} height={120} className={styles.image} />;
+						return <Image key={getKey()} src={src} alt='blog image' width={120} height={120} className={styles.image} />;
 					})}
 
 					<button className={styles.add_image_button}>
