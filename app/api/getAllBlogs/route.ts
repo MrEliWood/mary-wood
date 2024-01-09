@@ -5,13 +5,13 @@ export async function GET() {
 		const res = await fetch(`${process.env.BASE_URL}/api/blog`);
 		const data: BlogData[] = await res.json();
 
-		const blogs: FilteredBlogs = {
-			published: data.filter((blog) => blog.published && !blog.deleted),
-			drafts: data.filter((blog) => !blog.published && !blog.deleted),
-			deleted: data.filter((blog) => blog.deleted)
-		};
+		// const blogs: FilteredBlogs = {
+		// 	published: data.filter((blog) => blog.published && !blog.deleted),
+		// 	drafts: data.filter((blog) => !blog.published && !blog.deleted),
+		// 	deleted: data.filter((blog) => blog.deleted)
+		// };
 
-		return Response.json({ blogs });
+		return Response.json({ data });
 	} catch (error) {
 		console.error(error);
 
