@@ -5,11 +5,12 @@ import { useState } from 'react';
 import { HamburgerMenuIcon, PlusIcon, Cross1Icon, TrashIcon, UploadIcon, FileIcon } from '@radix-ui/react-icons';
 
 // internal
+import { API } from '@/utils';
 import { Button } from '../../../../_components';
 
 // state
-import { useDispatch } from 'react-redux';
-
+import { useSelector, useDispatch } from 'react-redux';
+import type { RootState } from '@/redux/store';
 import { newActiveBlog } from '@/redux/features/activeBlog';
 
 // style
@@ -23,7 +24,13 @@ type Props = {
 
 export default function Menu({ isScrolled, titleId }: Props) {
 	const [isOpen, setIsOpen] = useState(false);
+
+	const activeBlog = useSelector((state: RootState) => state.activeBlog.value);
 	const dispatch = useDispatch();
+
+	const saveBlogDraft = () => {
+		activeBlog.id ? API.updateBlog(activeBlog) : API.createBlog(activeBlog);
+	};
 
 	const createNewBlog = () => {
 		dispatch(newActiveBlog());
@@ -46,7 +53,7 @@ export default function Menu({ isScrolled, titleId }: Props) {
 					<hr />
 
 					<div className={styles.menu_button_container}>
-						<Button style='ghost' type='secondary'>
+						<Button style='ghost' type='secondary' onClick={saveBlogDraft}>
 							Save
 							<FileIcon width='16' height='16' />
 						</Button>

@@ -28,32 +28,35 @@
 }
 
 .solid {
-	--primary-color: var(--accent-1);
-	--primary-background: var(--accent-a11);
+	--primary-color: var(--white-a12);
+	--primary-background: var(--accent-a9);
 
-	--success-color: var(--success-1);
-	--success-background: var(--success-a11);
+	--success-color: var(--white-a12);
+	--success-background: var(--success-a9);
 
-	--danger-color: var(--danger-1);
-	--danger-background: var(--danger-a11);
+	--danger-color: var(--white-a12);
+	--danger-background: var(--danger-a9);
 
-	--shadow: var(--shadow-s);
-	--opacity: 1;
+	--opacity: 0.9;
+
+	--brightness: 1;
 }
 
 .solid:hover {
-	--shadow: var(--shadow-s);
-	--opacity: 0.9;
-}
-
-.solid:active {
-	--shadow: var(--shadow-s);
 	--opacity: 1;
 }
 
+.solid:active {
+	--opacity: 1;
+
+	--primary-background: var(--accent-a11);
+	--success-background: var(--success-a11);
+	--danger-background: var(--danger-a11);
+}
+
 .solid:where(.secondary) {
-	--secondary-color: var(--gray-12);
-	--secondary-background: var(--gray-a5);
+	--secondary-color: var(--gray-a12);
+	--secondary-background: var(--gray-a4);
 
 	--opacity: 0.75;
 }
@@ -63,7 +66,9 @@
 }
 
 .solid:where(.secondary):active {
-	--secondary-background: var(--gray-a6);
+	--opacity: 1;
+
+	--secondary-background: var(--gray-a5);
 }
 
 .ghost {
@@ -76,7 +81,6 @@
 	--danger-color: var(--danger-a12);
 	--danger-background: transparent;
 
-	--shadow: none;
 	--opacity: 0.75;
 }
 
@@ -116,27 +120,27 @@
 .primary {
 	color: var(--primary-color);
 	background-color: var(--primary-background);
-	box-shadow: var(--shadow);
+
 	opacity: var(--opacity);
 }
 
 .secondary {
 	color: var(--secondary-color);
 	background-color: var(--secondary-background);
-	box-shadow: var(--shadow);
+
 	opacity: var(--opacity);
 }
 
 .success {
 	color: var(--success-color);
 	background-color: var(--success-background);
-	box-shadow: var(--shadow);
+
 	opacity: var(--opacity);
 }
 
 .danger {
 	color: var(--danger-color);
 	background-color: var(--danger-background);
-	box-shadow: var(--shadow);
+
 	opacity: var(--opacity);
 }

@@ -6,7 +6,6 @@ body {
 }
 
 .admin_layout {
-	/* --header-height: 12vh; */
 	--header-height: var(--x4);
 
 	--sans-serif: -apple-system, BlinkMacSystemFont, 'Segoe UI (Custom)', Roboto, 'Helvetica Neue', 'Open Sans (Custom)', system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';

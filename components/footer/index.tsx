@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 // internal
-import { Button, Login } from '@/components';
+import { Button } from '@/components';
 import { links, verifyToken, workData } from '@/utils';
 
 // state
@@ -172,13 +172,11 @@ export default function Footer() {
 										<button onClick={handleLogoutClick}>Logout</button>
 									</>
 								) : (
-									<Link href='/login' className={`hidden_link ${styles.button_container}`}>
+									<Link href='/admin/login' className={`hidden_link ${styles.button_container}`}>
 										<Button.Primary>Login</Button.Primary>
 									</Link>
 								)}
 							</div>
-
-							{loginVisible && <Login />}
 						</div>
 					</div>
 				</section>
