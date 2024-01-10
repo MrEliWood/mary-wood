@@ -19,6 +19,8 @@ export default function Dashboard() {
 	const dispatch = useDispatch();
 	dispatch(setAllBlogs(data));
 
+	console.log(data);
+
 	return (
 		<main className={styles.main}>
 			<Sidebar />
