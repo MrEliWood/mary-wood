@@ -4,7 +4,8 @@ const nextConfig = {
 		appDir: true
 	},
 	env: {
-		BASE_URL: 'https://mwb.herokuapp.com',
+		BASE_URL: 'http://localhost:3001',
+		// BASE_URL: 'https://mwb.herokuapp.com',
 
 		JWT_SECRET: 'tacocat',
 

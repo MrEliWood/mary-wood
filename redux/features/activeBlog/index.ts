@@ -11,17 +11,15 @@ export interface activeBlogState {
 const initialState: activeBlogState = {
 	value: {
 		author: {},
-		author_id: 0,
+		author_id: 1,
 		caption: '',
-		createdAt: '',
 		deleted: false,
-		id: 0,
+		id: null,
 		images: [],
 		published: false,
 		text: '',
 		title: '',
-		updatedAt: '',
-		publishedAt: ''
+		publishedAt: null
 	}
 };
 

@@ -2,6 +2,7 @@
 
 // external
 import { useState } from 'react';
+import { mutate } from 'swr';
 import { HamburgerMenuIcon, PlusIcon, Cross1Icon, TrashIcon, UploadIcon, FileIcon } from '@radix-ui/react-icons';
 
 // internal
@@ -29,12 +30,12 @@ export default function Menu({ isScrolled, titleId }: Props) {
 	const dispatch = useDispatch();
 
 	const saveBlogDraft = async () => {
-		const updatedBlog = activeBlog.id ? await API.updateBlog(activeBlog) : await API.createBlog(activeBlog);
-		const allBlogs = await API.getAllBlogs();
+		console.log(activeBlog);
+		activeBlog.id ? await API.updateBlog(activeBlog) : await API.createBlog(activeBlog);
 
-		dispatch(setAllBlogs(allBlogs));
+		setIsOpen(false);
 
-		console.log(updatedBlog);
+		mutate('/api/blog');
 	};
 
 	const createNewBlog = () => {

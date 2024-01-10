@@ -24,16 +24,14 @@ export type Work = {
 export interface BlogData {
 	author: object;
 	author_id: number;
-	caption: string;
-	createdAt: string;
+	caption: string | null;
 	deleted: boolean;
-	id: number;
+	id: number | null;
 	images: ImageType[];
 	published: boolean;
 	text: string;
 	title: string;
-	updatedAt: string;
-	publishedAt: string;
+	publishedAt: string | null;
 }
 
 export interface FilteredBlogs {
