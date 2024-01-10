@@ -2,7 +2,6 @@
 
 // external
 import { useState, useEffect } from 'react';
-import { useQuery } from 'react-query';
 
 // internal
 import { API } from '@/utils';
@@ -24,14 +23,6 @@ export default function Sidebar() {
 	const [startPosition, setStartPosition] = useState(0);
 	const [scrollPosition, setScrollPosition] = useState(0);
 	const [activeTab, setActiveTab] = useState('all');
-
-	const { isLoading, refetch } = useQuery({
-		queryKey: `allBlogs`,
-		queryFn: () => API.getAllBlogs(),
-		onSuccess: (response) => {
-			console.log('👀', response);
-		}
-	});
 
 	const allBlogs = useSelector(({ allBlogs }: RootState) => allBlogs.value);
 	const dispatch = useDispatch();

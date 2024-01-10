@@ -1,7 +1,7 @@
 'use client';
 
-// import { useEffect } from 'react';
-import { QueryClient, QueryClientProvider } from 'react-query';
+import { useEffect } from 'react';
+import useSWR from 'swr';
 
 import { Editor, Sidebar } from './_sections';
 import { API } from '@/utils';
@@ -11,15 +11,21 @@ import { setAllBlogs } from '@/redux';
 
 import styles from './_styles/page.module.css';
 
-const client = new QueryClient();
+export default function Dashboard() {
+	const { data, error, isLoading } = useSWR('/api/blog', API.getAllBlogs);
+	if (error) return <main>{error}</main>;
+	if (isLoading) return <main>Loading...</main>;
 
-export default async function Dashboard() {
+	const dispatch = useDispatch();
+
+	useEffect(() => {
+		dispatch(setAllBlogs(data));
+	}, []);
+
 	return (
-		<QueryClientProvider client={client}>
-			<main className={styles.main}>
-				<Sidebar />
-				<Editor />
-			</main>
-		</QueryClientProvider>
+		<main className={styles.main}>
+			<Sidebar />
+			<Editor />
+		</main>
 	);
 }
