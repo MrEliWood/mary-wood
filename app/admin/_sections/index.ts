@@ -1,5 +1,5 @@
 import Editor from './editor';
-import Header from './header';
+import Menu from './menu';
 import Sidebar from './sidebar';
 
-export { Editor, Header, Sidebar };
+export { Editor, Menu, Sidebar };

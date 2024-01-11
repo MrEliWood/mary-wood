@@ -1,19 +1,16 @@
 'use client';
 
 // external
-import { useState, useEffect, SyntheticEvent } from 'react';
+import { useState, useEffect, ChangeEventHandler, UIEvent, UIEventHandler } from 'react';
 import Image from 'next/image';
 import { PlusIcon } from '@radix-ui/react-icons';
 
 // internal
+import { TextArea } from '../../_components';
 import { getKey } from '@/utils';
-import { Button } from '../../_components';
-import { Menu } from './_sections';
 
 // state
-import { useSelector, useDispatch } from 'react-redux';
-import type { RootState } from '@/redux/store';
-import { setActiveBlog, newActiveBlog } from '@/redux';
+import { getState, useDispatch, setActiveBlog, setEditorScrolled } from '@/redux';
 
 // style
 import styles from './style.module.css';
@@ -22,7 +19,6 @@ import styles from './style.module.css';
 import type { ImageType } from '@/types';
 
 // variables
-const sectionId = 'editor-section';
 const editorId = 'editor';
 
 const titleId = 'editor-title-input';
@@ -31,8 +27,7 @@ const textId = 'editor-text-input';
 
 export default function Editor() {
 	const [startPosition, setStartPosition] = useState(0);
-	const [scrollPosition, setScrollPosition] = useState(0);
-	const activeBlog = useSelector((state: RootState) => state.activeBlog.value);
+	const activeBlog = getState('activeBlog');
 	const dispatch = useDispatch();
 
 	const { title, caption, text } = activeBlog;
@@ -48,14 +43,11 @@ export default function Editor() {
 		element.style.height = element.scrollHeight + 'px';
 	};
 
-	const handleInputChange = (event: SyntheticEvent) => {
-		const element = event.target as HTMLInputElement;
-		const { name, value } = element;
-
+	const handleInputChange = ({ name, value }: { name: string; value: string }) => {
 		dispatch(
 			setActiveBlog({
 				...activeBlog,
-				[name]: value
+				[name]: value.replaceAll('\n', ' ')
 			})
 		);
 	};
@@ -64,35 +56,28 @@ export default function Editor() {
 	useEffect(() => adjustInputHeight(getInputElement(captionId)), [caption]);
 	useEffect(() => adjustInputHeight(getInputElement(textId)), [text]);
 
-	const handleScroll = (event: Event) => {
+	const handleScroll = (event: UIEvent<HTMLElement>) => {
 		const element = event.target as HTMLElement;
-
 		const position = element.children[0].getBoundingClientRect().top;
-		setScrollPosition(position);
+		const isScrolled = position < startPosition;
+
+		dispatch(setEditorScrolled(isScrolled));
 	};
 
 	useEffect(() => {
-		const sectionElement = document.getElementById(sectionId);
+		const editorElement = document.getElementById(editorId);
 
-		const position = sectionElement?.children[0].getBoundingClientRect().top || 0;
+		const position = editorElement?.children[0].getBoundingClientRect().top || 0;
 		setStartPosition(position);
-		setScrollPosition(position);
-
-		sectionElement?.addEventListener('scroll', handleScroll);
-
-		return () => {
-			sectionElement?.removeEventListener('scroll', handleScroll);
-		};
 	}, []);
 
-	const isScrolled = scrollPosition < startPosition;
-
 	return (
-		<section id={sectionId} className={styles.section}>
-			<div id={editorId} className={styles.editor}>
-				<textarea id={titleId} placeholder='New Blog Title' name='title' value={activeBlog.title} onChange={handleInputChange} className={styles.title} />
+		<section id={editorId} className={styles.section} onScroll={handleScroll}>
+			<div className={styles.editor}>
+				{/* <textarea id={titleId} placeholder='New Blog Title' name='title' value={activeBlog.title} onChange={handleInputChange} className={styles.title} /> */}
+				<TextArea name='title' value={title} placeholder='New Blog Title' onChange={handleInputChange} className={styles.title} />
 
-				<textarea id={captionId} placeholder='Caption for your new blog (optional).' name='caption' value={activeBlog.caption} onChange={handleInputChange} className={styles.caption} />
+				<textarea id={captionId} placeholder='Caption for your new blog (optional).' name='caption' value={activeBlog.caption || ''} onChange={handleInputChange} className={styles.caption} />
 
 				<div className={styles.image_container}>
 					{activeBlog.images.map(({ src }: ImageType) => {
@@ -107,8 +92,6 @@ export default function Editor() {
 
 				<textarea id={textId} placeholder='Body text...' name='text' value={activeBlog.text} onChange={handleInputChange} className={styles.text} />
 			</div>
-
-			<Menu isScrolled={isScrolled} titleId={titleId} />
 		</section>
 	);
 }

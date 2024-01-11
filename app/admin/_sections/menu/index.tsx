@@ -7,26 +7,20 @@ import { HamburgerMenuIcon, PlusIcon, Cross1Icon, TrashIcon, UploadIcon, FileIco
 
 // internal
 import { API } from '@/utils';
-import { Button } from '../../../../_components';
+import { Button } from '../../_components';
 
 // state
-import { useSelector, useDispatch } from 'react-redux';
-import type { RootState } from '@/redux';
-import { newActiveBlog, setAllBlogs } from '@/redux';
+import { getState, useDispatch, newActiveBlog, setAllBlogs } from '@/redux';
 
 // style
 import styles from './style.module.css';
 
-// types
-type Props = {
-	isScrolled: boolean;
-	titleId: string;
-};
-
-export default function Menu({ isScrolled, titleId }: Props) {
+export default function Menu() {
 	const [isOpen, setIsOpen] = useState(false);
 
-	const activeBlog = useSelector((state: RootState) => state.activeBlog.value);
+	const activeBlog = getState('activeBlog');
+	const editorScrolled = getState('editorScrolled');
+
 	const dispatch = useDispatch();
 
 	const saveBlogDraft = async () => {
@@ -43,12 +37,12 @@ export default function Menu({ isScrolled, titleId }: Props) {
 
 		setIsOpen(false);
 
-		const titleInput = document.getElementById(titleId) as HTMLInputElement;
-		titleInput.focus();
+		const firstInput = document.querySelector('textarea');
+		firstInput?.focus();
 	};
 
 	return (
-		<div className={`${styles.menu_container} ${isScrolled ? styles.scrolled : ''}`}>
+		<div className={`${styles.menu_container} ${editorScrolled ? styles.scrolled : ''}`}>
 			<div className={`${styles.menu_accordian} ${isOpen ? styles.open : ''}`}>
 				<div className={styles.menu}>
 					<Button style='ghost' type='secondary' className={styles.menu_icon} onClick={() => setIsOpen(!isOpen)}>
