@@ -1,4 +1,5 @@
 // external
+import { MouseEventHandler } from 'react';
 
 // internal
 
@@ -9,14 +10,15 @@ type Props = {
 	href?: string;
 	style?: 'solid' | 'ghost';
 	type?: 'primary' | 'secondary' | 'success' | 'danger';
+	name?: string;
 	className?: string;
-	onClick?: () => void;
+	onClick?: MouseEventHandler<HTMLButtonElement>;
 	children?: React.ReactNode;
 };
 
-export default function Button({ style = 'solid', type = 'primary', className = '', onClick, children }: Props) {
+export default function Button({ style = 'solid', type = 'primary', name = '', className = '', onClick, children }: Props) {
 	return (
-		<button className={`${styles.button} ${styles[style]} ${styles[type]} ${className}`} onClick={onClick}>
+		<button name={name} className={`${styles.button} ${styles[style]} ${styles[type]} ${className}`} onClick={onClick}>
 			{children}
 		</button>
 	);

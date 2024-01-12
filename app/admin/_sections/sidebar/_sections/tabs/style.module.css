@@ -1,34 +1,26 @@
-.tabs_container {
-	position: relative;
+.tabs_section {
+	width: 100%;
+	max-width: 100%;
 
 	display: flex;
 	justify-content: center;
-	align-items: center;
-
-	width: 100%;
-	max-width: 100%;
-	min-height: var(--x4);
-	max-height: var(--x4);
 
 	margin-top: var(--x4);
 	margin-bottom: calc(-1 * var(--x2));
 }
 
-.tabs {
-	position: absolute;
-	bottom: 0;
-	left: var(--x4);
-
+.tabs_container {
 	display: flex;
-	justify-content: space-between;
-	align-items: center;
 
 	background: var(--gray-1);
 	border-radius: var(--radius);
 	box-shadow: var(--shadow-m);
 
-	width: calc(100% - var(--x7));
-	height: 100%;
+	width: 100%;
+	height: var(--x4);
+
+	margin-left: var(--x4);
+	margin-right: var(--x3);
 
 	overflow: hidden;
 
@@ -37,14 +29,8 @@
 	z-index: 10;
 }
 
-.tabs:hover {
+.tabs_container:hover {
 	box-shadow: var(--shadow-l);
-}
-
-.tabs hr {
-	border: var(--outline);
-	width: 0px;
-	height: var(--x1h);
 }
 
 .scrolled {
@@ -54,43 +40,65 @@
 }
 
 .hidden {
-	left: var(--x7);
-	transition: all var(--transition-speed-d2) ease-in-out;
+	transform: translateX(var(--x1h));
+
+	transition: all var(--transition-speed) ease-in-out;
 }
 
 .hidden:hover {
-	transform: translateX(var(--d3));
+	transform: translateX(var(--x3));
 }
 
-.tabs_list {
-	position: absolute;
-	right: calc(var(--x2) - 16px);
+.tabs_content {
+	position: relative;
 
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	gap: var(--x2);
 
-	width: calc(100% - var(--x4) - 8px);
+	width: calc(100% + var(--x3));
+	min-width: calc(100% + var(--x3));
+	max-width: fit-content;
+	height: 100%;
+
+	transition: all var(--transition-speed) ease-in-out;
+}
+
+.hidden .tabs_content {
+	transform: translateX(calc(-1 * var(--x3)));
+}
+
+.tabs {
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+	gap: var(--d2);
+
+	width: 100%;
 	height: 100%;
 
 	overflow: hidden;
 
 	transition: all var(--transition-speed) ease-in-out;
+
+	padding: 0 var(--d2);
 }
 
-.hidden .tabs_list {
+.hidden .tabs {
 	transform: translateX(-100%);
 }
 
 .tab {
 	position: relative;
+
+	text-transform: capitalize;
 }
 
 .tab::after {
 	content: '';
 	position: absolute;
-	bottom: -1px;
+	bottom: 50%;
+	transform: translateY(var(--x2));
 
 	background-color: var(--accent-8);
 	border-radius: var(--radius) var(--radius) 0 0;
@@ -98,12 +106,11 @@
 	width: calc(100% + var(--d2));
 	height: 0px;
 
-	transition: all var(--transition-speed-d4) ease-in-out;
+	transition: all var(--transition-speed-d3) ease-in-out 0ms !important;
 }
 
 .active {
 	color: var(--gray-12);
-	height: 100%;
 }
 
 .active:hover {
@@ -111,9 +118,9 @@
 }
 
 .active::after {
-	height: var(--d2);
+	height: var(--d2h);
 
-	transition-delay: var(--transition-speed-d4);
+	transition: all var(--transition-speed-d3) ease-in-out var(--transition-speed-d3) !important;
 }
 
 .active:hover::after {
@@ -123,65 +130,50 @@
 }
 
 /************************************************
-hide button
+show / hide buttons
 ************************************************/
 
-.hide_button_container {
+.show_hide_button {
 	position: relative;
-
-	display: flex;
-	align-items: center;
-
-	width: var(--x2);
-
-	margin-left: calc(var(--x2) - 16px);
-
-	transition: all var(--transition-speed-d2) ease-in-out var(--transition-speed);
-}
-
-.hide_button_container hr {
-	position: absolute;
-	left: calc(100% + (var(--x2) - 16px));
-	transition: transform var(--transition-speed-d2) ease-in-out var(--transition-speed);
-}
-
-.hidden .hide_button_container hr {
-	transform: translateX(calc(-1 * var(--x4)));
-}
-
-.hide_button {
-	position: absolute;
-	top: 50%;
-	transform: translateY(-50%);
 
 	display: flex;
 	justify-content: center;
 	align-items: center;
 
 	width: var(--x2);
+	min-width: var(--x2);
+	max-width: var(--x2);
 
-	padding-left: 0;
-	padding-right: 0;
+	padding: 0;
+	margin: 0 var(--d2);
 
 	transition: transform var(--transition-speed) ease-in-out var(--transition-speed);
 }
 
-.hidden .hide_button {
-	transform: translate(-100%, -50%);
+.hide::after {
+	content: '';
+	pointer-events: none;
+
+	position: absolute;
+	left: var(--x2h);
+
+	border: var(--outline);
+
+	width: 0px;
+	height: var(--x2);
 }
 
-.hide_button svg {
-	margin-left: var(--d9);
+.chevron {
+	min-width: 24px;
+
+	margin: 0 !important;
 }
 
 .hide_button_text {
 	position: absolute;
-	left: calc(100% + var(--x1h));
+	left: var(--x4);
 
 	transform: translateY(calc(-1 * var(--x4)));
-
-	width: 100%;
-	white-space: nowrap;
 
 	transition: all var(--transition-speed-d2) ease-in-out;
 }
@@ -190,53 +182,24 @@ hide button
 	transform: translateY(0px);
 }
 
-.hide_button:hover ~ .hide_button_text {
+.hide:hover ~ .hide_button_text {
 	transform: translateY(0px);
 	transition: all var(--transition-speed) ease-in-out;
 }
 
-.hide_button_container:hover ~ .tabs_list {
-	transform: translateY(200%);
+.hide:hover ~ .tabs {
+	transform: translateY(var(--x4));
 	transition-duration: var(--transition-speed-d2);
 }
 
-/************************************************
-show button
-************************************************/
+.show {
+	width: var(--d2);
+	min-width: var(--d2);
+	max-width: var(--x2);
 
-.show_button_container {
-	position: relative;
-	transform: translateX(150%);
-
-	display: flex;
-	align-items: center;
-
-	width: var(--x2);
-
-	margin-right: calc(var(--x2) - 16px);
-
-	transition: all var(--transition-speed-d2) ease-in-out;
+	transition: min-width var(--transition-speed) ease-in-out;
 }
 
-.hidden .show_button_container {
-	transform: translateX(0%);
-}
-
-.show_button {
-	position: absolute;
-	top: 50%;
-	transform: translateY(-50%);
-
-	display: flex;
-	justify-content: center;
-	align-items: center;
-
-	width: var(--x2);
-
-	padding-left: 0;
-	padding-right: 0;
-}
-
-.show_button svg {
-	margin-left: calc(-1 * var(--d9));
+.hidden:hover .show {
+	min-width: var(--x2);
 }

@@ -52,12 +52,15 @@
 	overflow: hidden;
 	white-space: nowrap;
 	text-overflow: ellipsis;
+	line-height: 1.5;
 }
 
 .row {
 	display: grid;
 	grid-template-columns: auto max-content;
 	gap: 12px;
+
+	overflow: visible;
 }
 
 .title {
@@ -65,34 +68,41 @@
 	font-weight: 700;
 }
 
-.badge * {
+.badge_container {
+	overflow: visible;
+}
+
+.badge {
+	--padding-x: var(--d3);
+	--padding-y: calc(var(--padding-x) / 3);
+
 	color: var(--gray-a10);
 	font-size: var(--f2);
 	font-weight: 400;
 	letter-spacing: 0.01em;
+	line-height: 1.2;
 
-	/* min-width: fit-content; */
-
-	margin-top: 2px;
-}
-
-.date span {
-	color: var(--gray-a8);
-	margin: 0 1px;
-}
-
-.draft_badge,
-.deleted_badge {
 	border: 1px solid var(--gray-a10);
 	border-radius: var(--radius-s);
 
-	padding: 0 var(--d2);
-	margin-top: 3px;
+	padding: var(--padding-y) var(--padding-x);
+
+	margin-top: var(--padding-y);
+	margin-right: calc(-1 * var(--padding-y));
 }
 
-.deleted_badge {
+.published {
+	border-color: transparent;
+}
+
+.published span {
+	color: var(--gray-a8);
+	margin: 0 var(--d8);
+}
+
+.deleted {
 	color: var(--red-11);
-	border: 1px solid var(--red-11);
+	border-color: var(--red-11);
 }
 
 .caption {
@@ -104,6 +114,12 @@
 	color: var(--gray-a10);
 	font-size: var(--f2);
 	font-weight: 400;
+	white-space: wrap;
+
+	display: -webkit-box;
+	line-clamp: 2;
+	-webkit-line-clamp: 2; /* number of lines to show */
+	-webkit-box-orient: vertical;
 }
 
 .active {

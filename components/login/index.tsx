@@ -2,8 +2,8 @@
 
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { createToken } from '@/redux/features/token';
-import { hideLogin } from '@/redux/features/loginVisible';
+import { createToken } from '@/states/features/token';
+import { hideLogin } from '@/states/features/loginVisible';
 import { usePathname, useRouter } from 'next/navigation';
 
 import styles from './style.module.css';

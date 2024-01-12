@@ -17,6 +17,8 @@ body {
 
 	--outline: 0.5px solid var(--gray-a8);
 	--border: 1px solid var(--gray-a7);
+
+	--button-height: 32px;
 }
 
 .admin_layout * {

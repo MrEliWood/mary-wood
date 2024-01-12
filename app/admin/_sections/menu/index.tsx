@@ -10,7 +10,7 @@ import { API } from '@/utils';
 import { Button } from '../../_components';
 
 // state
-import { getState, useDispatch, newActiveBlog, setAllBlogs } from '@/redux';
+import { getState, useDispatch, newActiveBlog, setAllBlogs } from '@/states';
 
 // style
 import styles from './style.module.css';

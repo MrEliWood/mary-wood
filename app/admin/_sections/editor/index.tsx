@@ -1,7 +1,7 @@
 'use client';
 
 // external
-import { useState, useEffect, ChangeEventHandler, UIEvent, UIEventHandler } from 'react';
+import { useState, useEffect, SyntheticEvent, UIEvent, UIEventHandler } from 'react';
 import Image from 'next/image';
 import { PlusIcon } from '@radix-ui/react-icons';
 
@@ -10,7 +10,7 @@ import { TextArea } from '../../_components';
 import { getKey } from '@/utils';
 
 // state
-import { getState, useDispatch, setActiveBlog, setEditorScrolled } from '@/redux';
+import { getState, setState, useDispatch } from '@/states';
 
 // style
 import styles from './style.module.css';
@@ -32,36 +32,37 @@ export default function Editor() {
 
 	const { title, caption, text } = activeBlog;
 
-	const getInputElement = (id: string) => {
-		return document.getElementById(id) as HTMLInputElement;
+	const cleanInputValue = (name: string, value: string) => {
+		if (name === 'text') return value;
+
+		return value.replaceAll('\n', '');
 	};
 
-	const adjustInputHeight = (element: HTMLInputElement) => {
-		if (!element) return;
+	const setInputValue = (element: HTMLInputElement) => {
+		const { name, value } = element;
 
-		element.style.height = '1px';
-		element.style.height = element.scrollHeight + 'px';
+		const newValues = {
+			...activeBlog,
+			[name]: cleanInputValue(name, value)
+		};
+
+		dispatch(setState('setActiveBlog', newValues));
+		localStorage.setItem('Mary Wood - Unsaved Blog', JSON.stringify(newValues));
 	};
 
-	const handleInputChange = ({ name, value }: { name: string; value: string }) => {
-		dispatch(
-			setActiveBlog({
-				...activeBlog,
-				[name]: value.replaceAll('\n', ' ')
-			})
-		);
-	};
+	const handleInputChange = (event: SyntheticEvent) => {
+		const element = event.target as HTMLInputElement;
 
-	useEffect(() => adjustInputHeight(getInputElement(titleId)), [title]);
-	useEffect(() => adjustInputHeight(getInputElement(captionId)), [caption]);
-	useEffect(() => adjustInputHeight(getInputElement(textId)), [text]);
+		setInputValue(element);
+	};
 
 	const handleScroll = (event: UIEvent<HTMLElement>) => {
 		const element = event.target as HTMLElement;
+
 		const position = element.children[0].getBoundingClientRect().top;
 		const isScrolled = position < startPosition;
 
-		dispatch(setEditorScrolled(isScrolled));
+		dispatch(setState('setEditorScrolled', isScrolled));
 	};
 
 	useEffect(() => {
@@ -74,10 +75,9 @@ export default function Editor() {
 	return (
 		<section id={editorId} className={styles.section} onScroll={handleScroll}>
 			<div className={styles.editor}>
-				{/* <textarea id={titleId} placeholder='New Blog Title' name='title' value={activeBlog.title} onChange={handleInputChange} className={styles.title} /> */}
-				<TextArea name='title' value={title} placeholder='New Blog Title' onChange={handleInputChange} className={styles.title} />
+				<TextArea id={titleId} placeholder='New Blog Title' name='title' value={title} onChange={handleInputChange} className={styles.title} />
 
-				<textarea id={captionId} placeholder='Caption for your new blog (optional).' name='caption' value={activeBlog.caption || ''} onChange={handleInputChange} className={styles.caption} />
+				<TextArea id={captionId} placeholder='Caption for your new blog (optional).' name='caption' value={caption || ''} onChange={handleInputChange} className={styles.caption} />
 
 				<div className={styles.image_container}>
 					{activeBlog.images.map(({ src }: ImageType) => {
@@ -90,7 +90,7 @@ export default function Editor() {
 					</button>
 				</div>
 
-				<textarea id={textId} placeholder='Body text...' name='text' value={activeBlog.text} onChange={handleInputChange} className={styles.text} />
+				<TextArea id={textId} placeholder='Body text...' name='text' value={text} onChange={handleInputChange} allowLineBreaks className={styles.text} />
 			</div>
 		</section>
 	);

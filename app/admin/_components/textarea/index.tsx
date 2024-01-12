@@ -1,7 +1,5 @@
-'use client';
-
 // external
-import { useEffect, SyntheticEvent, ChangeEventHandler, ChangeEvent } from 'react';
+import { useState, useEffect, SyntheticEvent } from 'react';
 
 // internal
 import { getKey } from '@/utils';
@@ -11,51 +9,57 @@ import styles from './style.module.css';
 
 // types
 type Props = {
+	id?: string;
 	name: string;
 	value: string;
 	placeholder?: string;
-	onChange: ({ name, value }: { name: string; value: string }) => void;
-	preventLineBreaks?: boolean;
+	onChange: (event: SyntheticEvent) => void;
+	allowLineBreaks?: boolean;
 	className?: string;
 };
 
-// variables
-const id = 'input__' + getKey();
+export default function TextArea({ id = 'input__' + getKey(), name, value, placeholder = '', onChange, allowLineBreaks, className = '' }: Props) {
+	const [invalidKey, setInvalidKey] = useState(false);
 
-export default function TextArea({ name, value, placeholder = '', onChange, preventLineBreaks = false, className = '' }: Props) {
-	const adjustInputHeight = (element: HTMLTextAreaElement) => {
+	const setInputHeight = () => {
+		const element = document.getElementById(id) as HTMLTextAreaElement;
+
 		element.style.height = '1px';
 		element.style.height = element.scrollHeight + 'px';
 	};
 
 	const handleInputChange = (event: SyntheticEvent) => {
-		const element = event.target as HTMLTextAreaElement;
-		adjustInputHeight(element);
-
-		console.log(event);
-
-		onChange(event as ChangeEvent<HTMLTextAreaElement>);
-	};
-
-	const handleKeyPress = (event: KeyboardEvent) => {
-		const element = event.target as HTMLTextAreaElement;
-		adjustInputHeight(element);
-
-		console.log(event);
+		if (invalidKey) return;
 
 		onChange(event);
 	};
 
-	useEffect(() => {
+	const handleKeyDown = (event: KeyboardEvent) => {
+		const { code, key } = event;
+
+		switch (code || key) {
+			case 'Enter':
+				setInvalidKey(true);
+				break;
+
+			default:
+				setInvalidKey(false);
+		}
+	};
+
+	const addKeydownListener = () => {
+		if (allowLineBreaks) return;
+
 		const element = document.getElementById(id) as HTMLTextAreaElement;
-		adjustInputHeight(element);
 
-		element?.addEventListener('keyup', handleKeyPress);
-
+		element?.addEventListener('keydown', handleKeyDown);
 		return () => {
-			element?.addEventListener('keyup', handleKeyPress);
+			element?.removeEventListener('keydown', handleKeyDown);
 		};
-	}, []);
+	};
 
-	return <textarea id={id} name={name} value={value} placeholder={placeholder} className={`${styles.button} ${className}`} />;
+	useEffect(addKeydownListener, []);
+	useEffect(setInputHeight, [value]);
+
+	return <textarea id={id} name={name} value={value} placeholder={placeholder} onChange={handleInputChange} className={`${styles.textarea} ${className}`} />;
 }

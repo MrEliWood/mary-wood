@@ -1,5 +1,5 @@
 import { Header, Footer } from '@/components';
-import { Providers } from '@/redux/provider';
+import { Providers } from '@/states/provider';
 
 import { Crimson_Text, Libre_Caslon_Text } from 'next/font/google';
 import './_styles/global.css';

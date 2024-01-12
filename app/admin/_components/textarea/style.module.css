@@ -1,0 +1,19 @@
+.textarea {
+	resize: none;
+
+	border: none;
+	background: none;
+	box-shadow: none;
+	border-radius: var(--radius);
+
+	padding: var(--x1) var(--x1h);
+}
+
+.textarea:hover {
+	background: var(--white-a7);
+}
+
+.textarea:focus {
+	background: white;
+	outline: none;
+}

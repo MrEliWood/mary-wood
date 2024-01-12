@@ -1,15 +1,18 @@
 'use client';
 
+// external
 import dayjs from 'dayjs';
 
-import { useSelector, useDispatch } from 'react-redux';
-import type { RootState } from '@/redux/store';
-import { setActiveBlog } from '@/redux/features/activeBlog';
-
+// internal
 import { getKey } from '@/utils';
 
+// state
+import { getState, setState, useDispatch } from '@/states';
+
+// styles
 import styles from './style.module.css';
 
+// types
 import type { BlogData, FilteredBlogs } from '@/types';
 
 type BlogProps = {
@@ -17,7 +20,6 @@ type BlogProps = {
 };
 
 type BlogsProps = {
-	activeTab: string;
 	id: string;
 };
 
@@ -29,16 +31,18 @@ type BlogFilter = {
 };
 
 function Blog({ blogData }: BlogProps) {
-	const { id, title, caption, text, published, deleted, publishedAt } = blogData;
-	const activeBlog = useSelector((state: RootState) => state.activeBlog.value);
+	const activeBlog = getState('activeBlog');
 	const dispatch = useDispatch();
+
+	const { id, title, caption, text, published, deleted, publishedAt } = blogData;
 
 	const month = dayjs(publishedAt).format('MM');
 	const day = dayjs(publishedAt).format('DD');
 	const year = dayjs(publishedAt).format('YYYY');
+	const delineator = <span>/</span>;
 
 	const handleClick = () => {
-		dispatch(setActiveBlog(blogData));
+		dispatch(setState('setActiveBlog', blogData));
 	};
 
 	return (
@@ -46,19 +50,19 @@ function Blog({ blogData }: BlogProps) {
 			<div className={styles.row}>
 				<p className={styles.title}>{title}</p>
 
-				<div className={styles.badge}>
+				<div className={styles.badge_container}>
 					{deleted ? (
-						<p className={styles.deleted_badge}>Deleted</p>
+						<p className={`${styles.badge} ${styles.deleted}`}>Deleted</p>
 					) : published ? (
-						<p className={styles.date}>
+						<p className={`${styles.badge} ${styles.published}`}>
 							{month}
-							<span>/</span>
+							{delineator}
 							{day}
-							<span>/</span>
+							{delineator}
 							{year}
 						</p>
 					) : (
-						<p className={styles.draft_badge}>Draft</p>
+						<p className={`${styles.badge} ${styles.draft}`}>Draft</p>
 					)}
 				</div>
 			</div>
@@ -70,8 +74,10 @@ function Blog({ blogData }: BlogProps) {
 	);
 }
 
-export default function Blogs({ id, activeTab }: BlogsProps) {
-	const allBlogs = useSelector((state: RootState) => state.allBlogs.value);
+export default function Blogs({ id }: BlogsProps) {
+	const activeTab = getState('activeTab');
+	const allBlogs = getState('allBlogs');
+
 	const { drafts, published, deleted } = allBlogs;
 
 	const filter: BlogFilter = {

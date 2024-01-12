@@ -14,8 +14,8 @@
 
 	width: fit-content;
 	min-width: fit-content;
-	height: 32px;
-	min-height: 32px;
+	height: var(--button-height);
+	min-height: var(--button-height);
 
 	padding: 0 var(--x1);
 

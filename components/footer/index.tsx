@@ -11,9 +11,9 @@ import { links, verifyToken, workData } from '@/utils';
 
 // state
 import { useSelector, useDispatch } from 'react-redux';
-import type { RootState } from '@/redux/store';
-import { createToken, destroyToken } from '@/redux/features/token';
-import { showLogin } from '@/redux/features/loginVisible';
+import type { RootState } from '@/states/store';
+import { createToken, destroyToken } from '@/states/features/token';
+import { showLogin } from '@/states/features/loginVisible';
 
 // styles
 import styles from './style.module.css';

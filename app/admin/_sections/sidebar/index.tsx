@@ -8,9 +8,7 @@ import { API } from '@/utils';
 import { Tabs, Blogs } from './_sections';
 
 // state
-import { useSelector, useDispatch } from 'react-redux';
-import type { RootState } from '@/redux/store';
-import { setActiveBlog } from '@/redux';
+import { getState, setState, useDispatch } from '@/states';
 
 // styles
 import styles from './style.module.css';
@@ -22,16 +20,27 @@ export default function Sidebar() {
 	const [isHidden, setIsHidden] = useState(false);
 	const [startPosition, setStartPosition] = useState(0);
 	const [scrollPosition, setScrollPosition] = useState(0);
-	const [activeTab, setActiveTab] = useState('all');
 
-	const allBlogs = useSelector(({ allBlogs }: RootState) => allBlogs.value);
+	const allBlogs = getState('allBlogs');
 	const dispatch = useDispatch();
 
-	const { drafts, published, deleted } = allBlogs;
+	const setActiveBlog = () => {
+		const localBlogString = localStorage.getItem('Mary Wood - Unsaved Blog');
+		const unsavedBlog = localBlogString ? JSON.parse(localBlogString) : null;
 
-	useEffect(() => {
-		dispatch(setActiveBlog(drafts[0] || published[0] || deleted[0]));
-	}, []);
+		const { drafts, published, deleted } = allBlogs;
+		const savedBlog = drafts[0] || published[0] || deleted[0];
+
+		const activeBlogState = setState('setActiveBlog', unsavedBlog || savedBlog);
+		dispatch(activeBlogState);
+	};
+
+	const initScrollPosition = (element: HTMLElement) => {
+		const position = element?.children[0]?.getBoundingClientRect().top || 0;
+
+		setStartPosition(position);
+		setScrollPosition(position);
+	};
 
 	const handleScroll = (event: Event) => {
 		const element = event.target as HTMLElement;
@@ -40,27 +49,29 @@ export default function Sidebar() {
 		setScrollPosition(position);
 	};
 
-	useEffect(() => {
-		const blogsElement = document.getElementById(blogsId);
+	const onPageLoad = () => {
+		setActiveBlog();
 
-		const position = blogsElement?.children[0]?.getBoundingClientRect().top || 0;
-		setStartPosition(position);
-		setScrollPosition(position);
+		const element = document.getElementById(blogsId);
+		if (!element) return;
 
-		blogsElement?.addEventListener('scroll', handleScroll);
+		initScrollPosition(element);
 
+		element.addEventListener('scroll', handleScroll);
 		return () => {
-			blogsElement?.removeEventListener('scroll', handleScroll);
+			element.removeEventListener('scroll', handleScroll);
 		};
-	}, []);
+	};
+
+	useEffect(onPageLoad, []);
 
 	const isScrolled = scrollPosition < startPosition;
 
 	return (
 		<div className={`${styles.sidebar_container} ${isHidden ? styles.hidden : ''}`}>
 			<section className={styles.sidebar}>
-				<Tabs activeTab={activeTab} setActiveTab={setActiveTab} isHidden={isHidden} setIsHidden={setIsHidden} isScrolled={isScrolled} />
-				<Blogs id={blogsId} activeTab={activeTab} />
+				<Tabs isHidden={isHidden} setIsHidden={setIsHidden} isScrolled={isScrolled} />
+				<Blogs id={blogsId} />
 			</section>
 		</div>
 	);

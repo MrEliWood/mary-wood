@@ -6,11 +6,11 @@ import { Button, Blog } from '@/components';
 import { API } from '@/utils';
 
 import { useSelector, useDispatch } from 'react-redux';
-import { setBlogs } from '@/redux/features/blogData';
+import { setBlogs } from '@/states/features/blogData';
 
 import styles from './page.module.css';
 
-import type { RootState } from '@/redux/store';
+import type { RootState } from '@/states/store';
 import { BlogType } from '@/types';
 
 export default function BlogPage() {
