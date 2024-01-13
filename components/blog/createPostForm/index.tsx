@@ -2,9 +2,9 @@
 
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import type { RootState } from '@/states/store';
-import { hideBlogForm } from '@/states/features/blogFormVisible';
-import { showLogin } from '@/states/features/loginVisible';
+import type { RootState } from '@/state/store';
+import { hideBlogForm } from '@/state/features/blogFormVisible';
+import { showLogin } from '@/state/features/loginVisible';
 
 import styles from './style.module.css';
 import { verifyToken } from '@/utils';

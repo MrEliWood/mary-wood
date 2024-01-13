@@ -1,7 +1,7 @@
 'use client';
 
 import { useDispatch } from 'react-redux';
-import { showBlogForm } from '@/states/features/blogFormVisible';
+import { showBlogForm } from '@/state/features/blogFormVisible';
 
 export default function BlogCreate() {
 	const dispatch = useDispatch();

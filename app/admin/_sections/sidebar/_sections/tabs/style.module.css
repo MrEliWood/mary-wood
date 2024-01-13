@@ -42,18 +42,19 @@
 .hidden {
 	transform: translateX(var(--x1h));
 
-	transition: all var(--transition-speed) ease-in-out;
+	transition: all var(--transition-speed-d2) ease-in-out;
 }
 
 .hidden:hover {
 	transform: translateX(var(--x3));
+
+	transition: all var(--transition-speed-d3) ease-in-out !important;
 }
 
 .tabs_content {
 	position: relative;
 
 	display: flex;
-	justify-content: center;
 	align-items: center;
 
 	width: calc(100% + var(--x3));
@@ -74,7 +75,7 @@
 	align-items: center;
 	gap: var(--d2);
 
-	width: 100%;
+	width: calc(100% - var(--x6));
 	height: 100%;
 
 	overflow: hidden;
@@ -192,14 +193,26 @@ show / hide buttons
 	transition-duration: var(--transition-speed-d2);
 }
 
+.show_container {
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+
+	width: var(--x3);
+	min-width: var(--x3);
+	max-width: var(--x3);
+}
+
 .show {
 	width: var(--d2);
 	min-width: var(--d2);
 	max-width: var(--x2);
 
-	transition: min-width var(--transition-speed) ease-in-out;
+	transition: min-width var(--transition-speed-d2) ease-in-out;
 }
 
 .hidden:hover .show {
 	min-width: var(--x2);
+
+	transition: min-width var(--transition-speed-d3) ease-in-out;
 }

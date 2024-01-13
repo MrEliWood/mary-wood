@@ -2,7 +2,7 @@
 import { useState, useEffect, SyntheticEvent } from 'react';
 
 // internal
-import { getKey } from '@/utils';
+import { getKey, setTextAreaHeight } from '@/utils';
 
 // style
 import styles from './style.module.css';
@@ -23,9 +23,7 @@ export default function TextArea({ id = 'input__' + getKey(), name, value, place
 
 	const setInputHeight = () => {
 		const element = document.getElementById(id) as HTMLTextAreaElement;
-
-		element.style.height = '1px';
-		element.style.height = element.scrollHeight + 'px';
+		setTextAreaHeight(element);
 	};
 
 	const handleInputChange = (event: SyntheticEvent) => {

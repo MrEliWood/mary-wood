@@ -10,8 +10,8 @@ import { Button } from '@/components';
 import { API } from '@/utils';
 
 import { useSelector, useDispatch } from 'react-redux';
-import type { RootState } from '@/states/store';
-import { setBlogs } from '@/states/features/blogData';
+import type { RootState } from '@/state/store';
+import { setBlogs } from '@/state/features/blogData';
 
 import styles from './style.module.css';
 

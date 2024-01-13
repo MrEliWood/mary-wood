@@ -7,7 +7,7 @@ import { getKey } from '@/utils';
 import { Button } from '../../../../_components';
 
 // state
-import { getState, setState, useDispatch } from '@/states';
+import { getState, setState, useDispatch } from '@/state';
 
 // style
 import styles from './style.module.css';
@@ -48,16 +48,18 @@ export default function Tabs({ isHidden, setIsHidden, isScrolled }: TabsProps) {
 							const isActive = activeTab === tab;
 
 							return (
-								<Button style='ghost' type='secondary' name={tab} className={`${styles.tab} ${isActive ? styles.active : ''}`} onClick={handleTabClick}>
+								<Button key={getKey()} style='ghost' type='secondary' name={tab} className={`${styles.tab} ${isActive ? styles.active : ''}`} onClick={handleTabClick}>
 									{tab}
 								</Button>
 							);
 						})}
 					</div>
 
-					<Button style='ghost' type='secondary' className={`${styles.show_hide_button} ${styles.show}`} onClick={() => setIsHidden(false)}>
-						<ChevronRightIcon className={styles.chevron} />
-					</Button>
+					<div className={styles.show_container}>
+						<Button style='ghost' type='secondary' className={`${styles.show_hide_button} ${styles.show}`} onClick={() => setIsHidden(false)}>
+							<ChevronRightIcon className={styles.chevron} />
+						</Button>
+					</div>
 				</div>
 			</div>
 		</div>

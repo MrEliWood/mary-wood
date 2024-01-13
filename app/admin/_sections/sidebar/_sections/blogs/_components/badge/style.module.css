@@ -1,0 +1,29 @@
+.badge_container {
+	overflow: visible;
+}
+
+.badge {
+	color: var(--gray-a10);
+	font-size: var(--f2);
+	font-weight: 400;
+	letter-spacing: 0.025em;
+
+	border: 1px solid var(--gray-a10);
+	border-radius: var(--radius-s);
+
+	padding: 0 var(--d3);
+}
+
+.published {
+	border-color: transparent;
+}
+
+.published span {
+	color: var(--gray-a8);
+	margin: 0 var(--d8);
+}
+
+.deleted {
+	color: var(--red-11);
+	border-color: var(--red-11);
+}

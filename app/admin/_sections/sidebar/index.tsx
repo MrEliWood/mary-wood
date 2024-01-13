@@ -4,11 +4,10 @@
 import { useState, useEffect } from 'react';
 
 // internal
-import { API } from '@/utils';
 import { Tabs, Blogs } from './_sections';
 
 // state
-import { getState, setState, useDispatch } from '@/states';
+import { getState, setState, useDispatch } from '@/state';
 
 // styles
 import styles from './style.module.css';

@@ -3,8 +3,8 @@
 import { useMemo } from 'react';
 
 import { useSelector, useDispatch } from 'react-redux';
-import type { RootState } from '@/states/store';
-import { filterAll, filterDrafts, filterPublished, filterDeleted } from '@/states/features/blogFilter';
+import type { RootState } from '@/state/store';
+import { filterAll, filterDrafts, filterPublished, filterDeleted } from '@/state/features/blogFilter';
 
 import styles from './style.module.css';
 

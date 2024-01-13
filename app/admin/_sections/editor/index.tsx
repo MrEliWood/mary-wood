@@ -10,7 +10,7 @@ import { TextArea } from '../../_components';
 import { getKey } from '@/utils';
 
 // state
-import { getState, setState, useDispatch } from '@/states';
+import { getState, setState, useDispatch } from '@/state';
 
 // style
 import styles from './style.module.css';

@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { createToken } from '@/states/features/token';
+import { createToken } from '@/state/features/token';
 import { usePathname, useRouter } from 'next/navigation';
 
 import { Button, Modal } from '../_components';

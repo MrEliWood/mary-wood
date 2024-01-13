@@ -10,7 +10,7 @@ import { API } from '@/utils';
 import { Button } from '../../_components';
 
 // state
-import { getState, useDispatch, newActiveBlog, setAllBlogs } from '@/states';
+import { getState, setState, useDispatch } from '@/state';
 
 // style
 import styles from './style.module.css';
@@ -33,7 +33,7 @@ export default function Menu() {
 	};
 
 	const createNewBlog = () => {
-		dispatch(newActiveBlog());
+		dispatch(setState('newActiveBlog', null));
 
 		setIsOpen(false);
 
