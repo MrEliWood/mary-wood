@@ -1,0 +1,11 @@
+.buttons {
+	display: flex;
+	justify-content: flex-end;
+	gap: var(--x1);
+
+	width: 100%;
+}
+
+.buttons > * {
+	width: auto !important;
+}

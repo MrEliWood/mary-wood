@@ -1,48 +1,39 @@
 'use client';
 
 // external
-import { useState } from 'react';
-import { mutate } from 'swr';
-import { HamburgerMenuIcon, PlusIcon, Cross1Icon, TrashIcon, UploadIcon, FileIcon } from '@radix-ui/react-icons';
+import { useState, useEffect, SyntheticEvent } from 'react';
+import { HamburgerMenuIcon, Cross1Icon } from '@radix-ui/react-icons';
 
 // internal
 import { API } from '@/utils';
 import { Button } from '../../_components';
+import { DeleteButton, NewButton, PublishButton, SaveButton } from './_components';
 
 // state
-import { getState, setState, useDispatch } from '@/state';
+import { getState } from '@/state';
 
 // style
 import styles from './style.module.css';
 
 export default function Menu() {
 	const [isOpen, setIsOpen] = useState(false);
-
-	const activeBlog = getState('activeBlog');
 	const editorScrolled = getState('editorScrolled');
 
-	const dispatch = useDispatch();
-
-	const saveBlogDraft = async () => {
-		console.log(activeBlog);
-		activeBlog.id ? await API.updateBlog(activeBlog) : await API.createBlog(activeBlog);
-
-		setIsOpen(false);
-
-		mutate('/api/blog');
+	const handleMenuClick = (event: SyntheticEvent) => {
+		event.stopPropagation();
 	};
 
-	const createNewBlog = () => {
-		dispatch(setState('newActiveBlog', null));
-
+	const handleWindowclicks = () => {
 		setIsOpen(false);
-
-		const firstInput = document.querySelector('textarea');
-		firstInput?.focus();
 	};
+
+	useEffect(() => {
+		window.addEventListener('click', handleWindowclicks);
+		return () => window.removeEventListener('click', handleWindowclicks);
+	}, []);
 
 	return (
-		<div className={`${styles.menu_container} ${editorScrolled ? styles.scrolled : ''}`}>
+		<div className={`${styles.menu_container} ${editorScrolled ? styles.scrolled : ''}`} onClick={handleMenuClick}>
 			<div className={`${styles.menu_accordian} ${isOpen ? styles.open : ''}`}>
 				<div className={styles.menu}>
 					<Button style='ghost' type='secondary' className={styles.menu_icon} onClick={() => setIsOpen(!isOpen)}>
@@ -53,25 +44,10 @@ export default function Menu() {
 					<hr />
 
 					<div className={styles.menu_button_container}>
-						<Button style='ghost' type='secondary' onClick={saveBlogDraft}>
-							Save
-							<FileIcon width='16' height='16' />
-						</Button>
-
-						<Button style='ghost' onClick={createNewBlog}>
-							New
-							<PlusIcon width='16' height='16' />
-						</Button>
-
-						<Button style='ghost' type='success'>
-							Publish
-							<UploadIcon width='16' height='16' />
-						</Button>
-
-						<Button style='ghost' type='danger'>
-							Delete
-							<TrashIcon width='16' height='16' />
-						</Button>
+						<SaveButton setMenuOpen={setIsOpen} />
+						<NewButton setMenuOpen={setIsOpen} />
+						<PublishButton setMenuOpen={setIsOpen} />
+						<DeleteButton setMenuOpen={setIsOpen} />
 					</div>
 				</div>
 			</div>

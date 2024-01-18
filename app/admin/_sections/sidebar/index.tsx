@@ -24,8 +24,8 @@ export default function Sidebar() {
 	const dispatch = useDispatch();
 
 	const setActiveBlog = () => {
-		const localBlogString = localStorage.getItem('Mary Wood - Unsaved Blog');
-		const unsavedBlog = localBlogString ? JSON.parse(localBlogString) : null;
+		const localBlogDraft = localStorage.getItem('Mary Wood - Unsaved Blog');
+		const unsavedBlog = localBlogDraft ? JSON.parse(localBlogDraft) : null;
 
 		const { drafts, published, deleted } = allBlogs;
 		const savedBlog = drafts[0] || published[0] || deleted[0];

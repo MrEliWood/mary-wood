@@ -1,4 +1,5 @@
 // external
+import { Dispatch, ReactNode, SetStateAction, SyntheticEvent } from 'react';
 
 // internal
 
@@ -6,23 +7,20 @@
 import styles from './style.module.css';
 
 type Props = {
-	backgroundClassName?: string;
-	modalClassName?: string;
-	backgroundClick?: () => void;
-	modalClick?: () => void;
-	children?: React.ReactNode;
+	isVisible: boolean;
+	setIsVisible: Dispatch<SetStateAction<boolean>>;
+	className?: string;
+	children?: ReactNode;
 };
 
-export default function Modal({ backgroundClassName = '', modalClassName = '', modalClick, backgroundClick, children }: Props) {
-	const handleModalClick = (e: React.SyntheticEvent<HTMLElement>) => {
-		e.stopPropagation();
-
-		return () => modalClick;
+export default function Modal({ isVisible, setIsVisible, className = '', children }: Props) {
+	const handleModalClick = (event: SyntheticEvent) => {
+		event.stopPropagation();
 	};
 
 	return (
-		<div className={`${styles.background} ${backgroundClassName}`} onClick={backgroundClick}>
-			<div className={`${styles.modal} ${modalClassName}`} onClick={handleModalClick}>
+		<div className={`${styles.background} ${!isVisible ? styles.hidden : ''}`} onClick={() => setIsVisible(false)}>
+			<div className={`${styles.modal} ${className}`} onClick={handleModalClick}>
 				{children}
 			</div>
 		</div>

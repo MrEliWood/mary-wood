@@ -1,0 +1,8 @@
+.title {
+	font-family: var(--sans-serif);
+	font-size: var(--f4);
+	font-weight: 600;
+	line-height: 0.8;
+
+	width: 100%;
+}
