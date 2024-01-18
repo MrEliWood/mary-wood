@@ -12,14 +12,24 @@ import { setState, useDispatch } from '@/state';
 // styles
 import styles from './_styles/page.module.css';
 
-// variables
-const editorId = 'editor';
-
 export default function Dashboard() {
 	const dispatch = useDispatch();
 
 	const { data, error, isLoading } = useSWR('/api/blog', API.getAllBlogs);
-	dispatch(setState('setAllBlogs', data));
+
+	const setBlogs = () => {
+		if (!data) return;
+
+		dispatch(setState('setAllBlogs', data));
+
+		const localBlogDraft = localStorage.getItem('Mary Wood - Unsaved Blog');
+		const unsavedBlog = localBlogDraft ? JSON.parse(localBlogDraft) : null;
+
+		const { drafts, published, deleted } = data;
+		const savedBlog = drafts[0] || published[0] || deleted[0];
+
+		dispatch(setState('setActiveBlog', unsavedBlog || savedBlog));
+	};
 
 	const handleWindowResize = () => {
 		const elements = document.querySelectorAll('textarea');
@@ -30,11 +40,10 @@ export default function Dashboard() {
 	};
 
 	useEffect(() => {
-		window.addEventListener('resize', handleWindowResize);
+		setBlogs();
 
-		return () => {
-			window.removeEventListener('resize', handleWindowResize);
-		};
+		window.addEventListener('resize', handleWindowResize);
+		return () => window.removeEventListener('resize', handleWindowResize);
 	}, []);
 
 	if (error) return <main>{error}</main>;

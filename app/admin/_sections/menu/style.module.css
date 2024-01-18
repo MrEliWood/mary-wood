@@ -62,9 +62,9 @@
 .menu hr {
 	border: var(--outline);
 
-	width: var(--x1h);
+	width: var(--x2);
 
-	margin-right: calc(16px - var(--x1h) / 2);
+	margin-right: calc(16px - var(--x2) / 2);
 }
 
 .menu_button_container {

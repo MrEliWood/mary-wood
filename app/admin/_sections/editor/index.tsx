@@ -32,6 +32,11 @@ export default function Editor() {
 
 	const { title, caption, text } = activeBlog;
 
+	const focusEditor = () => {
+		const firstInput = document.querySelector('textarea');
+		firstInput?.focus();
+	};
+
 	const cleanInputValue = (name: string, value: string) => {
 		if (name === 'text') return value;
 
@@ -70,6 +75,7 @@ export default function Editor() {
 
 		const position = editorElement?.children[0].getBoundingClientRect().top || 0;
 		setStartPosition(position);
+		focusEditor();
 	}, []);
 
 	return (

@@ -15,7 +15,7 @@ type Props = {
 };
 
 export default function DeleteButton({ setMenuOpen }: Props) {
-	const [modalVisible, setModalVisible] = useState(true);
+	const [modalVisible, setModalVisible] = useState(false);
 	const activeBlog = getState('activeBlog');
 
 	const deleteBlog = async (event: SyntheticEvent) => {

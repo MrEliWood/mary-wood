@@ -7,7 +7,7 @@ import { useState, useEffect } from 'react';
 import { Tabs, Blogs } from './_sections';
 
 // state
-import { getState, setState, useDispatch } from '@/state';
+import { getState } from '@/state';
 
 // styles
 import styles from './style.module.css';
@@ -16,23 +16,15 @@ import styles from './style.module.css';
 const blogsId = 'admin_section_blogs';
 
 export default function Sidebar() {
-	const [isHidden, setIsHidden] = useState(false);
+	const allBlogs = getState('allBlogs');
+
+	const showSidebar = allBlogs?.drafts.length || allBlogs?.published.length || allBlogs?.deleted.length;
+
+	console.log(allBlogs);
+
+	const [isHidden, setIsHidden] = useState(!showSidebar);
 	const [startPosition, setStartPosition] = useState(0);
 	const [scrollPosition, setScrollPosition] = useState(0);
-
-	const allBlogs = getState('allBlogs');
-	const dispatch = useDispatch();
-
-	const setActiveBlog = () => {
-		const localBlogDraft = localStorage.getItem('Mary Wood - Unsaved Blog');
-		const unsavedBlog = localBlogDraft ? JSON.parse(localBlogDraft) : null;
-
-		const { drafts, published, deleted } = allBlogs;
-		const savedBlog = drafts[0] || published[0] || deleted[0];
-
-		const activeBlogState = setState('setActiveBlog', unsavedBlog || savedBlog);
-		dispatch(activeBlogState);
-	};
 
 	const initScrollPosition = (element: HTMLElement) => {
 		const position = element?.children[0]?.getBoundingClientRect().top || 0;
@@ -48,9 +40,7 @@ export default function Sidebar() {
 		setScrollPosition(position);
 	};
 
-	const onPageLoad = () => {
-		setActiveBlog();
-
+	useEffect(() => {
 		const element = document.getElementById(blogsId);
 		if (!element) return;
 
@@ -60,18 +50,20 @@ export default function Sidebar() {
 		return () => {
 			element.removeEventListener('scroll', handleScroll);
 		};
-	};
-
-	useEffect(onPageLoad, []);
+	}, []);
 
 	const isScrolled = scrollPosition < startPosition;
 
 	return (
 		<div className={`${styles.sidebar_container} ${isHidden ? styles.hidden : ''}`}>
-			<section className={styles.sidebar}>
-				<Tabs isHidden={isHidden} setIsHidden={setIsHidden} isScrolled={isScrolled} />
-				<Blogs id={blogsId} />
-			</section>
+			{showSidebar ? (
+				<section className={styles.sidebar}>
+					<Tabs isHidden={isHidden} setIsHidden={setIsHidden} isScrolled={isScrolled} />
+					<Blogs id={blogsId} />
+				</section>
+			) : (
+				''
+			)}
 		</div>
 	);
 }
