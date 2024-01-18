@@ -2,12 +2,14 @@
 
 // external
 import { useState, useEffect } from 'react';
+import useSWR from 'swr';
 
 // internal
 import { Tabs, Blogs } from './_sections';
+import { API } from '@/utils';
 
 // state
-import { getState } from '@/state';
+import { getState, setState, useDispatch } from '@/state';
 
 // styles
 import styles from './style.module.css';
@@ -16,15 +18,38 @@ import styles from './style.module.css';
 const blogsId = 'admin_section_blogs';
 
 export default function Sidebar() {
-	const allBlogs = getState('allBlogs');
+	const dispatch = useDispatch();
 
-	const showSidebar = allBlogs?.drafts.length || allBlogs?.published.length || allBlogs?.deleted.length;
+	const { data, isLoading } = useSWR('/api/blog', API.getAllBlogs);
 
-	console.log(allBlogs);
+	const showSidebar = data?.drafts.length || data?.published.length || data?.deleted.length;
 
-	const [isHidden, setIsHidden] = useState(!showSidebar);
+	const [noData, setNoData] = useState(false);
+	const [isHidden, setIsHidden] = useState(false);
 	const [startPosition, setStartPosition] = useState(0);
 	const [scrollPosition, setScrollPosition] = useState(0);
+
+	const setBlogs = () => {
+		const areDrafts = data?.drafts.length;
+		const arePublished = data?.drafts.length;
+		const areDeleted = data?.drafts.length;
+
+		if (!areDrafts && !arePublished && !areDeleted) {
+			setIsHidden(true);
+			setNoData(true);
+			return;
+		}
+
+		dispatch(setState('setAllBlogs', data));
+
+		const localBlogDraft = localStorage.getItem('Mary Wood - Unsaved Blog');
+		const unsavedBlog = localBlogDraft ? JSON.parse(localBlogDraft) : null;
+
+		const { drafts, published, deleted } = data;
+		const savedBlog = drafts[0] || published[0] || deleted[0];
+
+		dispatch(setState('setActiveBlog', unsavedBlog || savedBlog));
+	};
 
 	const initScrollPosition = (element: HTMLElement) => {
 		const position = element?.children[0]?.getBoundingClientRect().top || 0;
@@ -39,6 +64,8 @@ export default function Sidebar() {
 		const position = element.children[0].getBoundingClientRect().top;
 		setScrollPosition(position);
 	};
+
+	useEffect(() => setBlogs(), [isLoading]);
 
 	useEffect(() => {
 		const element = document.getElementById(blogsId);
@@ -56,14 +83,16 @@ export default function Sidebar() {
 
 	return (
 		<div className={`${styles.sidebar_container} ${isHidden ? styles.hidden : ''}`}>
-			{showSidebar ? (
-				<section className={styles.sidebar}>
-					<Tabs isHidden={isHidden} setIsHidden={setIsHidden} isScrolled={isScrolled} />
-					<Blogs id={blogsId} />
-				</section>
-			) : (
-				''
-			)}
+			<section className={styles.sidebar}>
+				{isLoading ? (
+					<div>Loading...</div>
+				) : (
+					<>
+						{!noData ? <Tabs isHidden={isHidden} setIsHidden={setIsHidden} isScrolled={isScrolled} /> : ''}
+						<Blogs id={blogsId} />
+					</>
+				)}
+			</section>
 		</div>
 	);
 }
