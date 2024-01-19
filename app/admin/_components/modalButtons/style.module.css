@@ -1,13 +1,14 @@
 .buttons {
 	display: flex;
+	flex-direction: row;
 	justify-content: flex-end;
 	gap: var(--x1);
 
 	width: 100%;
 
-	margin-top: var(--x1);
+	margin-top: var(--x2);
 }
 
 .buttons > * {
-	width: auto !important;
+	width: fit-content !important;
 }

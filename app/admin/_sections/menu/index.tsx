@@ -5,9 +5,8 @@ import { useState, useEffect, SyntheticEvent } from 'react';
 import { HamburgerMenuIcon, Cross1Icon } from '@radix-ui/react-icons';
 
 // internal
-import { API } from '@/utils';
 import { Button } from '../../_components';
-import { DeleteButton, NewButton, PublishButton, SaveButton } from './_components';
+import { CPWButton, DeleteButton, LogoutButton, NewButton, PublishButton, SaveButton } from './_components';
 
 // state
 import { getState } from '@/state';
@@ -48,6 +47,13 @@ export default function Menu() {
 						<NewButton setMenuOpen={setIsOpen} />
 						<PublishButton setMenuOpen={setIsOpen} />
 						<DeleteButton setMenuOpen={setIsOpen} />
+					</div>
+
+					<hr />
+
+					<div className={styles.menu_button_container}>
+						<CPWButton />
+						<LogoutButton />
 					</div>
 				</div>
 			</div>

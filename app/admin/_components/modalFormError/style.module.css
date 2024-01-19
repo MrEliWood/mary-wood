@@ -1,0 +1,45 @@
+.error_accordian {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	color: var(--danger-11);
+
+	width: 100%;
+
+	max-height: 0px;
+
+	transition: all var(--transition-speed) ease-in-out var(--transition-speed-d2);
+}
+
+.error_accordian * {
+	font-size: var(--f2);
+}
+
+.visible {
+	max-height: 100px;
+
+	transition: all var(--transition-speed) ease-in-out 0ms;
+}
+
+.error {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	width: 100%;
+
+	padding-top: var(--x2);
+
+	overflow: hidden;
+
+	opacity: 0;
+
+	transition: all var(--transition-speed) ease-in-out;
+}
+
+.visible .error {
+	opacity: 1;
+
+	transition: all var(--transition-speed) ease-in-out var(--transition-speed-d2);
+}

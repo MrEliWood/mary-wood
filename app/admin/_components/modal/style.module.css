@@ -23,14 +23,15 @@
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	gap: var(--x1);
+	gap: var(--x4);
 
 	background: var(--gray-3);
 	border-radius: var(--radius);
 	box-shadow: 0 var(--d4) var(--x4) var(--black-a6);
 
-	padding: var(--x2);
+	padding: var(--x4) var(--x3);
 
+	min-width: 400px;
 	max-width: 500px;
 
 	animation: slide-up var(--transition-speed-d2) ease-in-out var(--transition-speed-d3) both;

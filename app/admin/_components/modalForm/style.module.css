@@ -1,0 +1,34 @@
+.form {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: var(--x2);
+
+	font-family: var(--sans-serif);
+	font-size: var(--f4);
+	font-weight: 600;
+	line-height: 0.8;
+
+	width: 100%;
+}
+
+.form div {
+	display: flex;
+	flex-direction: column;
+	gap: var(--d1h);
+
+	width: 100%;
+}
+
+.form p {
+	font-size: var(--f2);
+}
+
+.form input {
+	font-size: var(--f4);
+	width: 100%;
+}
+
+.form input::placeholder {
+	color: var(--gray-6);
+}

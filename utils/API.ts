@@ -117,6 +117,27 @@ const API = {
 		}
 
 		return false;
+	},
+
+	changePW: async ({ currentPW, newPW }: { currentPW: string; newPW: string }) => {
+		try {
+			const options = {
+				method: 'PUT',
+				headers: {
+					'Content-Type': 'application/json',
+					Authorization: localStorage.getItem('Mary_Wood_JWT') || ''
+				},
+				body: JSON.stringify({ password: currentPW, newPassword: newPW })
+			};
+
+			const res: Response = await fetch(`${process.env.BASE_URL}/api/cpw/1`, options);
+
+			if (res.ok) return true;
+		} catch (error) {
+			console.error(error);
+		}
+
+		return false;
 	}
 };
 
