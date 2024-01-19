@@ -1,6 +1,30 @@
 import { BlogData, FilteredBlogs } from '@/types';
 
 const API = {
+	login: async (id: string, password: string) => {
+		try {
+			const options = {
+				method: 'POST',
+				body: JSON.stringify({ id, password }),
+				headers: {
+					'Content-Type': 'application/json'
+				}
+			};
+
+			const res = await fetch(`${process.env.BASE_URL}/api/user/login`, options);
+			const data = await res.json();
+
+			localStorage.setItem('Mary_Wood_JWT', data.token);
+			localStorage.setItem('Mary_Wood_User', data.user);
+
+			if (res.ok) return true;
+		} catch (error) {
+			console.error(error);
+
+			return false;
+		}
+	},
+
 	getAllBlogs: async () => {
 		try {
 			const res: Response = await fetch(`${process.env.BASE_URL}/api/blog`);

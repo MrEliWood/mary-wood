@@ -3,7 +3,7 @@ import dayjs from 'dayjs';
 
 // internal
 import { getState, setState, useDispatch } from '@/state';
-import { Badge } from '../';
+import { Badge } from '..';
 
 // styles
 import styles from './style.module.css';
