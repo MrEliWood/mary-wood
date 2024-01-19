@@ -15,7 +15,7 @@ export default function LogoutButton() {
 
 	return (
 		<Button style='ghost' type='secondary' onClick={logout}>
-			Save
+			Logout
 			<FileIcon width='16' height='16' />
 		</Button>
 	);

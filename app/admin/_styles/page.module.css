@@ -13,4 +13,16 @@
 	padding: 0;
 
 	overflow: hidden;
+
+	animation: fade-in var(--transition-speed) ease-in-out var(--transition-speed) both;
+}
+
+@keyframes fade-in {
+	from {
+		opacity: 0;
+	}
+
+	to {
+		opacity: 1;
+	}
 }

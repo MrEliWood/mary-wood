@@ -1,9 +1,6 @@
 // external
 import { Crimson_Text } from 'next/font/google';
 
-// internal
-import { Header } from './_sections';
-
 // styles
 import '@radix-ui/themes/styles.css';
 import './_styles/global.css';

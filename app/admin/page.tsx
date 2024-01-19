@@ -9,13 +9,21 @@ import { Editor, Menu, Sidebar } from './_sections';
 import { API, setTextAreaHeight } from '@/utils';
 
 // state
-import { setState, useDispatch } from '@/state';
+import { RootState, setState, useDispatch, useSelector } from '@/state';
 
 // styles
 import styles from './_styles/page.module.css';
+import { useRouter } from 'next/navigation';
 
 export default function Dashboard() {
+	const router = useRouter();
+	const token = useSelector((state: RootState) => state.token.value);
 	const dispatch = useDispatch();
+
+	const checkToken = () => {
+		if (!token) router.push('/');
+		return;
+	};
 
 	const { data, isLoading } = useSWR('/api/blog', API.getAllBlogs);
 	dispatch(setState('setAllBlogs', data));
@@ -54,6 +62,7 @@ export default function Dashboard() {
 		return () => window.removeEventListener('resize', handleWindowResize);
 	};
 
+	useEffect(checkToken, []);
 	useEffect(setActiveBlog, []);
 	useEffect(listenForWindowResize, []);
 

@@ -124,13 +124,12 @@ const API = {
 			const options = {
 				method: 'PUT',
 				headers: {
-					'Content-Type': 'application/json',
-					Authorization: localStorage.getItem('Mary_Wood_JWT') || ''
+					'Content-Type': 'application/json'
 				},
 				body: JSON.stringify({ password: currentPW, newPassword: newPW })
 			};
 
-			const res: Response = await fetch(`${process.env.BASE_URL}/api/cpw/1`, options);
+			const res: Response = await fetch(`${process.env.BASE_URL}/api/user/cpw/1`, options);
 
 			if (res.ok) return true;
 		} catch (error) {

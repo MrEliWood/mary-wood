@@ -37,6 +37,7 @@ export default function CPWButton({ modalVisible, setModalVisible }: Props) {
 		const passwordChanged = await API.changePW({ currentPW, newPW });
 
 		if (passwordChanged) {
+			localStorage.removeItem('Mary Wood - Unsaved Blog');
 			router.push('/admin/login');
 			return;
 		}
