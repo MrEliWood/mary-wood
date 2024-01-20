@@ -26,13 +26,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 		<html lang='en' className={`${crimson.variable} ${caslon.variable}`}>
 			<body>
 				<Providers>
-					{/* <Theme> */}
 					<Header />
 					{children}
 					<Footer />
-
-					{/* <ThemePanel /> */}
-					{/* </Theme> */}
 				</Providers>
 			</body>
 		</html>

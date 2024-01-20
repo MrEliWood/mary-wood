@@ -47,10 +47,10 @@ export default function Header() {
 		};
 	}, []);
 
-	const isAdmin = pathname.includes('admin');
+	const isAdminPage = pathname.includes('dashboard');
 	const isScrolled = scrollPosition > scrollThreshold;
 
-	const conditionalClass = isAdmin ? styles.hidden_header : isScrolled ? styles.scrolled_header : '';
+	const conditionalClass = isAdminPage ? styles.hidden_header : isScrolled ? styles.scrolled_header : '';
 
 	return (
 		<header id={headerId} className={`${styles.header} ${conditionalClass}`}>

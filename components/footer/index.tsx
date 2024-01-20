@@ -19,13 +19,11 @@ export default function Footer() {
 
 	const checkForToken = () => {
 		const verified = API.verifyToken();
-		if (!verified) return;
-
-		setToken(true);
-	};
-
-	const logout = () => {
-		localStorage.removeItem('Mary_Wood_JWT');
+		if (verified) {
+			setToken(true);
+		} else {
+			setToken(false);
+		}
 	};
 
 	useEffect(checkForToken, []);
@@ -149,16 +147,12 @@ export default function Footer() {
 						<div className={styles.column_content_section}>
 							<div className={styles.user_nav}>
 								{token ? (
-									<>
-										<Link href='/blog/dashboard' className={`hidden_link ${styles.button_container}`}>
-											<Button.Primary>Dashboard</Button.Primary>
-										</Link>
-
-										<Button.Primary onClick={logout}>Logout</Button.Primary>
-									</>
+									<Link href='/user/dashboard' className='hidden_link'>
+										<Button.Primary>Dashboard</Button.Primary>
+									</Link>
 								) : (
-									<Link href='/blog/login' className={`hidden_link ${styles.button_container}`}>
-										<Button.Primary>Login</Button.Primary>
+									<Link href='/user/login' className='hidden_link'>
+										<Button.Primary className={styles.button}>Login</Button.Primary>
 									</Link>
 								)}
 							</div>
