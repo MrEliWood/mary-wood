@@ -25,7 +25,7 @@ export default function Home() {
 			</section>
 
 			<section id={styles.portrait} className={styles.portrait}>
-				<Image src={portrait} alt='Portrait of Mary Wood.' className={styles.portrait_image} />
+				<Image src={portrait} alt='Portrait of Mary Wood.' priority={true} className={styles.portrait_image} />
 
 				<aside className={styles.portrait_detail}>
 					<p>Mary lives in Oregon with her partner and two cats.</p>

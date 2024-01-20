@@ -1,4 +1,5 @@
 import { BlogData, FilteredBlogs } from '@/types';
+import jwt from 'jsonwebtoken';
 
 const API = {
 	login: async (id: string, password: string) => {
@@ -18,6 +19,24 @@ const API = {
 			localStorage.setItem('Mary_Wood_User', data.user);
 
 			if (res.ok) return true;
+		} catch (error) {
+			console.error(error);
+
+			return false;
+		}
+	},
+
+	verifyToken: () => {
+		try {
+			const token = localStorage.getItem('Mary_Wood_JWT');
+			if (!token) return false;
+
+			const secret = process.env.JWT_SECRET || 'not secret';
+
+			const { exp } = jwt.verify(token, secret) as { exp: number };
+			const expirationDatetimeInSeconds = exp * 1000;
+
+			return Date.now() <= expirationDatetimeInSeconds;
 		} catch (error) {
 			console.error(error);
 

@@ -1,53 +1,37 @@
 'use client';
 
 // external
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 // internal
 import { Button } from '@/components';
-import { links, verifyToken, workData } from '@/utils';
-
-// state
-import { useSelector, useDispatch } from 'react-redux';
-import type { RootState } from '@/state/store';
-import { createToken, destroyToken } from '@/state/features/token';
-import { showLogin } from '@/state/features/loginVisible';
+import { API, links, workData } from '@/utils';
 
 // styles
 import styles from './style.module.css';
 
 export default function Footer() {
-	const token = useSelector((state: RootState) => state.token.value);
-	const loginVisible = useSelector((state: RootState) => state.loginVisible.value);
-	const dispatch = useDispatch();
+	const [token, setToken] = useState(false);
+
 	const pathname = usePathname();
 
-	useEffect(() => {
-		dispatch(destroyToken());
-
-		const savedToken = localStorage.getItem('Mary_Wood_JWT');
-		if (!savedToken) return;
-
-		const verified = verifyToken(savedToken);
+	const checkForToken = () => {
+		const verified = API.verifyToken();
 		if (!verified) return;
 
-		dispatch(createToken(savedToken));
-	}, []);
-
-	const handleLoginClick = () => {
-		dispatch(showLogin());
+		setToken(true);
 	};
 
-	const handleLogoutClick = () => {
-		dispatch(destroyToken());
+	const logout = () => {
 		localStorage.removeItem('Mary_Wood_JWT');
-		localStorage.removeItem('Mary_Wood_FormData');
 	};
 
-	const isAdmin = pathname.includes('admin');
-	const conditionalClass = isAdmin ? styles.hidden_footer : '';
+	useEffect(checkForToken, []);
+
+	const isAdminPage = pathname.includes('dashboard');
+	const conditionalClass = isAdminPage ? styles.hidden_footer : '';
 
 	return (
 		<footer className={`${styles.footer} ${conditionalClass}`}>
@@ -166,13 +150,14 @@ export default function Footer() {
 							<div className={styles.user_nav}>
 								{token ? (
 									<>
-										<Link href='/cpw'>
-											<button>Change Password</button>
+										<Link href='/blog/dashboard' className={`hidden_link ${styles.button_container}`}>
+											<Button.Primary>Dashboard</Button.Primary>
 										</Link>
-										<button onClick={handleLogoutClick}>Logout</button>
+
+										<Button.Primary onClick={logout}>Logout</Button.Primary>
 									</>
 								) : (
-									<Link href='/admin/login' className={`hidden_link ${styles.button_container}`}>
+									<Link href='/blog/login' className={`hidden_link ${styles.button_container}`}>
 										<Button.Primary>Login</Button.Primary>
 									</Link>
 								)}

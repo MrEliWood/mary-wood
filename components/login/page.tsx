@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 
 // internal
-import { Button, Modal } from '../dashboard/_components';
+import { Button, Modal } from '../../app/blog/dashboard/_components';
 import { API } from '@/utils';
 
 // styles
@@ -31,6 +31,15 @@ export default function Login() {
 
 		router.push('/blog/dashboard');
 	};
+
+	const checkForToken = () => {
+		const verified = API.verifyToken();
+		if (!verified) return;
+
+		router.push('/blog/dashboard');
+	};
+
+	useEffect(checkForToken, []);
 
 	return (
 		<main className={styles.login_container}>
