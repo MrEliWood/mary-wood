@@ -12,10 +12,6 @@
 	transition: all var(--transition-speed) ease-in-out var(--transition-speed-d2);
 }
 
-.error_accordian * {
-	font-size: var(--f2);
-}
-
 .visible {
 	max-height: 100px;
 
@@ -29,13 +25,18 @@
 
 	width: 100%;
 
-	padding-top: var(--x2);
+	padding: var(--x2) 0 var(--d2);
 
 	overflow: hidden;
 
 	opacity: 0;
 
 	transition: all var(--transition-speed) ease-in-out;
+}
+
+.error * {
+	font-size: var(--f2);
+	line-height: 1.2;
 }
 
 .visible .error {

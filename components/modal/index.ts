@@ -1,15 +1,17 @@
-import Frame from './Frame';
-import Body from './Body';
-import Buttons from './Buttons';
-import Form from './Form';
-import FormError from './FormError';
-import Header from './Header';
-import Title from './Title';
+import Frame from './frame';
+import Body from './body';
+import Buttons from './buttons';
+import Caption from './caption';
+import Form from './form';
+import FormError from './formError';
+import Header from './header';
+import Title from './title';
 
 export default {
 	Frame,
 	Body,
 	Buttons,
+	Caption,
 	Form,
 	FormError,
 	Header,

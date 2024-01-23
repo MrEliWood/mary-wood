@@ -7,7 +7,7 @@ import { API } from '@/utils';
 import { Button, Modal } from '@/components';
 
 // state
-import { getState, setState, useDispatch } from '@/state';
+import { getState, useDispatch } from '@/state';
 
 type Props = {
 	setMenuOpen: Dispatch<SetStateAction<boolean>>;
@@ -44,7 +44,6 @@ export default function PublishButton({ setMenuOpen }: Props) {
 
 				<Modal.Body>
 					<p>I mean... don't get me wrong, it's great! The way you strung words together to make sentances... It's syntactical!</p>
-					<p>Just want to double check you meant to click publish. Published blogs are visible on your website.</p>
 				</Modal.Body>
 
 				<Modal.Buttons>

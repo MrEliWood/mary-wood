@@ -42,7 +42,7 @@ export default function DeleteButton({ setMenuOpen }: Props) {
 				</Modal.Header>
 
 				<Modal.Body>
-					<p>Deleted blogs will be removed from your website but still accessible from this dashboard.</p>
+					<p>Deleted blogs will be removed from your website but they can be recovered anytime from this dashboard.</p>
 				</Modal.Body>
 
 				<Modal.Buttons>

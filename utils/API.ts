@@ -150,6 +150,29 @@ const API = {
 		return false;
 	},
 
+	recoverBlog: async (blog: BlogData) => {
+		try {
+			const options = {
+				method: 'PUT',
+				headers: {
+					'Content-Type': 'application/json',
+					Authorization: localStorage.getItem('Mary Wood - Token') || ''
+				},
+				body: JSON.stringify({ ...blog, deleted: false })
+			};
+
+			const res: Response = await fetch(`${process.env.BASE_URL}/api/blog/${blog.id}`, options);
+
+			if (res.ok) {
+				return res.json();
+			}
+		} catch (error) {
+			console.error(error);
+		}
+
+		return false;
+	},
+
 	changePW: async ({ currentPW, newPW }: { currentPW: string; newPW: string }) => {
 		try {
 			const options = {

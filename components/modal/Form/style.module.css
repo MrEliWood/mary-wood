@@ -2,7 +2,7 @@
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
-	gap: var(--x2);
+	gap: 0;
 
 	font-family: var(--sans-serif);
 	font-size: var(--f4);
@@ -12,21 +12,19 @@
 	width: 100%;
 }
 
-.form div {
-	display: flex;
-	flex-direction: column;
-	gap: var(--d1h);
-
-	width: 100%;
-}
-
-.form p {
+.form label {
 	font-size: var(--f2);
+	line-height: 2;
 }
 
 .form input {
 	font-size: var(--f4);
 	width: 100%;
+	margin-bottom: var(--x2);
+}
+
+.form input:last-of-type {
+	margin-bottom: 0;
 }
 
 .form input::placeholder {

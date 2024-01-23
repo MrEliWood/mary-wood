@@ -9,6 +9,8 @@
 	padding: var(--x6) var(--x4) var(--x6) var(--x1);
 
 	overflow-y: scroll;
+
+	z-index: 1;
 }
 
 .editor {
@@ -37,9 +39,9 @@
 	line-height: 1.5;
 }
 
-.text:focus {
+/* .text:focus {
 	z-index: 10;
-}
+} */
 
 .image_container {
 	display: flex;
@@ -68,11 +70,12 @@
 	align-items: center;
 	gap: var(--x1);
 
-	font-weight: 500;
-
-	color: var(--gray-8);
+	background: transparent;
 	border: 2px dashed var(--gray-8);
 	border-radius: var(--radius);
+
+	color: var(--gray-8);
+	font-weight: 500;
 
 	width: auto;
 	height: 120px;

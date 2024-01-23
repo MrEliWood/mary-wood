@@ -1,10 +1,11 @@
-.body {
+.caption {
 	display: flex;
 	flex-direction: column;
-	gap: var(--x2);
 
 	font-family: var(--sans-serif);
-	line-height: 1.5;
+	line-height: 1.2;
 
 	width: 100%;
+
+	margin: -1px 0;
 }

@@ -5,13 +5,13 @@ import { ReactNode } from 'react';
 import styles from './style.module.css';
 
 type Props = {
-	error: boolean;
+	visible: boolean;
 	children?: ReactNode;
 };
 
-export default function FormError({ error, children }: Props) {
+export default function FormError({ visible, children }: Props) {
 	return (
-		<div className={`${styles.error_accordian} ${error ? styles.visible : ''}`}>
+		<div className={`${styles.error_accordian} ${visible ? styles.visible : ''}`}>
 			<div className={styles.error}>{children}</div>
 		</div>
 	);

@@ -7,6 +7,9 @@ import { Modal } from '@/components';
 import { Button } from '@/components';
 import { API, getKey } from '@/utils';
 
+// styles
+import styles from './style.module.css';
+
 // variable
 const currentID = 'current_input__' + getKey();
 
@@ -26,6 +29,7 @@ export default function CPWButton({ modalVisible, setModalVisible }: Props) {
 	const router = useRouter();
 
 	const changePassword = async (event: SyntheticEvent) => {
+		event.preventDefault();
 		event.stopPropagation();
 
 		if (newPW !== confirmPW) {
@@ -67,6 +71,8 @@ export default function CPWButton({ modalVisible, setModalVisible }: Props) {
 	useEffect(focusFirstInput, [modalVisible]);
 	useEffect(clearError, [currentPW, newPW, confirmPW]);
 
+	const invalidInput = currentPW.length < 8 || newPW.length < 8 || confirmPW.length < 8;
+
 	if (failed) {
 		return (
 			<Modal.Frame isVisible={modalVisible} setIsVisible={setModalVisible}>
@@ -92,43 +98,39 @@ export default function CPWButton({ modalVisible, setModalVisible }: Props) {
 			<Modal.Header>
 				<Modal.Title>Change Password</Modal.Title>
 
-				<div>
-					<p>You will need to login again</p>
-					<p>with your new password.</p>
-				</div>
+				<Modal.Caption>
+					<p>Your password must be 8 characters or more.</p>
+					<p>You will need to login again with your new password.</p>
+				</Modal.Caption>
 			</Modal.Header>
 
 			<Modal.Body>
 				<Modal.Form>
-					<div>
-						<p>Current Password</p>
-						<input type='password' placeholder='••••••••••••' name='current' id={currentID} value={currentPW} onChange={(e) => setCurrentPW(e.target.value)} />
-					</div>
+					<label>Current Password</label>
+					<input type='password' placeholder='••••••••••••' name='current' id={currentID} value={currentPW} onChange={(e) => setCurrentPW(e.target.value)} />
 
-					<div>
-						<p>New Password</p>
-						<input type='password' placeholder='••••••••••••' name='new' value={newPW} onChange={(e) => setNewPW(e.target.value)} />
-					</div>
+					<label>New Password</label>
+					<input type='password' placeholder='••••••••••••' name='new' value={newPW} onChange={(e) => setNewPW(e.target.value)} />
 
-					<div>
-						<p>Confirm New Password</p>
-						<input type='password' placeholder='••••••••••••' name='confirm' value={confirmPW} onChange={(e) => setConfirmPW(e.target.value)} />
-					</div>
+					<label>Confirm New Password</label>
+					<input type='password' placeholder='••••••••••••' name='confirm' value={confirmPW} onChange={(e) => setConfirmPW(e.target.value)} />
+
+					<Modal.FormError visible={error}>
+						<p>Your new passwords don't match.</p>
+						<p>Try typing them again.</p>
+					</Modal.FormError>
 				</Modal.Form>
-
-				<Modal.FormError error={error}>
-					<p>Your new passwords don't match.</p>
-					<p>Try typing them again.</p>
-				</Modal.FormError>
-
-				<Modal.Buttons>
-					<Button.UI type='secondary' onClick={() => setModalVisible(false)}>
-						Cancel
-					</Button.UI>
-
-					<Button.UI onClick={changePassword}>Change</Button.UI>
-				</Modal.Buttons>
 			</Modal.Body>
+
+			<Modal.Buttons>
+				<Button.UI type='secondary' onClick={() => setModalVisible(false)}>
+					Cancel
+				</Button.UI>
+
+				<Button.UI className={invalidInput ? styles.invalid : ''} onClick={changePassword}>
+					Change
+				</Button.UI>
+			</Modal.Buttons>
 		</Modal.Frame>
 	);
 }

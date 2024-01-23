@@ -11,6 +11,9 @@ import { API } from '@/utils';
 // state
 import { setState, useDispatch } from '@/state';
 
+// styles
+import styles from './style.module.css';
+
 type Props = {
 	modalVisible: boolean;
 	setModalVisible: Dispatch<SetStateAction<boolean>>;
@@ -36,6 +39,8 @@ export default function LoginModal() {
 		router.push('/user/dashboard');
 	};
 
+	const invalidInput = password.length < 8;
+
 	return (
 		<Modal.Frame isVisible={true} setIsVisible={() => router.back()}>
 			<Modal.Header>
@@ -48,22 +53,22 @@ export default function LoginModal() {
 
 			<Modal.Body>
 				<Modal.Form>
-					<div>
-						<p>Password</p>
-						<input type='password' placeholder='••••••••••••' name='current' value={password} onChange={(e) => setPassword(e.target.value)} />
-					</div>
-				</Modal.Form>
+					<label>Password</label>
+					<input type='password' placeholder='••••••••••••' name='current' value={password} onChange={(e) => setPassword(e.target.value)} />
 
-				<Modal.FormError error={error}>
-					<p>Something went wrong...</p>
-				</Modal.FormError>
+					<Modal.FormError visible={error}>
+						<p>Something went wrong...</p>
+					</Modal.FormError>
+				</Modal.Form>
 
 				<Modal.Buttons>
 					<Button.UI type='secondary' onClick={() => router.back()}>
 						Cancel
 					</Button.UI>
 
-					<Button.UI onClick={login}>Login</Button.UI>
+					<Button.UI className={invalidInput ? styles.invalid : ''} onClick={login}>
+						Login
+					</Button.UI>
 				</Modal.Buttons>
 			</Modal.Body>
 		</Modal.Frame>

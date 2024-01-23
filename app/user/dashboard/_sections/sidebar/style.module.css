@@ -9,6 +9,8 @@
 	height: 100%;
 
 	transition: all var(--transition-speed) ease-in-out;
+
+	z-index: 1;
 }
 
 .hidden {
