@@ -1,0 +1,14 @@
+.recover_button {
+	position: fixed;
+	bottom: var(--x4);
+	right: var(--x4);
+}
+
+.recover_button:not(:hover) {
+	--color: var(--warning-11);
+	background: transparent;
+
+	color: var(--color);
+
+	outline: 1px solid var(--color);
+}

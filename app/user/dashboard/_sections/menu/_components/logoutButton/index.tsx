@@ -2,17 +2,24 @@
 
 // external
 import { ExitIcon } from '@radix-ui/react-icons';
+import { useRouter } from 'next/navigation';
 
 // internal
 import { Button } from '@/components';
-import { useRouter } from 'next/navigation';
+import { API } from '@/utils';
+
+// state
+import { setState, useDispatch } from '@/state';
 
 export default function LogoutButton() {
+	const dispatch = useDispatch();
 	const router = useRouter();
 
 	const logout = () => {
-		localStorage.removeItem('Mary_Wood_JWT');
-		localStorage.removeItem('Mary_Wood_User');
+		API.logout();
+
+		dispatch(setState('logout'));
+
 		router.push('/');
 	};
 

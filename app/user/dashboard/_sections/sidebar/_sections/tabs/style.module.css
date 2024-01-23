@@ -34,12 +34,16 @@
 }
 
 .scrolled {
-	left: var(--x3h);
+	margin-left: var(--x3h);
+	margin-right: var(--x2h);
+
 	box-shadow: var(--shadow-l);
-	width: calc(100% - var(--x6));
 }
 
 .hidden {
+	margin-left: var(--x4);
+	margin-right: var(--x3);
+
 	transform: translateX(var(--x1h));
 
 	transition: all var(--transition-speed-d2) ease-in-out;

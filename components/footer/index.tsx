@@ -9,24 +9,29 @@ import { usePathname } from 'next/navigation';
 import { Button } from '@/components';
 import { API, links, workData } from '@/utils';
 
+// state
+import { getState } from '@/state';
+
 // styles
 import styles from './style.module.css';
 
 export default function Footer() {
-	const [token, setToken] = useState(false);
+	const [loggedIn, setLoggedIn] = useState(false);
+	const userData = getState('user');
 
 	const pathname = usePathname();
 
 	const checkForToken = () => {
 		const verified = API.verifyToken();
+
 		if (verified) {
-			setToken(true);
+			setLoggedIn(true);
 		} else {
-			setToken(false);
+			setLoggedIn(false);
 		}
 	};
 
-	useEffect(checkForToken, []);
+	useEffect(checkForToken, [userData]);
 
 	const isAdminPage = pathname.includes('dashboard');
 	const conditionalClass = isAdminPage ? styles.hidden_footer : '';
@@ -146,7 +151,7 @@ export default function Footer() {
 
 						<div className={styles.column_content_section}>
 							<div className={styles.user_nav}>
-								{token ? (
+								{loggedIn ? (
 									<Link href='/user/dashboard' className='hidden_link'>
 										<Button.Primary>Dashboard</Button.Primary>
 									</Link>

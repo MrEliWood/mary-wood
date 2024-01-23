@@ -7,8 +7,7 @@ import { API } from '@/utils';
 import { Button, Modal } from '@/components';
 
 // state
-import { mutate } from 'swr';
-import { getState } from '@/state';
+import { getState, setState, useDispatch } from '@/state';
 
 type Props = {
 	setMenuOpen: Dispatch<SetStateAction<boolean>>;
@@ -17,15 +16,17 @@ type Props = {
 export default function PublishButton({ setMenuOpen }: Props) {
 	const [modalVisible, setModalVisible] = useState(false);
 	const activeBlog = getState('activeBlog');
+	const allBlogs = getState('allBlogs');
+	const dispatch = useDispatch();
 
 	const publishBlog = async (event: SyntheticEvent) => {
 		event.stopPropagation();
 
-		await API.publishBlog(activeBlog);
+		const publishedBlog = await API.publishBlog(activeBlog);
+		if (!publishedBlog) return;
 
+		setModalVisible(false);
 		setMenuOpen(false);
-		localStorage.removeItem('Mary Wood - Unsaved Blog');
-		mutate('/api/blog');
 	};
 
 	return (

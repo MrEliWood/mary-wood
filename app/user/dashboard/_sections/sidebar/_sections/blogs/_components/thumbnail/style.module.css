@@ -107,3 +107,9 @@
 .active::after {
 	display: none;
 }
+
+.fade .title,
+.fade .caption,
+.fade .text {
+	opacity: 0.5;
+}

@@ -19,19 +19,14 @@ export default function Thumbnail({ blogData }: BlogProps) {
 	const activeBlog = getState('activeBlog');
 	const dispatch = useDispatch();
 
-	const { id, title, caption, text, publishedAt } = blogData;
-
-	const month = dayjs(publishedAt).format('MM');
-	const day = dayjs(publishedAt).format('DD');
-	const year = dayjs(publishedAt).format('YYYY');
-	const delineator = <span>/</span>;
+	const { id, title, caption, text, deleted } = blogData;
 
 	const handleClick = () => {
 		dispatch(setState('setActiveBlog', blogData));
 	};
 
 	return (
-		<div className={`${styles.blog} ${id === activeBlog.id ? styles.active : ''}`} onClick={handleClick}>
+		<div className={`${styles.blog} ${id === activeBlog.id ? styles.active : ''} ${deleted ? styles.fade : ''}`} onClick={handleClick}>
 			<div className={styles.row}>
 				<p className={styles.title}>{title}</p>
 

@@ -7,9 +7,7 @@ import blogFilter from './blogFilter';
 import blogFormVisible from './blogFormVisible';
 import { editorScrolled, setEditorScrolled } from './editorScrolled';
 import loginVisible from './loginVisible';
-import token from './token';
+import { user, login, logout } from './user';
 
-export const reducer = { activeBlog, activeTab, allBlogs, background, blogData, blogFilter, blogFormVisible, editorScrolled, loginVisible, token };
-export const actions = { setAllBlogs, setActiveBlog, setActiveTab, newActiveBlog, setEditorScrolled };
-
-// export { setAllBlogs, setActiveBlog, newActiveBlog, setEditorScrolled };
+export const reducer = { activeBlog, activeTab, allBlogs, background, blogData, blogFilter, blogFormVisible, editorScrolled, loginVisible, user };
+export const actions = { setAllBlogs, setActiveBlog, setActiveTab, newActiveBlog, setEditorScrolled, login, logout };

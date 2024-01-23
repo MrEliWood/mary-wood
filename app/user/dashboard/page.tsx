@@ -19,12 +19,14 @@ export default function Dashboard() {
 	const router = useRouter();
 	const dispatch = useDispatch();
 
-	const checkToken = () => {
-		const token = API.verifyToken();
-		if (!token) router.push('/user/login');
+	const { data, isLoading } = useSWR('/api/blog', API.getAllBlogs);
+	dispatch(setState('setAllBlogs', data));
+
+	const checkLocalToken = () => {
+		const verified = API.verifyToken();
+		if (!verified) router.push('/user/login');
 	};
 
-	const { data, isLoading } = useSWR('/api/blog', API.getAllBlogs);
 	dispatch(setState('setAllBlogs', data));
 
 	const getLocalDraft = () => {
@@ -61,8 +63,8 @@ export default function Dashboard() {
 		return () => window.removeEventListener('resize', handleWindowResize);
 	};
 
-	useEffect(checkToken, []);
-	useEffect(setActiveBlog, []);
+	useEffect(checkLocalToken, []);
+	useEffect(setActiveBlog, [isLoading]);
 	useEffect(listenForWindowResize, []);
 
 	if (isLoading) return <main>Loading...</main>;

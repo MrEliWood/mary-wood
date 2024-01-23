@@ -8,6 +8,9 @@ import { useRouter } from 'next/navigation';
 import { Button, Modal } from '@/components';
 import { API } from '@/utils';
 
+// state
+import { setState, useDispatch } from '@/state';
+
 type Props = {
 	modalVisible: boolean;
 	setModalVisible: Dispatch<SetStateAction<boolean>>;
@@ -16,18 +19,19 @@ type Props = {
 export default function LoginModal() {
 	const [password, setPassword] = useState('');
 	const [error, setError] = useState(false);
+	const dispatch = useDispatch();
 
 	const router = useRouter();
 
 	const login = async () => {
-		const id = process.env.USER_ID || '1';
+		const userData = await API.login(password);
 
-		const success = await API.login(id, password);
-
-		if (!success) {
+		if (!userData.token) {
 			setError(true);
 			return;
 		}
+
+		dispatch(setState('login', userData));
 
 		router.push('/user/dashboard');
 	};

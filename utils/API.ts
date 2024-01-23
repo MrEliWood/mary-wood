@@ -1,9 +1,14 @@
-import { BlogData, FilteredBlogs } from '@/types';
+// external
 import jwt from 'jsonwebtoken';
 
+// types
+import { BlogData, FilteredBlogs } from '@/types';
+
 const API = {
-	login: async (id: string, password: string) => {
+	login: async (password: string) => {
 		try {
+			const id = process.env.USER_ID;
+
 			const options = {
 				method: 'POST',
 				body: JSON.stringify({ id, password }),
@@ -13,27 +18,30 @@ const API = {
 			};
 
 			const res = await fetch(`${process.env.BASE_URL}/api/user/login`, options);
+			if (!res.ok) throw new Error('Something went wrong...');
+
 			const data = await res.json();
+			localStorage.setItem('Mary Wood - Token', data.token);
 
-			localStorage.setItem('Mary_Wood_JWT', data.token);
-			localStorage.setItem('Mary_Wood_User', data.user);
-
-			if (res.ok) return true;
+			return data;
 		} catch (error) {
 			console.error(error);
 
-			return false;
+			return { token: null, user: null };
 		}
+	},
+
+	logout: () => {
+		localStorage.removeItem('Mary Wood - Token');
 	},
 
 	verifyToken: () => {
 		try {
-			const token = localStorage.getItem('Mary_Wood_JWT');
-			if (!token) return false;
+			const token = localStorage.getItem('Mary Wood - Token');
 
 			const secret = process.env.JWT_SECRET || 'not secret';
 
-			const { exp } = jwt.verify(token, secret) as { exp: number };
+			const { exp } = jwt.verify(token || '', secret) as { exp: number };
 			const expirationDatetimeInSeconds = exp * 1000;
 
 			return Date.now() <= expirationDatetimeInSeconds;
@@ -63,53 +71,25 @@ const API = {
 		}
 	},
 
-	getOneBlog: async (id: number) => {
-		try {
-			const res: Response = await fetch(`${process.env.BASE_URL}/api/blog/${id}`);
+	saveBlog: async (blog: BlogData) => {
+		const { id } = blog;
 
-			return res.json();
-		} catch (error) {
-			console.error(error);
-
-			throw new Error('Failed to fetch data');
-		}
-	},
-
-	createBlog: async (blog: BlogData) => {
 		try {
 			const options = {
-				method: 'POST',
+				method: id ? 'PUT' : 'POST',
 				headers: {
 					'Content-Type': 'application/json',
-					Authorization: localStorage.getItem('Mary_Wood_JWT') || ''
+					Authorization: localStorage.getItem('Mary Wood - Token') || ''
 				},
 				body: JSON.stringify(blog)
 			};
 
-			const res: Response = await fetch(`${process.env.BASE_URL}/api/blog`, options);
+			const res: Response = await fetch(`${process.env.BASE_URL}/api/blog/${id ? id : ''}`, options);
 
-			if (res.ok) return true;
-		} catch (error) {
-			console.error(error);
-		}
-
-		return false;
-	},
-
-	updateBlog: async (blog: BlogData) => {
-		try {
-			const options = {
-				method: 'PUT',
-				headers: {
-					'Content-Type': 'application/json',
-					Authorization: localStorage.getItem('Mary_Wood_JWT') || ''
-				},
-				body: JSON.stringify(blog)
-			};
-
-			const res: Response = await fetch(`${process.env.BASE_URL}/api/blog/${blog.id}`, options);
-
-			if (res.ok) return true;
+			if (res.ok) {
+				localStorage.removeItem('Mary Wood - Unsaved Blog');
+				return res.json();
+			}
 		} catch (error) {
 			console.error(error);
 		}
@@ -118,22 +98,27 @@ const API = {
 	},
 
 	publishBlog: async (blog: BlogData) => {
+		const { id } = blog;
+
 		try {
 			const published = true;
 			const publishedAt = blog.publishedAt || new Date();
 
 			const options = {
-				method: 'PUT',
+				method: id ? 'PUT' : 'POST',
 				headers: {
 					'Content-Type': 'application/json',
-					Authorization: localStorage.getItem('Mary_Wood_JWT') || ''
+					Authorization: localStorage.getItem('Mary Wood - Token') || ''
 				},
 				body: JSON.stringify({ ...blog, published, publishedAt })
 			};
 
-			const res: Response = await fetch(`${process.env.BASE_URL}/api/blog/${blog.id}`, options);
+			const res: Response = await fetch(`${process.env.BASE_URL}/api/blog/${id ? id : ''}`, options);
 
-			if (res.ok) return true;
+			if (res.ok) {
+				localStorage.removeItem('Mary Wood - Unsaved Blog');
+				return res.json();
+			}
 		} catch (error) {
 			console.error(error);
 		}
@@ -147,14 +132,17 @@ const API = {
 				method: 'PUT',
 				headers: {
 					'Content-Type': 'application/json',
-					Authorization: localStorage.getItem('Mary_Wood_JWT') || ''
+					Authorization: localStorage.getItem('Mary Wood - Token') || ''
 				},
 				body: JSON.stringify({ ...blog, deleted: true })
 			};
 
 			const res: Response = await fetch(`${process.env.BASE_URL}/api/blog/${blog.id}`, options);
 
-			if (res.ok) return true;
+			if (res.ok) {
+				localStorage.removeItem('Mary Wood - Unsaved Blog');
+				return res.json();
+			}
 		} catch (error) {
 			console.error(error);
 		}

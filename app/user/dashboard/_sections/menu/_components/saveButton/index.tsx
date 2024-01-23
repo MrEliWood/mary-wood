@@ -7,7 +7,6 @@ import { API } from '@/utils';
 import { Button } from '@/components';
 
 // state
-import { mutate } from 'swr';
 import { getState } from '@/state';
 
 type Props = {
@@ -20,17 +19,11 @@ export default function SaveButton({ setMenuOpen }: Props) {
 	const saveBlog = async (event: SyntheticEvent) => {
 		event.stopPropagation();
 
-		const { id, published } = activeBlog;
-
-		if (id && !published) {
-			await API.updateBlog(activeBlog);
-		} else {
-			await API.createBlog(activeBlog);
-		}
+		const savedBlog = await API.saveBlog(activeBlog);
+		if (!savedBlog) return;
 
 		setMenuOpen(false);
 		localStorage.removeItem('Mary Wood - Unsaved Blog');
-		mutate('/api/blog');
 	};
 
 	return (

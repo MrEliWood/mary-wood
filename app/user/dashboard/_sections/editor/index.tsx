@@ -6,7 +6,8 @@ import Image from 'next/image';
 import { PlusIcon } from '@radix-ui/react-icons';
 
 // internal
-import { TextArea } from '@/components';
+import { RecoverButton } from './_components';
+import { TextArea, Button } from '@/components';
 import { getKey } from '@/utils';
 
 // state
@@ -30,7 +31,7 @@ export default function Editor() {
 	const activeBlog = getState('activeBlog');
 	const dispatch = useDispatch();
 
-	const { title, caption, text } = activeBlog;
+	const { title, caption, text, deleted } = activeBlog;
 
 	const focusEditor = () => {
 		const firstInput = document.querySelector('textarea');
@@ -80,13 +81,13 @@ export default function Editor() {
 
 	return (
 		<section id={editorId} className={styles.section} onScroll={handleScroll}>
-			<div className={styles.editor}>
+			<div className={`${styles.editor} ${deleted ? styles.fade : ''}`}>
 				<TextArea id={titleId} placeholder='New Blog Title' name='title' value={title} onChange={handleInputChange} className={styles.title} />
 
 				<TextArea id={captionId} placeholder='Caption for your new blog (optional).' name='caption' value={caption || ''} onChange={handleInputChange} className={styles.caption} />
 
 				<div className={styles.image_container}>
-					{activeBlog.images.map(({ src }: ImageType) => {
+					{activeBlog?.images?.map(({ src }: ImageType) => {
 						return <Image key={getKey()} src={src} alt='blog image' width={120} height={120} className={styles.image} />;
 					})}
 
@@ -97,6 +98,8 @@ export default function Editor() {
 				</div>
 
 				<TextArea id={textId} placeholder='Body text...' name='text' value={text} onChange={handleInputChange} allowLineBreaks className={styles.text} />
+
+				{deleted ? <RecoverButton /> : ''}
 			</div>
 		</section>
 	);

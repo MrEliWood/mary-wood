@@ -2,8 +2,10 @@
 
 // internal
 import { getKey } from '@/utils';
-import { getState } from '@/state';
 import { Thumbnail } from './_components';
+
+// state
+import { getState } from '@/state';
 
 // styles
 import styles from './style.module.css';

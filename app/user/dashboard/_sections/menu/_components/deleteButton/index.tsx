@@ -7,7 +7,6 @@ import { API } from '@/utils';
 import { Button, Modal } from '@/components';
 
 // state
-import { mutate } from 'swr';
 import { getState } from '@/state';
 
 type Props = {
@@ -21,11 +20,12 @@ export default function DeleteButton({ setMenuOpen }: Props) {
 	const deleteBlog = async (event: SyntheticEvent) => {
 		event.stopPropagation();
 
-		await API.deleteBlog(activeBlog);
+		const deletedBlog = await API.deleteBlog(activeBlog);
+		if (!deletedBlog) return;
 
 		setMenuOpen(false);
+		setModalVisible(false);
 		localStorage.removeItem('Mary Wood - Unsaved Blog');
-		mutate('/api/blog');
 	};
 
 	return (

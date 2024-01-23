@@ -3,6 +3,7 @@
 // external
 import { useState, useEffect, SyntheticEvent } from 'react';
 import { HamburgerMenuIcon, Cross1Icon } from '@radix-ui/react-icons';
+import { mutate } from 'swr';
 
 // internal
 import { Button } from '@/components';
@@ -26,10 +27,17 @@ export default function Menu() {
 		setIsOpen(false);
 	};
 
-	useEffect(() => {
+	const listenForClicks = () => {
 		window.addEventListener('click', handleWindowclicks);
 		return () => window.removeEventListener('click', handleWindowclicks);
-	}, []);
+	};
+
+	const validateData = () => {
+		mutate('/api/blog');
+	};
+
+	useEffect(listenForClicks, []);
+	useEffect(validateData, [isOpen]);
 
 	return (
 		<div className={`${styles.menu_container} ${editorScrolled ? styles.scrolled : ''}`} onClick={handleMenuClick}>
