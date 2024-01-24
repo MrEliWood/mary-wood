@@ -12,7 +12,7 @@ import { API } from '@/utils';
 import { setState, useDispatch } from '@/state';
 
 // styles
-import styles from './style.module.css';
+import styles from './page.module.css';
 
 type Props = {
 	modalVisible: boolean;
@@ -34,8 +34,11 @@ export default function LoginModal() {
 			return;
 		}
 
-		dispatch(setState('login', userData));
+		if (password === 'password') {
+			localStorage.setItem('Mary Wood - Reset Password Flag', 'Password is not secure.');
+		}
 
+		dispatch(setState('login', userData));
 		router.push('/user/dashboard');
 	};
 

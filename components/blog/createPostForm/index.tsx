@@ -17,7 +17,7 @@ type formData = {
 };
 
 export default function CreatePostForm() {
-	const token = useSelector((state: RootState) => state.token.value);
+	// const token = useSelector((state: RootState) => state?.token.value);
 	const blogFormVisible = useSelector((state: RootState) => state.blogFormVisible.value);
 	const dispatch = useDispatch();
 
@@ -29,7 +29,7 @@ export default function CreatePostForm() {
 	});
 
 	const recoverFormData = () => {
-		const storedFormData = localStorage.getItem('Mary_Wood_FormData');
+		const storedFormData = localStorage.getItem('Mary Wood - Form Data');
 		if (storedFormData) setFormData(JSON.parse(storedFormData));
 	};
 

@@ -1,13 +1,13 @@
 'use client';
 
 // external
-import { useState, useEffect, SyntheticEvent, UIEvent, UIEventHandler } from 'react';
+import { useState, useEffect, SyntheticEvent, UIEvent } from 'react';
 import Image from 'next/image';
 import { PlusIcon } from '@radix-ui/react-icons';
 
 // internal
-import { RecoverButton } from './_components';
-import { TextArea, Button } from '@/components';
+import { Images, RecoverButton } from './_components';
+import { TextArea } from '@/components';
 import { getKey } from '@/utils';
 
 // state
@@ -44,8 +44,8 @@ export default function Editor() {
 		return value.replaceAll('\n', '');
 	};
 
-	const setInputValue = (element: HTMLInputElement) => {
-		const { name, value } = element;
+	const handleInputChange = (event: SyntheticEvent) => {
+		const { name, value } = event.target as HTMLInputElement;
 
 		const newValues = {
 			...activeBlog,
@@ -53,13 +53,8 @@ export default function Editor() {
 		};
 
 		dispatch(setState('setActiveBlog', newValues));
+		localStorage.setItem('Mary Wood - Active Blog', JSON.stringify(newValues));
 		localStorage.setItem('Mary Wood - Unsaved Blog', JSON.stringify(newValues));
-	};
-
-	const handleInputChange = (event: SyntheticEvent) => {
-		const element = event.target as HTMLInputElement;
-
-		setInputValue(element);
 	};
 
 	const handleScroll = (event: UIEvent<HTMLElement>) => {
@@ -71,31 +66,23 @@ export default function Editor() {
 		dispatch(setState('setEditorScrolled', isScrolled));
 	};
 
-	useEffect(() => {
+	const initScrollPosition = () => {
 		const editorElement = document.getElementById(editorId);
 
 		const position = editorElement?.children[0].getBoundingClientRect().top || 0;
 		setStartPosition(position);
-		focusEditor();
-	}, []);
+	};
+
+	useEffect(initScrollPosition, []);
+	useEffect(focusEditor, []);
 
 	return (
 		<section id={editorId} className={styles.section} onScroll={handleScroll}>
 			<div className={`${styles.editor} ${deleted ? styles.fade : ''}`}>
 				<TextArea id={titleId} placeholder='New Blog Title' name='title' value={title} onChange={handleInputChange} className={styles.title} />
-
 				<TextArea id={captionId} placeholder='Caption for your new blog (optional).' name='caption' value={caption || ''} onChange={handleInputChange} className={styles.caption} />
 
-				<div className={styles.image_container}>
-					{activeBlog?.images?.map(({ src }: ImageType) => {
-						return <Image key={getKey()} src={src} alt='blog image' width={120} height={120} className={styles.image} />;
-					})}
-
-					<button className={styles.add_image_button}>
-						<PlusIcon width='32' height='32' />
-						Add Image
-					</button>
-				</div>
+				{/* <Images className={styles.images} /> */}
 
 				<TextArea id={textId} placeholder='Body text...' name='text' value={text} onChange={handleInputChange} allowLineBreaks className={styles.text} />
 

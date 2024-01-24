@@ -1,3 +1,4 @@
+import Images from './images';
 import RecoverButton from './recoverButton';
 
-export { RecoverButton };
+export { Images, RecoverButton };

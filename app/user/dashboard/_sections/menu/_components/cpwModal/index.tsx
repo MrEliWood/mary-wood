@@ -12,6 +12,7 @@ import styles from './style.module.css';
 
 // variable
 const currentID = 'current_input__' + getKey();
+const newID = 'new_input__' + getKey();
 
 type Props = {
 	modalVisible: boolean;
@@ -25,8 +26,24 @@ export default function CPWButton({ modalVisible, setModalVisible }: Props) {
 	const [error, setError] = useState(false);
 	const [loading, setLoading] = useState(false);
 	const [failed, setFailed] = useState(false);
+	const [flag, setFlag] = useState(false);
 
-	const router = useRouter();
+	const focusInput = () => {
+		if (!modalVisible) return;
+
+		const element = document.getElementById(flag ? newID : currentID);
+		element?.focus();
+	};
+
+	const checkForFlag = () => {
+		const resetPW = localStorage.getItem('Mary Wood - Reset Password Flag');
+		if (!resetPW) return;
+
+		setCurrentPW('password');
+		setModalVisible(true);
+		focusInput();
+		setFlag(true);
+	};
 
 	const changePassword = async (event: SyntheticEvent) => {
 		event.preventDefault();
@@ -40,15 +57,16 @@ export default function CPWButton({ modalVisible, setModalVisible }: Props) {
 		setLoading(true);
 
 		const passwordChanged = await API.changePW({ currentPW, newPW });
+		console.log(passwordChanged);
 
-		if (passwordChanged) {
-			localStorage.removeItem('Mary Wood - Unsaved Blog');
-			router.push('/admin/login');
-			return;
-		}
+		if (!passwordChanged) setFailed(true);
 
 		setLoading(false);
-		setFailed(true);
+
+		if (!flag) return;
+
+		localStorage.removeItem('Mary Wood - Reset Password Flag');
+		setFlag(false);
 	};
 
 	const resetInputs = () => {
@@ -56,76 +74,77 @@ export default function CPWButton({ modalVisible, setModalVisible }: Props) {
 		setNewPW('');
 		setConfirmPW('');
 		setError(false);
-	};
-
-	const focusFirstInput = () => {
-		if (!modalVisible) return;
-
-		const element = document.getElementById(currentID);
-		element?.focus();
+		setLoading(false);
+		setFailed(false);
 	};
 
 	const clearError = () => setError(false);
 
 	useEffect(resetInputs, [modalVisible]);
-	useEffect(focusFirstInput, [modalVisible]);
+	useEffect(focusInput, [modalVisible]);
 	useEffect(clearError, [currentPW, newPW, confirmPW]);
+	useEffect(checkForFlag, []);
 
-	const invalidInput = currentPW.length < 8 || newPW.length < 8 || confirmPW.length < 8;
-
-	if (failed) {
-		return (
-			<Modal.Frame isVisible={modalVisible} setIsVisible={setModalVisible}>
-				<Modal.Header>
-					<Modal.Title>Something went wrong...</Modal.Title>
-				</Modal.Header>
-			</Modal.Frame>
-		);
-	}
-
-	if (loading) {
-		return (
-			<Modal.Frame isVisible={modalVisible} setIsVisible={setModalVisible}>
-				<Modal.Header>
-					<Modal.Title>Changing password...</Modal.Title>
-				</Modal.Header>
-			</Modal.Frame>
-		);
-	}
+	const invalidInput = currentPW.length < 8 || newPW.length < 8 || confirmPW.length < 8 || newPW.includes('password');
 
 	return (
-		<Modal.Frame isVisible={modalVisible} setIsVisible={setModalVisible}>
+		<Modal.Frame isVisible={flag || modalVisible} setIsVisible={setModalVisible}>
 			<Modal.Header>
 				<Modal.Title>Change Password</Modal.Title>
 
 				<Modal.Caption>
-					<p>Your password must be 8 characters or more.</p>
-					<p>You will need to login again with your new password.</p>
+					<p>Your password cannot be "password" silly goose.</p>
 				</Modal.Caption>
 			</Modal.Header>
 
 			<Modal.Body>
+				<div className={styles.requirements_container}>
+					<p>Password must be</p>
+
+					<p className={styles.requirement}>
+						<strong>8 characters</strong> or more.
+					</p>
+				</div>
+
+				<div className={styles.requirements_container}>
+					<p>Password may contain any combination of</p>
+
+					<p className={styles.requirement}>
+						<strong>letters</strong>, <strong>numbers</strong>, and <strong>special characters</strong>.
+					</p>
+				</div>
+
 				<Modal.Form>
 					<label>Current Password</label>
-					<input type='password' placeholder='••••••••••••' name='current' id={currentID} value={currentPW} onChange={(e) => setCurrentPW(e.target.value)} />
+					<input type='password' placeholder='••••••••••••' name='current' id={currentID} value={currentPW} className={flag ? styles.disabled : ''} onChange={(e) => setCurrentPW(e.target.value)} />
 
 					<label>New Password</label>
-					<input type='password' placeholder='••••••••••••' name='new' value={newPW} onChange={(e) => setNewPW(e.target.value)} />
+					<input type='password' placeholder='••••••••••••' name='new' id={newID} value={newPW} onChange={(e) => setNewPW(e.target.value)} />
 
 					<label>Confirm New Password</label>
 					<input type='password' placeholder='••••••••••••' name='confirm' value={confirmPW} onChange={(e) => setConfirmPW(e.target.value)} />
 
-					<Modal.FormError visible={error}>
+					<Modal.FormError visible={error} className={styles.error}>
 						<p>Your new passwords don't match.</p>
 						<p>Try typing them again.</p>
+					</Modal.FormError>
+
+					<Modal.FormError visible={loading} className={styles.loading}>
+						<p>Changing password...</p>
+					</Modal.FormError>
+
+					<Modal.FormError visible={failed} className={styles.failed}>
+						<p>Something went wrong...</p>
 					</Modal.FormError>
 				</Modal.Form>
 			</Modal.Body>
 
 			<Modal.Buttons>
-				<Button.UI type='secondary' onClick={() => setModalVisible(false)}>
-					Cancel
-				</Button.UI>
+				{!flag ? (
+					<Button.UI type='secondary' onClick={() => setModalVisible(false)}>
+						Cancel
+					</Button.UI>
+				) : null}
 
 				<Button.UI className={invalidInput ? styles.invalid : ''} onClick={changePassword}>
 					Change

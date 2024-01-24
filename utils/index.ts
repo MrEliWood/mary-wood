@@ -1,4 +1,5 @@
 import API from './API';
+import autosave from './autosave';
 import bio from './bio';
 import buildNavLink from './buildNavLink';
 import getElement from './getElement';
@@ -11,4 +12,4 @@ import setTextAreaHeight from './setTextAreaHeight';
 import truncateString from './truncateString';
 import verifyToken from './verifyToken';
 
-export { API, bio, buildNavLink, getElement, getKey, links, workCategories, workData, pagelist, setTextAreaHeight, truncateString, verifyToken };
+export { API, autosave, bio, buildNavLink, getElement, getKey, links, workCategories, workData, pagelist, setTextAreaHeight, truncateString, verifyToken };

@@ -1,23 +1,28 @@
 'use client';
 
+// external
 import { useMemo } from 'react';
 
-import { Button, Blog } from '@/components';
+// internal
+import { Blog } from '@/components';
 import { API } from '@/utils';
 
+// state
 import { useSelector, useDispatch } from 'react-redux';
 import { setBlogs } from '@/state/features/blogData';
 
+// styles
 import styles from './page.module.css';
 
+// types
 import type { RootState } from '@/state/store';
-import { BlogType } from '@/types';
+import { BlogData } from '@/types';
 
 export default function BlogPage() {
 	const blogData = useSelector((state: RootState) => state.blogData.value);
 	const blogFilter = useSelector((state: RootState) => state.blogFilter.value);
 	const blogFormVisible = useSelector((state: RootState) => state.blogFormVisible.value);
-	const token = useSelector((state: RootState) => state.token.value);
+	// const token = useSelector((state: RootState) => state.token.value);
 	const dispatch = useDispatch();
 
 	useMemo(async () => {
@@ -27,7 +32,7 @@ export default function BlogPage() {
 
 	return (
 		<main className={styles.page}>
-			{token && (
+			{/* {token && (
 				<div className={styles.user_options} style={blogFormVisible ? { height: '553px' } : { height: '32px' }}>
 					<div id={styles.resize_container} className={`${styles.resize_container} ${blogFormVisible ? styles.visible : styles.hidden}`}>
 						<Blog.CreatePostForm />
@@ -41,34 +46,34 @@ export default function BlogPage() {
 						</div>
 					</div>
 				</div>
-			)}
+			)} */}
 
 			<div className={styles.blogs}>
-				{token &&
+				{/* {token &&
 					blogData?.drafts &&
 					(blogFilter === 'all' || blogFilter === 'drafts') &&
 					blogData?.drafts.map((blog) => {
 						const key = Math.floor(Math.random() * 1000000);
 
 						return <Blog.Preview key={key} data={blog} />;
-					})}
+					})} */}
 
 				{blogData?.published &&
 					(blogFilter === 'all' || blogFilter === 'published') &&
-					blogData?.published.map((blog) => {
+					blogData?.published.map((BlogData: any) => {
 						const key = Math.floor(Math.random() * 1000000);
 
-						return <Blog.Preview key={key} data={blog} />;
+						return <Blog.Preview key={key} blogData={BlogData} />;
 					})}
 
-				{token &&
+				{/* {token &&
 					blogData?.deleted &&
 					(blogFilter === 'all' || blogFilter === 'deleted') &&
 					blogData?.deleted.map((blog) => {
 						const key = Math.floor(Math.random() * 1000000);
 
 						return <Blog.Preview key={key} data={blog} />;
-					})}
+					})} */}
 			</div>
 		</main>
 	);

@@ -1,3 +1,29 @@
+.requirements_container {
+	display: flex;
+	flex-direction: column;
+
+	color: var(--gray-10);
+}
+
+.requirement {
+	padding-left: var(--x2);
+}
+
+.requirement strong {
+	color: black;
+	font-weight: 600;
+}
+
+.disabled {
+	pointer-events: none;
+	opacity: 0.5;
+}
+
+.error,
+.failed {
+	color: var(--danger-11);
+}
+
 .invalid {
 	pointer-events: none;
 	opacity: 0.5;

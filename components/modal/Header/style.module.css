@@ -1,10 +1,11 @@
 .header {
 	display: flex;
 	flex-direction: column;
-	gap: var(--x1);
+	gap: var(--d2);
 
 	font-family: var(--sans-serif);
-	line-height: 1.2;
 
 	width: 100%;
+
+	/* outline: 1px solid red; */
 }

@@ -18,9 +18,8 @@ const API = {
 			};
 
 			const res = await fetch(`${process.env.BASE_URL}/api/user/login`, options);
-			if (!res.ok) throw new Error('Something went wrong...');
-
 			const data = await res.json();
+
 			localStorage.setItem('Mary Wood - Token', data.token);
 
 			return data;
@@ -33,6 +32,7 @@ const API = {
 
 	logout: () => {
 		localStorage.removeItem('Mary Wood - Token');
+		localStorage.removeItem('Mary Wood - Active Blog');
 	},
 
 	verifyToken: () => {
@@ -184,8 +184,11 @@ const API = {
 			};
 
 			const res: Response = await fetch(`${process.env.BASE_URL}/api/user/cpw/1`, options);
+			console.log(res.json());
 
-			if (res.ok) return true;
+			if (res.ok) {
+				return true;
+			}
 		} catch (error) {
 			console.error(error);
 		}

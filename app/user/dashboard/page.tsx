@@ -24,30 +24,32 @@ export default function Dashboard() {
 
 	const checkLocalToken = () => {
 		const verified = API.verifyToken();
-		if (!verified) router.push('/user/login');
+		if (!verified) router.push('/');
 	};
 
-	dispatch(setState('setAllBlogs', data));
-
-	const getLocalDraft = () => {
+	const checkForUnsavedDraft = () => {
 		const localBlogDraft = localStorage.getItem('Mary Wood - Unsaved Blog');
-		return localBlogDraft ? JSON.parse(localBlogDraft) : null;
+		if (!localBlogDraft) return null;
+
+		return JSON.parse(localBlogDraft);
+	};
+
+	const checkForActiveBlog = () => {
+		const localActiveBlog = localStorage.getItem('Mary Wood - Active Blog');
+		if (!localActiveBlog) return null;
+
+		return JSON.parse(localActiveBlog);
 	};
 
 	const setActiveBlog = () => {
-		const unsavedBlog = getLocalDraft();
+		const unsavedBlog = checkForUnsavedDraft();
+		const localBlog = checkForActiveBlog();
+		const firstBlog = data?.drafts[0] || data?.published[0] || data?.deleted[0];
 
-		if (unsavedBlog) {
-			dispatch(setState('setActiveBlog', unsavedBlog));
-			return;
-		}
+		const activeBlog = unsavedBlog || localBlog || firstBlog;
+		if (!activeBlog) return;
 
-		const savedBlog = data?.drafts[0] || data?.published[0] || data?.deleted[0];
-
-		if (savedBlog) {
-			dispatch(setState('setActiveBlog', savedBlog));
-			return;
-		}
+		dispatch(setState('setActiveBlog', activeBlog));
 	};
 
 	const handleWindowResize = () => {

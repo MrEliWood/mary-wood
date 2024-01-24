@@ -3,9 +3,11 @@
 	flex-direction: column;
 
 	font-family: var(--sans-serif);
-	line-height: 1.2;
+	line-height: 1.5;
 
 	width: 100%;
 
-	margin: -1px 0;
+	margin-bottom: -3px;
+
+	/* outline: 1px solid green; */
 }
