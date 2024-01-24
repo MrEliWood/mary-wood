@@ -11,10 +11,10 @@ const API = {
 
 			const options = {
 				method: 'POST',
-				body: JSON.stringify({ id, password }),
 				headers: {
 					'Content-Type': 'application/json'
-				}
+				},
+				body: JSON.stringify({ id, password })
 			};
 
 			const res = await fetch(`${process.env.BASE_URL}/api/user/login`, options);

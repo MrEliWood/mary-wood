@@ -62,6 +62,7 @@ export default function CPWButton({ modalVisible, setModalVisible }: Props) {
 		if (!passwordChanged) setFailed(true);
 
 		setLoading(false);
+		setModalVisible(false);
 
 		if (!flag) return;
 
@@ -114,7 +115,7 @@ export default function CPWButton({ modalVisible, setModalVisible }: Props) {
 					</p>
 				</div>
 
-				<Modal.Form>
+				<Modal.Form onSubmit={changePassword}>
 					<label>Current Password</label>
 					<input type='password' placeholder='••••••••••••' name='current' id={currentID} value={currentPW} className={flag ? styles.disabled : ''} onChange={(e) => setCurrentPW(e.target.value)} />
 

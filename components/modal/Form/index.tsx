@@ -1,17 +1,22 @@
 // external
-import { ReactNode, SyntheticEvent } from 'react';
+import { FormEvent, FormEventHandler, ReactNode, SyntheticEvent } from 'react';
 
 // style
 import styles from './style.module.css';
 
 type Props = {
-	onSubmit?: (event: SyntheticEvent) => Promise<void>;
+	onSubmit?: FormEventHandler<Element>;
 	children?: ReactNode;
 };
 
-export default function Form({ onSubmit, children }: Props) {
+export default function Form({ onSubmit = () => new Promise(() => {}), children }: Props) {
+	const handleFormSubmit = (event: FormEvent) => {
+		event.preventDefault();
+		onSubmit(event);
+	};
+
 	return (
-		<form className={styles.form} onSubmit={onSubmit}>
+		<form className={styles.form} onSubmit={handleFormSubmit}>
 			{children}
 		</form>
 	);

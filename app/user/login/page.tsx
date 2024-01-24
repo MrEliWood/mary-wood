@@ -1,7 +1,7 @@
 'use client';
 
 // external
-import { useState, Dispatch, SetStateAction } from 'react';
+import { useState, useEffect, Dispatch, SetStateAction, ChangeEventHandler, SyntheticEvent } from 'react';
 import { useRouter } from 'next/navigation';
 
 // internal
@@ -27,6 +27,8 @@ export default function LoginModal() {
 	const router = useRouter();
 
 	const login = async () => {
+		if (password.length < 8) return;
+
 		const userData = await API.login(password);
 
 		if (!userData.token) {
@@ -42,8 +44,6 @@ export default function LoginModal() {
 		router.push('/user/dashboard');
 	};
 
-	const invalidInput = password.length < 8;
-
 	return (
 		<Modal.Frame isVisible={true} setIsVisible={() => router.back()}>
 			<Modal.Header>
@@ -55,7 +55,7 @@ export default function LoginModal() {
 			</Modal.Header>
 
 			<Modal.Body>
-				<Modal.Form>
+				<Modal.Form onSubmit={login}>
 					<label>Password</label>
 					<input type='password' placeholder='••••••••••••' name='current' value={password} onChange={(e) => setPassword(e.target.value)} />
 
@@ -69,7 +69,7 @@ export default function LoginModal() {
 						Cancel
 					</Button.UI>
 
-					<Button.UI className={invalidInput ? styles.invalid : ''} onClick={login}>
+					<Button.UI className={password.length < 8 ? styles.invalid : ''} onClick={login}>
 						Login
 					</Button.UI>
 				</Modal.Buttons>
