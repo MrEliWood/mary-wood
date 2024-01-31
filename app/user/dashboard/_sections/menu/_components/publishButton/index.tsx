@@ -16,8 +16,6 @@ type Props = {
 export default function PublishButton({ setMenuOpen }: Props) {
 	const [modalVisible, setModalVisible] = useState(false);
 	const activeBlog = getState('activeBlog');
-	const allBlogs = getState('allBlogs');
-	const dispatch = useDispatch();
 
 	const publishBlog = async (event: SyntheticEvent) => {
 		event.stopPropagation();

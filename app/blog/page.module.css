@@ -1,49 +1,11 @@
 .page {
-	gap: var(--large);
 	transition: all ease-in-out 500ms;
 }
 
 .blogs {
-	display: flex;
-	flex-direction: column;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
 	gap: var(--huge);
-}
 
-.user_options {
-	position: relative;
-	display: flex;
-	flex-direction: column;
-	justify-content: flex-start;
-	align-items: flex-end;
-	transition: all ease-in-out 500ms;
-}
-
-.user_toolbar {
-	display: flex;
-	justify-content: space-between;
-	width: 100%;
-}
-
-.absolute_container {
-	position: absolute;
-	top: 0;
-	right: 0;
-}
-
-.resize_container {
-	display: flex;
-	width: 100%;
-	overflow: hidden;
-	z-index: 1;
-	transition: all ease-in-out 500ms;
-}
-
-.visible {
-	max-height: 100%;
-	max-width: 100%;
-}
-
-.hidden {
-	max-height: 0%;
-	max-width: 0%;
+	padding-top: var(--medium);
 }
